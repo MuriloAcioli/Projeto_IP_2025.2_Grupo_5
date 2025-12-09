@@ -1,2 +1,2 @@
-# Projeto_IP_2025.2_Grupo_5
+# Descrição do projeto
 Nosso projeto
