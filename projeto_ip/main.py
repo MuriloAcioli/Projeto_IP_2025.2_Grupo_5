@@ -1,9 +1,11 @@
 import pygame as pg
 from player import Player
 from camera import Camera
-from coletaveis import Pokebola, Pocao, GreatBall 
+from coletaveis import Pokebola, GreatBall, Pocao
 from inventario import MenuInventario
+import os
 
+DIRETORIO_BASE = os.path.dirname(__file__)  # Caminho do diretório atual
 # --- Configurações Globais ---
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
@@ -98,11 +100,16 @@ map_w, map_h, player_pos = carregar_mapa(MAPA_TEXTO, grupo_obstaculos, grupo_col
 
 # 4. Player (Usando a posição que veio do mapa 'P')
 try:
+    path_down = os.path.join(DIRETORIO_BASE, "assets/mc/mc_down.png")
+    path_left = os.path.join(DIRETORIO_BASE, "assets/mc/mc_left.png")
+    path_up = os.path.join(DIRETORIO_BASE, "assets/mc/mc_up.png")
+    path_right = os.path.join(DIRETORIO_BASE, "assets/mc/mc_right.png")
     protagonista = Player(player_pos[0], player_pos[1], 
-                          "assets/mc/mc_down.png", 
-                          "assets/mc/mc_left.png", 
-                          "assets/mc/mc_up.png", 
-                          "assets/mc/mc_right.png")
+                          path_down, 
+                          path_left, 
+                          path_up, 
+                          path_right)
+    
     player_group = pg.sprite.GroupSingle(protagonista)
 except FileNotFoundError:
     print("ERRO: Imagens do player não encontradas.")

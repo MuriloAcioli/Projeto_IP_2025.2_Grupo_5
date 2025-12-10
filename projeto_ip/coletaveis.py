@@ -1,4 +1,7 @@
 import pygame as pg
+import os
+
+DIRETORIO_BASE = os.path.dirname(__file__)  # Caminho do diretório atual
 
 class Coletavel(pg.sprite.Sprite):
     # ALTERAÇÃO 1: Adicionei o argumento 'tamanho' com um valor padrão (32, 32)
@@ -9,6 +12,8 @@ class Coletavel(pg.sprite.Sprite):
             # Tenta carregar, se der erro cria um quadrado (fallback)
             try:
                 # Carrega a imagem original
+                imagem_path = os.path.join(DIRETORIO_BASE, imagem_path)
+
                 imagem_bruta = pg.image.load(imagem_path).convert_alpha()
                 
                 # ALTERAÇÃO 2: Aqui nós forçamos a imagem a ficar do tamanho padrão
