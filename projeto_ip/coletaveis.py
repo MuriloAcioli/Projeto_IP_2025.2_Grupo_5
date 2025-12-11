@@ -15,7 +15,7 @@ class Coletavel(pg.sprite.Sprite):
                 imagem_path = os.path.join(DIRETORIO_BASE, imagem_path)
 
                 imagem_bruta = pg.image.load(imagem_path).convert_alpha()
-                
+
                 # ALTERAÇÃO 2: Aqui nós forçamos a imagem a ficar do tamanho padrão
                 self.image = pg.transform.scale(imagem_bruta, tamanho)
                 

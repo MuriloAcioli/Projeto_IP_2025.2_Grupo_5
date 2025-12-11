@@ -5,7 +5,8 @@ from coletaveis import Pokebola, GreatBall, Pocao
 from inventario import MenuInventario
 from Obstaculo import Obstaculo
 import os # Importante para garantir caminhos de arquivo
-
+import random
+from mato import Mato
 DIRETORIO_BASE = os.path.dirname(__file__)  # Caminho do diretório atual
 # --- Configurações Globais ---
 SCREEN_WIDTH = 800
@@ -36,7 +37,7 @@ MAPA_MATRIZ = [
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'M', 'T', 'T', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', 'P', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -51,7 +52,7 @@ MAPA_MATRIZ = [
 
 
 # --- Função para Ler o Mapa ---
-def carregar_mapa(mapa, grupo_obs, grupo_col):
+def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato):
     pos_player = (100, 100)
     
     for row_index, row in enumerate(mapa):
@@ -67,12 +68,64 @@ def carregar_mapa(mapa, grupo_obs, grupo_col):
                 grupo_col.add(GreatBall(x, y))
             elif letra == 'H':
                 grupo_col.add(Pocao(x, y))
+            elif letra == 'M':
+                grupo_mato.add(Mato(x, y))  # Pode ser outro tipo de obstáculo
             elif letra == 'P':
                 pos_player = (x, y)
+            
+
                 
     largura_total = len(mapa[0]) * TILE_SIZE
     altura_total = len(mapa) * TILE_SIZE
     return largura_total, altura_total, pos_player
+
+def definir_piso(largura_mapa, altura_mapa, caminho_tileset):
+    # 1. Cria a superfície base onde desenharemos o chão
+    superficie_chao = pg.Surface((largura_mapa, altura_mapa))
+    
+    try:
+        # 2. Carrega a imagem do tileset
+        img_tileset = pg.image.load(caminho_tileset).convert_alpha()
+    except FileNotFoundError:
+        print("Erro: Tileset não encontrado. Usando cor sólida.")
+        superficie_chao.fill((34, 139, 34))
+        return superficie_chao
+
+    TAMANHO_ORIGINAL = 64
+
+    TILE_PADRAO = (0, 0)    # Um quadrado de grama comum
+    TILE_GRAMA_LISA = (0, 1)    # Um quadrado de grama comum
+    TILE_GRAMA_DETALHE = (2, 1) # Grama com pontinhos
+    TILE_FLOR_AMARELA = (0, 4)  # Exemplo de flor
+    TILE_FLOR_ROSA = (1, 4)     # Exemplo de flor
+    
+    # Lista com opções e "pesos" (probabilidade).
+    # Queremos muita grama e poucas flores.
+    opcoes = [TILE_GRAMA_LISA] * 30 + 30 * [TILE_PADRAO]+ [TILE_GRAMA_DETALHE] * 30 + [TILE_FLOR_AMARELA] * 5 + [TILE_FLOR_ROSA] * 5
+
+    # 4. Loop para preencher todo o mapa
+    for y in range(0, altura_mapa, TILE_SIZE):
+        for x in range(0, largura_mapa, TILE_SIZE):
+            
+            # Escolhe um tile aleatório da lista
+            escolha = random.choice(opcoes)
+            coluna_img, linha_img = escolha
+            
+            # Recorta o tile da imagem original
+            rect_recorte = pg.Rect(coluna_img * TAMANHO_ORIGINAL, 
+                                   linha_img * TAMANHO_ORIGINAL, 
+                                   TAMANHO_ORIGINAL, 
+                                   TAMANHO_ORIGINAL)
+            
+            tile_imagem = img_tileset.subsurface(rect_recorte)
+            
+            # Aumenta para o tamanho do jogo (48x48)
+            tile_escalado = pg.transform.scale(tile_imagem, (TILE_SIZE, TILE_SIZE))
+            
+            # Desenha no chão
+            superficie_chao.blit(tile_escalado, (x, y))
+
+    return superficie_chao
 
 def exibir_intro(screen):
     intro = True
@@ -268,9 +321,10 @@ clock = pg.time.Clock()
 # Grupos
 grupo_obstaculos = pg.sprite.Group()
 grupo_coletaveis = pg.sprite.Group()
+grupo_mato = pg.sprite.Group()
 
 # 3. Carregando o Mapa
-map_w, map_h, player_pos = carregar_mapa(MAPA_MATRIZ, grupo_obstaculos, grupo_coletaveis)
+map_w, map_h, player_pos = carregar_mapa(MAPA_MATRIZ, grupo_obstaculos, grupo_coletaveis,grupo_mato)
 
 # 4. Player
 try:
@@ -291,10 +345,14 @@ except FileNotFoundError:
 
 menu_inv = MenuInventario()
 camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, map_w, map_h)
-fundo_grama = pg.Surface((map_w, map_h))
-fundo_grama.fill((34, 139, 34)) 
+#fundo_grama = pg.Surface((map_w, map_h))
+#fundo_grama.fill((34, 139, 34)) 
+# Caminho para a imagem que você mandou (salve ela na pasta assets!)
+caminho_img_tileset = os.path.join(DIRETORIO_BASE, "assets/backgrounds/tileset.png")
 
-# --- FLUXO DO JOGO ---
+# Gera o chão texturizado
+fundo_grama = definir_piso(map_w, map_h, caminho_img_tileset)
+
 jogo_ativo = exibir_intro(screen)
 nome_jogador = "Player"
 
@@ -332,6 +390,8 @@ while running:
     for parede in grupo_obstaculos:
         screen.blit(parede.image, camera.apply(parede.rect))
     for item in grupo_coletaveis:
+        screen.blit(item.image, camera.apply(item.rect))
+    for item in grupo_mato:
         screen.blit(item.image, camera.apply(item.rect))
     for sprite in player_group:
         screen.blit(sprite.image, camera.apply(sprite.rect))
