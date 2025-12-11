@@ -14,6 +14,7 @@ class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
             'left': [],
             'right': []
         }
+
         self.inventario = {}
 
         img_down = pg.image.load(sprite_sheet_path_down).convert()
@@ -117,4 +118,4 @@ class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
 
 # --- Loop Principal para testar ---
 
-# Inicialização
+""" Alteração """
