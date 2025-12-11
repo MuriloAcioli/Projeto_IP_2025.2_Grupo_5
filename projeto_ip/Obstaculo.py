@@ -1,30 +1,17 @@
 import pygame as pg
-from coletaveis import Pokebola
 # Configuração do tamanho do quadrado (Tile)
-TILE_SIZE = 32 
+TILE_SIZE = 48 
 
 # O seu mapa desenhado com caracteres
-MAPA_JOGO = [
-    "TTTTTTTTTTTTTTTTTTTT",
-    "T..................T",
-    "T..P....BB.........T",
-    "T.......TT.........T",
-    "T.......TT...B.....T",
-    "T..................T",
-    "TTTTTTTTTTTTTTTTTTTT"
-]
 
-# Classe para paredes/árvores
+# --- 2. Classe Obstáculo (Parede/Árvore) ---
 class Obstaculo(pg.sprite.Sprite):
     def __init__(self, x, y):
         super().__init__()
-        # Aqui você carregaria a imagem da árvore: pg.image.load('arvore.png')
+        # Aqui você carregaria a imagem da árvore: pg.image.load("assets/arvore.png")
         # Vou usar um quadrado verde escuro por enquanto
         self.image = pg.Surface((TILE_SIZE, TILE_SIZE))
-        self.image.fill((0, 100, 0)) 
-        
+        self.image.fill((15, 80, 15)) # Verde Escuro
+        # Opcional: Desenhar uma borda para parecer um bloco
+        pg.draw.rect(self.image, (0,0,0), (0,0,TILE_SIZE,TILE_SIZE), 2)
         self.rect = self.image.get_rect(topleft=(x, y))
-        
-
-
-#
