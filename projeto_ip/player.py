@@ -75,17 +75,17 @@ class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
             self.direction.x = 0
             self.direction.y = 0
 
-            if keys[pg.K_LEFT]:
+            if keys[pg.K_a]:
                 self.direction.x = -1
                 self.status = 'left'
-            elif keys[pg.K_RIGHT]:
+            elif keys[pg.K_d]:
                 self.direction.x = 1
                 self.status = 'right'
                 
-            if keys[pg.K_UP]:
+            if keys[pg.K_w]:
                 self.direction.y = -1
                 self.status = 'up'
-            elif keys[pg.K_DOWN]:
+            elif keys[pg.K_s]:
                 self.direction.y = 1
                 self.status = 'down'
 
