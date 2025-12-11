@@ -6,6 +6,9 @@ class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
     def __init__(self, x, y, sprite_sheet_path_down, sprite_sheet_path_left,sprite_sheet_path_up,sprite_sheet_path_right):
         super().__init__()
         
+        # --- CONFIGURAÇÃO DE TAMANHO ---
+        self.ESCALA = 1.4  # 1.0 = Normal, 2.0 = Dobro do tamanho, etc.
+        
         # 1. Carregar as imagens (Spritesheets)
         
         self.animations = {
@@ -17,6 +20,7 @@ class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
 
         self.inventario = {}
 
+        # Carrega as folhas de sprite originais
         img_down = pg.image.load(sprite_sheet_path_down).convert()
         img_left = pg.image.load(sprite_sheet_path_left).convert()
         img_up = pg.image.load(sprite_sheet_path_up).convert()
@@ -27,7 +31,7 @@ class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
         img_up.set_colorkey((255, 255, 255))
         img_right.set_colorkey((255, 255, 255))
 
-        # Função interna para recortar a spritesheet
+        # Função interna para recortar E AUMENTAR a spritesheet
         def recortar_frames(imagem, quantidade_frames):
             lista_frames = []
             frame_width = imagem.get_width() // quantidade_frames
@@ -36,12 +40,24 @@ class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
             for i in range(quantidade_frames):
                 # Cria um recorte (rect) da imagem original
                 corte = pg.Rect(i * frame_width, 0, frame_width, frame_height)
-                # Pega a subsuperfície
-                frame = imagem.subsurface(corte)
-                lista_frames.append(frame)
+                
+                # Pega a subsuperfície (o frame pequeno original)
+                frame_original = imagem.subsurface(corte)
+                
+                # --- AQUI É ONDE AUMENTAMOS O SPRITE ---
+                # Calculamos o novo tamanho baseado na ESCALA
+                novo_w = int(frame_width * self.ESCALA)
+                novo_h = int(frame_height * self.ESCALA)
+                
+                # Criamos o frame aumentado
+                frame_escalado = pg.transform.scale(frame_original, (novo_w, novo_h))
+                
+                # Adicionamos o frame GRANDE na lista
+                lista_frames.append(frame_escalado)
+                
             return lista_frames
 
-        # Preenchendo as animações
+        # Preenchendo as animações (já virão aumentadas)
         self.animations['down'] = recortar_frames(img_down, 4)
         self.animations['left'] = recortar_frames(img_left, 4)
         self.animations['right'] = recortar_frames(img_right, 4)
@@ -49,26 +65,28 @@ class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
 
         # 2. Configuração da Animação
         self.frame_index = 0
-        self.animation_speed = 0.15 # Velocidade da troca de quadros
-        self.status = 'down' # Estado inicial
+        self.animation_speed = 0.15 
+        self.status = 'down' 
         
         # 3. Configuração da Imagem Inicial
         self.image = self.animations[self.status][self.frame_index]
+        
+        # O rect vai pegar o tamanho da imagem já aumentada automaticamente
         self.rect = self.image.get_rect(topleft=(x, y))
+        
         self.speed = 5
-        self.direction = pg.math.Vector2(0, 0) # Vetor de direção é melhor que x/y soltos
+        self.direction = pg.math.Vector2(0, 0) 
 
     def get_input(self):
             keys = pg.key.get_pressed()
             
             # --- LÓGICA DO SHIFT (CORRER) ---
-            # Se Shift Esquerdo (LSHIFT) estiver apertado
             if keys[pg.K_LSHIFT]: 
-                self.speed = 5           # Aumenta a velocidade
-                self.animation_speed = 0.15 # (Opcional) Acelera a animação das pernas
+                self.speed = 8          # Aumentei um pouco a corrida já que o boneco cresceu
+                self.animation_speed = 0.20 
             else:
-                self.speed = 3            # Volta para velocidade normal
-                self.animation_speed = 0.1 # Volta animação normal
+                self.speed = 4          
+                self.animation_speed = 0.1 
             # -------------------------------
 
             # Reseta direção
@@ -94,28 +112,20 @@ class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
         if self.direction.magnitude() != 0:
             self.frame_index += self.animation_speed
             
-            # Se o index passar do número de frames, volta pro 0 (loop)
             if self.frame_index >= len(self.animations[self.status]):
                 self.frame_index = 0
         else:
-            # Se estiver parado, mostra o primeiro frame (index 0) ou frame de "idle"
             self.frame_index = 0
 
         # Atualiza a imagem atual
-        # O int() é necessário porque frame_index é float para controlar velocidade
         self.image = self.animations[self.status][int(self.frame_index)]
 
     def update(self):
         self.get_input()
         self.animate()
         
-        # Movimentação normalizando o vetor (pra não andar mais rápido na diagonal)
         if self.direction.magnitude() != 0:
             self.direction = self.direction.normalize()
         
         self.rect.x += self.direction.x * self.speed
         self.rect.y += self.direction.y * self.speed
-
-# --- Loop Principal para testar ---
-
-""" Alteração """
