@@ -8,6 +8,7 @@ from camera import Camera
 from coletaveis import Pokebola, GreatBall, Pocao
 from inventario import MenuInventario
 from Obstaculo import Obstaculo
+from npc import NPC
 # IMPORTANTE: Importamos a função de criar agora!
 from pokemon import Pokemon, criar_pokemon 
 from batalha import BatalhaPokemon
@@ -43,7 +44,7 @@ MAPA_MATRIZ = [
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'M', 'T', 'T', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'N', 'T'],
     ['T', '.', '.', 'P', '.', '.', '.', '.', '.', 'M', '.', '.', 'T', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -56,8 +57,9 @@ MAPA_MATRIZ = [
 ]
 
 # --- Função de Carregamento do Mapa ---
-def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato):
+def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
     pos_player = (100, 100)
+    path_professor = os.path.join(DIRETORIO_BASE, "assets/professor/professor.png")
     
     for row_index, row in enumerate(mapa):
         for col_index, letra in enumerate(row):
@@ -65,12 +67,22 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato):
             y = row_index * TILE_SIZE
             
             # Instancia objetos baseado na letra do mapa
-            if letra == 'T': grupo_obs.add(Obstaculo(x, y))
-            elif letra == 'B': grupo_col.add(Pokebola(x, y))
-            elif letra == 'G': grupo_col.add(GreatBall(x, y))
-            elif letra == 'H': grupo_col.add(Pocao(x, y))
-            elif letra == 'M': grupo_mato.add(Mato(x, y)) 
-            elif letra == 'P': pos_player = (x, y)
+            if letra == 'T': 
+                grupo_obs.add(Obstaculo(x, y))
+            elif letra == 'B': 
+                grupo_col.add(Pokebola(x, y))
+            elif letra == 'G': 
+                grupo_col.add(GreatBall(x, y))
+            elif letra == 'H': 
+                grupo_col.add(Pocao(x, y))
+            elif letra == 'M': 
+                grupo_mato.add(Mato(x, y))
+            elif letra == 'N':
+                npc = NPC(x, y, path_professor, "Está pronto para derrotar o Mangue Vermelho?")
+                grupo_npcs.add(npc)
+                grupo_obs.add(npc)
+            elif letra == 'P': 
+                pos_player = (x, y)
             
     return len(mapa[0]) * TILE_SIZE, len(mapa) * TILE_SIZE, pos_player
 
@@ -266,9 +278,10 @@ clock = pg.time.Clock()
 grupo_obstaculos = pg.sprite.Group()
 grupo_coletaveis = pg.sprite.Group()
 grupo_mato = pg.sprite.Group()
+grupo_npcs = pg.sprite.Group()
 
 # Carrega Mapa
-map_w, map_h, player_pos = carregar_mapa(MAPA_MATRIZ, grupo_obstaculos, grupo_coletaveis, grupo_mato)
+map_w, map_h, player_pos = carregar_mapa(MAPA_MATRIZ, grupo_obstaculos, grupo_coletaveis, grupo_mato, grupo_npcs)
 
 # Inicializa Player
 try:
@@ -318,48 +331,77 @@ running = jogo_ativo
 while running:
     # --- MODO MUNDO (Exploração) ---
     if estado_jogo == "MUNDO":
+        # Verifica se existe ALGUM NPC falando neste exato momento
+        npc_falando_agora = None
+        for npc in grupo_npcs:
+            if npc.esta_falando:
+                npc_falando_agora = npc
+                break
+
         # Eventos
         for event in pg.event.get():
-            if event.type == pg.QUIT: running = False
+            if event.type == pg.QUIT: 
+                running = False
             if event.type == pg.KEYDOWN:
-                if event.key == pg.K_e: menu_inv.alternar() 
+                if event.key == pg.K_e: 
+                    menu_inv.alternar()
+                
+                # Interação com NPC
+                if event.key == pg.K_SPACE:
+                    for npc in grupo_npcs:
+                        distancia = ((protagonista.rect.centerx - npc.rect.centerx)**2 + 
+                                   (protagonista.rect.centery - npc.rect.centery)**2)**0.5
+                        if distancia < 80:
+                            if npc.esta_falando:
+                                npc.avancar_dialogo()
+                            else:
+                                npc.iniciar_dialogo()
+                            break
 
         # Updates
-        antigo_rect = protagonista.rect.copy()
-        player_group.update()
+        if npc_falando_agora:
+            # Se NPC está falando, player não se move
+            pass
+        else:
+            antigo_rect = protagonista.rect.copy()
+            player_group.update()
+            
+            # Checagem de Batalha (Mato)
+            if protagonista.direction.magnitude() > 0:
+                if pg.sprite.spritecollide(protagonista, grupo_mato, False):
+                    if random.random() < 0.015: 
+                        # 1. Animação
+                        animacao_transicao(screen)
+                        estado_jogo = "BATALHA"
+                        
+                        # 2. Cria Inimigo
+                        inimigo_pokemon = criar_pokemon("Bulbasaur", random.randint(3, 5))
+                        
+                        # === CORREÇÃO DO CRASH ===
+                        inv_batalha = {'Pocao': 5, 'Pokebola': 5}
+                        try:
+                            if hasattr(menu_inv, 'itens'): 
+                                inv_batalha = menu_inv.itens
+                            elif hasattr(protagonista, 'inventario') and hasattr(protagonista.inventario, 'itens'):
+                                inv_batalha = protagonista.inventario.itens
+                        except: pass
+
+                        # 3. Inicia Batalha com segurança
+                        try:
+                            sistema_batalha = BatalhaPokemon(equipe_jogador, inimigo_pokemon, inv_batalha)
+                        except Exception as e:
+                            print(f"ERRO AO INICIAR BATALHA: {e}")
+                            estado_jogo = "MUNDO" # Cancela batalha se der erro
+
+            # Colisões
+            if pg.sprite.spritecollide(protagonista, grupo_obstaculos, False): 
+                protagonista.rect = antigo_rect
+            
+            hits = pg.sprite.spritecollide(protagonista, grupo_coletaveis, False)
+            for item in hits: 
+                item.coletar(protagonista)
         
-        # Checagem de Batalha (Mato)
-        if protagonista.direction.magnitude() > 0:
-            if pg.sprite.spritecollide(protagonista, grupo_mato, False):
-                if random.random() < 0.015: 
-                    # 1. Animação
-                    animacao_transicao(screen)
-                    estado_jogo = "BATALHA"
-                    
-                    # 2. Cria Inimigo
-                    inimigo_pokemon = criar_pokemon("Bulbasaur", random.randint(3, 5))
-                    
-                    # === CORREÇÃO DO CRASH ===
-                    inv_batalha = {'Pocao': 5, 'Pokebola': 5}
-                    try:
-                        if hasattr(menu_inv, 'itens'): 
-                            inv_batalha = menu_inv.itens
-                        elif hasattr(protagonista, 'inventario') and hasattr(protagonista.inventario, 'itens'):
-                            inv_batalha = protagonista.inventario.itens
-                    except: pass
-
-                    # 3. Inicia Batalha com segurança
-                    try:
-                        sistema_batalha = BatalhaPokemon(equipe_jogador, inimigo_pokemon, inv_batalha)
-                    except Exception as e:
-                        print(f"ERRO AO INICIAR BATALHA: {e}")
-                        estado_jogo = "MUNDO" # Cancela batalha se der erro
-
-        # Colisões
-        if pg.sprite.spritecollide(protagonista, grupo_obstaculos, False): protagonista.rect = antigo_rect
         camera.update(protagonista.rect)
-        hits = pg.sprite.spritecollide(protagonista, grupo_coletaveis, False)
-        for item in hits: item.coletar(protagonista)
 
         # Desenho (Draw)
         screen.fill((0,0,0)) 
@@ -369,6 +411,42 @@ while running:
         for parede in grupo_obstaculos: screen.blit(parede.image, camera.apply(parede.rect))
         for item in grupo_coletaveis: screen.blit(item.image, camera.apply(item.rect))
         for sprite in player_group: screen.blit(sprite.image, camera.apply(sprite.rect))
+        
+        # Desenha NPCs e Interface de Diálogo
+        for npc in grupo_npcs:
+            screen.blit(npc.image, camera.apply(npc.rect))
+            
+            if npc.esta_falando:
+                # Desenha caixa de diálogo
+                caixa_w = 700
+                caixa_h = 150
+                caixa_x = (SCREEN_WIDTH - caixa_w) // 2
+                caixa_y = SCREEN_HEIGHT - caixa_h - 20
+                
+                caixa_rect = pg.Rect(caixa_x, caixa_y, caixa_w, caixa_h)
+                pg.draw.rect(screen, (40, 40, 160), caixa_rect, border_radius=10)
+                
+                caixa_interna = caixa_rect.inflate(-10, -10)
+                pg.draw.rect(screen, (255, 255, 255), caixa_interna, border_radius=10)
+                
+                # Texto do diálogo
+                font_dialogo = pg.font.SysFont("Arial", 22)
+                texto = npc.texto_atual
+                
+                linhas = texto.split('\n')
+                y_texto = caixa_interna.y + 20
+                for linha in linhas:
+                    surf_linha = font_dialogo.render(linha, True, (0, 0, 0))
+                    screen.blit(surf_linha, (caixa_interna.x + 20, y_texto))
+                    y_texto += 30
+                
+                # Indicador de continuação
+                if pg.time.get_ticks() % 1000 < 500:
+                    pg.draw.polygon(screen, (200, 0, 0), [
+                        (caixa_interna.right - 30, caixa_interna.bottom - 20),
+                        (caixa_interna.right - 10, caixa_interna.bottom - 20),
+                        (caixa_interna.right - 20, caixa_interna.bottom - 10)
+                    ])
         
         menu_inv.desenhar(screen, protagonista.inventario)
 
