@@ -1,3 +1,11 @@
-pressione E para abrir inventario
-pressione T para conversar com o professor (requer proximidade)
-    quando em conversa, aperte A ou <- para ir para opcao da esquerde, D ou -> para ir para a opcao da direita e ENTER para prosseguir
+Controles:
+
+WASD para se mover
+
+Shift para correr
+
+Spacebar para selecionar/interagir
+
+Esc para voltar
+
+"E" para abrir a mochila

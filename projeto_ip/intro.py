@@ -121,7 +121,11 @@ def exibir_intro(screen, clock):
         
         screen.blit(bg_intro, (0,0))
         screen.blit(img_titulo, (SCREEN_WIDTH/2 - img_titulo.get_width()/2, 0))
-        screen.blit(img_enter, (200, 380))
+
+        if pg.time.get_ticks() %1000 < 600:
+            pos_x_enter =   SCREEN_WIDTH //2 - img_enter.get_width() // 2
+            screen.blit(img_enter, (pos_x_enter, 350))
+
         pg.display.flip()
         
     return True

@@ -208,7 +208,7 @@ while running:
                 
                 # --- CONTROLES DE DIÁLOGO ---
                 if npc_falando_agora:
-                    # Tecla F: Fecha o diálogo (se já tiver terminado)
+                    # Tecla f: Fecha o diálogo (se já tiver terminado)
                     if event.key == pg.K_f:
                         npc_falando_agora.interagir()
                     
@@ -218,8 +218,8 @@ while running:
                     elif event.key == pg.K_RIGHT or event.key == pg.K_d:
                         npc_falando_agora.mudar_selecao(1)
                     
-                    # Enter: Confirma a escolha ou avança texto
-                    elif event.key == pg.K_RETURN:
+                    # Space: Confirma a escolha ou avança texto
+                    elif event.key == pg.K_SPACE:
                         # Se ainda não respondeu, processa a resposta
                         if not npc_falando_agora.respondeu:
                             npc_falando_agora.respondeu = True
@@ -237,16 +237,16 @@ while running:
                     if event.key == pg.K_e:
                         menu_inv.alternar() 
                     
-                    # Tecla F: Coletar itens próximos
-                    if event.key == pg.K_f:
+                    # Tecla Space: Coletar itens próximos
+                    if event.key == pg.K_SPACE:
                         area_interacao = protagonista.rect.inflate(10, 10)
                         for item in grupo_coletaveis:
                             if area_interacao.colliderect(item.rect):
                                 item.coletar(protagonista)
                                 #pg.mixer.Sound(path_sound).play()
                     
-                    # Tecla F: Interagir com NPC
-                    if event.key == pg.K_f:
+                    # Tecla Space: Interagir com NPC
+                    if event.key == pg.K_SPACE:
                         # Verifica se o player colide com a área aumentada (1.5x) do NPC
                         hits_npc = pg.sprite.spritecollide(protagonista, grupo_npcs, False)
                         

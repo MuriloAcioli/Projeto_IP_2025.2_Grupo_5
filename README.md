@@ -1,2 +1,13 @@
 # Descrição do projeto
-Nosso projeto
+
+Controles:
+
+WASD para se mover
+
+Shift para correr
+
+Spacebar para selecionar/interagir
+
+Esc para voltar
+
+"E" para abrir a mochila
