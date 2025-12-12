@@ -21,7 +21,7 @@ class Player(pg.sprite.Sprite):
         self.inventario = {}
 
         # Carrega as folhas de sprite originais
-        img_down = pg.image.load(sprite_sheet_path_down).convert()
+        img_down = pg.image.load(sprite_sheet_path_down).convert() # 
         img_left = pg.image.load(sprite_sheet_path_left).convert()
         img_up = pg.image.load(sprite_sheet_path_up).convert()
         img_right = pg.image.load(sprite_sheet_path_right).convert()
@@ -74,7 +74,7 @@ class Player(pg.sprite.Sprite):
         
         self.speed = 5
         self.direction = pg.math.Vector2(0, 0) 
-
+        
     def get_input(self):
             keys = pg.key.get_pressed()
             
@@ -108,7 +108,7 @@ class Player(pg.sprite.Sprite):
     def animate(self):
         # Só anima se estiver se movendo
         if self.direction.magnitude() != 0:
-            self.frame_index += self.animation_speed
+            self.frame_index += self.animation_speed 
             
             if self.frame_index >= len(self.animations[self.status]):
                 self.frame_index = 0

@@ -1,47 +1,17 @@
 import pygame as pg
 import os
-
+from pokedex import POKEDEX
+from ataques import GOLPES_DB
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # =============================================================================
 # 1. BANCO DE DADOS (DB)
 # =============================================================================
 
-GOLPES_DB = {
-    "Investida": {"poder": 40, "tipo": "Normal", "precisao": 100},
-    "Brasas":    {"poder": 40, "tipo": "Fogo",   "precisao": 100},
-    "Chicote":   {"poder": 45, "tipo": "Grama",  "precisao": 100},
-    "Bolhas":    {"poder": 40, "tipo": "Agua",   "precisao": 100},
-    "Arranhao":  {"poder": 40, "tipo": "Normal", "precisao": 100},
-}
 
-# --- POKÉDEX ---
-POKEDEX = {
-    "Charmander": {
-        "id": 4, 
-        "tipo": "Fogo", 
-        "stats": (39, 52, 43, 65),
-        "sprite": "assets/pokemons/charmander.png",
-        "sprite_back": "assets/pokemons/charmander_back.png",
-        "golpes": ["Brasas", "Investida"]
-    },
-    "Squirtle": {
-        "id": 7, 
-        "tipo": "Agua", 
-        "stats": (44, 48, 65, 43),
-        "sprite": "assets/pokemons/squirtle.png",
-        "sprite_back": "assets/pokemons/squirtle_back.png",
-        "golpes": ["Bolhas", "Investida"]
-    },
-    "Bulbasaur": {
-        "id": 1, 
-        "tipo": "Grama", 
-        "stats": (45, 49, 49, 45),
-        "sprite": "assets/pokemons/bulbasaur.png",
-        "sprite_back": "assets/pokemons/bulbasaur_back.png",
-        "golpes": ["Chicote", "Investida"]
-    }
-}
+
+
+
 
 # =============================================================================
 # 2. CLASSES DO SISTEMA

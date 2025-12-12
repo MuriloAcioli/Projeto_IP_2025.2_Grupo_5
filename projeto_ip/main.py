@@ -12,7 +12,7 @@ from mato import Mato
 from pokemon import Pokemon, criar_pokemon 
 from batalha import BatalhaPokemon
 from npc import NPC
-
+from pokedex import POKEDEX
 # --- Módulo de Intro ---
 from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
 
@@ -24,7 +24,7 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 TILE_SIZE = 48 
 FPS = 60
-
+lista_pokemons_disponiveis =  list(POKEDEX.keys())
 # =============================================================================
 # DADOS DO MAPA
 # =============================================================================
@@ -275,7 +275,8 @@ while running:
                         estado_jogo = "BATALHA"
 
                         # GERA O POKEMON NO MATO
-                        inimigo_pokemon = criar_pokemon("Bulbasaur", random.randint(3, 5))
+                        pokemon_random = random.choice(lista_pokemons_disponiveis)
+                        inimigo_pokemon = criar_pokemon(pokemon_random, random.randint(3, 7))
                         
                         inv_batalha = {'Pocao': 5, 'Pokebola': 5}
                         try:
