@@ -80,11 +80,62 @@ class BatalhaPokemon:
         if self.battle_over and self.animacao_concluida() and self.estado_atual != "LEVEL_UP":
             return
 
-        # --- NAVEGAÇÃO DE CURSOR ---
-        if event.key == pg.K_d or event.key == pg.K_RIGHT or event.key == pg.K_s or event.key == pg.K_DOWN:
-            self.cursor_pos = (self.cursor_pos + 1) % self.max_opcoes
-        elif event.key == pg.K_a or event.key == pg.K_LEFT or event.key == pg.K_w or event.key == pg.K_UP:
-            self.cursor_pos = (self.cursor_pos - 1) % self.max_opcoes
+        # --- DEFINIÇÃO DINÂMICA DE COLUNAS ---
+        # Aqui definimos quantas colunas tem cada menu
+        n_colunas = 1  # Padrão (lista vertical)
+        
+        if self.estado_atual == "MENU_GOLPES":
+            n_colunas = 2  # Golpes geralmente são 2x2
+        elif self.estado_atual == "MENU_MOCHILA":
+            n_colunas = 2  # Itens 2x2
+        elif self.estado_atual == "MENU_TROCA":
+            n_colunas = 2  # Pokemon team (2 colunas fica legal, ou 1 se preferir lista)
+        elif self.estado_atual == "MENU_PRINCIPAL":
+            n_colunas = 3  # Se for aquele menu embaixo na horizontal (Lutar/Bag/Fugir)
+
+        total = self.max_opcoes
+
+        # --- NAVEGAÇÃO DE CURSOR (GRID) ---
+        
+        # DIREITA
+        if event.key == pg.K_d or event.key == pg.K_RIGHT:
+            # Se não for borda da coluna E não estourar o total de itens
+            if (self.cursor_pos + 1) % n_colunas != 0 and self.cursor_pos + 1 < total:
+                self.cursor_pos += 1
+            else:
+                # Volta para o início da MESMA linha
+                self.cursor_pos -= (self.cursor_pos % n_colunas)
+
+        # ESQUERDA
+        elif event.key == pg.K_a or event.key == pg.K_LEFT:
+            # Se não for borda esquerda
+            if self.cursor_pos % n_colunas != 0:
+                self.cursor_pos -= 1
+            else:
+                # Vai para o fim da MESMA linha (ou último item disponível nela)
+                fim_teorico = self.cursor_pos + (n_colunas - 1)
+                self.cursor_pos = min(fim_teorico, total - 1)
+        
+        # BAIXO
+        elif event.key == pg.K_s or event.key == pg.K_DOWN:
+            if self.cursor_pos + n_colunas < total:
+                self.cursor_pos += n_colunas
+            else:
+                # Wrap: volta para o topo da mesma coluna
+                self.cursor_pos = self.cursor_pos % n_colunas
+
+        # CIMA
+        elif event.key == pg.K_w or event.key == pg.K_UP:
+            if self.cursor_pos - n_colunas >= 0:
+                self.cursor_pos -= n_colunas
+            else:
+                # Wrap: vai para o fundo da mesma coluna
+                coluna_atual = self.cursor_pos % n_colunas
+                linhas_totais = (total + n_colunas - 1) // n_colunas
+                novo_index = coluna_atual + (linhas_totais - 1) * n_colunas
+                if novo_index >= total: # Se cair num buraco
+                    novo_index -= n_colunas
+                self.cursor_pos = novo_index
         
         # --- CONFIRMAÇÃO (ENTER) ---
         elif event.key == pg.K_RETURN or event.key == pg.K_SPACE or event.key == pg.K_e:
@@ -475,10 +526,20 @@ class BatalhaPokemon:
             pg.draw.rect(screen, cor_player, (600, 375, int(150 * pct_player), 15))
 
         # --- SPRITES ---
-        pos_inimigo = (self.anim_x_enemy, 100) 
+
+        rect_visivel_inimigo = self.enemy_pkmn.image.get_bounding_rect()
+        pos_y_real_inimigo = 310 - rect_visivel_inimigo.bottom
+
+        pos_inimigo = (self.anim_x_enemy - 10, pos_y_real_inimigo) 
         screen.blit(self.enemy_pkmn.image, pos_inimigo)
-        
-        pos_player = (self.anim_x_player, 243) 
+
+        # altura da tela é 600 
+
+        rect_visivel_player = self.player_pkmn.back_image.get_bounding_rect()
+        pos_y_real = 430 - rect_visivel_player.bottom
+        pos_player = (self.anim_x_player, pos_y_real) # !!
+
+        #print(self.player_pkmn.back_image.get_height())
         screen.blit(self.player_pkmn.back_image, pos_player)
 
         # --- MENU INFERIOR (AUMENTADO) ---
