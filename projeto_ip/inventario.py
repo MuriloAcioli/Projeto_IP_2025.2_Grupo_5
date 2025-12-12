@@ -21,7 +21,6 @@ class MenuInventario:
         y_inicial = 10
         espacamento_linha = 25
         
-        # Fundo semi-transparente (Opcional, mas ajuda a ler)
         # Cria uma superfície preta com transparência (alpha)
         fundo = pg.Surface((200, 300)) 
         fundo.set_alpha(128) # 0 é invisível, 255 é sólido

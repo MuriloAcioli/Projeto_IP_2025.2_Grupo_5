@@ -2,7 +2,7 @@ import pygame as pg
 
 # Configurações básicas
 
-class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
+class Player(pg.sprite.Sprite):
     def __init__(self, x, y, sprite_sheet_path_down, sprite_sheet_path_left,sprite_sheet_path_up,sprite_sheet_path_right):
         super().__init__()
         
@@ -44,8 +44,6 @@ class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
                 # Pega a subsuperfície (o frame pequeno original)
                 frame_original = imagem.subsurface(corte)
                 
-                # --- AQUI É ONDE AUMENTAMOS O SPRITE ---
-                # Calculamos o novo tamanho baseado na ESCALA
                 novo_w = int(frame_width * self.ESCALA)
                 novo_h = int(frame_height * self.ESCALA)
                 

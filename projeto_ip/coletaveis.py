@@ -4,7 +4,6 @@ import os
 DIRETORIO_BASE = os.path.dirname(__file__)  # Caminho do diretório atual
 
 class Coletavel(pg.sprite.Sprite):
-    # ALTERAÇÃO 1: Adicionei o argumento 'tamanho' com um valor padrão (32, 32)
     def __init__(self, x, y, imagem_path=None, cor_padrao=(255, 255, 0), tamanho=(32, 32)):
         super().__init__()
         
@@ -16,7 +15,6 @@ class Coletavel(pg.sprite.Sprite):
 
                 imagem_bruta = pg.image.load(imagem_path).convert_alpha()
 
-                # ALTERAÇÃO 2: Aqui nós forçamos a imagem a ficar do tamanho padrão
                 self.image = pg.transform.scale(imagem_bruta, tamanho)
                 
             except FileNotFoundError:
@@ -43,24 +41,18 @@ class Coletavel(pg.sprite.Sprite):
 
 class Pokebola(Coletavel):
     def __init__(self, x, y):
-        # Se quiser que a pokebola seja um pouco maior, você pode passar o tamanho aqui
-        # Exemplo: tamanho=(40, 40). Se não passar nada, usa o padrão (32, 32) da mãe.
         super().__init__(x, y, "assets/coletaveis/pokebola2.png", cor_padrao=(200, 0, 0))
         self.nome_item = "Pokebola"
         
     def coletar(self, player):
-        # pg.mixer.Sound("assets/sons/pegar.wav").play()
         super().coletar(player)
 
 class GreatBall(Coletavel):
     def __init__(self, x, y):
-        # Se quiser que a pokebola seja um pouco maior, você pode passar o tamanho aqui
-        # Exemplo: tamanho=(40, 40). Se não passar nada, usa o padrão (32, 32) da mãe.
         super().__init__(x, y, "assets/coletaveis/greatball.png", cor_padrao=(0, 0, 200))
         self.nome_item = "Grande Bola"
         
     def coletar(self, player):
-        # pg.mixer.Sound("assets/sons/pegar.wav").play()
         super().coletar(player)
 
 class Pocao(Coletavel):

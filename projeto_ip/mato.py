@@ -4,7 +4,6 @@ import os
 DIRETORIO_BASE = os.path.dirname(__file__)  # Caminho do diretório atual
 
 class Mato(pg.sprite.Sprite):
-    # ALTERAÇÃO 1: Adicionei o argumento 'tamanho' com um valor padrão (32, 32)
     def __init__(self, x, y, imagem_path= r"assets\backgrounds\tileset.png", cor_padrao=(255, 255, 0), tamanho=(48, 48)):
         super().__init__()
         if imagem_path:
