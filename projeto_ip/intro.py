@@ -118,10 +118,10 @@ def exibir_intro(screen, clock):
                     intro = False
                     pg.mixer.music.fadeout(1000)
                     return True
-                    
+        
         screen.blit(bg_intro, (0,0))
         screen.blit(img_titulo, (SCREEN_WIDTH/2 - img_titulo.get_width()/2, 0))
-        screen.blit(img_enter, (SCREEN_WIDTH/2 - img_titulo.get_width()/2, 400))
+        screen.blit(img_enter, (200, 380))
         pg.display.flip()
         
     return True

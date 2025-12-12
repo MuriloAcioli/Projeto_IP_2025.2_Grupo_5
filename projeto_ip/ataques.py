@@ -5,7 +5,7 @@ GOLPES_DB = {
     "Brasas":           {"poder": 40, "tipo": "Fogo",     "precisao": 100},
     "Chicote":          {"poder": 45, "tipo": "Grama",    "precisao": 100},
     "Bolhas":           {"poder": 40, "tipo": "Agua",     "precisao": 100},
-    "Arranhão":         {"poder": 40, "tipo": "Normal",   "precisao": 100},
+    "Arranhao":         {"poder": 40, "tipo": "Normal",   "precisao": 100},
     "Picada Venenosa":  {"poder": 15, "tipo": "Venenoso", "precisao": 100},
     "Ventania":         {"poder": 40, "tipo": "Voador",   "precisao": 100},
     "Ataque Rápido":    {"poder": 40, "tipo": "Normal",   "precisao": 100},

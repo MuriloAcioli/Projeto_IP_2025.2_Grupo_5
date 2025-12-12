@@ -69,6 +69,7 @@ class BatalhaPokemon:
         self.subiu_de_nivel = False
         self.xp_ganho = 0
 
+
     def processar_input(self, event):
         # Bloqueia input durante animações e espera
         bloqueados = ["ENTRADA_ANIMACAO", "TROCA_ANIMACAO", "AGUARDANDO_CAPTURA", 
