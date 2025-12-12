@@ -26,6 +26,7 @@ POKEDEX = {
         "tipo": "Fogo", 
         "stats": (39, 52, 43, 65),
         "sprite": "assets/pokemons/charmander.png",
+        "sprite_back": "assets/pokemons/charmander_back.png",
         "golpes": ["Brasas", "Investida"]
     },
     "Squirtle": {
@@ -33,6 +34,7 @@ POKEDEX = {
         "tipo": "Agua", 
         "stats": (44, 48, 65, 43),
         "sprite": "assets/pokemons/squirtle.png",
+        "sprite_back": "assets/pokemons/squirtle_back.png",
         "golpes": ["Bolhas", "Investida"]
     },
     "Bulbasaur": {
@@ -40,6 +42,7 @@ POKEDEX = {
         "tipo": "Grama", 
         "stats": (45, 49, 49, 45),
         "sprite": "assets/pokemons/bulbasaur.png",
+        "sprite_back": "assets/pokemons/bulbasaur_back.png",
         "golpes": ["Chicote", "Investida"]
     }
 }
@@ -56,7 +59,7 @@ class Golpe:
         self.precisao = precisao
 
 class Pokemon:
-    def __init__(self, id_dex, nome, nivel, tipo, base_stats, sprite_path, golpes=[]):
+    def __init__(self, id_dex, nome, nivel, tipo, base_stats, sprite_path,sprite_back_path, golpes=[]):
         self.id = id_dex
         self.nome = nome
         self.nivel = nivel
@@ -92,7 +95,9 @@ class Pokemon:
                 self.image.fill((0, 200, 50))
             else: 
                 self.image.fill((100, 100, 100))
-
+        full_back_path = os.path.join(BASE_DIR, sprite_back_path)
+        self.back_image = pg.image.load(full_back_path).convert_alpha()
+        #checar exceções
     def receber_dano(self, dano):
         self.hp_atual -= dano
         if self.hp_atual < 0: 
@@ -131,6 +136,7 @@ def criar_pokemon(nome_especie, nivel):
         tipo=data['tipo'],
         base_stats=data['stats'],
         sprite_path=data['sprite'],
+        sprite_back_path=data['sprite_back'],
         golpes=lista_golpes_objs
     )
     

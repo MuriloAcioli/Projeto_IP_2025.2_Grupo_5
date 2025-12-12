@@ -212,7 +212,7 @@ class BatalhaPokemon:
 
         # --- SPRITES ---
         screen.blit(self.enemy_pkmn.image, (500, 60))
-        screen.blit(self.player_pkmn.image, (100, 280))
+        screen.blit(self.player_pkmn.back_image, (100, 280))
 
         # --- MENU INFERIOR (CAIXA DE TEXTO) ---
         pg.draw.rect(screen, (30, 30, 80), (0, 480, 800, 120))
