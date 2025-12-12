@@ -44,8 +44,6 @@ class Player(pg.sprite.Sprite):
                 # Pega a subsuperfície (o frame pequeno original)
                 frame_original = imagem.subsurface(corte)
                 
-                # --- AQUI É ONDE AUMENTAMOS O SPRITE ---
-                # Calculamos o novo tamanho baseado na ESCALA
                 novo_w = int(frame_width * self.ESCALA)
                 novo_h = int(frame_height * self.ESCALA)
                 

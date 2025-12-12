@@ -11,7 +11,7 @@ from Obstaculo import Obstaculo
 from mato import Mato
 from pokemon import Pokemon, criar_pokemon 
 from batalha import BatalhaPokemon
-from npc import NPC  
+from npc import NPC
 
 # --- Módulo de Intro ---
 from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
@@ -65,6 +65,8 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
     """Lê a matriz do mapa e instancia os objetos nas posições corretas."""
     pos_player = (100, 100)
     path_professor = os.path.join(DIRETORIO_BASE, "assets/professor/professor_massa.png") 
+    path_professor = os.path.join(DIRETORIO_BASE, "assets/professor/professor_world.png") 
+    
     for row_index, row in enumerate(mapa):
         for col_index, letra in enumerate(row):
             x = col_index * TILE_SIZE
@@ -174,10 +176,10 @@ if jogo_ativo:
                 pg.mixer.music.play(-1, fade_ms=2000)
             except: pass
 
-
 # =============================================================================
 # LOOP PRINCIPAL (GAME LOOP)
 # =============================================================================
+
 estado_jogo = "MUNDO"
 sistema_batalha = None
 running = jogo_ativo 
@@ -274,6 +276,8 @@ while running:
                     if random.random() < 0.015: 
                         animacao_transicao(screen)
                         estado_jogo = "BATALHA"
+
+                        # GERA O POKEMON NO MATO
                         inimigo_pokemon = criar_pokemon("Bulbasaur", random.randint(3, 5))
                         
                         inv_batalha = {'Pocao': 5, 'Pokebola': 5}
@@ -301,6 +305,7 @@ while running:
 
 
         # --- 2. LÓGICA DE DESENHO  ---
+        # --- 2. LÓGICA DE DESENHO ---
         
         # Desenha o Mundo (SEMPRE desenha isso primeiro)
         screen.fill((0,0,0)) 
