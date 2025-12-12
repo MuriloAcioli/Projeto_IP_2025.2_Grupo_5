@@ -65,7 +65,6 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
     """Lê a matriz do mapa e instancia os objetos nas posições corretas."""
     pos_player = (100, 100)
     path_professor = os.path.join(DIRETORIO_BASE, "assets/professor/professor_massa.png") 
-    path_professor = os.path.join(DIRETORIO_BASE, "assets/professor/professor_world.png") 
     
     for row_index, row in enumerate(mapa):
         for col_index, letra in enumerate(row):
