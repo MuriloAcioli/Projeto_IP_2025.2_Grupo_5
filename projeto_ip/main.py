@@ -183,6 +183,8 @@ sistema_batalha = None
 running = jogo_ativo 
 path_sound = os.path.join(DIRETORIO_BASE, "assets/sfx/itemfound.wav")
 
+mensagem_tela = None
+
 while running:
     
     # -------------------------------------------------------------------------
@@ -239,10 +241,27 @@ while running:
                     
                     # Tecla F: Coletar itens próximos
                     if event.key == pg.K_f:
-                        area_interacao = protagonista.rect.inflate(10, 10)
-                        for item in grupo_coletaveis:
-                            if area_interacao.colliderect(item.rect):
-                                item.coletar(protagonista)
+                # SE JÁ TEM MENSAGEM -> FECHA ELA
+                        if mensagem_tela:
+                            mensagem_tela = None
+                        
+                        # SE NÃO TEM MENSAGEM -> TENTA PEGAR ITEM
+                        else:
+                            area_interacao = protagonista.rect.inflate(10, 10)
+                            # Usar uma flag para pegar só 1 item por vez
+                            item_pegado = False 
+                            
+                            for item in grupo_coletaveis:
+                                if area_interacao.colliderect(item.rect):
+                                    # Salva o nome ANTES de remover o item
+                                    nome_item = item.nome_item 
+                                    item.coletar(protagonista)
+                                    
+                                    # AQUI: Apenas salvamos o texto na variável!
+                                    mensagem_tela = f"Você pegou: {nome_item}"
+                                    item_pegado = True
+                                    break
+
                                 #pg.mixer.Sound(path_sound).play()
                     
                     # Tecla F: Interagir com NPC
@@ -273,11 +292,11 @@ while running:
                     if random.random() < 0.0115: # Chance de encontro
                         animacao_transicao(screen)
                         estado_jogo = "BATALHA"
-
+ 
                         # GERA O POKEMON NO MATO
                         inimigo_pokemon = criar_pokemon("Bulbasaur", random.randint(3, 5))
                         
-                        inv_batalha = {'Pocao': 5, 'Pokebola': 5}
+                        inv_batalha = {'Poção': 5, 'Pokebola': 5}
                         try:
                             if hasattr(menu_inv, 'itens'): 
                                 inv_batalha = menu_inv.itens
@@ -398,6 +417,29 @@ while running:
         # Desenha a batalha
         if sistema_batalha: 
             sistema_batalha.desenhar(screen)
+        # ... (código que desenha mapa, player, npcs...)
+
+    # --- DESENHA A MENSAGEM (SE HOUVER UMA) ---
+    if mensagem_tela:
+        rect_fundo = pg.Rect(20, SCREEN_HEIGHT - 160, SCREEN_WIDTH - 40, 140)
+        rect_interno = rect_fundo.inflate(-10, -10)
+
+        # Desenha a caixa
+        pg.draw.rect(screen, (40, 40, 160), rect_fundo, border_radius=10)
+        pg.draw.rect(screen, (255, 255, 255), rect_interno, border_radius=10)
+
+        # Desenha o texto
+        fonte = pg.font.SysFont("Arial", 22)
+        texto_surf = fonte.render(mensagem_tela, True, (0, 0, 0))
+        
+        # Centraliza o texto um pouco
+        screen.blit(texto_surf, (rect_interno.x + 20, rect_interno.y + 50))
+        
+        # Opcional: Aviso para fechar
+        fonte_pequena = pg.font.SysFont("Arial", 16)
+        aviso = fonte_pequena.render("[F] para fechar", True, (100, 100, 100))
+        screen.blit(aviso, (rect_interno.right - 120, rect_interno.bottom - 30))
+
 
     # --- Atualização de Frame ---
     pg.display.flip()

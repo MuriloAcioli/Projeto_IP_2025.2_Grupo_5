@@ -4,7 +4,7 @@ import os
 DIRETORIO_BASE = os.path.dirname(__file__)  # Caminho do diretório atual
 
 class Coletavel(pg.sprite.Sprite):
-    def __init__(self, x, y, imagem_path=None, cor_padrao=(255, 255, 0), tamanho=(32, 32)):
+    def __init__(self, x, y, imagem_path=None, cor_padrao=(255, 255, 0), tamanho=(24, 24)):
         super().__init__()
         
         if imagem_path:
@@ -41,7 +41,7 @@ class Coletavel(pg.sprite.Sprite):
 
 class Pokebola(Coletavel):
     def __init__(self, x, y):
-        super().__init__(x, y, "assets/coletaveis/pokebola2.png", cor_padrao=(200, 0, 0))
+        super().__init__(x, y, "assets/coletaveis/pokeloot_.png", cor_padrao=(200, 0, 0))
         self.nome_item = "Pokebola"
         
     def coletar(self, player):
@@ -49,7 +49,7 @@ class Pokebola(Coletavel):
 
 class GreatBall(Coletavel):
     def __init__(self, x, y):
-        super().__init__(x, y, "assets/coletaveis/greatball.png", cor_padrao=(0, 0, 200))
+        super().__init__(x, y, "assets/coletaveis/pokeloot_.png", cor_padrao=(0, 0, 200))
         self.nome_item = "Grande Bola"
         
     def coletar(self, player):
@@ -57,5 +57,5 @@ class GreatBall(Coletavel):
 
 class Pocao(Coletavel):
     def __init__(self, x, y):
-        super().__init__(x, y, "assets/coletaveis/pocao.png", cor_padrao=(0, 0, 200))
-        self.nome_item = "Pocao de Vida"
+        super().__init__(x, y, "assets/coletaveis/pokeloot_.png", cor_padrao=(0, 0, 200))
+        self.nome_item = "Poção de Vida"
