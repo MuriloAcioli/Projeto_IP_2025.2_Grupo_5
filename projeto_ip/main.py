@@ -11,7 +11,7 @@ from Obstaculo import Obstaculo
 from mato import Mato
 from pokemon import Pokemon, criar_pokemon 
 from batalha import BatalhaPokemon
-from npc import NPC  # Certifique-se que o arquivo npc.py existe e a classe NPC está correta
+from npc import NPC  
 
 # --- Módulo de Intro ---
 from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
@@ -33,20 +33,20 @@ MAPA_MATRIZ = [
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'N', '.', 'T'],
     ['T', '.', 'P', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', 'T', 'T', 'T', 'T', 'T', '.', 'M', 'M', 'M', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', 'G', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', 'M', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', 'G', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'T', 'T', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', 'G', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'T', 'T', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', ',', 'T'], # NPC AQUI (N)
-    ['T', '.', '.', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', 'M', '.', '.', 'T', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', 'T', 'T', '.', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', 'T', 'T', '.', '.', 'M', 'T', 'T', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', ',', 'T'], # NPC AQUI (N)
+    ['T', '.', '.', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', 'M', '.', '.', '.', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', 'G', '.', '.', '.', 'T'],
     ['T', '.', '.', 'M', 'B', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -64,16 +64,14 @@ MAPA_MATRIZ = [
 def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
     """Lê a matriz do mapa e instancia os objetos nas posições corretas."""
     pos_player = (100, 100)
-    # Certifique-se que esta imagem existe!
-    path_professor = os.path.join(DIRETORIO_BASE, "assets/professor/professor_world.png") 
-    
+    path_professor = os.path.join(DIRETORIO_BASE, "assets/professor/professor_massa.png") 
     for row_index, row in enumerate(mapa):
         for col_index, letra in enumerate(row):
             x = col_index * TILE_SIZE
             y = row_index * TILE_SIZE
             
             if letra == 'T':
-                grupo_obs.add(Obstaculo(x, y)) # - -
+                grupo_obs.add(Obstaculo(x, y))
             elif letra == 'B':
                 grupo_col.add(Pokebola(x, y))
                  
@@ -145,8 +143,7 @@ charmander = criar_pokemon("Charmander", 5)
 squirtle = criar_pokemon("Squirtle", 5)
 equipe_jogador = [charmander, squirtle] 
 
-# --- CONFIGURAÇÃO DO TEXTO DE AVISO (Estilo Pokémon) ---
-# Usamos 'courier new' para dar um ar mais "computador/game boy" sem mudar as outras fontes
+# --- CONFIGURAÇÃO DE TEXTO (Estilo Pokémon) ---
 font_aviso = pg.font.SysFont("courier new", 20, bold=True)
 
 # Cores da caixa estilo Pokémon
@@ -172,6 +169,7 @@ if jogo_ativo:
         if jogo_ativo:
             try: 
                 pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/world_theme.mp3"))
+
                 pg.mixer.music.set_volume(0.2)
                 pg.mixer.music.play(-1, fade_ms=2000)
             except: pass
@@ -183,6 +181,7 @@ if jogo_ativo:
 estado_jogo = "MUNDO"
 sistema_batalha = None
 running = jogo_ativo 
+path_sound = os.path.join(DIRETORIO_BASE, "assets/sfx/itemfound.wav")
 
 while running:
     
@@ -209,7 +208,7 @@ while running:
                 
                 # --- CONTROLES DE DIÁLOGO ---
                 if npc_falando_agora:
-                    # Tecla T: Fecha o diálogo (se já tiver terminado)
+                    # Tecla F: Fecha o diálogo (se já tiver terminado)
                     if event.key == pg.K_f:
                         npc_falando_agora.interagir()
                     
@@ -244,11 +243,12 @@ while running:
                         for item in grupo_coletaveis:
                             if area_interacao.colliderect(item.rect):
                                 item.coletar(protagonista)
+                                #pg.mixer.Sound(path_sound).play()
+
                     
-                    # Tecla F: Interagir (Procura NPCs próximos)
+                    # Tecla F: Interagir com npc
                     if event.key == pg.K_f:
                         # Verifica se o player colide com a área aumentada (1.5x) do NPC
-                        # IMPORTANTE: certifique-se que o Player e o NPC têm 'rect' definidos corretamente
                         hits_npc = pg.sprite.spritecollide(protagonista, grupo_npcs, False)
                         
                         # Se não colidiu diretamente, tenta expandir a busca
@@ -300,7 +300,7 @@ while running:
             camera.update(protagonista.rect)
 
 
-        # --- 2. LÓGICA DE DESENHO (DRAW) ---
+        # --- 2. LÓGICA DE DESENHO  ---
         
         # Desenha o Mundo (SEMPRE desenha isso primeiro)
         screen.fill((0,0,0)) 

@@ -142,10 +142,32 @@ def cena_professor(screen, clock):
     except: 
         bg_imagem = pg.Surface((SCREEN_WIDTH, SCREEN_HEIGHT)); bg_imagem.fill((200, 200, 250))
         
+    # ### ALTERADO: Carregamento das Imagens do Professor ###
     try: 
-        img_professor = pg.transform.scale(pg.image.load(os.path.join(DIRETORIO_BASE, "assets/professor/professor.png")).convert_alpha(), (400, 400)) 
+        # Imagem padrão (Professor 1)
+        img_professor1 = pg.transform.scale(pg.image.load(os.path.join(DIRETORIO_BASE, "assets/professor/proff_massa_1.png")).convert_alpha(), (400, 400)) 
     except: 
-        img_professor = pg.Surface((400, 400)); img_professor.fill((100, 100, 100))
+        print("Erro ao carregar proff_massa_1.png")
+        img_professor1 = pg.Surface((400, 400)); img_professor1.fill((100, 100, 100))
+
+    try:
+        # ### NOVO: Imagem alternativa (Professor 2) ###
+        prop = 637/1024
+        base = 370
+        
+        # 1. Carrega a imagem
+        img_original = pg.image.load(os.path.join(DIRETORIO_BASE, "assets/professor/proff_massa_2.png")).convert_alpha()
+        
+        # 2. Calcula o tamanho (convertendo para int)
+        novo_tamanho = (int(base * prop), int(base))
+        
+        # 3. Escala passando a tupla correta
+        img_professor2 = pg.transform.scale(img_original, novo_tamanho)
+
+    except Exception as e:
+        print(f"Erro ao carregar proff_massa_2.png: {e}")
+        img_professor2 = img_professor1
+
           
     # --- Roteiro ---
     falas_intro = [
@@ -159,8 +181,13 @@ def cena_professor(screen, clock):
         "Será que você é o candidato ideal?", 
         "Antes que eu forneça Pokémons Fortes para você usar contra eles", 
         "Vamos fazer um teste para ver sua competência", 
-        "Mas primeiro, diga-me algo sobre você."
+        "Mas primeiro, diga-me algo sobre você." # Esta é a fala chave (índice 10)
     ]
+    
+    # ### NOVO: Identifica o índice da fala que deve trocar a imagem ###
+    # É a última fala da lista falas_intro
+    indice_troca_imagem = len(falas_intro) - 1
+    
     falas_final = [
         "Ah, certo! Então seu nome é {NOME}?", 
         "Forme uma equipe de até 6 pokémons e me desafie numa batalha", 
@@ -217,16 +244,36 @@ def cena_professor(screen, clock):
         screen.blit(bg_imagem, (0, 0))
         
         # Professor + Sombra
-        prof_x = SCREEN_WIDTH // 2 - img_professor.get_width() // 2
+        
+        prof_x = SCREEN_WIDTH // 2 - img_professor1.get_width() // 2
+        
         prof_y = 40 
         largura_sombra = 300
         altura_sombra = 40
-        sombra_x = prof_x + (img_professor.get_width() - largura_sombra) // 2
+        sombra_x = prof_x + (img_professor1.get_width() - largura_sombra) // 2
         sombra_y = prof_y + 360
         sombra_surf = pg.Surface((largura_sombra, altura_sombra), pg.SRCALPHA)
         pg.draw.ellipse(sombra_surf, (0, 0, 0, 80), (0,0, largura_sombra, altura_sombra))
         screen.blit(sombra_surf, (sombra_x, sombra_y))
-        screen.blit(img_professor, (prof_x, prof_y))
+
+        # ### ALTERADO: Lógica para escolher qual imagem desenhar ###
+        img_atual = img_professor1 # Começa com a imagem padrão
+
+        # Se estamos na fase de INTRO E o índice atual é o da fala específica:
+        if estado == "INTRO" and (indice == indice_troca_imagem or indice == indice_troca_imagem - 1):
+             img_atual = img_professor2
+             prof_x = SCREEN_WIDTH // 2 - img_professor2.get_width() // 2
+             prof_y = 70
+        elif estado == "FINAL" and indice in (1,2):
+             img_atual = img_professor2
+             prof_x = SCREEN_WIDTH // 2 - img_professor2.get_width() // 2
+             prof_y = 70
+        # Opcional: Se quiser manter a imagem 2 enquanto o jogador digita o nome:
+        #elif estado == "INPUT":
+        #     img_atual = img_professor2
+        
+        # Desenha a imagem escolhida
+        screen.blit(img_atual, (prof_x, prof_y))
         
         # Caixa de Texto
         pg.draw.rect(screen, COR_BORDA, rect_caixa, border_radius=10)

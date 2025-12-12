@@ -15,7 +15,7 @@ GOLPES_DB = {
     "Arranhao":  {"poder": 40, "tipo": "Normal", "precisao": 100},
 }
 
-# --- POKÉDEX ATUALIZADA (Com sprite_back) ---
+# --- POKÉDEX ---
 POKEDEX = {
     "Charmander": {
         "id": 4, 
@@ -71,7 +71,6 @@ class Pokemon:
         self.golpes = golpes 
 
         # --- TAMANHO DO SPRITE ---
-        # Defina aqui o tamanho que você quer na batalha (Largura, Altura)
         self.TAMANHO_SPRITE = (280, 280) 
         
         # --- CARREGAMENTO DE SPRITES ---

@@ -2,7 +2,7 @@ import pygame as pg
 
 # Configurações básicas
 
-class Player(pg.sprite.Sprite): # É boa prática herdar de sprite.Sprite
+class Player(pg.sprite.Sprite): 
     def __init__(self, x, y, sprite_sheet_path_down, sprite_sheet_path_left,sprite_sheet_path_up,sprite_sheet_path_right):
         super().__init__()
         
