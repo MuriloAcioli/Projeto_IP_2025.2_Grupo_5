@@ -8,6 +8,7 @@ DIRETORIO_BASE = os.path.dirname(os.path.abspath(__file__))
 
 class BatalhaPokemon:
     def __init__(self, player_data, enemy_pkmn, inventario):
+        # Garante que equipe seja uma lista
         if isinstance(player_data, list):
             self.equipe = player_data
             self.player_pkmn = player_data[0] 
@@ -30,36 +31,32 @@ class BatalhaPokemon:
         self.mensagem_sistema = "" 
         self.msg_extra = "" 
         
+        # Variáveis de Controle de Captura
+        self.captura_sucesso = False
+        self.msg_falha_captura = ""
+
         # Posições para animação
-        self.anim_x_player = -300
-        self.target_x_player = 80
-        self.anim_x_enemy = 800
+        self.anim_x_player = -300 # Começa fora da tela (esquerda)
+        self.target_x_player = 80 
+        self.anim_x_enemy = 800   # Começa fora da tela (direita)
         self.target_x_enemy = 400
         
         self.cursor_pos = 0 
         self.max_opcoes = 3 
 
-        # --- CARREGAMENTO DO BACKGROUND (COM DIAGNÓSTICO) ---
-        # Tenta montar o caminho de forma segura para Windows/Linux
+        # --- CARREGAMENTO DO BACKGROUND ---
         caminho_bg = os.path.join(DIRETORIO_BASE, "assets", "backgrounds", "battle_bg.jpg")
         
-        print(f"--- DIAGNÓSTICO DE IMAGEM ---")
-        print(f"Procurando imagem em: {caminho_bg}")
-        
         if os.path.exists(caminho_bg):
-            print("ARQUIVO ENCONTRADO! Carregando...")
             try:
                 self.bg_batalha = pg.image.load(caminho_bg).convert()
                 self.bg_batalha = pg.transform.scale(self.bg_batalha, (800, 600))
-                print("Sucesso: Background carregado!")
             except Exception as e:
                 print(f"ERRO CRÍTICO ao ler a imagem: {e}")
                 self.bg_batalha = None
         else:
             print("ERRO: O arquivo NÃO existe neste caminho.")
-            print("Verifique se a pasta 'assets' está junto com o arquivo batalha.py")
-            self.bg_batalha = None # Fica sem fundo
-        print("-------------------------------")
+            self.bg_batalha = None 
 
         pg.font.init()
         self.font = pg.font.SysFont("Arial", 22)
@@ -73,24 +70,45 @@ class BatalhaPokemon:
         self.xp_ganho = 0
 
     def processar_input(self, event):
-        bloqueados = ["ENTRADA_ANIMACAO", "MENSAGEM_INICIAL", "ANIMANDO_PLAYER", "ANIMANDO_INIMIGO", "LEVEL_UP"]
+        # Bloqueia input durante animações e espera
+        bloqueados = ["ENTRADA_ANIMACAO", "TROCA_ANIMACAO", "AGUARDANDO_CAPTURA", 
+                      "MENSAGEM_INICIAL", "ANIMANDO_PLAYER", "ANIMANDO_INIMIGO", "LEVEL_UP", "FIM_BATALHA"]
+        
         if self.estado_atual in bloqueados:
             return
 
         if self.battle_over and self.animacao_concluida() and self.estado_atual != "LEVEL_UP":
             return
 
+        # --- NAVEGAÇÃO DE CURSOR ---
         if event.key == pg.K_d or event.key == pg.K_RIGHT or event.key == pg.K_s or event.key == pg.K_DOWN:
             self.cursor_pos = (self.cursor_pos + 1) % self.max_opcoes
         elif event.key == pg.K_a or event.key == pg.K_LEFT or event.key == pg.K_w or event.key == pg.K_UP:
             self.cursor_pos = (self.cursor_pos - 1) % self.max_opcoes
+        
+        # --- CONFIRMAÇÃO (ENTER) ---
         elif event.key == pg.K_RETURN or event.key == pg.K_SPACE or event.key == pg.K_e:
             self.confirmar_selecao()
+        
+        # --- VOLTAR (ESC/BACKSPACE) ---
         elif event.key == pg.K_BACKSPACE or event.key == pg.K_ESCAPE:
             if self.estado_atual == "MENU_GOLPES":
                 self.estado_atual = "MENU_PRINCIPAL"
                 self.cursor_pos = 0
                 self.max_opcoes = 3
+                self.mensagem_sistema = "O que voce vai fazer?"
+            
+            elif self.estado_atual == "MENU_MOCHILA":
+                self.estado_atual = "MENU_PRINCIPAL"
+                self.cursor_pos = 1 
+                self.max_opcoes = 3
+                self.mensagem_sistema = "O que voce vai fazer?"
+
+            elif self.estado_atual == "MENU_TROCA":
+                self.estado_atual = "MENU_MOCHILA"
+                self.cursor_pos = 0 
+                self.max_opcoes = 4
+                self.mensagem_sistema = "Mochila:"
 
     def animacao_concluida(self):
         margem = 0.5
@@ -99,23 +117,106 @@ class BatalhaPokemon:
         return enemy_ok and player_ok
 
     def confirmar_selecao(self):
+        # --- MENU PRINCIPAL ---
         if self.estado_atual == "MENU_PRINCIPAL":
-            if self.cursor_pos == 0:
+            if self.cursor_pos == 0: # LUTAR
                 self.estado_atual = "MENU_GOLPES"
                 self.cursor_pos = 0
                 self.max_opcoes = len(self.player_pkmn.golpes)
                 self.mensagem_sistema = "Escolha o ataque:"
-            elif self.cursor_pos == 1:
-                self.usar_pocao()
-            elif self.cursor_pos == 2:
+            
+            elif self.cursor_pos == 1: # BAG
+                self.estado_atual = "MENU_MOCHILA"
+                self.cursor_pos = 0
+                self.max_opcoes = 4 
+                self.mensagem_sistema = "Mochila:"
+            
+            elif self.cursor_pos == 2: # FUGIR
                 self.tentar_fugir()
+
+        # --- MENU GOLPES ---
         elif self.estado_atual == "MENU_GOLPES":
             self.turno_lutar(self.cursor_pos)
 
+        # --- MENU MOCHILA ---
+        elif self.estado_atual == "MENU_MOCHILA":
+            if self.cursor_pos == 0: # Trocar
+                self.estado_atual = "MENU_TROCA"
+                self.cursor_pos = 0
+                self.max_opcoes = len(self.equipe)
+                self.mensagem_sistema = "Escolha um Pokemon:"
+            elif self.cursor_pos == 1: # Poção
+                self.usar_pocao()
+            elif self.cursor_pos == 2: # Pokebola
+                self.tentar_capturar("Pokebola")
+            elif self.cursor_pos == 3: # Grande Bola
+                self.tentar_capturar("Grande Bola")
+
+        # --- MENU TROCA ---
+        elif self.estado_atual == "MENU_TROCA":
+            pkmn_escolhido = self.equipe[self.cursor_pos]
+            
+            if pkmn_escolhido == self.player_pkmn:
+                self.mensagem_sistema = "Ele ja esta em batalha!"
+            elif not pkmn_escolhido.esta_vivo():
+                self.mensagem_sistema = "Ele esta desmaiado!"
+            else:
+                self.realizar_troca(pkmn_escolhido)
+
+    def tentar_capturar(self, tipo_bola):
+        # --- IMPLEMENTAÇÃO: LIMITE DE 6 POKEMONS ---
+        if len(self.equipe) >= 6:
+            self.mensagem_sistema = "Sua equipe esta cheia!"
+            return
+        # -------------------------------------------
+
+        # Verifica quantidade
+        qtd = self.inventario.get(tipo_bola, 0)
+        if qtd <= 0:
+            self.mensagem_sistema = f"Voce nao tem {tipo_bola}!"
+            return
+
+        # Consome item
+        self.inventario[tipo_bola] -= 1
+        
+        # Lógica de Chance
+        chance_captura = 50 if tipo_bola == "Pokebola" else 90
+        sorteio = random.randint(1, 100)
+        
+        if sorteio <= chance_captura:
+            self.captura_sucesso = True
+        else:
+            self.captura_sucesso = False
+            if tipo_bola == "Pokebola":
+                self.msg_falha_captura = "Droga! A Pokebola quebrou!"
+            else:
+                self.msg_falha_captura = "Quase! A Grande Bola falhou!"
+
+        # Inicia o suspense (delay)
+        self.mensagem_sistema = f"Jogou {tipo_bola}..."
+        self.estado_atual = "AGUARDANDO_CAPTURA"
+        self.timer_espera = pg.time.get_ticks()
+
+    def realizar_troca(self, novo_pkmn):
+        self.player_pkmn = novo_pkmn
+        self.visual_hp_player = float(self.player_pkmn.hp_atual)
+        
+        # Reseta posição para fazer a animação de entrada
+        self.anim_x_player = -300 
+        
+        self.mensagem_sistema = f"Vai, {novo_pkmn.nome}!"
+        self.msg_extra = ""
+        
+        # Inicia estado de animação de troca
+        self.estado_atual = "TROCA_ANIMACAO"
+        self.timer_espera = pg.time.get_ticks()
+
     def usar_pocao(self):
-        qtd = self.inventario.get('Pocao', 0)
+        nome_item = 'Pocao de Vida'
+        qtd = self.inventario.get(nome_item, 0)
+        
         if qtd > 0:
-            self.inventario['Pocao'] -= 1
+            self.inventario[nome_item] -= 1
             cura = 20
             self.player_pkmn.hp_atual = min(self.player_pkmn.hp_max, self.player_pkmn.hp_atual + cura)
             self.mensagem_sistema = f"Usou Pocao! +{cura} HP."
@@ -233,6 +334,7 @@ class BatalhaPokemon:
         
         # --- LÓGICA DE ESTADOS ---
         if self.estado_atual == "ENTRADA_ANIMACAO":
+            # Anima entrada
             if self.anim_x_player < self.target_x_player:
                 self.anim_x_player += 15
                 if self.anim_x_player > self.target_x_player: self.anim_x_player = self.target_x_player
@@ -250,14 +352,53 @@ class BatalhaPokemon:
                 self.estado_atual = "MENU_PRINCIPAL"
                 self.mensagem_sistema = "O que voce vai fazer?"
 
+        # --- ESTADO DE ANIMAÇÃO DE TROCA ---
+        elif self.estado_atual == "TROCA_ANIMACAO":
+            # 1. Anima o Player entrando
+            if self.anim_x_player < self.target_x_player:
+                self.anim_x_player += 15
+                if self.anim_x_player > self.target_x_player:
+                    self.anim_x_player = self.target_x_player
+            
+            # 2. Quando chegar na posição, espera 1s para ler "Vai, Pokemon!"
+            if self.anim_x_player == self.target_x_player:
+                if agora - self.timer_espera > 1000:
+                    # 3. Passa a vez para o inimigo atacar (Jogador perde turno)
+                    self.contra_ataque_inimigo()
+
+        # --- ESTADO DE ESPERA DA CAPTURA (SUSPENSE) ---
+        elif self.estado_atual == "AGUARDANDO_CAPTURA":
+            # IMPLEMENTAÇÃO: Espera exatos 1500ms (1.5s)
+            if agora - self.timer_espera > 1500:
+                if self.captura_sucesso:
+                    self.battle_over = True
+                    self.vencedor = "CAPTURA"
+                    self.mensagem_sistema = f"Gotcha! {self.enemy_pkmn.nome} foi capturado!"
+                    
+                    # CORREÇÃO BUG 2: Adiciona APENAS UMA VEZ e muda estado para travar loop
+                    self.equipe.append(self.enemy_pkmn)
+                    self.estado_atual = "FIM_BATALHA" 
+                else:
+                    # Falhou: Mostra msg de erro e vai para ANIMANDO_PLAYER para delay de leitura
+                    self.mensagem_sistema = self.msg_falha_captura
+                    self.estado_atual = "ANIMANDO_PLAYER"
+                    self.msg_extra = "" 
+                    self.timer_espera = agora
+
         elif self.estado_atual == "ANIMANDO_PLAYER":
             if self.animacao_concluida():
                 if self.msg_extra != "":
                     if agora - self.timer_espera > 1000: 
                         self.mensagem_sistema = self.msg_extra 
+                        
+                        # Se veio de falha de captura ou fuga falha, inimigo ataca
+                        if "quebrou" in self.msg_extra or "falhou" in self.msg_extra or "escapou" in self.msg_extra: 
+                            self.contra_ataque_inimigo() 
+                        
                         self.msg_extra = "" 
                         self.timer_espera = agora 
-                elif agora - self.timer_espera > 1000: 
+                
+                elif agora - self.timer_espera > 1500: # Delay padrão para ler mensagens
                     if not self.enemy_pkmn.esta_vivo():
                         self.battle_over = True
                         self.vencedor = "PLAYER"
@@ -271,9 +412,9 @@ class BatalhaPokemon:
                         self.estado_atual = "LEVEL_UP"
                         self.timer_espera = agora
                     else:
+                        # Se ninguém morreu, turno do inimigo
                         self.contra_ataque_inimigo()
 
-        # ESTADO NOVO: LEVEL_UP
         elif self.estado_atual == "LEVEL_UP":
             if agora - self.timer_espera > 2000:
                 if self.subiu_de_nivel:
@@ -302,8 +443,10 @@ class BatalhaPokemon:
                             self.estado_atual = "MENU_PRINCIPAL"
                             self.cursor_pos = 0
                     else:
+                        # CORREÇÃO BUG 1: Reseta max_opcoes para 3 ao voltar ao menu
                         self.estado_atual = "MENU_PRINCIPAL"
                         self.cursor_pos = 0
+                        self.max_opcoes = 3 
                         self.mensagem_sistema = "O que voce vai fazer?"
 
         # --- DESENHO HUD ---
@@ -338,30 +481,89 @@ class BatalhaPokemon:
         pos_player = (self.anim_x_player, 243) 
         screen.blit(self.player_pkmn.back_image, pos_player)
 
-        # Menu Inferior
-        pg.draw.rect(screen, (30, 30, 80), (0, 480, 800, 120))
-        pg.draw.rect(screen, (255, 255, 255), (0, 480, 800, 120), 4)
+        # --- MENU INFERIOR (AUMENTADO) ---
+        pg.draw.rect(screen, (30, 30, 80), (0, 430, 800, 170))
+        pg.draw.rect(screen, (255, 255, 255), (0, 430, 800, 170), 4)
         
-        screen.blit(self.font_msg.render(self.mensagem_sistema, True, (255, 255, 0)), (30, 490))
+        screen.blit(self.font_msg.render(self.mensagem_sistema, True, (255, 255, 0)), (30, 450))
 
         # Opções
         if mostrar_hud and not self.battle_over:
             cor_padrao = (200, 200, 200)
             cor_select = (255, 255, 255)
-            x_base, y_base = 30, 540
+            y_base = 510 
             
             if self.estado_atual == "MENU_PRINCIPAL":
                 opcoes = ["LUTAR", "BAG", "FUGIR"]
+                x_base_princ = 80 
+                spacing = 250
                 for i, op in enumerate(opcoes):
                     cor = cor_select if i == self.cursor_pos else cor_padrao
                     prefixo = "> " if i == self.cursor_pos else "   "
-                    screen.blit(self.font_big.render(prefixo + op, True, cor), (x_base + (i * 200), y_base))
+                    screen.blit(self.font_big.render(prefixo + op, True, cor), (x_base_princ + (i * spacing), y_base))
             
             elif self.estado_atual == "MENU_GOLPES":
+                x_base_cols = 50 
+                col_spacing = 400
                 for i, golpe in enumerate(self.player_pkmn.golpes):
                     cor = cor_select if i == self.cursor_pos else cor_padrao
                     prefixo = "> " if i == self.cursor_pos else "   "
-                    screen.blit(self.font_big.render(prefixo + golpe.nome, True, cor), (x_base + ((i%2) * 300), y_base + ((i//2) * 30)))
+                    
+                    col = i % 2
+                    row = i // 2
+                    pos_x = x_base_cols + (col * col_spacing)
+                    pos_y = y_base + (row * 30)
+                    
+                    screen.blit(self.font_big.render(prefixo + golpe.nome, True, cor), (pos_x, pos_y))
+
+            elif self.estado_atual == "MENU_MOCHILA":
+                q_pocao = self.inventario.get('Pocao de Vida', 0)
+                q_poke = self.inventario.get('Pokebola', 0)
+                q_great = self.inventario.get('Grande Bola', 0)
+
+                opcoes_bag = [
+                    "Trocar Pokemon", 
+                    f"Usar Pocao ({q_pocao})", 
+                    f"Pokebola ({q_poke})", 
+                    f"Grande Bola ({q_great})"
+                ]
+                
+                x_base_cols = 50
+                col_spacing = 400
+                
+                for i, op in enumerate(opcoes_bag):
+                    cor = cor_select if i == self.cursor_pos else cor_padrao
+                    prefixo = "> " if i == self.cursor_pos else "   "
+                    
+                    col = i % 2
+                    row = i // 2
+                    pos_x = x_base_cols + (col * col_spacing)
+                    pos_y = y_base + (row * 30)
+                    
+                    screen.blit(self.font_big.render(prefixo + op, True, cor), (pos_x, pos_y))
+
+            elif self.estado_atual == "MENU_TROCA":
+                x_base_cols = 50
+                col_spacing = 400
+                
+                for i, pkmn in enumerate(self.equipe):
+                    cor = cor_select if i == self.cursor_pos else cor_padrao
+                    
+                    if pkmn == self.player_pkmn or not pkmn.esta_vivo():
+                        cor = (100, 100, 100)
+                        if i == self.cursor_pos: cor = (150, 150, 150)
+
+                    prefixo = "> " if i == self.cursor_pos else "   "
+                    texto_pkmn = f"{prefixo}{pkmn.nome} (HP: {pkmn.hp_atual}/{pkmn.hp_max})"
+                    
+                    col = i % 2
+                    row = i // 2
+                    pos_x = x_base_cols + (col * col_spacing)
+                    
+                    # CORREÇÃO BUG 3: Ajuste de altura para caber 6 pokémons na tela
+                    pos_y = 490 + (row * 30) 
+
+                    screen.blit(self.font_big.render(texto_pkmn, True, cor), (pos_x, pos_y))
         
         elif self.battle_over and self.estado_atual != "LEVEL_UP":
              screen.blit(self.font_msg.render("Pressione ESPACO para sair", True, (255, 255, 255)), (30, 540))

@@ -70,8 +70,7 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
         for col_index, letra in enumerate(row):
             x = col_index * TILE_SIZE
             y = row_index * TILE_SIZE
-
-            int = random.randint(0,20)
+            
             if letra == 'T':
                 grupo_obs.add(Obstaculo(x, y))
             elif letra == 'B':
@@ -140,41 +139,40 @@ camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, map_w, map_h)
 caminho_tileset = os.path.join(DIRETORIO_BASE, "assets/backgrounds/tileset.png")
 fundo_grama = definir_piso(map_w, map_h, caminho_tileset)
 
-# --- Equipe Inicial ---
-charmander = criar_pokemon("Charmander", 5)
-squirtle = criar_pokemon("Squirtle", 5)
-equipe_jogador = [charmander, squirtle] 
-
-# --- CONFIGURAÇÃO DE TEXTO (Estilo Pokémon) ---
-font_aviso = pg.font.SysFont("courier new", 20, bold=True)
-
-# Cores da caixa estilo Pokémon
-POKE_BLUE = (48, 80, 192)     # Borda
-POKE_WHITE = (248, 248, 248)  # Fundo
-POKE_BLACK = (32, 32, 32)     # Texto
-
-texto_aviso = font_aviso.render('Pressione a tecla "F" para coletar este item.', True, POKE_BLACK)
-
 # =============================================================================
 # FLUXO DE INTRODUÇÃO
 # =============================================================================
 jogo_ativo = exibir_intro(screen, clock) 
 nome_jogador = "Player"
+inicial_escolhido = "Charmander" # Padrão caso algo falhe
 
 if jogo_ativo:
-    jogo_ativo, nome_escolhido = cena_professor(screen, clock)
+    # AQUI ESTÁ A MUDANÇA PRINCIPAL: Recebe 3 valores agora
+    jogo_ativo, nome_input, pokemon_input = cena_professor(screen, clock)
     
-    if nome_escolhido:
-        nome_jogador = nome_escolhido
-        print(f"Bem-vindo ao mangue, {nome_jogador}!") 
+    if nome_input:
+        nome_jogador = nome_input
+    if pokemon_input:
+        inicial_escolhido = pokemon_input
         
-        if jogo_ativo:
-            try: 
-                pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/world_theme.mp3"))
+    print(f"Bem-vindo ao mangue, {nome_jogador}!")
+    print(f"Seu inicial é: {inicial_escolhido}")
+    
+    if jogo_ativo:
+        try: 
+            pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/world_theme.mp3"))
+            pg.mixer.music.set_volume(0.2)
+            pg.mixer.music.play(-1, fade_ms=2000)
+        except: pass
 
-                pg.mixer.music.set_volume(0.2)
-                pg.mixer.music.play(-1, fade_ms=2000)
-            except: pass
+# --- CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO ---
+equipe_jogador = []
+pokemon_inicial = criar_pokemon(inicial_escolhido, 5) # Cria Nível 5
+if pokemon_inicial:
+    equipe_jogador.append(pokemon_inicial)
+else:
+    # Fallback de segurança
+    equipe_jogador.append(criar_pokemon("Charmander", 5))
 
 # =============================================================================
 # LOOP PRINCIPAL (GAME LOOP)
@@ -246,9 +244,8 @@ while running:
                             if area_interacao.colliderect(item.rect):
                                 item.coletar(protagonista)
                                 #pg.mixer.Sound(path_sound).play()
-
                     
-                    # Tecla F: Interagir com npc
+                    # Tecla F: Interagir com NPC
                     if event.key == pg.K_f:
                         # Verifica se o player colide com a área aumentada (1.5x) do NPC
                         hits_npc = pg.sprite.spritecollide(protagonista, grupo_npcs, False)
@@ -273,7 +270,7 @@ while running:
             # Lógica do Mato
             if protagonista.direction.magnitude() > 0:
                 if pg.sprite.spritecollide(protagonista, grupo_mato, False):
-                    if random.random() < 0.015: 
+                    if random.random() < 0.0115: # Chance de encontro
                         animacao_transicao(screen)
                         estado_jogo = "BATALHA"
 
@@ -285,7 +282,7 @@ while running:
                             if hasattr(menu_inv, 'itens'): 
                                 inv_batalha = menu_inv.itens
                             elif hasattr(protagonista, 'inventario'):
-                                inv_batalha = protagonista.inventario.itens
+                                inv_batalha = protagonista.inventario
                         except: pass
 
                         try:
@@ -304,7 +301,6 @@ while running:
             camera.update(protagonista.rect)
 
 
-        # --- 2. LÓGICA DE DESENHO  ---
         # --- 2. LÓGICA DE DESENHO ---
         
         # Desenha o Mundo (SEMPRE desenha isso primeiro)

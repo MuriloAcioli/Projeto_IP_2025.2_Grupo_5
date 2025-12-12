@@ -4,13 +4,13 @@ import os
 DIRETORIO_BASE = os.path.dirname(__file__)  # Caminho do diretório atual
 
 class Coletavel(pg.sprite.Sprite):
-
     def __init__(self, x, y, imagem_path=None, cor_padrao=(255, 255, 0), tamanho=(32, 32)):
         super().__init__()
         
         if imagem_path:
-
+            # Tenta carregar, se der erro cria um quadrado (fallback)
             try:
+                # Carrega a imagem original
                 imagem_path = os.path.join(DIRETORIO_BASE, imagem_path)
 
                 imagem_bruta = pg.image.load(imagem_path).convert_alpha()
@@ -41,17 +41,14 @@ class Coletavel(pg.sprite.Sprite):
 
 class Pokebola(Coletavel):
     def __init__(self, x, y):
-
         super().__init__(x, y, "assets/coletaveis/pokebola2.png", cor_padrao=(200, 0, 0))
         self.nome_item = "Pokebola"
         
     def coletar(self, player):
-        
         super().coletar(player)
 
 class GreatBall(Coletavel):
     def __init__(self, x, y):
-
         super().__init__(x, y, "assets/coletaveis/greatball.png", cor_padrao=(0, 0, 200))
         self.nome_item = "Grande Bola"
         

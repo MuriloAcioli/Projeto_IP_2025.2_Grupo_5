@@ -71,6 +71,7 @@ class Pokemon:
         self.golpes = golpes 
 
         # --- TAMANHO DO SPRITE ---
+
         self.TAMANHO_SPRITE = (280, 280) 
         
         # --- CARREGAMENTO DE SPRITES ---

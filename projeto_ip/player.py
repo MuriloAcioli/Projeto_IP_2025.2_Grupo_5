@@ -2,7 +2,7 @@ import pygame as pg
 
 # Configurações básicas
 
-class Player(pg.sprite.Sprite): 
+class Player(pg.sprite.Sprite):
     def __init__(self, x, y, sprite_sheet_path_down, sprite_sheet_path_left,sprite_sheet_path_up,sprite_sheet_path_right):
         super().__init__()
         
@@ -80,8 +80,8 @@ class Player(pg.sprite.Sprite):
             
             # --- LÓGICA DO SHIFT (CORRER) ---
             if keys[pg.K_LSHIFT]: 
-                self.speed = 8          # Aumentei um pouco a corrida já que o boneco cresceu
-                self.animation_speed = 0.20 
+                self.speed = 6          # Aumentei um pouco a corrida já que o boneco cresceu
+                self.animation_speed = 0.15 
             else:
                 self.speed = 4          
                 self.animation_speed = 0.1 
