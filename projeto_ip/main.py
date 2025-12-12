@@ -143,6 +143,16 @@ charmander = criar_pokemon("Charmander", 5)
 squirtle = criar_pokemon("Squirtle", 5)
 equipe_jogador = [charmander, squirtle] 
 
+# --- CONFIGURAÇÃO DO TEXTO DE AVISO (Estilo Pokémon) ---
+# Usamos 'courier new' para dar um ar mais "computador/game boy" sem mudar as outras fontes
+font_aviso = pg.font.SysFont("courier new", 20, bold=True)
+
+# Cores da caixa estilo Pokémon
+POKE_BLUE = (48, 80, 192)     # Borda
+POKE_WHITE = (248, 248, 248)  # Fundo
+POKE_BLACK = (32, 32, 32)     # Texto
+
+texto_aviso = font_aviso.render('Pressione a tecla "F" para coletar este item.', True, POKE_BLACK)
 
 # =============================================================================
 # FLUXO DE INTRODUÇÃO
@@ -226,6 +236,13 @@ while running:
                     if event.key == pg.K_e:
                         menu_inv.alternar() 
                     
+                    # Tecla F: Coletar itens próximos
+                    if event.key == pg.K_f:
+                        area_interacao = protagonista.rect.inflate(10, 10)
+                        for item in grupo_coletaveis:
+                            if area_interacao.colliderect(item.rect):
+                                item.coletar(protagonista)
+                    
                     # Tecla F: Interagir (Procura NPCs próximos)
                     if event.key == pg.K_f:
                         # Verifica se o player colide com a área aumentada (1.5x) do NPC
@@ -271,14 +288,11 @@ while running:
                             print(f"ERRO AO INICIAR BATALHA: {e}")
                             estado_jogo = "MUNDO"
 
-            # Colisões
-            if pg.sprite.spritecollide(protagonista, grupo_obstaculos, False):
+            # Colisões com obstáculos e coletáveis
+            colisao_obs = pg.sprite.spritecollide(protagonista, grupo_obstaculos, False)
+            colisao_item = pg.sprite.spritecollide(protagonista, grupo_coletaveis, False)
+            if colisao_obs or colisao_item:
                 protagonista.rect = antigo_rect
-            
-            # Coletáveis
-            hits = pg.sprite.spritecollide(protagonista, grupo_coletaveis, False)
-            for item in hits:
-                item.coletar(protagonista)
 
             # Câmera
             camera.update(protagonista.rect)
