@@ -1,78 +1,70 @@
 import pygame as pg
 import random
-from player import Player   
+import os
+
+# --- Módulos do Jogo ---
+from player import Player
 from camera import Camera
 from coletaveis import Pokebola, GreatBall, Pocao
 from inventario import MenuInventario
+from Obstaculo import Obstaculo
+from mato import Mato
+from pokemon import Pokemon, criar_pokemon 
+from batalha import BatalhaPokemon
 from npc import NPC
-import os
 
-DIRETORIO_BASE = os.path.dirname(__file__)  # Caminho do diretório atual
-# --- Configurações Globais ---
+# --- Módulo de Intro ---
+from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
+
+# =============================================================================
+# CONFIGURAÇÕES GERAIS
+# =============================================================================
+DIRETORIO_BASE = os.path.dirname(os.path.abspath(__file__))
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
-TILE_SIZE = 48 # Tamanho de cada quadrado do mapa (64x64)
+TILE_SIZE = 48 
 FPS = 60
 
-# --- 1. DEFINIÇÃO DO MAPA (Visualize sua fase aqui!) ---
-# P = Player (Onde começa)
-# M = Mato (gerador de encontros)
-# N = NPC (Professor)
-# T = Tree/Tronco (Obstáculo)
-# B = Pokebola
-# G = GreatBall
-# H = Health Potion (Poção)
-# . = Grama (Chão livre)
-
+# =============================================================================
+# DADOS DO MAPA
+# =============================================================================
 MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', 'P', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', 'T', 'T', 'T', 'T', 'T', '.', 'M', 'M', 'M', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', 'G', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', 'B', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'N', 'T'],
-    ['T', '.', '.', 'P', '.', '.', '.', '.', '.', 'M', '.', '.', 'T', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', 'G', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T']
-
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', 'N', '.', '.', 'T'],
+    ['T', '.', 'P', '.', '.', '.', '.', '.', '.', 'B', '.', '.', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'M', 'M', 'M', 'T', '.', '.', 'B', '.', '.', '.', '.', 'T'],
+    ['T', 'T', 'T', 'T', 'T', 'T', '.', 'M', 'M', 'M', '.', '.', 'T', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', 'H', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'T', 'G', '.', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', 'T'],
+    ['T', '.', '.', 'M', 'M', '.', '.', '.', '.', '.', 'M', 'M', 'T', '.', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', ',', 'T'],
+    ['T', '.', 'M', 'M', 'M', '.', '.', '.', '.', 'M', 'M', 'M', 'T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', 'M', 'M', '.', '.', '.', '.', 'M', 'M', 'M', 'T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'T', 'T', 'T', '.', '.', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', 'H', 'M', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', 'T'],
+    ['T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T', 'H', '.', 'M', 'M', 'M', 'M', 'M', 'M', 'M', '.', '.', 'T'],
+    ['T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T', 'G', '.', 'M', 'M', 'M', 'M', 'M', 'M', 'M', '.', '.', 'T'],
+    ['T', '.', 'M', '.', 'M', '.', '.', '.', '.', '.', '.', '.', 'T', 'G', '.', 'M', 'M', 'M', 'M', 'M', 'M', 'M', '.', '.', 'T'],
+    ['T', '.', '.', '.', 'M', '.', '.', '.', '.', '.', '.', '.', 'T', 'H', '.', 'M', 'M', 'M', 'M', 'M', 'M', 'M', '.', '.', 'T'],
+    ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T'],
+    
 ]
 
-# --- 2. Classe Obstáculo (Parede/Árvore) ---
-class Obstaculo(pg.sprite.Sprite):
-    def __init__(self, x, y):
-        super().__init__()
-        # Aqui você carregaria a imagem da árvore: pg.image.load("assets/arvore.png")
-        # Vou usar um quadrado verde escuro por enquanto
-        self.image = pg.Surface((TILE_SIZE, TILE_SIZE))
-        self.image.fill((15, 80, 15)) # Verde Escuro
-        # Opcional: Desenhar uma borda para parecer um bloco
-        pg.draw.rect(self.image, (0,0,0), (0,0,TILE_SIZE,TILE_SIZE), 2)
-        self.rect = self.image.get_rect(topleft=(x, y))
+# =============================================================================
+# FUNÇÕES AUXILIARES
+# =============================================================================
 
-# --- 3. Classe Mato ---
-class Mato(pg.sprite.Sprite):
-    def __init__(self, x, y):
-        super().__init__()
-        self.image = pg.Surface((TILE_SIZE, TILE_SIZE))
-        # Cor diferente (Verde Limão para destacar)
-        self.image.fill((100, 200, 50)) 
-        self.rect = self.image.get_rect(topleft=(x, y))
-
-# --- Função para Ler o Mapa ---
 def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
-    pos_player = (100, 100) # Valor padrão caso não tenha 'P'
-    path_professor = os.path.join(DIRETORIO_BASE, "assets/professor/professor.png")
+    """Lê a matriz do mapa e instancia os objetos nas posições corretas."""
+    pos_player = (100, 100)
+    path_professor = os.path.join(DIRETORIO_BASE, "assets/professor/professor_world.png") 
     
     for row_index, row in enumerate(mapa):
         for col_index, letra in enumerate(row):
@@ -81,246 +73,332 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
             
             if letra == 'T':
                 grupo_obs.add(Obstaculo(x, y))
-
             elif letra == 'B':
                 grupo_col.add(Pokebola(x, y))
-
-            elif letra == 'N':
-                # Cria o NPC com um texto personalizado
-                npc = NPC(x, y, path_professor, "Está pronto para derrotar o Mangue Vermelho?")
-                grupo_npcs.add(npc)
-                grupo_obs.add(npc) # Opcional: Adiciona em obs para o player não atravessar ele
-
-            elif letra == 'M':
-                grupo_mato.add(Mato(x, y))
+                 
             elif letra == 'G':
                 grupo_col.add(GreatBall(x, y))
             elif letra == 'H':
                 grupo_col.add(Pocao(x, y))
+            elif letra == 'M':
+                grupo_mato.add(Mato(x, y)) 
             elif letra == 'P':
-                pos_player = (x, y)
-            
-            
+                pos_player = (x, y)  
+            elif letra == 'N':
+                # Cria NPC
+                try:
+                    npc = NPC(x, y, path_professor, "Está pronto para derrotar o Mangue Vermelho?")
+                    grupo_npcs.add(npc)
+                    grupo_obs.add(npc) # Player colide com NPC
+                except Exception as e:
+                    print(f"Erro ao criar NPC: {e}")
                 
-    # Retorna o tamanho total do mapa e a posição inicial do player
     largura_total = len(mapa[0]) * TILE_SIZE
     altura_total = len(mapa) * TILE_SIZE
+    
     return largura_total, altura_total, pos_player
 
-# --- INICIALIZAÇÃO ---
+
+# =============================================================================
+# SETUP INICIAL DO JOGO
+# =============================================================================
 pg.init()
+pg.mixer.init()
+
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pg.display.set_caption("PokeCIn - Fim do Mangue Vermelho")
 clock = pg.time.Clock()
 
-# Grupos
+# --- Grupos de Sprites ---
 grupo_obstaculos = pg.sprite.Group()
 grupo_coletaveis = pg.sprite.Group()
 grupo_mato = pg.sprite.Group()
 grupo_npcs = pg.sprite.Group()
 
-# 3. Carregando o Mapa
+# --- Carregamento do Mundo ---
 map_w, map_h, player_pos = carregar_mapa(MAPA_MATRIZ, grupo_obstaculos, grupo_coletaveis, grupo_mato, grupo_npcs)
 
-# 4. Player (Usando a posição que veio do mapa 'P')
+# --- Inicialização do Player ---
 try:
     path_down = os.path.join(DIRETORIO_BASE, "assets/mc/mc_down.png")
     path_left = os.path.join(DIRETORIO_BASE, "assets/mc/mc_left.png")
     path_up = os.path.join(DIRETORIO_BASE, "assets/mc/mc_up.png")
     path_right = os.path.join(DIRETORIO_BASE, "assets/mc/mc_right.png")
-    protagonista = Player(player_pos[0], player_pos[1], 
-                          path_down, 
-                          path_left, 
-                          path_up, 
-                          path_right)
     
+    protagonista = Player(player_pos[0], player_pos[1], path_down, path_left, path_up, path_right)
     player_group = pg.sprite.GroupSingle(protagonista)
-except FileNotFoundError:
-    print("ERRO: Imagens do player não encontradas.")
+except FileNotFoundError: 
+    print("ERRO CRÍTICO: Imagens do player não encontradas.")
     exit()
 
-# Inventário
+# --- Inicialização de Sistemas ---
 menu_inv = MenuInventario()
-
-# 5. Câmera (Com o tamanho calculado do mapa)
 camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, map_w, map_h)
 
-# Fundo Básico (Chão de grama para preencher os espaços '.')
-fundo_grama = pg.Surface((map_w, map_h))
-fundo_grama.fill((34, 139, 34)) # Verde Grama
+# Gera o visual do chão
+caminho_tileset = os.path.join(DIRETORIO_BASE, "assets/backgrounds/tileset.png")
+fundo_grama = definir_piso(map_w, map_h, caminho_tileset)
 
-running = True
-while running:
-    # 1. --- LÓGICA DE JOGO (QUEM ESTÁ FALANDO?) ---
-    # Verifica se existe ALGUM NPC falando neste exato momento
-    npc_falando_agora = None
-    for npc in grupo_npcs:
-        if npc.falando:
-            npc_falando_agora = npc
-            break
+# =============================================================================
+# FLUXO DE INTRODUÇÃO
+# =============================================================================
+jogo_ativo = exibir_intro(screen, clock) 
+nome_jogador = "Player"
+inicial_escolhido = "Charmander" # Padrão caso algo falhe
 
-    # --- EVENTOS (Teclado e Mouse) ---
-    for event in pg.event.get():
-        if event.type == pg.QUIT:
-            running = False
-            
-        if event.type == pg.KEYDOWN:
-            # === MODO DIÁLOGO (Se tem alguém falando) ===
-            if npc_falando_agora:
-                # Tecla T: Fecha o diálogo
-                if event.key == pg.K_t:
-                    npc_falando_agora.interagir()
-                
-                # Setas/A/D: Mudam a opção
-                elif event.key == pg.K_LEFT or event.key == pg.K_a:
-                    npc_falando_agora.mudar_selecao(-1)
-                elif event.key == pg.K_RIGHT or event.key == pg.K_d:
-                    npc_falando_agora.mudar_selecao(1)
-                
-                # Enter: Confirma a escolha
-                elif event.key == pg.K_RETURN:
-                    # CASO 1: Ainda não respondeu -> Confirma a seleção (Sim/Não)
-                    if not npc_falando_agora.respondeu:
-                        npc_falando_agora.respondeu = True
-                        if npc_falando_agora.indice_selecionado == 0: # Sim
-                            npc_falando_agora.texto_atual = "Ótimo! Prepare-se para a batalha!"
-                        else: # Não
-                            npc_falando_agora.texto_atual = "Volte quando estiver pronto."
-                    
-                    # CASO 2: Já respondeu -> Fecha o diálogo (igual ao T)
-                    else:
-                        npc_falando_agora.interagir()
-
-            # === MODO NORMAL (Se ninguém está falando) ===
-            else:
-                # Tecla E: Inventário
-                if event.key == pg.K_e:
-                    menu_inv.alternar() 
-
-                # Tecla T: Interagir (Procura NPCs próximos)
-                if event.key == pg.K_t:
-                    # Verifica se o player colide com a área aumentada (1.5x) do NPC
-                    hits_npc = pg.sprite.spritecollide(protagonista, grupo_npcs, False, pg.sprite.collide_rect_ratio(1.5))
-                    for npc in hits_npc:
-                        npc.interagir()
-                        # Interrompe após achar o primeiro para não bugar se tiver 2 juntos
-                        break 
-
-    # --- ATUALIZAÇÃO (UPDATE) ---
+if jogo_ativo:
+    # AQUI ESTÁ A MUDANÇA PRINCIPAL: Recebe 3 valores agora
+    jogo_ativo, nome_input, pokemon_input = cena_professor(screen, clock)
     
-    # Se o NPC estiver falando, o jogo PAUSA (player não anda)
-    if npc_falando_agora:
-        # O player fica parado, mas podemos continuar atualizando animações se quiser
-        # Por enquanto, não chamamos player_group.update() para travar ele
-        pass
-    else:
-        # Jogo Normal: Player anda, monstros aparecem, etc.
-        antigo_rect = protagonista.rect.copy()
-        player_group.update()
-
-        # Lógica de encontro no mato
-        if protagonista.direction.magnitude() > 0:
-            if pg.sprite.spritecollide(protagonista, grupo_mato, False):
-                if random.random() < 0.005: 
-                    print("!!! UM POKÉMON SELVAGEM APARECEU !!!")
+    if nome_input:
+        nome_jogador = nome_input
+    if pokemon_input:
+        inicial_escolhido = pokemon_input
         
-        # Colisão com Árvores/Paredes
-        if pg.sprite.spritecollide(protagonista, grupo_obstaculos, False):
-            protagonista.rect = antigo_rect
+    print(f"Bem-vindo ao mangue, {nome_jogador}!")
+    print(f"Seu inicial é: {inicial_escolhido}")
+    
+    if jogo_ativo:
+        try: 
+            pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/world_theme.mp3"))
+            pg.mixer.music.set_volume(0.2)
+            pg.mixer.music.play(-1, fade_ms=2000)
+        except: pass
 
-        # Coletar Itens
-        hits = pg.sprite.spritecollide(protagonista, grupo_coletaveis, False)
-        for item in hits:
-            item.coletar(protagonista)
+# --- CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO ---
+equipe_jogador = []
+pokemon_inicial = criar_pokemon(inicial_escolhido, 5) # Cria Nível 5
+if pokemon_inicial:
+    equipe_jogador.append(pokemon_inicial)
+else:
+    # Fallback de segurança
+    equipe_jogador.append(criar_pokemon("Charmander", 5))
 
-    # Atualiza câmera (Sempre foca no player)
-    camera.update(protagonista.rect)
+# =============================================================================
+# LOOP PRINCIPAL (GAME LOOP)
+# =============================================================================
 
-    # --- DESENHO (DRAW) ---
-    screen.fill((0,0,0)) 
+estado_jogo = "MUNDO"
+sistema_batalha = None
+running = jogo_ativo 
 
-    # 1. Desenha o Mundo
-    screen.blit(fundo_grama, camera.apply_rect(fundo_grama.get_rect()))
-    for mato in grupo_mato:
-        screen.blit(mato.image, camera.apply(mato.rect))
-    for parede in grupo_obstaculos:
-        screen.blit(parede.image, camera.apply(parede.rect))
-    for item in grupo_coletaveis:
-        screen.blit(item.image, camera.apply(item.rect))
-    for sprite in player_group:
-        screen.blit(sprite.image, camera.apply(sprite.rect))
-
-    # 2. Desenha NPCs e Interface de Diálogo
-    for npc in grupo_npcs:
-        screen.blit(npc.image, camera.apply(npc.rect))
+while running:
+    
+    # -------------------------------------------------------------------------
+    # ESTADO: MUNDO (Exploração)
+    # -------------------------------------------------------------------------
+    if estado_jogo == "MUNDO":
         
-        # Desenha balão de fala se este NPC específico estiver falando
-        if npc.falando:
-            # --- ESTILO IDÊNTICO AO DA INTRO ---
-            COR_CAIXA = (255, 255, 255)  # Branco
-            COR_BORDA = (40, 40, 160)    # Azul Escuro do Prof
-            COR_TEXTO = (0, 0, 0)        # Preto
+        # --- 1. LÓGICA DE UPDATE ---
+        
+        # Verifica se algum NPC está falando
+        npc_falando_agora = None
+        for npc in grupo_npcs:
+            if npc.falando:
+                npc_falando_agora = npc
+                break
+        
+        # Eventos
+        for event in pg.event.get():
+            if event.type == pg.QUIT: 
+                running = False
             
-            # Define a posição da caixa (estilo largo na parte inferior)
-            # Usando proporções similares à intro
+            if event.type == pg.KEYDOWN:
+                
+                # --- CONTROLES DE DIÁLOGO ---
+                if npc_falando_agora:
+                    # Tecla F: Fecha o diálogo (se já tiver terminado)
+                    if event.key == pg.K_f:
+                        npc_falando_agora.interagir()
+                    
+                    # Setas/A/D: Mudam a opção (Sim/Não)
+                    elif event.key == pg.K_LEFT or event.key == pg.K_a:
+                        npc_falando_agora.mudar_selecao(-1)
+                    elif event.key == pg.K_RIGHT or event.key == pg.K_d:
+                        npc_falando_agora.mudar_selecao(1)
+                    
+                    # Enter: Confirma a escolha ou avança texto
+                    elif event.key == pg.K_RETURN:
+                        # Se ainda não respondeu, processa a resposta
+                        if not npc_falando_agora.respondeu:
+                            npc_falando_agora.respondeu = True
+                            if npc_falando_agora.indice_selecionado == 0: # Sim
+                                npc_falando_agora.texto_atual = "Ótimo! Prepare-se para a batalha!"
+                            else: # Não
+                                npc_falando_agora.texto_atual = "Volte quando estiver pronto."
+                        # Se já respondeu, fecha
+                        else:
+                            npc_falando_agora.interagir()
+
+                # --- CONTROLES DE MUNDO ---
+                else:
+                    # Tecla E: Inventário
+                    if event.key == pg.K_e:
+                        menu_inv.alternar() 
+                    
+                    # Tecla F: Coletar itens próximos
+                    if event.key == pg.K_f:
+                        area_interacao = protagonista.rect.inflate(10, 10)
+                        for item in grupo_coletaveis:
+                            if area_interacao.colliderect(item.rect):
+                                item.coletar(protagonista)
+                    
+                    # Tecla F: Interagir com NPC
+                    if event.key == pg.K_f:
+                        # Verifica se o player colide com a área aumentada (1.5x) do NPC
+                        hits_npc = pg.sprite.spritecollide(protagonista, grupo_npcs, False)
+                        
+                        # Se não colidiu diretamente, tenta expandir a busca
+                        if not hits_npc:
+                             # Cria um rect temporário maior ao redor do player
+                             area_busca = protagonista.rect.inflate(20, 20) 
+                             for npc in grupo_npcs:
+                                 if area_busca.colliderect(npc.rect):
+                                     npc.interagir()
+                                     break
+                        else:
+                            # Se colidiu, interage com o primeiro
+                            hits_npc[0].interagir()
+
+        # Atualização do Mundo (Só roda se não estiver conversando)
+        if not npc_falando_agora:
+            antigo_rect = protagonista.rect.copy()
+            player_group.update()
+            
+            # Lógica do Mato
+            if protagonista.direction.magnitude() > 0:
+                if pg.sprite.spritecollide(protagonista, grupo_mato, False):
+                    if random.random() < 0.0115: # Chance de encontro
+                        animacao_transicao(screen)
+                        estado_jogo = "BATALHA"
+
+                        # GERA O POKEMON NO MATO
+                        inimigo_pokemon = criar_pokemon("Bulbasaur", random.randint(3, 5))
+                        
+                        inv_batalha = {'Pocao': 5, 'Pokebola': 5}
+                        try:
+                            if hasattr(menu_inv, 'itens'): 
+                                inv_batalha = menu_inv.itens
+                            elif hasattr(protagonista, 'inventario'):
+                                inv_batalha = protagonista.inventario
+                        except: pass
+
+                        try:
+                            sistema_batalha = BatalhaPokemon(equipe_jogador, inimigo_pokemon, inv_batalha)
+                        except Exception as e:
+                            print(f"ERRO AO INICIAR BATALHA: {e}")
+                            estado_jogo = "MUNDO"
+
+            # Colisões com obstáculos e coletáveis
+            colisao_obs = pg.sprite.spritecollide(protagonista, grupo_obstaculos, False)
+            colisao_item = pg.sprite.spritecollide(protagonista, grupo_coletaveis, False)
+            if colisao_obs or colisao_item:
+                protagonista.rect = antigo_rect
+
+            # Câmera
+            camera.update(protagonista.rect)
+
+
+        # --- 2. LÓGICA DE DESENHO ---
+        
+        # Desenha o Mundo (SEMPRE desenha isso primeiro)
+        screen.fill((0,0,0)) 
+        screen.blit(fundo_grama, camera.apply_rect(fundo_grama.get_rect()))
+
+        for item in grupo_mato: 
+            screen.blit(item.image, camera.apply(item.rect))
+        for parede in grupo_obstaculos: 
+            screen.blit(parede.image, camera.apply(parede.rect))
+        for item in grupo_coletaveis: 
+            screen.blit(item.image, camera.apply(item.rect))
+        
+        # Desenha NPCs
+        for npc in grupo_npcs:
+            screen.blit(npc.image, camera.apply(npc.rect))
+
+        # Desenha Player
+        for sprite in player_group: 
+            screen.blit(sprite.image, camera.apply(sprite.rect))
+        
+        # Desenha Interface (Por cima do mundo)
+        menu_inv.desenhar(screen, protagonista.inventario)
+
+        # Desenha Caixa de Diálogo do NPC (SE TIVER UM FALANDO)
+        if npc_falando_agora:
+            # Configuração da caixa
             rect_fundo = pg.Rect(20, SCREEN_HEIGHT - 160, SCREEN_WIDTH - 40, 140)
+            rect_interno = rect_fundo.inflate(-10, -10)
             
-            # 1. Desenha a Borda (Retângulo externo arredondado)
-            pg.draw.rect(screen, COR_BORDA, rect_fundo, border_radius=10)
-            
-            # 2. Desenha o Fundo (Retângulo interno menor arredondado)
-            rect_interno = rect_fundo.inflate(-10, -10) # Diminui 10px
-            pg.draw.rect(screen, COR_CAIXA, rect_interno, border_radius=10)
+            # Desenha Fundo
+            pg.draw.rect(screen, (40, 40, 160), rect_fundo, border_radius=10) # Borda Azul
+            pg.draw.rect(screen, (255, 255, 255), rect_interno, border_radius=10) # Fundo Branco
 
-            # 3. Texto da Fala
-            # Fonte Arial tamanho 22 (igual à intro)
+            # Desenha Texto
             fonte = pg.font.SysFont("Arial", 22)
-            # Renderiza o texto (permite quebra de linha manual se tiver \n)
-            linhas = npc.texto_atual.split('\n')
+            linhas = npc_falando_agora.texto_atual.split('\n')
             y_texto = rect_interno.y + 20
             for linha in linhas:
-                texto_surf = fonte.render(linha, True, COR_TEXTO)
+                texto_surf = fonte.render(linha, True, (0, 0, 0))
                 screen.blit(texto_surf, (rect_interno.x + 20, y_texto))
                 y_texto += 30
 
-            # 4. A "Setinha" Vermelha Piscando
-            # Pisca a cada meio segundo (500ms)
+            # Desenha Seta Piscante
             if running:
-                # Triângulo vermelho apontando para baixo
                 pontos_seta = [
-                    (rect_interno.right - 30, rect_interno.bottom - 20), # Ponto esquerdo
-                    (rect_interno.right - 10, rect_interno.bottom - 20), # Ponto direito
-                    (rect_interno.right - 20, rect_interno.bottom - 10)  # Ponto baixo (bico)
+                    (rect_interno.right - 30, rect_interno.bottom - 20),
+                    (rect_interno.right - 10, rect_interno.bottom - 20),
+                    (rect_interno.right - 20, rect_interno.bottom - 10)
                 ]
                 pg.draw.polygon(screen, (200, 0, 0), pontos_seta)
 
-            # 5. Opções (Sim/Não) - Se for hora de responder
-            if not npc.respondeu:
+            # Desenha Opções (Sim/Não) se necessário
+            if not npc_falando_agora.respondeu:
                 fonte_opcoes = pg.font.SysFont("Arial", 22, bold=True)
                 
-                # Cores de destaque
-                cor_destaque = (200, 0, 0) # Vermelho (igual a seta)
-                cor_normal = (0, 0, 0)     # Preto
-                
-                cor_sim = cor_destaque if npc.indice_selecionado == 0 else cor_normal
-                cor_nao = cor_destaque if npc.indice_selecionado == 1 else cor_normal
+                cor_sim = (200, 0, 0) if npc_falando_agora.indice_selecionado == 0 else (0, 0, 0)
+                cor_nao = (200, 0, 0) if npc_falando_agora.indice_selecionado == 1 else (0, 0, 0)
 
-                sim_surf = fonte_opcoes.render("> Sim" if npc.indice_selecionado == 0 else "  Sim", True, cor_sim)
-                nao_surf = fonte_opcoes.render("> Não" if npc.indice_selecionado == 1 else "  Não", True, cor_nao)
+                sim_surf = fonte_opcoes.render("> Sim" if npc_falando_agora.indice_selecionado == 0 else "  Sim", True, cor_sim)
+                nao_surf = fonte_opcoes.render("> Não" if npc_falando_agora.indice_selecionado == 1 else "  Não", True, cor_nao)
 
-                # Posiciona as opções um pouco mais abaixo do texto
                 screen.blit(sim_surf, (rect_interno.x + 50, rect_interno.y + 80))
                 screen.blit(nao_surf, (rect_interno.x + 200, rect_interno.y + 80))
 
-    # 3. Interface (Inventário) - Sempre por último
-    menu_inv.desenhar(screen, protagonista.inventario)
 
+    # -------------------------------------------------------------------------
+    # ESTADO: BATALHA
+    # -------------------------------------------------------------------------
+    elif estado_jogo == "BATALHA":
+        
+        for event in pg.event.get():
+            if event.type == pg.QUIT: 
+                running = False
+            
+            # Input da Batalha
+            if event.type == pg.KEYDOWN:
+                if sistema_batalha and sistema_batalha.battle_over:
+                    # Se batalha acabou, Espaço para sair
+                    if event.key == pg.K_SPACE:
+                        if sistema_batalha.vencedor == "INIMIGO":
+                            print("GAME OVER")
+                            running = False
+                        else:
+                            estado_jogo = "MUNDO"
+                            try: 
+                                pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/world_theme.mp3"))
+                                pg.mixer.music.play(-1)
+                            except: pass
+                else:
+                    # Input normal de batalha
+                    if sistema_batalha: 
+                        sistema_batalha.processar_input(event)
+
+        # Desenha a batalha
+        if sistema_batalha: 
+            sistema_batalha.desenhar(screen)
+
+    # --- Atualização de Frame ---
     pg.display.flip()
     clock.tick(FPS)
 
 pg.quit()
-
-
-"""
-
-"""

@@ -6,8 +6,15 @@ class NPC(pg.sprite.Sprite):
         
         # Carregar imagem
         try:
+           
             img_bruta = pg.image.load(image_path).convert_alpha()
-            self.image = pg.transform.scale(img_bruta, (64, 64)) 
+            img_w = img_bruta.get_width()
+            img_h = img_bruta.get_height()
+            prop = img_w/img_h
+            w = 62
+            h = prop*w
+
+            self.image = pg.transform.scale(img_bruta, (h, w )) 
         except Exception:
             self.image = pg.Surface((64, 64))
             self.image.fill((0, 0, 255))
