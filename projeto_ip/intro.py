@@ -78,7 +78,21 @@ def exibir_intro(screen, clock):
     font_start = pg.font.SysFont("Arial", 30, bold=True)
     
     texto_titulo = font_titulo.render("PokéCIn: a Ameaça do Mangue", True, (0,0,0))
+
+    try:
+        img_titulo = pg.transform.scale(pg.image.load(os.path.join(DIRETORIO_BASE, "assets/intro_font/PokeCin.png")).convert_alpha(), (600, 300))
+    except Exception as e:
+        print(f"Erro ao carregar imagem do título: {e}")
+        img_titulo = font_titulo.render("PokéCIn", True, (0,0,0))
+
+    try: 
+        img_enter = pg.transform.scale(pg.image.load(os.path.join(DIRETORIO_BASE, "assets/intro_font/PressEnter.png")).convert_alpha(), (400, 200))
+    except Exception as e:
+        print(f"Erro ao carregar imagem do ENTER: {e}")
+        img_enter = font_start.render("ENTER para Jogar", True, (50,50,50))
+
     texto_start = font_start.render("ENTER para Jogar", True, (50,50,50))
+    
     
     rect_titulo = texto_titulo.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT/3))
     rect_start = texto_start.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT/2+50))
@@ -107,8 +121,10 @@ def exibir_intro(screen, clock):
                     return True
                     
         screen.blit(bg_intro, (0,0))
-        screen.blit(texto_titulo, rect_titulo)
-        screen.blit(texto_start, rect_start)
+        #screen.blit(texto_titulo, rect_titulo)
+        screen.blit(img_titulo, (SCREEN_WIDTH/2 - img_titulo.get_width()/2, 0))
+        screen.blit(img_enter, (SCREEN_WIDTH/2 - img_titulo.get_width()/2, 400))
+
         pg.display.flip()
         
     return True

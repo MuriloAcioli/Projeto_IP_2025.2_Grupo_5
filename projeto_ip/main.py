@@ -70,16 +70,17 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
         for col_index, letra in enumerate(row):
             x = col_index * TILE_SIZE
             y = row_index * TILE_SIZE
-            
+
+            int = random.randint(0,20)
             if letra == 'T':
                 grupo_obs.add(Obstaculo(x, y))
             elif letra == 'B':
-                grupo_col.add(Pokebola(x, y))
+                grupo_col.add(Pokebola(x+15, y+15))
                  
             elif letra == 'G':
-                grupo_col.add(GreatBall(x, y))
+                grupo_col.add(GreatBall(x+15, y+15))
             elif letra == 'H':
-                grupo_col.add(Pocao(x, y))
+                grupo_col.add(Pocao(x+15, y+15))
             elif letra == 'M':
                 grupo_mato.add(Mato(x, y)) 
             elif letra == 'P':
