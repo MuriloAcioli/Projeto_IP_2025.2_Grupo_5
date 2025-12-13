@@ -27,6 +27,7 @@ FPS = 60
 lista_pokemons_disponiveis =  list(POKEDEX.keys())
 lista_pokemons_comuns = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "comum"]
 lista_pokemons_raros = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "raro"]
+lista_pokemons_super_raros = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "super_raro"]
 lista_pokemons_lendarios = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "lendario"]
 
 # =============================================================================
@@ -298,12 +299,16 @@ while running:
  
                         # GERA O POKEMON NO MATO
                         raridade = random.randint(0, 100)
-                        if raridade < 60:
+                        if raridade < 75:
                             pokemon_random = random.choice(lista_pokemons_comuns)
                             lvl_chao = 3
-                            lvl_teto = 7
+                            lvl_teto = 5
                         elif raridade < 93:
                             pokemon_random = random.choice(lista_pokemons_raros)
+                            lvl_chao = 5
+                            lvl_teto = 10
+                        elif raridade < 98:
+                            pokemon_random = random.choice(lista_pokemons_super_raros)
                             lvl_chao = 5
                             lvl_teto = 10
                         else:
