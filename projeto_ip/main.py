@@ -271,6 +271,14 @@ while running:
                                     # AQUI: Apenas salvamos o texto na variável!
                                     mensagem_tela = f"Você pegou: {nome_item}"
                                     item_pegado = True
+
+                                    sfx_item = None
+                                    try: 
+                                        sfx_item = pg.mixer.Sound(os.path.join(DIRETORIO_BASE, "assets/sfx/itemfound.wav"))
+                                        sfx_item.set_volume(0.5)
+                                        sfx_item.play()
+                                    except: pass
+
                                     break
 
                                 #pg.mixer.Sound(path_sound).play()
@@ -467,8 +475,8 @@ while running:
         
         # Opcional: Aviso para fechar
         fonte_pequena = pg.font.SysFont("Arial", 16)
-        aviso = fonte_pequena.render("[F] para fechar", True, (100, 100, 100))
-        screen.blit(aviso, (rect_interno.right - 120, rect_interno.bottom - 30))
+        aviso = fonte_pequena.render("[Space] para fechar", True, (100, 100, 100))
+        screen.blit(aviso, (rect_interno.right - 150, rect_interno.bottom - 30))
 
 
     # --- Atualização de Frame ---
