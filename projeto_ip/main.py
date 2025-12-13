@@ -196,6 +196,8 @@ while running:
     # -------------------------------------------------------------------------
     if estado_jogo == "MUNDO":
         
+
+
         # --- 1. LÓGICA DE UPDATE ---
         
         # Verifica se algum NPC está falando
@@ -207,6 +209,11 @@ while running:
         
         # Eventos
         for event in pg.event.get():
+
+            if menu_inv.aberto:
+                menu_inv.processar_input(event, protagonista.inventario, equipe_jogador)
+
+            # -
             if event.type == pg.QUIT: 
                 running = False
             
@@ -285,7 +292,7 @@ while running:
                             hits_npc[0].interagir()
 
         # Atualização do Mundo (Só roda se não estiver conversando)
-        if not npc_falando_agora:
+        if not npc_falando_agora and not menu_inv.aberto and not mensagem_tela:
             antigo_rect = protagonista.rect.copy()
             player_group.update()
             
@@ -338,7 +345,8 @@ while running:
 
 
         # --- 2. LÓGICA DE DESENHO ---
-        
+        #if menu_inv.aberto:    # AGORA PASSAMOS 'equipe_jogador' TAMBÉM
+        #        menu_inv.processar_input(event, protagonista.inventario, equipe_jogador)
         # Desenha o Mundo (SEMPRE desenha isso primeiro)
         screen.fill((0,0,0)) 
         screen.blit(fundo_grama, camera.apply_rect(fundo_grama.get_rect()))
@@ -359,7 +367,7 @@ while running:
             screen.blit(sprite.image, camera.apply(sprite.rect))
         
         # Desenha Interface (Por cima do mundo)
-        menu_inv.desenhar(screen, protagonista.inventario)
+        menu_inv.desenhar(screen, protagonista.inventario, equipe_jogador)
 
         # Desenha Caixa de Diálogo do NPC (SE TIVER UM FALANDO)
         if npc_falando_agora:
