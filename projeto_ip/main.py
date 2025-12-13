@@ -25,6 +25,10 @@ SCREEN_HEIGHT = 600
 TILE_SIZE = 48 
 FPS = 60
 lista_pokemons_disponiveis =  list(POKEDEX.keys())
+lista_pokemons_comuns = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "comum"]
+lista_pokemons_raros = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "raro"]
+lista_pokemons_lendarios = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "lendario"]
+
 # =============================================================================
 # DADOS DO MAPA
 # =============================================================================
@@ -293,8 +297,21 @@ while running:
                         estado_jogo = "BATALHA"
  
                         # GERA O POKEMON NO MATO
-                        pokemon_random = random.choice(lista_pokemons_disponiveis)
-                        inimigo_pokemon = criar_pokemon(pokemon_random, random.randint(3, 7))
+                        raridade = random.randint(0, 100)
+                        if raridade < 60:
+                            pokemon_random = random.choice(lista_pokemons_comuns)
+                            lvl_chao = 3
+                            lvl_teto = 7
+                        elif raridade < 93:
+                            pokemon_random = random.choice(lista_pokemons_raros)
+                            lvl_chao = 5
+                            lvl_teto = 10
+                        else:
+                            lvl_chao = 50
+                            lvl_teto = 50
+                            pokemon_random = random.choice(lista_pokemons_lendarios)
+                        
+                        inimigo_pokemon = criar_pokemon(pokemon_random, random.randint(lvl_chao, lvl_teto))
                         
                         inv_batalha = {'Poção': 5, 'Pokebola': 5}
                         try:
