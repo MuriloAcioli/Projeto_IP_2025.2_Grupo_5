@@ -225,7 +225,7 @@ class BatalhaPokemon:
         # Verifica quantidade
         qtd = self.inventario.get(tipo_bola, 0)
         if qtd <= 0:
-            self.mensagem_sistema = f"Voce nao tem {tipo_bola}!"
+            self.mensagem_sistema = f"Voce não tem {tipo_bola}!"
             return
 
         # Consome item
@@ -276,7 +276,7 @@ class BatalhaPokemon:
             self.estado_atual = "ANIMANDO_PLAYER" 
             self.timer_espera = pg.time.get_ticks()
         else:
-            self.mensagem_sistema = "Voce nao tem Pocoes!"
+            self.mensagem_sistema = "Voce não tem Pocoes!"
 
     def tentar_fugir(self):
         if self.player_pkmn.speed >= self.enemy_pkmn.speed:
@@ -289,7 +289,7 @@ class BatalhaPokemon:
                 self.vencedor = "FUGA"
                 self.mensagem_sistema = "Fugiu por pouco!"
             else:
-                self.mensagem_sistema = "Nao conseguiu fugir!"
+                self.mensagem_sistema = "Não conseguiu fugir!"
                 self.msg_extra = ""
                 self.estado_atual = "ANIMANDO_PLAYER"
                 self.timer_espera = pg.time.get_ticks()
@@ -358,7 +358,7 @@ class BatalhaPokemon:
         
         msg = ""
         if mult > 1: msg = "Foi super efetivo!"
-        elif mult < 1: msg = "Nao foi muito efetivo..."
+        elif mult < 1: msg = "Não foi muito efetivo..."
         
         return max(1, dano_final), msg
 
