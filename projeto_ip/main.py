@@ -13,6 +13,7 @@ from pokemon import Pokemon, criar_pokemon
 from batalha import BatalhaPokemon
 from npc import NPC
 from pokedex import POKEDEX
+from pokehealer import PokeHealer
 # --- Módulo de Intro ---
 from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
 
@@ -35,7 +36,7 @@ lista_pokemons_lendarios = [nome for nome, dados in POKEDEX.items() if dados.get
 # =============================================================================
 MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', 'N', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', 'N', 'S', '.', 'T'],
     ['T', '.', 'P', '.', '.', '.', '.', '.', '.', 'B', '.', '.', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'M', 'M', 'M', 'T', '.', '.', 'B', '.', '.', '.', '.', 'T'],
     ['T', 'T', 'T', 'T', 'T', 'T', '.', 'M', 'M', 'M', '.', '.', 'T', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -80,6 +81,10 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
                 grupo_obs.add(Obstaculo(x, y))
             elif letra == 'B':
                 grupo_col.add(Pokebola(x+15, y+15))
+            elif letra == 'S': # <<< NOVO POKEHEALER
+                # Você precisa garantir que a classe PokeHealer esteja importada
+                healer = PokeHealer(x, y) 
+                grupo_obs.add(healer)
                  
             elif letra == 'G':
                 grupo_col.add(GreatBall(x+15, y+15))
@@ -258,30 +263,43 @@ while running:
                         
                         # SE NÃO TEM MENSAGEM -> TENTA PEGAR ITEM
                         else:
+
+                            # 1. Tenta interagir com PokeHealer
                             area_interacao = protagonista.rect.inflate(10, 10)
-                            # Usar uma flag para pegar só 1 item por vez
-                            item_pegado = False 
+                            healer_interagido = False
                             
-                            for item in grupo_coletaveis:
-                                if area_interacao.colliderect(item.rect):
-                                    # Salva o nome ANTES de remover o item
-                                    nome_item = item.nome_item 
-                                    item.coletar(protagonista)
-                                    
-                                    # AQUI: Apenas salvamos o texto na variável!
-                                    mensagem_tela = f"Você pegou: {nome_item}"
-                                    item_pegado = True
-
-                                    sfx_item = None
-                                    try: 
-                                        sfx_item = pg.mixer.Sound(os.path.join(DIRETORIO_BASE, "assets/sfx/itemfound.wav"))
-                                        sfx_item.set_volume(0.5)
-                                        sfx_item.play()
-                                    except: pass
-
+                            for obs in grupo_obstaculos:
+                                if isinstance(obs, PokeHealer) and area_interacao.colliderect(obs.rect):
+                                    # Chama o método de cura e armazena o feedback
+                                    feedback = obs.curar_equipe(equipe_jogador) 
+                                    mensagem_tela = feedback
+                                    healer_interagido = True
                                     break
 
-                                #pg.mixer.Sound(path_sound).play()
+
+                            if not healer_interagido:
+                                item_pegado = False
+                            
+                                for item in grupo_coletaveis:
+                                    if area_interacao.colliderect(item.rect):
+                                        # Salva o nome ANTES de remover o item
+                                        nome_item = item.nome_item 
+                                        item.coletar(protagonista)
+                                        
+                                        # AQUI: Apenas salvamos o texto na variável!
+                                        mensagem_tela = f"Você pegou: {nome_item}"
+                                        item_pegado = True
+
+                                        sfx_item = None
+                                        try: 
+                                            sfx_item = pg.mixer.Sound(os.path.join(DIRETORIO_BASE, "assets/sfx/itemfound.wav"))
+                                            sfx_item.set_volume(0.5)
+                                            sfx_item.play()
+                                        except: pass
+
+                                        break
+
+                                    #pg.mixer.Sound(path_sound).play()
                     
                     # Tecla Space: Interagir com NPC
                     if event.key == pg.K_SPACE:
@@ -304,6 +322,16 @@ while running:
         if not npc_falando_agora and not menu_inv.aberto and not mensagem_tela:
             antigo_rect = protagonista.rect.copy()
             player_group.update()
+
+            for obs in grupo_obstaculos:
+                # Apenas se for um PokeHealer e já tiver sido usado
+                if isinstance(obs, PokeHealer) and obs.foi_curado: 
+                    # Define uma área de 1.5x o tamanho do tile
+                    area_proximidade = obs.rect.inflate(TILE_SIZE * 1.5, TILE_SIZE * 1.5)
+                    
+                    # Se o player saiu da área, permite a cura novamente
+                    if not area_proximidade.colliderect(protagonista.rect):
+                        obs.resetar_cura()
             
             # Lógica do Mato
             if protagonista.direction.magnitude() > 0:
@@ -477,7 +505,6 @@ while running:
         fonte_pequena = pg.font.SysFont("Arial", 16)
         aviso = fonte_pequena.render("[Space] para fechar", True, (100, 100, 100))
         screen.blit(aviso, (rect_interno.right - 150, rect_interno.bottom - 30))
-
 
     # --- Atualização de Frame ---
     pg.display.flip()

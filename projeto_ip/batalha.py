@@ -337,30 +337,70 @@ class BatalhaPokemon:
         if pct > 0.2: return (255, 200, 0)
         return (200, 0, 0)
 
-    def get_type_modifier(self, ataque_tipo, defensor_tipo):
+    def get_type_modifier(self, ataque_tipo, defensor_tipo_str):
+        # Tabela padronizada com a sua Pokedex (Sem acentos: Aco, Eletrico, Agua, etc)
         tabela = {
-            "Fogo":  {"Grama": 2.0, "Agua": 0.5}, 
-            "Agua":  {"Fogo": 2.0,  "Grama": 0.5}, 
-            "Grama": {"Agua": 2.0,  "Fogo": 0.5}
+            "Normal":   {"Pedra": 0.5, "Fantasma": 0.0, "Aco": 0.5},
+            "Fogo":     {"Grama": 2.0, "Gelo": 2.0, "Inseto": 2.0, "Aco": 2.0, "Fogo": 0.5, "Agua": 0.5, "Pedra": 0.5, "Dragao": 0.5},
+            "Agua":     {"Fogo": 2.0, "Terra": 2.0, "Pedra": 2.0, "Agua": 0.5, "Grama": 0.5, "Dragao": 0.5},
+            "Eletrico": {"Agua": 2.0, "Voador": 2.0, "Eletrico": 0.5, "Grama": 0.5, "Dragao": 0.5, "Terra": 0.0},
+            "Grama":    {"Agua": 2.0, "Terra": 2.0, "Pedra": 2.0, "Fogo": 0.5, "Grama": 0.5, "Veneno": 0.5, "Voador": 0.5, "Inseto": 0.5, "Dragao": 0.5, "Aco": 0.5},
+            "Gelo":     {"Grama": 2.0, "Terra": 2.0, "Voador": 2.0, "Dragao": 2.0, "Fogo": 0.5, "Agua": 0.5, "Gelo": 0.5, "Aco": 0.5},
+            "Lutador":  {"Normal": 2.0, "Gelo": 2.0, "Pedra": 2.0, "Aco": 2.0, "Veneno": 0.5, "Voador": 0.5, "Psiquico": 0.5, "Inseto": 0.5, "Fada": 0.5, "Fantasma": 0.0},
+            "Veneno":   {"Grama": 2.0, "Fada": 2.0, "Veneno": 0.5, "Terra": 0.5, "Pedra": 0.5, "Fantasma": 0.5, "Aco": 0.0},
+            "Terra":    {"Fogo": 2.0, "Eletrico": 2.0, "Veneno": 2.0, "Pedra": 2.0, "Aco": 2.0, "Grama": 0.5, "Inseto": 0.5, "Voador": 0.0},
+            "Voador":   {"Grama": 2.0, "Lutador": 2.0, "Inseto": 2.0, "Eletrico": 0.5, "Pedra": 0.5, "Aco": 0.5},
+            "Psiquico": {"Lutador": 2.0, "Veneno": 2.0, "Psiquico": 0.5, "Aco": 0.5, "Sombrio": 0.0},
+            "Inseto":   {"Grama": 2.0, "Psiquico": 2.0, "Sombrio": 2.0, "Fogo": 0.5, "Lutador": 0.5, "Veneno": 0.5, "Voador": 0.5, "Fantasma": 0.5, "Aco": 0.5, "Fada": 0.5},
+            "Pedra":    {"Fogo": 2.0, "Gelo": 2.0, "Voador": 2.0, "Inseto": 2.0, "Lutador": 0.5, "Terra": 0.5, "Aco": 0.5},
+            "Fantasma": {"Psiquico": 2.0, "Fantasma": 2.0, "Sombrio": 0.5, "Normal": 0.0},
+            "Dragao":   {"Dragao": 2.0, "Aco": 0.5, "Fada": 0.0},
+            "Aco":      {"Gelo": 2.0, "Pedra": 2.0, "Fada": 2.0, "Fogo": 0.5, "Agua": 0.5, "Eletrico": 0.5, "Aco": 0.5},
+            "Fada":     {"Lutador": 2.0, "Dragao": 2.0, "Sombrio": 2.0, "Fogo": 0.5, "Veneno": 0.5, "Aco": 0.5}
         }
-        return tabela.get(ataque_tipo, {}).get(defensor_tipo, 1.0)
+        
+        tipos_defensor = defensor_tipo_str.split('/')
+        
+        multiplicador_final = 1.0
+        
+        modificadores_ataque = tabela.get(ataque_tipo, {})
+
+        for tipo in tipos_defensor:
+            tipo = tipo.strip()
+            val = modificadores_ataque.get(tipo, 1.0)
+            multiplicador_final *= val
+            
+        return multiplicador_final
 
     def calcular_dano(self, atq, defe, golpe):
         chance = random.randint(1, 100)
-        if chance > golpe.precisao: return 0, "Errou!"
+        # Se errou pela precisão do golpe
+        if chance > golpe.precisao: 
+            return 0, "Errou!"
         
         mult = self.get_type_modifier(golpe.tipo, defe.tipo)
+        
+        # Fórmula de dano
         nivel_factor = (2 * atq.nivel / 5) + 2
         stats_ratio = atq.atk / max(1, defe.defense)
-        
         dano_base = ((nivel_factor * golpe.poder * stats_ratio) / 50) + 2
+        
         dano_final = int(dano_base * mult)
         
         msg = ""
-        if mult > 1: msg = "Foi super efetivo!"
-        elif mult < 1: msg = "Não foi muito efetivo..."
+        if mult == 0:
+            dano_final = 0
+            msg = f"Nao afetou {defe.nome}..."
+        elif mult > 1: 
+            msg = "Foi super efetivo!"
+        elif mult < 1: 
+            msg = "Nao foi muito efetivo..."
         
-        return max(1, dano_final), msg
+        # Se mult não for 0, garantimos pelo menos 1 de dano
+        if mult > 0:
+            dano_final = max(1, dano_final)
+            
+        return dano_final, msg
 
     def desenhar(self, screen):
         # --- DESENHO DO FUNDO ---
