@@ -264,14 +264,14 @@ class BatalhaPokemon:
         self.timer_espera = pg.time.get_ticks()
 
     def usar_pocao(self):
-        nome_item = 'Pocao de Vida'
+        nome_item = 'Poção de Vida'
         qtd = self.inventario.get(nome_item, 0)
         
         if qtd > 0:
             self.inventario[nome_item] -= 1
             cura = 20
             self.player_pkmn.hp_atual = min(self.player_pkmn.hp_max, self.player_pkmn.hp_atual + cura)
-            self.mensagem_sistema = f"Usou Pocao! +{cura} HP."
+            self.mensagem_sistema = f"Usou Poção! +{cura} HP."
             self.msg_extra = "" 
             self.estado_atual = "ANIMANDO_PLAYER" 
             self.timer_espera = pg.time.get_ticks()
@@ -579,13 +579,13 @@ class BatalhaPokemon:
                     screen.blit(self.font_big.render(prefixo + golpe.nome, True, cor), (pos_x, pos_y))
 
             elif self.estado_atual == "MENU_MOCHILA":
-                q_pocao = self.inventario.get('Pocao de Vida', 0)
+                q_pocao = self.inventario.get('Poção de Vida', 0)
                 q_poke = self.inventario.get('Pokebola', 0)
                 q_great = self.inventario.get('Grande Bola', 0)
 
                 opcoes_bag = [
                     "Trocar Pokemon", 
-                    f"Usar Pocao ({q_pocao})", 
+                    f"Usar Poção ({q_pocao})", 
                     f"Pokebola ({q_poke})", 
                     f"Grande Bola ({q_great})"
                 ]
