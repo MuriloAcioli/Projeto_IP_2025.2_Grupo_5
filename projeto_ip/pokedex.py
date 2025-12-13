@@ -15,7 +15,8 @@ POKEDEX = {
         "stats": (39, 52, 43, 65),
         "sprite": "assets/pokemons/charmander.png",
         "sprite_back": "assets/pokemons/charmander_back.png",
-        "golpes": ["Arranhao", "Brasas", "Investida"]
+        "golpes": ["Arranhao", "Brasas", "Investida"],
+        "raridade": "inicial"
     },
     "Squirtle": {
         "id": 7,
@@ -87,7 +88,8 @@ POKEDEX = {
         "stats": (35, 55, 40, 90),
         "sprite": "assets/pokemons/pikachu.png",
         "sprite_back": "assets/pokemons/pikachu_back.png",
-        "golpes": ["Choque do Trovao", "Rosnar", "Ataque Rapido"]
+        "golpes": ["Choque do Trovao", "Rosnar", "Ataque Rapido"],
+        "raridade": "raro"
     },
     "Sandshrew": {
         "id": 27,
@@ -123,7 +125,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/clefairy.png",
         "sprite_back": "assets/pokemons/clefairy_back.png",
         "golpes": ["Tapa", "Rosnar", "Investida"],
-        "raridade": "comum"
+        "raridade": "super_raro"
     },
     "Vulpix": {
         "id": 37,
@@ -132,7 +134,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/vulpix.png",
         "sprite_back": "assets/pokemons/vulpix_back.png",
         "golpes": ["Brasas", "Abanar o Rabo", "Ataque Rapido", "Confusao"],
-        "raridade": "raro"
+        "raridade": "super_raro"
     },
 
     
@@ -143,7 +145,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/abra.png",
         "sprite_back": "assets/pokemons/abra_back.png",
         "golpes": ["Teletransporte", "Confusao", "Flash", "Psiquico"],
-        "raridade": "raro"
+        "raridade": "super_raro"
     },
     "Machop": {
         "id": 66,
@@ -152,7 +154,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/machop.png",
         "sprite_back": "assets/pokemons/machop_back.png",
         "golpes": ["Golpe de Karate", "Chute Baixo", "Eremesso Sismico", "Focar Energia"],
-        "raridade": "comum"
+        "raridade": "raro"
     },
     "Bellsprout": {
         "id": 69,
@@ -170,7 +172,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/geodude.png",
         "sprite_back": "assets/pokemons/geodude_back.png",
         "golpes": ["Arremesso de Rocha", "Investida", "Magnitude", "Endurecer"],
-        "raridade": "comum"
+        "raridade": "raro"
     },
     "Ponyta": {
         "id": 77,
@@ -179,7 +181,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/ponyta.png",
         "sprite_back": "assets/pokemons/ponyta_back.png",
         "golpes": ["Brasas", "Pisar", "Giro de Fogo", "Ataque Rapido"],
-        "raridade": "comum"
+        "raridade": "raro"
     },
     "Magnemite": {
         "id": 81,
@@ -197,7 +199,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/cubone.png",
         "sprite_back": "assets/pokemons/cubone_back.png",
         "golpes": ["Osso Clube", "Cabecada", "Rosnar", "Bonemerangue"],
-        "raridade": "comum"
+        "raridade": "raro"
     },
     "Koffing": {
         "id": 109,
@@ -206,7 +208,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/koffing.png",
         "sprite_back": "assets/pokemons/koffing_back.png",
         "golpes": ["Poluicao", "Lama", "Investida", "Autodestruicao"],
-        "raridade": "cubone"
+        "raridade": "raro"
     },
     "Lapras": {
         "id": 131,
@@ -215,7 +217,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/lapras.png",
         "sprite_back": "assets/pokemons/lapras_back.png",
         "golpes": ["Jato D'Agua", "Raio de Gelo", "Pancada Corporal", "Canto"],
-        "raridade": "raro"
+        "raridade": "super_raro"
     },
     "Eevee": {
         "id": 133,
@@ -224,7 +226,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/eevee.png",
         "sprite_back": "assets/pokemons/eevee_back.png",
         "golpes": ["Investida", "Ataque de Areia", "Ataque Rapido", "Mordida"],
-        "raridade": "comum"
+        "raridade": "super_raro"
     },
     "Porygon": {
         "id": 137,
@@ -233,7 +235,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/porygon.png",
         "sprite_back": "assets/pokemons/porygon_back.png",
         "golpes": ["Investida", "Conversao", "Psirraio", "Tri-Ataque"],
-        "raridade": "raro"
+        "raridade": "super_raro"
     },
     "Articuno": {
         "id": 144,
