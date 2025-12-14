@@ -1,5 +1,14 @@
 POKEDEX = {
     # --- INICIAIS E ROTA 1 (Dados fornecidos por você) ---
+        "Byte": {
+        "id":   670730110, # Tabela ascii + 0
+        "tipo": "Metal",
+        "stats": (106, 110, 90, 130),
+        "sprite": "assets/pokemons/byte.png",
+        "sprite_back": "assets/pokemons/byte_back.png",
+        "golpes": ["Choque do Trovão", "Investida", "Onda de Trovao", "Autodestruicão"],
+        "raridade": "comum"
+    },
     "Bulbasaur": {
         "id": 1,
         "tipo": "Grama",
