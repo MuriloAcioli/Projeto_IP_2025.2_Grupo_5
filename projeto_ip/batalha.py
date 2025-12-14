@@ -2,7 +2,8 @@ import pygame as pg
 import random
 import os
 from pokemon import Golpe 
-
+from pokedex import POKEDEX
+import math
 # Define o diretório base (onde este arquivo batalha.py está)
 DIRETORIO_BASE = os.path.dirname(os.path.abspath(__file__))
 
@@ -41,6 +42,14 @@ class BatalhaPokemon:
         self.anim_x_enemy = 800   # Começa fora da tela (direita)
         self.target_x_enemy = 400
         
+        # Mudança de pulinho aqui!
+
+        self.offset_y_player = 0
+        self.offset_y_enemy = 0
+        self.atacando = 0
+        self.altura_pulo = 20
+        # -
+
         self.cursor_pos = 0 
         self.max_opcoes = 3 
 
@@ -230,12 +239,49 @@ class BatalhaPokemon:
 
         # Consome item
         self.inventario[tipo_bola] -= 1
-        
-        # Lógica de Chance
-        chance_captura = 50 if tipo_bola == "Pokebola" else 90
+
+        lvl_raridade = {
+            'comum': 1,
+            'raro': 1.5,
+            'super_raro': 2,
+            'lendario': 5
+        }
+
+        raridade = lvl_raridade[POKEDEX[self.enemy_pkmn.nome]['raridade']]  # Assumindo que seja algo tipo 1 a 10
+        hp_atual = self.enemy_pkmn.hp_atual
+        hp_max = self.enemy_pkmn.hp_max
+
+        # 1. Multiplicador da Pokebola
+        # Pokebola = 1x, Grande = 1.5x, Ultra/Outras = 2.0x
+        if tipo_bola == "Pokebola":
+            ball_multiplier = 1.0
+        elif tipo_bola == "Grande Bola":
+            ball_multiplier = 1.5
+        else: # Ultra bola ou Master
+            ball_multiplier = 2.0
+
+        # 2. Fator Vida (0 a 1)
+        # Se a vida está cheia, fator é 0. Se tem 1 de HP, fator é quase 1.
+        fator_vida = 1.0 - (hp_atual / hp_max)
+
+        # 3. Base da Chance (Balanceamento)
+        # Começamos com uma chance fixa (ex: 30%) + bônus pela vida perdida (até +40%)
+        chance_base = 30 + (fator_vida * 40)
+
+        # 4. Cálculo Final
+        # (Base * Bola) - Dificuldade da Raridade
+        # Ex: Raridade 5 tira 25% de chance (5 * 5)
+        dificuldade_raridade = raridade * 5 
+        chance_final = (chance_base * ball_multiplier) - dificuldade_raridade            #     30*0.1 + 35 
+
+        # 5. Limites (Clamping)
+        # Garante que a chance nunca seja menor que 1% nem maior que 100%
+        chance_final = max(1, min(100, int(chance_final)))
+
+        #chance_captura = 50 if tipo_bola == "Pokebola" else 90
         sorteio = random.randint(1, 100)
-        
-        if sorteio <= chance_captura:
+
+        if sorteio <= chance_final:
             self.captura_sucesso = True
         else:
             self.captura_sucesso = False
@@ -264,6 +310,7 @@ class BatalhaPokemon:
         self.timer_espera = pg.time.get_ticks()
 
     def usar_pocao(self):
+        self.atacando = False
         nome_item = 'Poção de Vida'
         qtd = self.inventario.get(nome_item, 0)
         
@@ -279,6 +326,8 @@ class BatalhaPokemon:
             self.mensagem_sistema = "Voce não tem Pocoes!"
 
     def tentar_fugir(self):
+        self.atacando = False
+
         if self.player_pkmn.speed >= self.enemy_pkmn.speed:
             self.battle_over = True
             self.vencedor = "FUGA"
@@ -298,9 +347,17 @@ class BatalhaPokemon:
         if indice >= len(self.player_pkmn.golpes): return
         golpe = self.player_pkmn.golpes[indice]
         
+        # ativar o pulo
+
         dano, msg_efeito = self.calcular_dano(self.player_pkmn, self.enemy_pkmn, golpe)
         self.enemy_pkmn.receber_dano(dano)
         
+
+        porcentagem = dano / self.enemy_pkmn.hp_max
+        altura_calculada = 10 + (porcentagem * 10)
+        self.altura_pulo = min(20, altura_calculada)
+        self.atacando = True
+
         self.mensagem_sistema = f"{self.player_pkmn.nome} usou {golpe.nome}!"
         self.msg_extra = msg_efeito 
         self.estado_atual = "ANIMANDO_PLAYER"
@@ -308,6 +365,7 @@ class BatalhaPokemon:
 
     def contra_ataque_inimigo(self):
         if not self.enemy_pkmn.esta_vivo(): return
+        # aqui do inimigo
 
         if len(self.enemy_pkmn.golpes) > 0:
             golpe = random.choice(self.enemy_pkmn.golpes)
@@ -316,7 +374,13 @@ class BatalhaPokemon:
 
         dano, msg_efeito = self.calcular_dano(self.enemy_pkmn, self.player_pkmn, golpe)
         self.player_pkmn.receber_dano(dano)
-        
+
+        #mesmo calculo
+        porcentagem = dano / self.player_pkmn.hp_max
+        altura_calculada = 10 + (porcentagem * 10)
+        self.altura_pulo = min(20, altura_calculada)
+        self.atacando = True
+
         self.mensagem_sistema = f"Inimigo usou {golpe.nome}!"
         self.msg_extra = msg_efeito
         self.estado_atual = "ANIMANDO_INIMIGO"
@@ -373,6 +437,7 @@ class BatalhaPokemon:
         return multiplicador_final
 
     def calcular_dano(self, atq, defe, golpe):
+        self.atacando = False
         chance = random.randint(1, 100)
         # Se errou pela precisão do golpe
         if chance > golpe.precisao: 
@@ -424,6 +489,26 @@ class BatalhaPokemon:
 
         agora = pg.time.get_ticks()
         
+        # --- LÓGICA DO PULO ---
+        self.offset_y_player = 0
+        self.offset_y_enemy = 0
+        # Só calcula o pulo se estivermos atacando
+        if self.atacando:
+            tempo_decorrido = agora - self.timer_espera
+            duracao_pulo = 300 # O pulo dura 300ms (rápido)
+            altura_pulo = self.altura_pulo   # Pixels que ele sobe
+            
+            if tempo_decorrido < duracao_pulo:
+                # Math.sin cria uma curva (0 -> 1 -> 0) perfeita para pulo
+                fator = math.sin((tempo_decorrido / duracao_pulo) * math.pi)
+                
+                if self.estado_atual == "ANIMANDO_PLAYER":
+                    # Player ataca: ele pula para frente/cima? Ou só cima?
+                    # Vamos fazer ele pular um pouco para frente e para cima
+                    self.offset_y_player = -altura_pulo * fator
+                    
+                elif self.estado_atual == "ANIMANDO_INIMIGO":
+                    self.offset_y_enemy = -altura_pulo * fator
         # --- LÓGICA DE ESTADOS ---
         if self.estado_atual == "ENTRADA_ANIMACAO":
             # Anima entrada
@@ -568,22 +653,21 @@ class BatalhaPokemon:
 
         # --- SPRITES ---
 
+        # Inimigo
         rect_visivel_inimigo = self.enemy_pkmn.image.get_bounding_rect()
         pos_y_real_inimigo = 310 - rect_visivel_inimigo.bottom
-
-        pos_inimigo = (self.anim_x_enemy - 10, pos_y_real_inimigo) 
+        # Adicione + self.offset_y_enemy aqui:
+        pos_inimigo = (self.anim_x_enemy - 10, pos_y_real_inimigo + self.offset_y_enemy) 
         screen.blit(self.enemy_pkmn.image, pos_inimigo)
 
-        # altura da tela é 600 
-
+        # Player
         rect_visivel_player = self.player_pkmn.back_image.get_bounding_rect()
         pos_y_real = 430 - rect_visivel_player.bottom
-        pos_player = (self.anim_x_player, pos_y_real) # !!
-
-        #print(self.player_pkmn.back_image.get_height())
+        # Adicione + self.offset_y_player aqui:
+        pos_player = (self.anim_x_player, pos_y_real + self.offset_y_player + 5 ) 
         screen.blit(self.player_pkmn.back_image, pos_player)
 
-        # --- MENU INFERIOR (AUMENTADO) ---
+        # --- MENU INFERIOR ---
         pg.draw.rect(screen, (30, 30, 80), (0, 430, 800, 170))
         pg.draw.rect(screen, (255, 255, 255), (0, 430, 800, 170), 4)
         
@@ -662,7 +746,6 @@ class BatalhaPokemon:
                     row = i // 2
                     pos_x = x_base_cols + (col * col_spacing)
                     
-                    # CORREÇÃO BUG 3: Ajuste de altura para caber 6 pokémons na tela
                     pos_y = 490 + (row * 30) 
 
                     screen.blit(self.font_big.render(texto_pkmn, True, cor), (pos_x, pos_y))

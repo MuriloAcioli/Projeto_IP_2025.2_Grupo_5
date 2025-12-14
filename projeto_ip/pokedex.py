@@ -2,7 +2,7 @@ POKEDEX = {
     # --- INICIAIS E ROTA 1 (Dados fornecidos por você) ---
         "Byte": {
         "id":   670730110, # Tabela ascii + 0
-        "tipo": "Metal",
+        "tipo": "Aco",
         "stats": (106, 110, 90, 130),
         "sprite": "assets/pokemons/byte.png",
         "sprite_back": "assets/pokemons/byte_back.png",

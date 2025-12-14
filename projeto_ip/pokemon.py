@@ -4,17 +4,9 @@ from pokedex import POKEDEX
 from ataques import GOLPES_DB
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# =============================================================================
-# 1. BANCO DE DADOS (DB)
-# =============================================================================
-
-
-
-
-
 
 # =============================================================================
-# 2. CLASSES DO SISTEMA
+#       CLASSES DO SISTEMA
 # =============================================================================
 
 class Golpe:
@@ -105,7 +97,7 @@ class Pokemon:
         self.hp_atual += (self.hp_max - antigo_hp)
 
 # =============================================================================
-# 3. FÁBRICA
+#  FÁBRICA
 # =============================================================================
 
 def criar_pokemon(nome_especie, nivel):
@@ -128,8 +120,8 @@ def criar_pokemon(nome_especie, nivel):
         tipo=data['tipo'],
         base_stats=data['stats'],
         sprite_path=data['sprite'],
-        sprite_back_path=data['sprite_back'], # <--- Aqui garantimos que passa o caminho
-        golpes=lista_golpes_objs
+        sprite_back_path=data['sprite_back'], 
+        golpes=lista_golpes_objs,
     )
     
     return novo_pkmn
