@@ -55,6 +55,14 @@ class GreatBall(Coletavel):
     def coletar(self, player):
         super().coletar(player)
 
+class Ultraball(Coletavel):
+    def __init__(self, x, y):
+        super().__init__(x, y, "assets/coletaveis/pokeloot_.png", cor_padrao=(0, 0, 200))
+        self.nome_item = "Ultra Bola"
+        
+    def coletar(self, player):
+        super().coletar(player)
+
 class Pocao(Coletavel):
     def __init__(self, x, y):
         super().__init__(x, y, "assets/coletaveis/pokeloot_.png", cor_padrao=(0, 0, 200))

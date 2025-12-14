@@ -5,7 +5,7 @@ import os
 # --- Módulos do Jogo ---
 from player import Player
 from camera import Camera
-from coletaveis import Pokebola, GreatBall, Pocao
+from coletaveis import Pokebola, GreatBall, Pocao, Ultraball
 from inventario import MenuInventario
 from Obstaculo import Obstaculo
 from mato import Mato
@@ -43,8 +43,8 @@ MAPA_MATRIZ = [
     ['T', '.', 'H', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'T', 'G', '.', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', 'U', 'U', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', 'B', '.', 'U', 'U', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', 'T'],
     ['T', '.', '.', 'M', 'M', '.', '.', '.', '.', '.', 'M', 'M', 'T', '.', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', ',', 'T'],
@@ -102,6 +102,8 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
                     grupo_obs.add(npc) # Player colide com NPC
                 except Exception as e:
                     print(f"Erro ao criar NPC: {e}")
+            elif letra == 'U':
+                grupo_col.add(Ultraball(x+15,y+15))
                 
     largura_total = len(mapa[0]) * TILE_SIZE
     altura_total = len(mapa) * TILE_SIZE
