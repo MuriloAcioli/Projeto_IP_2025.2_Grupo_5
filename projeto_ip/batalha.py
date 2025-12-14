@@ -53,6 +53,41 @@ class BatalhaPokemon:
         self.cursor_pos = 0 
         self.max_opcoes = 3 
 
+        try:
+            path_balls = os.path.join(DIRETORIO_BASE, "assets/coletaveis/pokebolas.png")
+            sheet_balls = pg.image.load(path_balls).convert_alpha()
+            # Recorta as bolas ( x=0, x=11, x=23 | w=12, h=12)
+            # Escalamos para 32x32 para ficar visível na tela
+            scale_size = (48, 48)
+            
+            self.sprites_balls = {}
+            # Pokebola (0,0)
+            img = sheet_balls.subsurface((0, 0, 12, 12))
+            self.sprites_balls['Pokebola'] = pg.transform.scale(img, scale_size)
+            
+            # Grande Bola (11,0)
+            img = sheet_balls.subsurface((12, 0, 12, 12))
+            self.sprites_balls['Grande Bola'] = pg.transform.scale(img, scale_size)
+            
+            # Ultra Ball (23,0)
+            img = sheet_balls.subsurface((24, 0, 12, 12)) 
+            self.sprites_balls['Ultra Ball'] = pg.transform.scale(img, scale_size)
+            
+        except Exception as e:
+            print(f"Erro ao carregar bolas: {e}")
+            self.sprites_balls = {}
+
+        # --- VARIÁVEIS DA ANIMAÇÃO DA BOLA ---
+        self.anim_bola_ativa = False
+        self.bola_img_atual = None
+        self.bola_pos = (0, 0)
+        self.bola_rotacao = 0
+        self.bola_start_time = 0
+        self.bola_tipo_atual = ""
+        self.bola_cor_filtro = None # Vai ser (255, 255, 0) ou (50, 50, 50)
+        self.bola_pos_alvo = (0, 0) # <
+        # -------------------------------------
+
         # --- CARREGAMENTO DO BACKGROUND ---
         caminho_bg = os.path.join(DIRETORIO_BASE, "assets", "backgrounds", "battle_bg.jpg")
         
@@ -189,7 +224,11 @@ class BatalhaPokemon:
             elif self.cursor_pos == 1: # BAG
                 self.estado_atual = "MENU_MOCHILA"
                 self.cursor_pos = 0
-                self.itens_mochila = ["Trocar Pokemon"] + list(self.inventario.keys())        
+                self.itens_mochila = ["Trocar Pokemon"]      
+                for item in list(self.inventario.keys()):
+                    if self.inventario[item] > 0:
+                        self.itens_mochila.append(item)
+
                 self.max_opcoes = len(self.itens_mochila)
                 self.mensagem_sistema = "Mochila:"
                             
@@ -215,7 +254,7 @@ class BatalhaPokemon:
                 if "Poção" in item_escolhido or "Potion" in item_escolhido:
                     self.usar_pocao(item_escolhido) # Passamos o nome exato agora
                 
-                elif "Bola" in item_escolhido or "Ball" in item_escolhido:
+                elif "Bola" in item_escolhido or "bola" in item_escolhido:
                     self.tentar_capturar(item_escolhido) # Passamos o nome exato
                 
                 else:
@@ -295,12 +334,19 @@ class BatalhaPokemon:
             quebra = random.choice(["falhou","quebrou","torou","fracassou","pifou","espatifou"])
             self.msg_falha_captura = f"{exclamacao}! A {tipo_bola} {quebra}!"
 
-
-        # Inicia o suspense (delay)
-        self.mensagem_sistema = f"Jogou {tipo_bola}..."
-        self.estado_atual = "AGUARDANDO_CAPTURA"
-        self.timer_espera = pg.time.get_ticks()
-
+        # animação vai começar daqui:
+        self.bola_tipo_atual = tipo_bola
+        key_img = tipo_bola
+        if "Poke" in tipo_bola: key_img = "Pokebola"
+        elif "Grande" in tipo_bola: key_img = "Grande Bola"
+        elif "Ultra" in tipo_bola: key_img = "Ultra Ball"
+            
+        self.bola_img_atual = self.sprites_balls.get(key_img, self.sprites_balls.get('Pokebola'))
+        
+        self.mensagem_sistema = f"Jogou {tipo_bola}!"
+        self.estado_atual = "ANIMACAO_BOLA_JOGADA" # Novo Estado -> aguardando captura antigo
+        self.bola_start_time = pg.time.get_ticks()
+        self.bola_cor_filtro = None # Reseta cor
     def realizar_troca(self, novo_pkmn):
         self.player_pkmn = novo_pkmn
         self.visual_hp_player = float(self.player_pkmn.hp_atual)
@@ -481,7 +527,13 @@ class BatalhaPokemon:
             dano_final = max(1, dano_final)
             
         return dano_final, msg
-
+    
+    def get_bezier_pos(self, t, p0, p1, p2):
+        # Fórmula de Bézier Quadrática: (1-t)²P0 + 2(1-t)tP1 + t²P2 (bizarro kkkk)
+        x = (1-t)**2 * p0[0] + 2*(1-t)*t * p1[0] + t**2 * p2[0]
+        y = (1-t)**2 * p0[1] + 2*(1-t)*t * p1[1] + t**2 * p2[1]
+        return (x, y)
+    
     def desenhar(self, screen):
         # --- DESENHO DO FUNDO ---
         if self.bg_batalha:
@@ -667,18 +719,25 @@ class BatalhaPokemon:
             pg.draw.rect(screen, cor_player, (600, 375, int(150 * pct_player), 15))
 
         # --- SPRITES ---
+        # Condição para esconder o inimigo durante a captura
+        estados_escondido = ["ANIMACAO_BOLA_CHECK", "ANIMACAO_BOLA_RESULTADO"]
+        inimigo_visivel = True
+        if self.estado_atual in estados_escondido:
+            inimigo_visivel = False
+            
+        if self.estado_atual == "FIM_BATALHA" and self.vencedor == "CAPTURA":
+            inimigo_visivel = False
 
-        # Inimigo
-        rect_visivel_inimigo = self.enemy_pkmn.image.get_bounding_rect()
-        pos_y_real_inimigo = 310 - rect_visivel_inimigo.bottom
-        # Adicione + self.offset_y_enemy aqui:
-        pos_inimigo = (self.anim_x_enemy - 10, pos_y_real_inimigo + self.offset_y_enemy) 
-        screen.blit(self.enemy_pkmn.image, pos_inimigo)
+        if inimigo_visivel:
+            # Inimigo
+            rect_visivel_inimigo = self.enemy_pkmn.image.get_bounding_rect()
+            pos_y_real_inimigo = 310 - rect_visivel_inimigo.bottom
+            pos_inimigo = (self.anim_x_enemy - 10, pos_y_real_inimigo + self.offset_y_enemy) 
+            screen.blit(self.enemy_pkmn.image, pos_inimigo)
 
         # Player
         rect_visivel_player = self.player_pkmn.back_image.get_bounding_rect()
         pos_y_real = 430 - rect_visivel_player.bottom
-        # Adicione + self.offset_y_player aqui:
         pos_player = (self.anim_x_player, pos_y_real + self.offset_y_player ) 
         screen.blit(self.player_pkmn.back_image, pos_player)
 
@@ -762,6 +821,94 @@ class BatalhaPokemon:
                     pos_y = 490 + (row * 30) 
 
                     screen.blit(self.font_big.render(texto_pkmn, True, cor), (pos_x, pos_y))
-        
+
+            elif self.estado_atual == "ANIMACAO_BOLA_JOGADA":
+                # ... (código de tempo e cálculo da parábola igual ao anterior) ...
+                tempo_total = 1000
+                t = (agora - self.bola_start_time) / tempo_total
+                
+                # Cálculo do alvo (Mantém igual para garantir precisão)
+                rect_inimigo = self.enemy_pkmn.image.get_bounding_rect()
+                alvo_x = (self.anim_x_enemy - 10) + rect_inimigo.centerx
+                self.bola_pos_alvo = (alvo_x, 285)
+
+                if t > 1.0: 
+                    t = 1.0
+                    # MUDANÇA: Agora vai para o CHECK, não para o RESULTADO direto
+                    self.estado_atual = "ANIMACAO_BOLA_CHECK"
+                    self.bola_start_time = agora
+                    self.mensagem_sistema = "..." # Suspense
+                
+                # ... (cálculo de Bézier e desenho da bola rotacionando igual) ...
+                p0 = (self.anim_x_player + 50, 400)      
+                p2 = self.bola_pos_alvo                   
+                p1 = ((p0[0] + p2[0]) / 2, p2[1] - 250)  
+                pos_atual = self.get_bezier_pos(t, p0, p1, p2)
+                
+                if self.bola_img_atual:
+                    angulo = t * 1080 * -1
+                    img_rot = pg.transform.rotate(self.bola_img_atual, angulo)
+                    rect_rot = img_rot.get_rect(center=pos_atual)
+                    screen.blit(img_rot, rect_rot)
+
+            # --- NOVO ESTADO: CHECK (O POKEMON SUMIU, BOLA PARADA/TREMENDO) ---
+            elif self.estado_atual == "ANIMACAO_BOLA_CHECK":
+                pos_final = self.bola_pos_alvo
+                
+                # Efeito de TREMEDEIRA simples
+                shake_x = 0
+                if (agora // 100) % 2 == 0: # A cada 100ms muda
+                    shake_x = random.choice([-2, 2, 0])
+                    
+                pos_com_shake = (pos_final[0] + shake_x, pos_final[1])
+                
+                if self.bola_img_atual:
+                    # Desenha a bola NORMAL (sem cor ainda)
+                    rect_final = self.bola_img_atual.get_rect(center=pos_com_shake)
+                    screen.blit(self.bola_img_atual, rect_final)
+                
+                # Espera 1.5 segundos de suspense
+                if agora - self.bola_start_time > 1500:
+                    self.estado_atual = "ANIMACAO_BOLA_RESULTADO"
+                    self.bola_start_time = agora
+                    
+                    # Agora sim define a cor e mensagem final
+                    if self.captura_sucesso:
+                        self.bola_cor_filtro = (255, 255, 0) # Amarelo
+                        self.mensagem_sistema = "GOTCHA!"
+                    else:
+                        self.bola_cor_filtro = (50, 50, 50) # Cinza/Preto (falha)
+                        self.mensagem_sistema = "Ah não! Escapou!"
+
+            # --- ESTADO FINAL: MOSTRA A COR E RESOLVE ---
+            elif self.estado_atual == "ANIMACAO_BOLA_RESULTADO":
+                pos_final = self.bola_pos_alvo
+                
+                if self.bola_img_atual:
+                    img_final = self.bola_img_atual.copy()
+                    
+                    # Aplica a COR
+                    if self.bola_cor_filtro:
+                        filtro = pg.Surface(img_final.get_size()).convert_alpha()
+                        filtro.fill(self.bola_cor_filtro)
+                        img_final.blit(filtro, (0,0), special_flags=pg.BLEND_MULT)
+
+                    rect_final = img_final.get_rect(center=pos_final)
+                    screen.blit(img_final, rect_final)
+                
+                # Espera 1 segundo mostrando o resultado (luz amarela ou vermelha)
+                if agora - self.bola_start_time > 1000:
+                    if self.captura_sucesso:
+                        self.equipe.append(self.enemy_pkmn)
+                        self.battle_over = True
+                        self.vencedor = "CAPTURA"
+                        self.estado_atual = "FIM_BATALHA"
+                    else:
+                        # Falha: O estado muda para ANIMANDO_PLAYER
+                        # Isso fará o inimigo voltar a ser desenhado (pois sai da lista 'estados_escondido')
+                        self.estado_atual = "ANIMANDO_PLAYER"
+                        self.timer_espera = agora
+                        self.msg_extra = self.msg_falha_captura
+
         elif self.battle_over and self.estado_atual != "LEVEL_UP":
              screen.blit(self.font_msg.render("Pressione ESPACO para sair", True, (255, 255, 255)), (30, 540))
