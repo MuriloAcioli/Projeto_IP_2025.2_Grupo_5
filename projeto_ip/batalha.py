@@ -189,11 +189,12 @@ class BatalhaPokemon:
             elif self.cursor_pos == 1: # BAG
                 self.estado_atual = "MENU_MOCHILA"
                 self.cursor_pos = 0
-                self.max_opcoes = 4 
+                self.itens_mochila = ["Trocar Pokemon"] + list(self.inventario.keys())        
+                self.max_opcoes = len(self.itens_mochila)
                 self.mensagem_sistema = "Mochila:"
-            
+                            
             elif self.cursor_pos == 2: # FUGIR
-                self.tentar_fugir()
+                    self.tentar_fugir()
 
         # --- MENU GOLPES ---
         elif self.estado_atual == "MENU_GOLPES":
@@ -201,17 +202,24 @@ class BatalhaPokemon:
 
         # --- MENU MOCHILA ---
         elif self.estado_atual == "MENU_MOCHILA":
-            if self.cursor_pos == 0: # Trocar
+            item_escolhido = self.itens_mochila[self.cursor_pos]
+
+            if item_escolhido == "Trocar Pokemon":
                 self.estado_atual = "MENU_TROCA"
                 self.cursor_pos = 0
                 self.max_opcoes = len(self.equipe)
                 self.mensagem_sistema = "Escolha um Pokemon:"
-            elif self.cursor_pos == 1: # Poção
-                self.usar_pocao()
-            elif self.cursor_pos == 2: # Pokebola
-                self.tentar_capturar("Pokebola")
-            elif self.cursor_pos == 3: # Grande Bola
-                self.tentar_capturar("Grande Bola")
+            
+            else:
+                # Lógica Genérica: Verifica o nome do item para saber o que fazer
+                if "Poção" in item_escolhido or "Potion" in item_escolhido:
+                    self.usar_pocao(item_escolhido) # Passamos o nome exato agora
+                
+                elif "Bola" in item_escolhido or "Ball" in item_escolhido:
+                    self.tentar_capturar(item_escolhido) # Passamos o nome exato
+                
+                else:
+                    self.mensagem_sistema = "Não pode usar isso agora!"
 
         # --- MENU TROCA ---
         elif self.estado_atual == "MENU_TROCA":
@@ -253,12 +261,10 @@ class BatalhaPokemon:
 
         # 1. Multiplicador da Pokebola
         # Pokebola = 1x, Grande = 1.5x, Ultra/Outras = 2.0x
-        if tipo_bola == "Pokebola":
-            ball_multiplier = 1.0
-        elif tipo_bola == "Grande Bola":
-            ball_multiplier = 1.5
-        else: # Ultra bola ou Master
-            ball_multiplier = 2.0
+        if "Pokebola" in tipo_bola: ball_multiplier = 1.0
+        elif "Grande" in tipo_bola: ball_multiplier = 1.5
+        elif "Ultra" in tipo_bola:  ball_multiplier = 2
+        else: ball_multiplier = 1.4
 
         # 2. Fator Vida (0 a 1)
         # Se a vida está cheia, fator é 0. Se tem 1 de HP, fator é quase 1.
@@ -285,10 +291,10 @@ class BatalhaPokemon:
             self.captura_sucesso = True
         else:
             self.captura_sucesso = False
-            if tipo_bola == "Pokebola":
-                self.msg_falha_captura = "Droga! A Pokebola quebrou!"
-            else:
-                self.msg_falha_captura = "Quase! A Grande Bola falhou!"
+            exclamacao = random.choice(["Droga!","Poxa","Quase!","Caramba!","Puts!"])
+            quebra = random.choice(["falhou","quebrou","torou","fracassou","pifou","espatifou"])
+            self.msg_falha_captura = f"{exclamacao}! A {tipo_bola} {quebra}!"
+
 
         # Inicia o suspense (delay)
         self.mensagem_sistema = f"Jogou {tipo_bola}..."
@@ -309,21 +315,30 @@ class BatalhaPokemon:
         self.estado_atual = "TROCA_ANIMACAO"
         self.timer_espera = pg.time.get_ticks()
 
-    def usar_pocao(self):
-        self.atacando = False
-        nome_item = 'Poção de Vida'
+    def usar_pocao(self, nome_item):
         qtd = self.inventario.get(nome_item, 0)
         
         if qtd > 0:
             self.inventario[nome_item] -= 1
+            
+            # Define cura baseada no nome
             cura = 20
+            if "Super" in nome_item: cura = 50
+            if "Hyper" in nome_item: cura = 200
+            
             self.player_pkmn.hp_atual = min(self.player_pkmn.hp_max, self.player_pkmn.hp_atual + cura)
-            self.mensagem_sistema = f"Usou Poção! +{cura} HP."
+            
+            # ATUALIZA O VISUAL: Importante para barra de vida subir
+            # (Se quiser animação lenta, deixe sem essa linha, mas a barra vai demorar pra atualizar visualmente)
+            # self.visual_hp_player = self.player_pkmn.hp_atual 
+            
+            self.mensagem_sistema = f"Usou {nome_item}! +{cura} HP."
             self.msg_extra = "" 
             self.estado_atual = "ANIMANDO_PLAYER" 
+            self.atacando = False # Garante que não pula bebendo poção
             self.timer_espera = pg.time.get_ticks()
         else:
-            self.mensagem_sistema = "Voce não tem Pocoes!"
+            self.mensagem_sistema = f"Sem {nome_item}!"
 
     def tentar_fugir(self):
         self.atacando = False
@@ -664,7 +679,7 @@ class BatalhaPokemon:
         rect_visivel_player = self.player_pkmn.back_image.get_bounding_rect()
         pos_y_real = 430 - rect_visivel_player.bottom
         # Adicione + self.offset_y_player aqui:
-        pos_player = (self.anim_x_player, pos_y_real + self.offset_y_player + 5 ) 
+        pos_player = (self.anim_x_player, pos_y_real + self.offset_y_player ) 
         screen.blit(self.player_pkmn.back_image, pos_player)
 
         # --- MENU INFERIOR ---
@@ -698,35 +713,33 @@ class BatalhaPokemon:
                     col = i % 2
                     row = i // 2
                     pos_x = x_base_cols + (col * col_spacing)
-                    pos_y = y_base + (row * 30)
+                    pos_y = y_base + (row * 30) - 25
                     
                     screen.blit(self.font_big.render(prefixo + golpe.nome, True, cor), (pos_x, pos_y))
 
             elif self.estado_atual == "MENU_MOCHILA":
-                q_pocao = self.inventario.get('Poção de Vida', 0)
-                q_poke = self.inventario.get('Pokebola', 0)
-                q_great = self.inventario.get('Grande Bola', 0)
-
-                opcoes_bag = [
-                    "Trocar Pokemon", 
-                    f"Usar Poção ({q_pocao})", 
-                    f"Pokebola ({q_poke})", 
-                    f"Grande Bola ({q_great})"
-                ]
-                
                 x_base_cols = 50
                 col_spacing = 400
                 
-                for i, op in enumerate(opcoes_bag):
+                # Percorre a lista que criamos lá atrás
+                for i, nome_item in enumerate(self.itens_mochila):
                     cor = cor_select if i == self.cursor_pos else cor_padrao
                     prefixo = "> " if i == self.cursor_pos else "   "
                     
+                    texto_final = nome_item
+                    
+                    # Se NÃO for "Trocar Pokemon", mostra a quantidade
+                    if i > 0: # O item 0 é sempre a troca
+                        qtd = self.inventario.get(nome_item, 0)
+                        texto_final = f"{nome_item} x{qtd}"
+
+                    # Lógica de colunas (igual antes)
                     col = i % 2
                     row = i // 2
                     pos_x = x_base_cols + (col * col_spacing)
-                    pos_y = y_base + (row * 30)
+                    pos_y = y_base + (row * 30) - 25
                     
-                    screen.blit(self.font_big.render(prefixo + op, True, cor), (pos_x, pos_y))
+                    screen.blit(self.font_big.render(prefixo + texto_final, True, cor), (pos_x, pos_y))
 
             elif self.estado_atual == "MENU_TROCA":
                 x_base_cols = 50
