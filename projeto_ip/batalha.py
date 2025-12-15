@@ -12,7 +12,14 @@ class BatalhaPokemon:
         # Garante que equipe seja uma lista
         if isinstance(player_data, list):
             self.equipe = player_data
-            self.player_pkmn = player_data[0] 
+            indice_poke_escolhido = 0
+            
+            for pokemon in player_data:
+                if pokemon.hp_atual > 0:
+                    indice_poke_escolhido = player_data.index(pokemon)
+                    break
+             
+            self.player_pkmn = player_data[indice_poke_escolhido] 
         else:
             self.equipe = [player_data]
             self.player_pkmn = player_data

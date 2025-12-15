@@ -127,7 +127,9 @@ class MenuInventario:
 
         # === OPÇÕES (USAR / DESCARTAR) ===
         elif self.estado_atual == ESTADO_OPCOES_ITEM:
-            eh_pocao = "Pocao" in self.item_focado or "Potion" in self.item_focado
+            lower_item = self.item_focado.lower()
+            eh_pocao = "Pocao" in lower_item or "poção" in lower_item
+
             opcoes_disponiveis = ["DESCARTAR"]
             if eh_pocao:
                 opcoes_disponiveis = ["USAR", "DESCARTAR"]
@@ -148,6 +150,7 @@ class MenuInventario:
                         inventario_do_player[self.item_focado] -= 1
                         if inventario_do_player[self.item_focado] <= 0:
                             del inventario_do_player[self.item_focado]
+                            self.index_lista_itens -= 1
                     self.estado_atual = ESTADO_LISTA_ITENS 
                 
                 elif acao_escolhida == "USAR":
@@ -173,29 +176,40 @@ class MenuInventario:
                 
                 # USAR A POÇÃO
                 elif tecla == pg.K_RETURN or tecla == pg.K_SPACE:
-                    
                     if self.item_focado not in inventario_do_player:
-                        self.mostrar_mensagem("Acabaram os itens!")
+                        self.mostrar_mensagem("Item inexistente!")
                         return None
 
                     pokemon_alvo = equipe_jogador[self.index_pokemon]
+                    
+                    # CORREÇÃO 2: Garantir que os atributos existem (Debug)
+                    if not hasattr(pokemon_alvo, 'hp_atual'):
+                        print("ERRO: Pokemon não tem atributo hp_atual")
+                        return None
+
                     vida_atual = pokemon_alvo.hp_atual
                     vida_max = pokemon_alvo.hp_max
                     
                     if vida_atual >= vida_max:
-                        self.mostrar_mensagem("Isso nao tera efeito!") 
+                        self.mostrar_mensagem("Vida ja esta cheia!") 
                     else:
-                        cura = 5
+                        # CORREÇÃO 3: Cura baseada no nome do item
+                        cura = 20
+                        if "Super" in self.item_focado: cura = 50
+                        if "Hyper" in self.item_focado: cura = 200
+                        
                         pokemon_alvo.hp_atual += cura
                         if pokemon_alvo.hp_atual > vida_max:
                             pokemon_alvo.hp_atual = vida_max
                         
+                        # Consome o item
                         inventario_do_player[self.item_focado] -= 1
-                        
                         if inventario_do_player[self.item_focado] <= 0:
                             del inventario_do_player[self.item_focado]
+                            # Se acabou o item, volta para a lista para evitar erro
+                            self.estado_atual = ESTADO_LISTA_ITENS 
                             
-                        self.mostrar_mensagem(f"Recuperou {cura} HP!") 
+                        self.mostrar_mensagem(f"{pokemon_alvo.nome}: Recuperou {cura} HP!")
 
         return None
 
@@ -295,7 +309,7 @@ class MenuInventario:
             rect_pop = pg.Rect(cx, cy, 150, 120)
             self.desenhar_caixa_gb(tela, rect_pop)
             
-            eh_pocao = "Pocao" in self.item_focado or "Potion" in self.item_focado
+            eh_pocao = "Pocao" in self.item_focado or "Poção" in self.item_focado
             opcoes_disp = ["DESCARTAR"]
             if eh_pocao:
                 opcoes_disp = ["USAR", "DESCARTAR"]
