@@ -8,6 +8,7 @@ ESTADO_LISTA_ITENS = 1
 ESTADO_OPCOES_ITEM = 2
 ESTADO_ESCOLHER_POKEMON = 3
 ESTADO_MENSAGEM = 4  
+ESTADO_TROCAR_POKEMON = 5
 
 class MenuInventario:
     def __init__(self):
@@ -31,6 +32,7 @@ class MenuInventario:
         self.index_lista_itens = 0
         self.index_opcoes = 0 
         self.index_pokemon = 0
+        self.poke_troca_origem = -1
         self.item_focado = None 
         
         self.texto_mensagem = ""
@@ -64,17 +66,46 @@ class MenuInventario:
         # === MENU PRINCIPAL ===
         if self.estado_atual == ESTADO_MENU_PRINCIPAL:
             if tecla == pg.K_w or tecla == pg.K_UP:
-                self.index_menu_principal = 0 
+                self.index_menu_principal -= 1
+                if self.index_menu_principal < 0:
+                    self.index_menu_principal = 2
             elif tecla == pg.K_s or tecla == pg.K_DOWN:
-                self.index_menu_principal = 1 
+                self.index_menu_principal += 1 
+                if self.index_menu_principal > 2:
+                    self.index_menu_principal = 0
             elif tecla == pg.K_RETURN or tecla == pg.K_SPACE:
                 if self.index_menu_principal == 0: 
                     self.estado_atual = ESTADO_LISTA_ITENS
                     self.index_lista_itens = 0
+                elif self.index_menu_principal == 1:
+                    self.estado_atual = ESTADO_TROCAR_POKEMON
+                    self.index_pokemon = 0
+                    self.poke_troca_origem = -1
                 else: 
                     self.alternar()
             elif tecla == pg.K_ESCAPE:
                 self.alternar()
+
+        #troca de pokemons
+        elif self.estado_atual == ESTADO_TROCAR_POKEMON:
+            if tecla == pg.K_ESCAPE:
+                self.estado_atual = ESTADO_MENU_PRINCIPAL 
+            if len(equipe_jogador) > 1:
+                if tecla == pg.K_w or tecla == pg.K_UP:
+                    self.index_pokemon -= 1
+                    if self.index_pokemon < 0: self.index_pokemon = len(equipe_jogador) - 1
+                elif tecla == pg.K_s or tecla == pg.K_DOWN:
+                    self.index_pokemon += 1
+                    if self.index_pokemon >= len(equipe_jogador): self.index_pokemon = 0
+                elif tecla == pg.K_RETURN or tecla == pg.K_SPACE:
+                    if self.poke_troca_origem == -1:
+                        self.poke_troca_origem = self.index_pokemon
+                    else:
+                        if self.poke_troca_origem != self.index_pokemon:
+                            equipe_jogador[self.poke_troca_origem], equipe_jogador[self.index_pokemon] = equipe_jogador[self.index_pokemon], equipe_jogador[self.poke_troca_origem]
+                        self.poke_troca_origem = -1    
+
+
 
         # === LISTA DE ITENS ===
         elif self.estado_atual == ESTADO_LISTA_ITENS:
@@ -219,7 +250,7 @@ class MenuInventario:
             x_texto = rect_menu.x + 30
             y_atual = rect_menu.y + 40
             
-            opcoes = ["ITEM", "SAIR"]
+            opcoes = ["ITEM", "POKÉMONS", "SAIR"]
             for i, opcao in enumerate(opcoes):
                 if i == self.index_menu_principal:
                     self.desenhar_cursor(tela, x_texto - 15, y_atual + 5)
@@ -277,25 +308,34 @@ class MenuInventario:
                 py += 35
 
         # === ESCOLHER POKEMON ===
-        if self.estado_atual == ESTADO_ESCOLHER_POKEMON or (self.estado_atual == ESTADO_MENSAGEM and self.estado_anterior_mensagem == ESTADO_ESCOLHER_POKEMON):
-            
-            # REMOVIDO: pg.draw.rect(tela, self.COR_BRANCO, (0, 0, screen_w, screen_h)) 
-            # AGORA O FUNDO SERÁ O JOGO (TRANSPARENTE FORA DA CAIXA)
+        if self.estado_atual == ESTADO_ESCOLHER_POKEMON or (self.estado_atual == ESTADO_MENSAGEM and self.estado_anterior_mensagem == ESTADO_ESCOLHER_POKEMON) or self.estado_atual == ESTADO_TROCAR_POKEMON:
+
+            titulo = "USAR EM QUEM?"
+            if self.estado_atual == ESTADO_TROCAR_POKEMON:
+                titulo = "TROCAR QUAIS POKÉMONS?"
             
             rect_poke = pg.Rect(20, 20, screen_w - 40, screen_h - 160)
             self.desenhar_caixa_gb(tela, rect_poke)
             
-            tela.blit(self.fonte.render("USAR EM QUEM?", True, self.COR_PRETO), (rect_poke.x + 20, rect_poke.y + 20))
+            tela.blit(self.fonte.render(titulo, True, self.COR_PRETO), (rect_poke.x + 20, rect_poke.y + 20))
             
             y_base = rect_poke.y + 60
             for i, poke in enumerate(equipe_jogador):
                 x_base = rect_poke.x + 40
                 
+                cor_texto = self.COR_PRETO
+                if self.estado_atual == ESTADO_TROCAR_POKEMON and self.poke_troca_origem == i:
+                    cor_texto = (200, 50, 50)  #vermelho para o pokemon selecionado para trok
+
+
+
+
+                
                 if self.index_pokemon == i:
                     self.desenhar_cursor(tela, x_base - 20, y_base + 10)
                 
                 nome = getattr(poke, 'nome', 'Pokemon').upper()
-                tela.blit(self.fonte.render(nome, True, self.COR_PRETO), (x_base, y_base))
+                tela.blit(self.fonte.render(nome, True, cor_texto), (x_base, y_base))
                 
                 v_atual = poke.hp_atual
                 v_max = poke.hp_max
