@@ -25,6 +25,7 @@ class MenuInventario:
         self.COR_PRETO = (8, 8, 8)        
         self.COR_VERDE_HP = (80, 200, 120)
         self.COR_CINZA_BARRA = (200, 200, 200)
+        self.COR_LARANJA_CLARO = (255,  219, 187)
 
         # Variáveis de Controle
         self.estado_atual = ESTADO_MENU_PRINCIPAL
@@ -217,7 +218,7 @@ class MenuInventario:
 
     def desenhar_caixa_gb(self, tela, rect):
         """Desenha caixa branca com borda preta grossa"""
-        pg.draw.rect(tela, self.COR_BRANCO, rect)
+        pg.draw.rect(tela, self.COR_LARANJA_CLARO, rect)
         pg.draw.rect(tela, self.COR_PRETO, rect, width=4)
         pg.draw.line(tela, self.COR_PRETO, (rect.left+4, rect.top+4), (rect.right-4, rect.top+4), 1)
         pg.draw.line(tela, self.COR_PRETO, (rect.left+4, rect.bottom-4), (rect.right-4, rect.bottom-4), 1)
@@ -297,10 +298,11 @@ class MenuInventario:
                     texto = f"{nome.upper()}"
                     texto_qtd = f"x{qtd}"
                     
-                    tela.blit(self.fonte.render(texto, True, self.COR_PRETO), (x_texto, y_atual))
-                    tela.blit(self.fonte.render(texto_qtd, True, self.COR_PRETO), (x_texto + 220, y_atual))
-                    
-                    y_atual += 40
+
+                    if qtd > 0:
+                        tela.blit(self.fonte.render(texto, True, self.COR_PRETO), (x_texto, y_atual))
+                        tela.blit(self.fonte.render(texto_qtd, True, self.COR_PRETO), (x_texto + 220, y_atual))
+                        y_atual += 40
 
         # === POP-UP DE AÇÕES ===
         if self.estado_atual == ESTADO_OPCOES_ITEM:

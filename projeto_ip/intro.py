@@ -1,7 +1,7 @@
 import pygame as pg
 import os
 import random
-
+import math
 # =============================================================================
 # CONFIGURAÇÕES LOCAIS
 # =============================================================================
@@ -359,12 +359,19 @@ def escolher_pokemon(screen, clock):
         bg.fill((200, 200, 200))
         
     # Imagem da Pokébola
-    try:
-        pokebola_img = pg.image.load(os.path.join(DIRETORIO_BASE, "assets/coletaveis/pokebola2.png")).convert_alpha()
-        pokebola_img = pg.transform.scale(pokebola_img, (64, 64))
-    except:
-        pokebola_img = pg.Surface((64, 64))
-        pokebola_img.fill((200, 0, 0))
+
+    path_balls = os.path.join(DIRETORIO_BASE, "assets/coletaveis/pokebolas.png")
+    sheet_balls = pg.image.load(path_balls).convert_alpha()
+            # Recorta as bolas ( x=0, x=11, x=23 | w=12, h=12)
+            # Escalamos para 32x32 para ficar visível na tela
+    scale_size = (48, 48)
+            
+
+    pokebola_img = sheet_balls.subsurface((0, 0, 12, 12))
+
+    pokebola_img = pg.transform.scale(pokebola_img, (42, 42))
+ 
+ 
 
     # Dados dos Iniciais
     iniciais = [
@@ -436,10 +443,13 @@ def escolher_pokemon(screen, clock):
                 p = iniciais[i]
                 
                 # Sprite pulando levemente (Animação simples)
-                offset_y = -130 + (pg.time.get_ticks() % 1000) // 50 if i == selecionado else -130
+                tempo = pg.time.get_ticks()
+                #    tempo * velocidade ) * amplitude                                        
+                flutuacao = math.sin(tempo * 0.003) * 10
+                offset_y = -130 + flutuacao
                 # Vamos simplificar: fixo em cima
                 
-                rect_sprite = p["sprite"].get_rect(center=(pos_x, y_bolas - 140))
+                rect_sprite = p["sprite"].get_rect(center=(pos_x, y_bolas + offset_y))
                 screen.blit(p["sprite"], rect_sprite)
                 
                 # Nome do Pokémon
@@ -454,9 +464,9 @@ def escolher_pokemon(screen, clock):
                 
                 # Seta indicadora na Pokébola
                 pg.draw.polygon(screen, (255, 255, 0), [
-                    (rect_bola.centerx - 10, rect_bola.top - 10),
-                    (rect_bola.centerx + 10, rect_bola.top - 10),
-                    (rect_bola.centerx, rect_bola.top)
+                    (rect_bola.centerx - 10, rect_bola.top - 20),
+                    (rect_bola.centerx + 10, rect_bola.top - 20),
+                    (rect_bola.centerx, rect_bola.top - 10)
                 ])
 
         pg.display.flip()
