@@ -111,9 +111,10 @@ class MenuInventario:
         # === LISTA DE ITENS ===
         elif self.estado_atual == ESTADO_LISTA_ITENS:
             lista_nomes = list(inventario_do_player.keys())
+            if self.index_lista_itens >= len(lista_nomes):
+                self.index_lista_itens = max(0, len(lista_nomes) - 1)
             if tecla == pg.K_ESCAPE:
                 self.estado_atual = ESTADO_MENU_PRINCIPAL 
-            
             if len(lista_nomes) > 0:
                 if tecla == pg.K_w or tecla == pg.K_UP:
                     self.index_lista_itens -= 1
