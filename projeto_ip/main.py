@@ -25,6 +25,7 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 TILE_SIZE = 48 
 FPS = 60
+primeiro_encontro = True
 
 lista_pokemons_disponiveis =  list(POKEDEX.keys())
 lista_pokemons_comuns = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "comum"]
@@ -361,8 +362,11 @@ while running:
                             lvl_chao = 50
                             lvl_teto = 50
                             pokemon_random = random.choice(lista_pokemons_lendarios)
-                        
-                        inimigo_pokemon = criar_pokemon(pokemon_random, random.randint(lvl_chao, lvl_teto))
+                        if primeiro_encontro:
+                            inimigo_pokemon = criar_pokemon("Byte", random.randint(lvl_chao, lvl_teto))
+                            primeiro_encontro = False
+                        else: 
+                            inimigo_pokemon = criar_pokemon(pokemon_random, random.randint(lvl_chao, lvl_teto))
                         
                         inv_batalha = {'Poção': 5, 'Pokebola': 5}
                         try:
