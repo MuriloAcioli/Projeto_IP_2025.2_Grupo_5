@@ -7,7 +7,7 @@ from player import Player
 from camera import Camera
 from coletaveis import Pokebola, GreatBall, Pocao, Ultraball
 from inventario import MenuInventario
-from obstaculo import Obstaculo
+from Obstaculo import Obstaculo
 from mato import Mato
 from pokemon import Pokemon, criar_pokemon 
 from batalha import BatalhaPokemon
@@ -29,8 +29,8 @@ FPS = 60
 primeiro_encontro = True
 
 som_ativo = True
-volume_padrao = 0.5 # volume padrão é 0.5
-VOLUME_PADRAO = 0.5 # volume padrão é 0.5
+volume_padrao = 0.5 
+VOLUME_PADRAO = 0.5 
 
 lista_pokemons_disponiveis =  list(POKEDEX.keys())
 lista_pokemons_comuns = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "comum"]
@@ -43,13 +43,13 @@ lista_pokemons_lendarios = [nome for nome, dados in POKEDEX.items() if dados.get
 # =============================================================================
 MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', 'N', 'S', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'M', 'M', 'M', '.', '.', '.', 'N', '.', '.', 'S', '.', 'T'],
     ['T', '.', 'P', '.', '.', '.', '.', '.', '.', 'B', '.', '.', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'M', 'M', 'M', 'T', '.', '.', 'B', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'T', 'T', 'T', 'T', 'T', '.', 'M', 'M', 'M', '.', '.', 'T', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', 'H', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'T', 'G', '.', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'B', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', 'U', 'U', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', 'B', '.', 'U', 'U', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -74,8 +74,8 @@ MAPA_MATRIZ = [
 # FUNÇÕES AUXILIARES
 # =============================================================================
 # Lista para guardar posições [x, y] dos itens que já foram pegos
-
 itens_coletados_ids = []
+
 def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
     """Lê a matriz do mapa e instancia os objetos nas posições corretas."""
     pos_player = (100, 100)
@@ -90,8 +90,7 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
                 grupo_obs.add(Obstaculo(x, y))
             elif letra == 'B':
                 grupo_col.add(Pokebola(x+15, y+15))
-            elif letra == 'S': # <<< NOVO POKEHEALER
-                # Você precisa garantir que a classe PokeHealer esteja importada
+            elif letra == 'S': 
                 healer = PokeHealer(x, y) 
                 grupo_obs.add(healer)
                  
@@ -162,6 +161,7 @@ camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, map_w, map_h)
 caminho_tileset = os.path.join(DIRETORIO_BASE, "assets/backgrounds/tileset.png")
 fundo_grama = definir_piso(map_w, map_h, caminho_tileset)
 esperando_confirmacao_load = False
+
 # =============================================================================
 # FLUXO DE INTRODUÇÃO
 # =============================================================================
@@ -170,7 +170,6 @@ nome_jogador = "Player"
 inicial_escolhido = "Charmander" 
 
 if jogo_ativo:
-
     jogo_ativo, nome_input, pokemon_input = cena_professor(screen, clock)
     
     if nome_input:
@@ -196,6 +195,7 @@ if pokemon_inicial:
 else:
     # Fallback de segurança
     equipe_jogador.append(criar_pokemon("Charmander", 5))
+
 # =============================================================================
 # LOOP PRINCIPAL (GAME LOOP)
 # =============================================================================
@@ -204,7 +204,6 @@ estado_jogo = "MUNDO"
 sistema_batalha = None
 running = jogo_ativo 
 path_sound = os.path.join(DIRETORIO_BASE, "assets/sfx/itemfound.wav")
-# aqui rect do som
 rect_botao_som = pg.Rect(10,10,40,40)
 
 mensagem_tela = None
@@ -254,7 +253,39 @@ while running:
                         if not npc_falando_agora.respondeu:
                             npc_falando_agora.respondeu = True
                             if npc_falando_agora.indice_selecionado == 0: # Sim
-                                npc_falando_agora.texto_atual = "Ótimo! Prepare-se para a batalha!"
+                                
+                                # --- INÍCIO DA BATALHA DE CHEFE (TREINADOR) ---
+                                npc_falando_agora.texto_atual = "Prepare-se! Não terei piedade."
+                                npc_falando_agora.interagir() # Fecha diálogo para transição
+                                
+                                # Cria o time do Professor (6 Pokémons Fortes)
+                                # Usando pokemons disponíveis no seu pokedex.py
+                                time_professor = [
+                                    criar_pokemon("Mewtwo", 1),       # Boss
+                                    criar_pokemon("Zapdos", 1),
+                                    criar_pokemon("Moltres", 1),
+                                    criar_pokemon("Articuno", 1),
+                                    criar_pokemon("Porygon", 1),
+                                    criar_pokemon("Lapras", 1)
+                                ]
+                                # Filtra Nones caso erre o nome
+                                time_professor = [p for p in time_professor if p is not None]
+
+                                inv_batalha = protagonista.inventario
+                                
+                                animacao_transicao(screen)
+                                estado_jogo = "BATALHA"
+                                
+                                # Instancia com o modo TREINADOR
+                                sistema_batalha = BatalhaPokemon(
+                                    equipe_jogador, 
+                                    time_professor, 
+                                    inv_batalha, 
+                                    tipo_batalha="TREINADOR"
+                                )
+                                # Música será tocada automaticamente pelo estado BATALHA
+                                # ----------------------------------------------
+
                             else: # Não
                                 npc_falando_agora.texto_atual = "Volte quando estiver pronto."
                         # Se já respondeu, fecha
@@ -266,126 +297,99 @@ while running:
                     # Tecla E: Inventário
                     if event.key == pg.K_e:
                         menu_inv.alternar() 
-                    # --- NOVO: SISTEMA DE SAVE (F5 / F9) ---
+                    # --- SISTEMA DE SAVE (F5 / F9) ---
                     elif event.key == pg.K_F5:
                         msg = salvar_jogo_sistema(protagonista, equipe_jogador, nome_jogador, primeiro_encontro,itens_coletados_ids)
                         mensagem_tela = msg # Mostra na tela
                         
                     elif event.key == pg.K_F9:
                         sucesso, texto_info = ler_info_save()
-                        
                         if sucesso:
-                            # Mostra a info e pede confirmação
                             mensagem_tela = texto_info + " - [SPACE] para Carregar"
                             esperando_confirmacao_load = True
                         else:
                             esperando_confirmacao_load = False
-                            mensagem_tela = texto_info # Mostra erro (sem save)
+                            mensagem_tela = texto_info 
 
-                    # Tecla Space: Coletar itens próximos
+                    # Tecla Space: Coletar itens próximos e interagir
                     if event.key == pg.K_SPACE:
-
+                        # Se há mensagem na tela, apenas limpa e não interage novamente
                         if mensagem_tela:
-                            mensagem_tela = None
-
-                        if esperando_confirmacao_load:
-                                        # Passamos o GRUPO DE SPRITES e a LISTA DE IDS
-                                        msg, p_encontro_salvo = carregar_jogo_sistema(
-                                            protagonista, 
-                                            equipe_jogador, 
-                                            grupo_coletaveis,   # Para poder dar .kill() nos itens
-                                            itens_coletados_ids # Para atualizar a lista da memória
-                                        )
-                                        
-                                        primeiro_encontro = p_encontro_salvo
-                                        mensagem_tela = msg
-                                        esperando_confirmacao_load = False
-                        # SE NÃO TEM MENSAGEM -> TENTA PEGAR ITEM
+                            mensagem_tela = ""
+                        elif esperando_confirmacao_load:
+                            msg, p_encontro_salvo = carregar_jogo_sistema(
+                                protagonista, 
+                                equipe_jogador, 
+                                grupo_coletaveis,   
+                                itens_coletados_ids 
+                            )
+                            
+                            primeiro_encontro = p_encontro_salvo
+                            mensagem_tela = msg
+                            esperando_confirmacao_load = False
                         else:
-
                             # 1. Tenta interagir com PokeHealer
                             area_interacao = protagonista.rect.inflate(10, 10)
                             healer_interagido = False
                             
                             for obs in grupo_obstaculos:
                                 if isinstance(obs, PokeHealer) and area_interacao.colliderect(obs.rect):
-                                    # Chama o método de cura e armazena o feedback
                                     feedback = obs.curar_equipe(equipe_jogador,volume_padrao) 
                                     mensagem_tela = feedback
                                     healer_interagido = True
                                     break
 
-
+                            # 2. Se não foi PokeHealer, tenta pegar item
                             if not healer_interagido:
                                 item_pegado = False
                             
                                 for item in grupo_coletaveis:
                                     if area_interacao.colliderect(item.rect):
-                                        # Salva o nome ANTES de remover o item
                                         nome_item = item.nome_item 
                                         item.coletar(protagonista)
-                                        
-                                        # Salvando posição 
                                         itens_coletados_ids.append([item.rect.x, item.rect.y])
-
                                         mensagem_tela = f"Você pegou: {nome_item}"
                                         item_pegado = True
 
-                                        sfx_item = None
                                         try: 
                                             sfx_item = pg.mixer.Sound(os.path.join(DIRETORIO_BASE, "assets/sfx/itemfound.wav"))
                                             sfx_item.set_volume(volume_padrao)
                                             sfx_item.play()
                                         except: pass
-
                                         break
+                                
+                                # 3. Se não foi item nem PokeHealer, tenta NPC
+                                if not item_pegado:
+                                    hits_npc = pg.sprite.spritecollide(protagonista, grupo_npcs, False)
+                                    if not hits_npc:
+                                        area_busca = protagonista.rect.inflate(20, 20) 
+                                        for npc in grupo_npcs:
+                                            if area_busca.colliderect(npc.rect):
+                                                npc.interagir()
+                                                break
+                                    else:
+                                        hits_npc[0].interagir()
 
-                                    #pg.mixer.Sound(path_sound).play()
-                    
-                    # Tecla Space: Interagir com NPC
-                    if event.key == pg.K_SPACE:
-                        # Verifica se o player colide com a área aumentada (1.5x) do NPC
-                        hits_npc = pg.sprite.spritecollide(protagonista, grupo_npcs, False)
-                        
-                        # Se não colidiu diretamente, tenta expandir a busca
-                        if not hits_npc:
-                             # Cria um rect temporário maior ao redor do player
-                             area_busca = protagonista.rect.inflate(20, 20) 
-                             for npc in grupo_npcs:
-                                 if area_busca.colliderect(npc.rect):
-                                     npc.interagir()
-                                     break
-                        else:
-                            # Se colidiu, interage com o primeiro
-                            hits_npc[0].interagir()
             if event.type == pg.MOUSEBUTTONDOWN:
                 if event.button == 1:  # Clique esquerdo
-                    # Verifica se o mouse clicou dentro do botão de som
                     if rect_botao_som.collidepoint(event.pos):
-                        som_ativo = not som_ativo  # Inverte o estado
+                        som_ativo = not som_ativo  
                         
                         if som_ativo:
                             volume_padrao = VOLUME_PADRAO
                             pg.mixer.music.set_volume(volume_padrao/5*2)
-                            
                         else:
                             volume_padrao = 0
                             pg.mixer.music.set_volume(volume_padrao)
-                            
 
-                            
-        # Atualização do Mundo (Só roda se não estiver conversando)
+        # Atualização do Mundo 
         if not npc_falando_agora and not menu_inv.aberto and not mensagem_tela:
             antigo_rect = protagonista.rect.copy()
             player_group.update()
 
             for obs in grupo_obstaculos:
-                # Apenas se for um PokeHealer e já tiver sido usado
                 if isinstance(obs, PokeHealer) and obs.foi_curado: 
-                    # Define uma área de 1.5x o tamanho do tile
                     area_proximidade = obs.rect.inflate(TILE_SIZE * 1.5, TILE_SIZE * 1.5)
-                    
-                    # Se o player saiu da área, permite a cura novamente
                     if not area_proximidade.colliderect(protagonista.rect):
                         obs.resetar_cura()
             
@@ -400,41 +404,33 @@ while running:
                         raridade = random.randint(0, 100)
                         if raridade < 75:
                             pokemon_random = random.choice(lista_pokemons_comuns)
-                            lvl_chao = 3
-                            lvl_teto = 5
+                            lvl_chao = 3; lvl_teto = 5
                         elif raridade < 93:
                             pokemon_random = random.choice(lista_pokemons_raros)
-                            lvl_chao = 5
-                            lvl_teto = 10
+                            lvl_chao = 5; lvl_teto = 10
                         elif raridade < 98:
                             pokemon_random = random.choice(lista_pokemons_super_raros)
-                            lvl_chao = 5
-                            lvl_teto = 10
+                            lvl_chao = 5; lvl_teto = 10
                         else:
-                            lvl_chao = 50
-                            lvl_teto = 50
+                            lvl_chao = 50; lvl_teto = 50
                             pokemon_random = random.choice(lista_pokemons_lendarios)
+                        
                         if primeiro_encontro:
                             inimigo_pokemon = criar_pokemon("Byte", random.randint(lvl_chao, lvl_teto))
                             primeiro_encontro = False
                         else: 
                             inimigo_pokemon = criar_pokemon(pokemon_random, random.randint(lvl_chao, lvl_teto))
                         
-                        inv_batalha = {'Poção': 5, 'Pokebola': 5}
-                        try:
-                            if hasattr(menu_inv, 'itens'): 
-                                inv_batalha = menu_inv.itens
-                            elif hasattr(protagonista, 'inventario'):
-                                inv_batalha = protagonista.inventario
-                        except: pass
+                        inv_batalha = protagonista.inventario if protagonista.inventario else {'Poção': 1, 'Pokebola': 1}
 
                         try:
-                            sistema_batalha = BatalhaPokemon(equipe_jogador, inimigo_pokemon, inv_batalha)
+                            # Batalha Selvagem Padrão
+                            sistema_batalha = BatalhaPokemon(equipe_jogador, inimigo_pokemon, inv_batalha, tipo_batalha="SELVAGEM")
                         except Exception as e:
                             print(f"ERRO AO INICIAR BATALHA: {e}")
                             estado_jogo = "MUNDO"
 
-            # Colisões com obstáculos e coletáveis
+            # Colisões
             colisao_obs = pg.sprite.spritecollide(protagonista, grupo_obstaculos, False)
             colisao_item = pg.sprite.spritecollide(protagonista, grupo_coletaveis, False)
             if colisao_obs or colisao_item:
@@ -445,10 +441,6 @@ while running:
 
 
         # --- 2. LÓGICA DE DESENHO ---
-        #if menu_inv.aberto:    # AGORA PASSAMOS 'equipe_jogador' TAMBÉM
-        #        menu_inv.processar_input(event, protagonista.inventario, equipe_jogador)
-        # Desenha o Mundo (SEMPRE desenha isso primeiro)
-        
         screen.fill((0,0,0)) 
         screen.blit(fundo_grama, camera.apply_rect(fundo_grama.get_rect()))
 
@@ -459,49 +451,32 @@ while running:
         for item in grupo_coletaveis: 
             screen.blit(item.image, camera.apply(item.rect))
 
-
-        # Desenha NPCs
         for npc in grupo_npcs:
             screen.blit(npc.image, camera.apply(npc.rect))
 
-        # Desenha Player
         for sprite in player_group: 
             screen.blit(sprite.image, camera.apply(sprite.rect))
         
-        # Desenha Interface (Por cima do mundo)
         menu_inv.desenhar(screen, protagonista.inventario, equipe_jogador)
 
         if menu_inv.aberto:
             pg.draw.rect(screen, (100,100,100), rect_botao_som, border_radius=5)
             pg.draw.rect(screen, (0,0,0), rect_botao_som, 2, border_radius=5)
             bx, by = rect_botao_som.x, rect_botao_som.y
-            pontos_speaker = [
-                (bx + 10, by + 15),  # Trás meio
-                (bx + 10, by + 25),  # Trás baixo
-                (bx + 20, by + 25),  # Meio baixo
-                (bx + 30, by + 35),  # Frente baixo
-                (bx + 30, by + 5),   # Frente cima
-                (bx + 20, by + 15)   # Meio cima
-            ]
+            pontos_speaker = [(bx+10, by+15), (bx+10, by+25), (bx+20, by+25), (bx+30, by+35), (bx+30, by+5), (bx+20, by+15)]
             pg.draw.polygon(screen, (0,0,0), pontos_speaker)
 
-            # --- DESENHO DO "MUDO" (Traço Vermelho) ---
             if not som_ativo:
-                # Desenha um X ou traço vermelho em cima
-                pg.draw.line(screen, (255,0,0), (bx + 10, by + 10), (bx + 30, by + 30), 4)
-                pg.draw.line(screen, (255,0,0), (bx + 30, by + 10), (bx + 10, by + 30), 4)
+                pg.draw.line(screen, (255,0,0), (bx+10, by+10), (bx+30, by+30), 4)
+                pg.draw.line(screen, (255,0,0), (bx+30, by+10), (bx+10, by+30), 4)
 
-        # Desenha Caixa de Diálogo do NPC (SE TIVER UM FALANDO)
         if npc_falando_agora:
-            # Configuração da caixa
             rect_fundo = pg.Rect(20, SCREEN_HEIGHT - 160, SCREEN_WIDTH - 40, 140)
             rect_interno = rect_fundo.inflate(-10, -10)
             
-            # Desenha Fundo
-            pg.draw.rect(screen, (40, 40, 160), rect_fundo, border_radius=10) # Borda Azul
-            pg.draw.rect(screen, (255, 255, 255), rect_interno, border_radius=10) # Fundo Branco
+            pg.draw.rect(screen, (40, 40, 160), rect_fundo, border_radius=10) 
+            pg.draw.rect(screen, (255, 255, 255), rect_interno, border_radius=10) 
 
-            # Desenha Texto
             fonte = pg.font.SysFont("Arial", 22)
             linhas = npc_falando_agora.texto_atual.split('\n')
             y_texto = rect_interno.y + 20
@@ -510,7 +485,6 @@ while running:
                 screen.blit(texto_surf, (rect_interno.x + 20, y_texto))
                 y_texto += 30
 
-            # Desenha Seta Piscante
             if running:
                 pontos_seta = [
                     (rect_interno.right - 30, rect_interno.bottom - 20),
@@ -519,19 +493,15 @@ while running:
                 ]
                 pg.draw.polygon(screen, (200, 0, 0), pontos_seta)
 
-            # Desenha Opções (Sim/Não) se necessário
             if not npc_falando_agora.respondeu:
                 fonte_opcoes = pg.font.SysFont("Arial", 22, bold=True)
-                
                 cor_sim = (200, 0, 0) if npc_falando_agora.indice_selecionado == 0 else (0, 0, 0)
                 cor_nao = (200, 0, 0) if npc_falando_agora.indice_selecionado == 1 else (0, 0, 0)
-
                 sim_surf = fonte_opcoes.render("> Sim" if npc_falando_agora.indice_selecionado == 0 else "  Sim", True, cor_sim)
                 nao_surf = fonte_opcoes.render("> Não" if npc_falando_agora.indice_selecionado == 1 else "  Não", True, cor_nao)
 
                 screen.blit(sim_surf, (rect_interno.x + 50, rect_interno.y + 80))
                 screen.blit(nao_surf, (rect_interno.x + 200, rect_interno.y + 80))
-
 
     # -------------------------------------------------------------------------
     # ESTADO: BATALHA
@@ -558,37 +528,25 @@ while running:
                                 pg.mixer.music.play(-1)
                             except: pass
                 else:
-                    # Input normal de batalha
                     if sistema_batalha: 
                         sistema_batalha.processar_input(event)
 
-        # Desenha a batalha
         if sistema_batalha: 
             sistema_batalha.desenhar(screen)
-        # ... (código que desenha mapa, player, npcs...)
 
     # --- DESENHA A MENSAGEM (SE HOUVER UMA) ---
     if mensagem_tela:
         rect_fundo = pg.Rect(20, SCREEN_HEIGHT - 160, SCREEN_WIDTH - 40, 140)
         rect_interno = rect_fundo.inflate(-10, -10)
-
-        # Desenha a caixa
         pg.draw.rect(screen, (40, 40, 160), rect_fundo, border_radius=10)
         pg.draw.rect(screen, (255, 255, 255), rect_interno, border_radius=10)
-
-        # Desenha o texto
         fonte = pg.font.SysFont("Arial", 22)
         texto_surf = fonte.render(mensagem_tela, True, (0, 0, 0))
-        
-        # Centraliza o texto um pouco
         screen.blit(texto_surf, (rect_interno.x + 20, rect_interno.y + 50))
-        
-        # Opcional: Aviso para fechar
         fonte_pequena = pg.font.SysFont("Arial", 16)
         aviso = fonte_pequena.render("[Space] para fechar", True, (100, 100, 100))
         screen.blit(aviso, (rect_interno.right - 150, rect_interno.bottom - 30))
 
-    # --- Atualização de Frame ---
     pg.display.flip()
     clock.tick(FPS)
 
