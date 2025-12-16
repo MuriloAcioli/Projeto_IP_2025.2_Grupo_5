@@ -85,24 +85,26 @@ def carregar_jogo_sistema(player, equipe, grupo_coletaveis, lista_coletados):
         return "Jogo Carregado!", novo_primeiro_encontro
     except Exception as e:
         print(e)
-        return "Erro ao carregar o save."
+        return "Erro ao carregar o save.", None
     
 def ler_info_save():
-    if not os.path.exists("savegame.json"):
-        return None, "Nenhum save encontrado."
+    if not os.path.exists("savegame.dat"):
+        return False, "Nenhum save encontrado."
 
     try:
-        with open("savegame.json", "r") as arquivo:
-            dados = json.load(arquivo)
+        with open("savegame.dat", "rb") as arquivo:
+            dados_codificados = arquivo.read()
+            
+        texto_json = base64.b64decode(dados_codificados).decode('utf-8')
+        dados = json.loads(texto_json)
             
         nome = dados.get("nome_jogador", "(Vazio)")
-        qtd_poke = len(dados.get("equipe", [])) # .get é mais seguro caso a lista não exista
+        qtd_poke = len(dados.get("equipe", [])) 
         hora = dados.get("tempo_do_save", "--:--")
-
         
-        # O texto exatamente como você pediu
         msg = f"{nome}: POKEMONS COLETADOS:{qtd_poke} . HORA DO SAVE: {hora}"
         return True, msg
         
-    except Exception:
+    except Exception as e:
+        print(f"Erro ao ler info: {e}")
         return False, "Save corrompido."

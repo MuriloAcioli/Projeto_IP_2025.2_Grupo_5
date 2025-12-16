@@ -127,7 +127,10 @@ pg.mixer.init()
 
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pg.display.set_caption("PokeCIn - Fim do Mangue Vermelho")
-imagem_icone = pg.image.load("projeto_ip/assets/icon/icon.png") 
+
+path_icon = os.path.join(DIRETORIO_BASE, "assets/icon/icon.png") 
+imagem_icone = pg.image.load(path_icon) 
+
 pg.display.set_icon(imagem_icone)
 clock = pg.time.Clock()
 
@@ -313,20 +316,26 @@ while running:
 
                     # Tecla Space: Coletar itens próximos e interagir
                     if event.key == pg.K_SPACE:
-                        # Se há mensagem na tela, apenas limpa e não interage novamente
-                        if mensagem_tela:
-                            mensagem_tela = ""
-                        elif esperando_confirmacao_load:
+                        # 1. PRIORIDADE MÁXIMA: Se está esperando confirmação, carrega o jogo
+                        if esperando_confirmacao_load:
                             msg, p_encontro_salvo = carregar_jogo_sistema(
                                 protagonista, 
                                 equipe_jogador, 
                                 grupo_coletaveis,   
                                 itens_coletados_ids 
-                            )
+                            )                            
+                            # Segurança: Só atualiza se o load não retornou None
+                            if p_encontro_salvo is not None:
+                                primeiro_encontro = p_encontro_salvo
                             
-                            primeiro_encontro = p_encontro_salvo
                             mensagem_tela = msg
-                            esperando_confirmacao_load = False
+                            esperando_confirmacao_load = False 
+                        
+                        # 2. Se não for load, mas tiver mensagem, limpa a mensagem
+                        elif mensagem_tela:
+                            mensagem_tela = ""
+                            
+                        # 3. Se não for nada disso, é uma interação normal do jogo
                         else:
                             # 1. Tenta interagir com PokeHealer
                             area_interacao = protagonista.rect.inflate(10, 10)
