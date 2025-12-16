@@ -27,6 +27,10 @@ TILE_SIZE = 48
 FPS = 60
 primeiro_encontro = True
 
+som_ativo = True
+volume_padrao = 0.5 # volume padrão é 0.5
+VOLUME_PADRAO = 0.5 # volume padrão é 0.5
+
 lista_pokemons_disponiveis =  list(POKEDEX.keys())
 lista_pokemons_comuns = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "comum"]
 lista_pokemons_raros = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "raro"]
@@ -121,6 +125,8 @@ pg.mixer.init()
 
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pg.display.set_caption("PokeCIn - Fim do Mangue Vermelho")
+imagem_icone = pg.image.load("projeto_ip/assets/icon/icon.png") 
+pg.display.set_icon(imagem_icone)
 clock = pg.time.Clock()
 
 # --- Grupos de Sprites ---
@@ -158,10 +164,10 @@ fundo_grama = definir_piso(map_w, map_h, caminho_tileset)
 # =============================================================================
 jogo_ativo = exibir_intro(screen, clock) 
 nome_jogador = "Player"
-inicial_escolhido = "Charmander" # Padrão caso algo falhe
+inicial_escolhido = "Charmander" 
 
 if jogo_ativo:
-    # AQUI ESTÁ A MUDANÇA PRINCIPAL: Recebe 3 valores agora
+
     jogo_ativo, nome_input, pokemon_input = cena_professor(screen, clock)
     
     if nome_input:
@@ -175,7 +181,7 @@ if jogo_ativo:
     if jogo_ativo:
         try: 
             pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/world_theme.mp3"))
-            pg.mixer.music.set_volume(0.2)
+            pg.mixer.music.set_volume(volume_padrao/5*2)
             pg.mixer.music.play(-1, fade_ms=2000)
         except: pass
 
@@ -187,7 +193,6 @@ if pokemon_inicial:
 else:
     # Fallback de segurança
     equipe_jogador.append(criar_pokemon("Charmander", 5))
-
 # =============================================================================
 # LOOP PRINCIPAL (GAME LOOP)
 # =============================================================================
@@ -196,6 +201,8 @@ estado_jogo = "MUNDO"
 sistema_batalha = None
 running = jogo_ativo 
 path_sound = os.path.join(DIRETORIO_BASE, "assets/sfx/itemfound.wav")
+# aqui rect do som
+rect_botao_som = pg.Rect(10,10,40,40)
 
 mensagem_tela = None
 
@@ -222,6 +229,8 @@ while running:
 
             if menu_inv.aberto:
                 menu_inv.processar_input(event, protagonista.inventario, equipe_jogador)
+
+
 
             # -
             if event.type == pg.QUIT: 
@@ -275,7 +284,7 @@ while running:
                             for obs in grupo_obstaculos:
                                 if isinstance(obs, PokeHealer) and area_interacao.colliderect(obs.rect):
                                     # Chama o método de cura e armazena o feedback
-                                    feedback = obs.curar_equipe(equipe_jogador) 
+                                    feedback = obs.curar_equipe(equipe_jogador,volume_padrao) 
                                     mensagem_tela = feedback
                                     healer_interagido = True
                                     break
@@ -297,7 +306,7 @@ while running:
                                         sfx_item = None
                                         try: 
                                             sfx_item = pg.mixer.Sound(os.path.join(DIRETORIO_BASE, "assets/sfx/itemfound.wav"))
-                                            sfx_item.set_volume(0.5)
+                                            sfx_item.set_volume(volume_padrao)
                                             sfx_item.play()
                                         except: pass
 
@@ -321,7 +330,22 @@ while running:
                         else:
                             # Se colidiu, interage com o primeiro
                             hits_npc[0].interagir()
+            if event.type == pg.MOUSEBUTTONDOWN:
+                if event.button == 1:  # Clique esquerdo
+                    # Verifica se o mouse clicou dentro do botão de som
+                    if rect_botao_som.collidepoint(event.pos):
+                        som_ativo = not som_ativo  # Inverte o estado
+                        
+                        if som_ativo:
+                            volume_padrao = VOLUME_PADRAO
+                            pg.mixer.music.set_volume(volume_padrao/5*2)
+                            
+                        else:
+                            volume_padrao = 0
+                            pg.mixer.music.set_volume(volume_padrao)
+                            
 
+                            
         # Atualização do Mundo (Só roda se não estiver conversando)
         if not npc_falando_agora and not menu_inv.aberto and not mensagem_tela:
             antigo_rect = protagonista.rect.copy()
@@ -396,6 +420,7 @@ while running:
         #if menu_inv.aberto:    # AGORA PASSAMOS 'equipe_jogador' TAMBÉM
         #        menu_inv.processar_input(event, protagonista.inventario, equipe_jogador)
         # Desenha o Mundo (SEMPRE desenha isso primeiro)
+        
         screen.fill((0,0,0)) 
         screen.blit(fundo_grama, camera.apply_rect(fundo_grama.get_rect()))
 
@@ -405,7 +430,8 @@ while running:
             screen.blit(parede.image, camera.apply(parede.rect))
         for item in grupo_coletaveis: 
             screen.blit(item.image, camera.apply(item.rect))
-        
+
+
         # Desenha NPCs
         for npc in grupo_npcs:
             screen.blit(npc.image, camera.apply(npc.rect))
@@ -416,6 +442,26 @@ while running:
         
         # Desenha Interface (Por cima do mundo)
         menu_inv.desenhar(screen, protagonista.inventario, equipe_jogador)
+
+        if menu_inv.aberto:
+            pg.draw.rect(screen, (100,100,100), rect_botao_som, border_radius=5)
+            pg.draw.rect(screen, (0,0,0), rect_botao_som, 2, border_radius=5)
+            bx, by = rect_botao_som.x, rect_botao_som.y
+            pontos_speaker = [
+                (bx + 10, by + 15),  # Trás meio
+                (bx + 10, by + 25),  # Trás baixo
+                (bx + 20, by + 25),  # Meio baixo
+                (bx + 30, by + 35),  # Frente baixo
+                (bx + 30, by + 5),   # Frente cima
+                (bx + 20, by + 15)   # Meio cima
+            ]
+            pg.draw.polygon(screen, (0,0,0), pontos_speaker)
+
+            # --- DESENHO DO "MUDO" (Traço Vermelho) ---
+            if not som_ativo:
+                # Desenha um X ou traço vermelho em cima
+                pg.draw.line(screen, (255,0,0), (bx + 10, by + 10), (bx + 30, by + 30), 4)
+                pg.draw.line(screen, (255,0,0), (bx + 30, by + 10), (bx + 10, by + 30), 4)
 
         # Desenha Caixa de Diálogo do NPC (SE TIVER UM FALANDO)
         if npc_falando_agora:
@@ -480,6 +526,7 @@ while running:
                             estado_jogo = "MUNDO"
                             try: 
                                 pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/world_theme.mp3"))
+                                pg.mixer.music.set_volume(volume_padrao)
                                 pg.mixer.music.play(-1)
                             except: pass
                 else:

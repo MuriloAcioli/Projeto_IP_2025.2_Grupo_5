@@ -27,7 +27,7 @@ class PokeHealer(pg.sprite.Sprite):
         self.rect = self.image.get_rect(topleft=(x, y))
         self.foi_curado = False # Flag para evitar cura repetida ao ficar parado
         
-    def curar_equipe(self, equipe_jogador):
+    def curar_equipe(self, equipe_jogador,volume_padrao):
         """Restaura HP e status de todos os Pokemons da equipe."""
         if self.foi_curado:
             return "A equipe já está curada."
@@ -46,7 +46,7 @@ class PokeHealer(pg.sprite.Sprite):
             sfx_heal = None
             try: 
                 sfx_heal = pg.mixer.Sound(os.path.join(DIRETORIO_BASE, "assets/sfx/sfx_heal.wav"))
-                sfx_heal.set_volume(3.0)
+                sfx_heal.set_volume(volume_padrao)
             except: pass
 
             sfx_heal.play()
