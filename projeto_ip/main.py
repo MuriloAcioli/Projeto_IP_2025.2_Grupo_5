@@ -7,7 +7,7 @@ from player import Player
 from camera import Camera
 from coletaveis import Pokebola, GreatBall, Pocao, Ultraball
 from inventario import MenuInventario
-from Obstaculo import Obstaculo
+from obstaculo import Obstaculo
 from mato import Mato
 from pokemon import Pokemon, criar_pokemon 
 from batalha import BatalhaPokemon
