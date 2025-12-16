@@ -1,19 +1,20 @@
+# --- Bibliotecas do projeto ---
 import pygame as pg
 import random
 import os
-
 # --- Módulos do Jogo ---
 from player import Player
 from camera import Camera
 from coletaveis import Pokebola, GreatBall, Pocao, Ultraball
 from inventario import MenuInventario
-from Obstaculo import Obstaculo
+from obstaculo import Obstaculo
 from mato import Mato
 from pokemon import Pokemon, criar_pokemon 
 from batalha import BatalhaPokemon
 from npc import NPC
 from pokedex import POKEDEX
 from pokehealer import PokeHealer
+from save import salvar_jogo_sistema, carregar_jogo_sistema, ler_info_save
 # --- Módulo de Intro ---
 from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
 
@@ -72,7 +73,9 @@ MAPA_MATRIZ = [
 # =============================================================================
 # FUNÇÕES AUXILIARES
 # =============================================================================
+# Lista para guardar posições [x, y] dos itens que já foram pegos
 
+itens_coletados_ids = []
 def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
     """Lê a matriz do mapa e instancia os objetos nas posições corretas."""
     pos_player = (100, 100)
@@ -158,7 +161,7 @@ camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, map_w, map_h)
 # Gera o visual do chão
 caminho_tileset = os.path.join(DIRETORIO_BASE, "assets/backgrounds/tileset.png")
 fundo_grama = definir_piso(map_w, map_h, caminho_tileset)
-
+esperando_confirmacao_load = False
 # =============================================================================
 # FLUXO DE INTRODUÇÃO
 # =============================================================================
@@ -213,8 +216,6 @@ while running:
     # -------------------------------------------------------------------------
     if estado_jogo == "MUNDO":
         
-
-
         # --- 1. LÓGICA DE UPDATE ---
         
         # Verifica se algum NPC está falando
@@ -230,9 +231,6 @@ while running:
             if menu_inv.aberto:
                 menu_inv.processar_input(event, protagonista.inventario, equipe_jogador)
 
-
-
-            # -
             if event.type == pg.QUIT: 
                 running = False
             
@@ -268,12 +266,40 @@ while running:
                     # Tecla E: Inventário
                     if event.key == pg.K_e:
                         menu_inv.alternar() 
-                    
+                    # --- NOVO: SISTEMA DE SAVE (F5 / F9) ---
+                    elif event.key == pg.K_F5:
+                        msg = salvar_jogo_sistema(protagonista, equipe_jogador, nome_jogador, primeiro_encontro,itens_coletados_ids)
+                        mensagem_tela = msg # Mostra na tela
+                        
+                    elif event.key == pg.K_F9:
+                        sucesso, texto_info = ler_info_save()
+                        
+                        if sucesso:
+                            # Mostra a info e pede confirmação
+                            mensagem_tela = texto_info + " - [SPACE] para Carregar"
+                            esperando_confirmacao_load = True
+                        else:
+                            esperando_confirmacao_load = False
+                            mensagem_tela = texto_info # Mostra erro (sem save)
+
                     # Tecla Space: Coletar itens próximos
                     if event.key == pg.K_SPACE:
+
                         if mensagem_tela:
                             mensagem_tela = None
-                        
+
+                        if esperando_confirmacao_load:
+                                        # Passamos o GRUPO DE SPRITES e a LISTA DE IDS
+                                        msg, p_encontro_salvo = carregar_jogo_sistema(
+                                            protagonista, 
+                                            equipe_jogador, 
+                                            grupo_coletaveis,   # Para poder dar .kill() nos itens
+                                            itens_coletados_ids # Para atualizar a lista da memória
+                                        )
+                                        
+                                        primeiro_encontro = p_encontro_salvo
+                                        mensagem_tela = msg
+                                        esperando_confirmacao_load = False
                         # SE NÃO TEM MENSAGEM -> TENTA PEGAR ITEM
                         else:
 
@@ -299,7 +325,9 @@ while running:
                                         nome_item = item.nome_item 
                                         item.coletar(protagonista)
                                         
-                                        # AQUI: Apenas salvamos o texto na variável!
+                                        # Salvando posição 
+                                        itens_coletados_ids.append([item.rect.x, item.rect.y])
+
                                         mensagem_tela = f"Você pegou: {nome_item}"
                                         item_pegado = True
 

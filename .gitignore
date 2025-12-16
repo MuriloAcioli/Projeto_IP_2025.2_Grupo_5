@@ -4,3 +4,4 @@ __pycache__/
 *.pyd
 # ignorar os saves para não upar no git
 *.json
+*.dat

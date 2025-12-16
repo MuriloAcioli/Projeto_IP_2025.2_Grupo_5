@@ -8,7 +8,7 @@ class Player(pg.sprite.Sprite):
         
         # --- CONFIGURAÇÃO DE TAMANHO ---
         self.ESCALA = 1.4  # 1.0 = Normal, 2.0 = Dobro do tamanho, etc.
-        
+        #self.primeiro_encontro = True
         # 1. Carregar as imagens (Spritesheets)
         
         self.animations = {
