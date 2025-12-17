@@ -5,3 +5,4 @@ __pycache__/
 # ignorar os saves para não upar no git
 *.json
 *.dat
+*.txt

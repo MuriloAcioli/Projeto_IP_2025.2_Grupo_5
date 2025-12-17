@@ -14,7 +14,7 @@ from batalha import BatalhaPokemon
 from npc import NPC
 from pokedex import POKEDEX
 from pokehealer import PokeHealer
-from save import salvar_jogo_sistema, carregar_jogo_sistema, ler_info_save
+#from save import salvar_jogo_sistema, carregar_jogo_sistema, ler_info_save
 # --- Módulo de Intro ---
 from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
 
@@ -301,6 +301,7 @@ while running:
                     if event.key == pg.K_e:
                         menu_inv.alternar() 
                     # --- SISTEMA DE SAVE (F5 / F9) ---
+                    """
                     elif event.key == pg.K_F5:
                         msg = salvar_jogo_sistema(protagonista, equipe_jogador, nome_jogador, primeiro_encontro,itens_coletados_ids)
                         mensagem_tela = msg # Mostra na tela
@@ -313,10 +314,11 @@ while running:
                         else:
                             esperando_confirmacao_load = False
                             mensagem_tela = texto_info 
-
+                    """
                     # Tecla Space: Coletar itens próximos e interagir
                     if event.key == pg.K_SPACE:
                         # 1. PRIORIDADE MÁXIMA: Se está esperando confirmação, carrega o jogo
+                        """
                         if esperando_confirmacao_load:
                             msg, p_encontro_salvo = carregar_jogo_sistema(
                                 protagonista, 
@@ -330,9 +332,9 @@ while running:
                             
                             mensagem_tela = msg
                             esperando_confirmacao_load = False 
-                        
+                        """
                         # 2. Se não for load, mas tiver mensagem, limpa a mensagem
-                        elif mensagem_tela:
+                        if mensagem_tela:
                             mensagem_tela = ""
                             
                         # 3. Se não for nada disso, é uma interação normal do jogo
