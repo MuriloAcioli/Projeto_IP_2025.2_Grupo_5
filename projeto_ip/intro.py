@@ -375,9 +375,9 @@ def escolher_pokemon(screen, clock):
 
     # Dados dos Iniciais
     iniciais = [
-        {"nome": "Bulbasaur", "arquivo": "assets/pokemons/bulbasaur.png", "cor": (0, 180, 0)},
+        {"nome": "Soim", "arquivo": "assets/pokemons/soim.png", "cor": (0, 180, 0)},
         {"nome": "Charmander", "arquivo": "assets/pokemons/charmander.png", "cor": (255, 100, 0)},
-        {"nome": "Squirtle", "arquivo": "assets/pokemons/squirtle.png", "cor": (50, 100, 255)}
+        {"nome": "Caprio", "arquivo": "assets/pokemons/caprio.png", "cor": (50, 100, 255)}
     ]
     
     # Carregar Sprites dos Pokémons

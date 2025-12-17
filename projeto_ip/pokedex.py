@@ -1,5 +1,23 @@
 POKEDEX = {
     # --- INICIAIS E ROTA 1 (Dados fornecidos por você) ---
+    "Soim": {
+        "id": 1,
+        "tipo": "Grama",
+        "stats": (45, 49, 49, 45),
+        "sprite": "assets/pokemons/soim.png",
+        "sprite_back": "assets/pokemons/soim_back.png",
+        "golpes": ["Investida", "Chicote de Vinha", "Folha Navalha"],
+        "raridade": "inicial"
+    },
+    "Caprio":{
+        "id": 3000,
+        "tipo": "agua",
+        "stats": (44, 48, 65, 43),
+        "sprite": "assets/pokemons/caprio.png",
+        "sprite_back": "assets/pokemons/caprio_back.png",
+        "golpes": ["Investida", "Bolhas", "Jato D'Agua"]
+        ,"raridade": "inicial"
+    },
         "Byte": {
         "id":   670730110, # Tabela ascii + 0
         "tipo": "Aco",
@@ -16,7 +34,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/bulbasaur.png",
         "sprite_back": "assets/pokemons/bulbasaur_back.png",
         "golpes": ["Investida", "Chicote de Vinha", "Folha Navalha"],
-        "raridade": "inicial"
+        "raridade": "super_raro"
     },
     "Charmander": {
         "id": 4,
@@ -25,7 +43,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/charmander.png",
         "sprite_back": "assets/pokemons/charmander_back.png",
         "golpes": ["Arranhao", "Brasas", "Investida"],
-        "raridade": "inicial"
+        "raridade": "super_raro"
     },
     "Squirtle": {
         "id": 7,
@@ -34,7 +52,7 @@ POKEDEX = {
         "sprite": "assets/pokemons/squirtle.png",
         "sprite_back": "assets/pokemons/squirtle_back.png",
         "golpes": ["Investida", "Bolhas", "Jato D'Agua"]
-        ,"raridade": "inicial"
+        ,"raridade": "super_raro"
 
     },
     "Caterpie": {
