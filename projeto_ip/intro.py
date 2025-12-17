@@ -376,7 +376,7 @@ def escolher_pokemon(screen, clock):
     # Dados dos Iniciais
     iniciais = [
         {"nome": "Soim", "arquivo": "assets/pokemons/soim.png", "cor": (0, 180, 0)},
-        {"nome": "Charmander", "arquivo": "assets/pokemons/charmander.png", "cor": (255, 100, 0)},
+        {"nome": "Flamare", "arquivo": "assets/pokemons/flamare.png", "cor": (255, 100, 0)},
         {"nome": "Caprio", "arquivo": "assets/pokemons/caprio.png", "cor": (50, 100, 255)}
     ]
     

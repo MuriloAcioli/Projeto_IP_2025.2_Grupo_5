@@ -1,5 +1,14 @@
 POKEDEX = {
     # --- INICIAIS E ROTA 1 (Dados fornecidos por você) ---
+    "Flamare": {
+        "id": 4,
+        "tipo": "Fogo",
+        "stats": (39, 52, 43, 65),
+        "sprite": "assets/pokemons/flamare.png",
+        "sprite_back": "assets/pokemons/flamare_back.png",
+        "golpes": ["Arranhao", "Brasas", "Investida"],
+        "raridade": "inicial"
+    },
     "Soim": {
         "id": 1,
         "tipo": "Grama",
