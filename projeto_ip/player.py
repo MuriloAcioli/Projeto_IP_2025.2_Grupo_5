@@ -78,7 +78,8 @@ class Player(pg.sprite.Sprite):
         self.hitbox.bottom = self.rect.bottom
         self.speed = 5
         self.direction = pg.math.Vector2(0, 0) 
-        
+        self.pos = pg.math.Vector2(self.rect.topleft)
+
     def get_input(self):
             keys = pg.key.get_pressed()
             
@@ -122,14 +123,38 @@ class Player(pg.sprite.Sprite):
         # Atualiza a imagem atual
         self.image = self.animations[self.status][int(self.frame_index)]
 
-    def update(self):
+    def update(self, grupos_colisao):
         self.get_input()
-        self.animate()
         
-        if self.direction.magnitude() != 0:
+        if self.direction.magnitude() > 0:
             self.direction = self.direction.normalize()
-        
-        self.rect.x += self.direction.x * self.speed
-        self.rect.y += self.direction.y * self.speed
 
-        self.hitbox.midbottom = self.rect.midbottom
+        # Colidir com o eixo Y
+        self.pos.x += self.direction.x * self.speed
+        self.rect.x = round(self.pos.x,5) 
+        self.hitbox.centerx = self.rect.centerx
+        
+        for grupo in grupos_colisao:
+            for sprite in grupo:
+                target_rect = sprite.hitbox if hasattr(sprite, 'hitbox') else sprite.rect
+                if self.hitbox.colliderect(target_rect):
+                    if self.direction.x > 0: self.hitbox.right = target_rect.left
+                    if self.direction.x < 0: self.hitbox.left = target_rect.right
+                    self.rect.centerx = self.hitbox.centerx
+                    self.pos.x = self.rect.x 
+
+        # Colidir ocm o eixo Y
+        self.pos.y += self.direction.y * self.speed
+        self.rect.y = round(self.pos.y,5)
+        self.hitbox.bottom = self.rect.bottom
+        
+        for grupo in grupos_colisao:
+            for sprite in grupo:
+                target_rect = sprite.hitbox if hasattr(sprite, 'hitbox') else sprite.rect
+                if self.hitbox.colliderect(target_rect):
+                    if self.direction.y > 0: self.hitbox.bottom = target_rect.top
+                    if self.direction.y < 0: self.hitbox.top = target_rect.bottom
+                    self.rect.bottom = self.hitbox.bottom
+                    self.pos.y = self.rect.y 
+
+        self.animate() 

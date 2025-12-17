@@ -387,7 +387,7 @@ while running:
         # Atualização do Mundo 
         if not npc_falando_agora and not menu_inv.aberto and not mensagem_tela:
             antigo_rect = protagonista.rect.copy()
-            player_group.update()
+            player_group.update([grupo_obstaculos, grupo_coletaveis])
 
             for obs in grupo_obstaculos:
                 if isinstance(obs, PokeHealer) and obs.foi_curado: 
@@ -433,11 +433,7 @@ while running:
                             estado_jogo = "MUNDO"
 
             # Colisões
-            colisao_obs = pg.sprite.spritecollide(protagonista,grupo_obstaculos,False,collided=lambda spr1, spr2: spr1.hitbox.colliderect(spr2.hitbox)) 
-            
-            colisao_item = pg.sprite.spritecollide(protagonista, grupo_coletaveis, False, collided=lambda spr1, spr2: spr1.hitbox.colliderect(spr2.hitbox))
-            if colisao_obs or colisao_item:
-                protagonista.rect = antigo_rect
+            #protagonista.update([grupo_obstaculos, grupo_coletaveis])
 
             # Câmera
             camera.update(protagonista.rect)
@@ -456,10 +452,10 @@ while running:
 
         for npc in grupo_npcs:
             screen.blit(npc.image, camera.apply(npc.rect))
-        
+
         for sprite in player_group: 
             screen.blit(sprite.image, camera.apply(sprite.rect))
-
+        
         menu_inv.desenhar(screen, protagonista.inventario, equipe_jogador)
 
         if menu_inv.aberto:
