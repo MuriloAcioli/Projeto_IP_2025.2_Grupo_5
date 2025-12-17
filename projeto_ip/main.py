@@ -2,6 +2,7 @@
 import pygame as pg
 import random
 import os
+
 # --- Módulos do Jogo ---
 from player import Player
 from camera import Camera
@@ -14,8 +15,7 @@ from batalha import BatalhaPokemon
 from npc import NPC
 from pokedex import POKEDEX
 from pokehealer import PokeHealer
-#from save import salvar_jogo_sistema, carregar_jogo_sistema, ler_info_save
-# --- Módulo de Intro ---
+# from save import salvar_jogo_sistema, carregar_jogo_sistema, ler_info_save
 from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
 
 # =============================================================================
@@ -32,7 +32,7 @@ som_ativo = True
 volume_padrao = 0.5 
 VOLUME_PADRAO = 0.5 
 
-lista_pokemons_disponiveis =  list(POKEDEX.keys())
+lista_pokemons_disponiveis = list(POKEDEX.keys())
 lista_pokemons_comuns = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "comum"]
 lista_pokemons_raros = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "raro"]
 lista_pokemons_super_raros = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "super_raro"]
@@ -43,12 +43,12 @@ lista_pokemons_lendarios = [nome for nome, dados in POKEDEX.items() if dados.get
 # =============================================================================
 MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'M', 'M', 'M', '.', '.', '.', 'N', '.', '.', 'S', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', 'T', 'M', 'M', 'M', '.', '.', '.', 'N', '.', '.', 'S', '.', 'T'],
     ['T', '.', 'P', '.', '.', '.', '.', '.', '.', 'B', '.', '.', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', 'T', 'T', 'T', 'T', 'T', '.', 'M', 'M', 'M', '.', '.', 'T', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', 'H', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'T', 'G', '.', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'M', 'M', 'M', 'T', 'U', '.', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', 'H', '.', '.', '.', '.', 'M', 'M', 'M', 'T', 'U', 'G', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', 'T', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'B', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', 'U', 'U', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', 'B', '.', 'U', 'U', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -67,7 +67,6 @@ MAPA_MATRIZ = [
     ['T', '.', 'M', '.', 'M', '.', '.', '.', '.', '.', '.', '.', 'T', 'G', '.', 'M', 'M', 'M', 'M', 'M', 'M', 'M', '.', '.', 'T'],
     ['T', '.', '.', '.', 'M', '.', '.', '.', '.', '.', '.', '.', 'T', 'H', '.', 'M', 'M', 'M', 'M', 'M', 'M', 'M', '.', '.', 'T'],
     ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T'],
-    
 ]
 
 # =============================================================================
@@ -205,6 +204,7 @@ else:
 
 estado_jogo = "MUNDO"
 sistema_batalha = None
+modo_tela_cheia = False # Controle da tela cheia
 running = jogo_ativo 
 path_sound = os.path.join(DIRETORIO_BASE, "assets/sfx/itemfound.wav")
 rect_botao_som = pg.Rect(10,10,40,40)
@@ -238,6 +238,16 @@ while running:
             
             if event.type == pg.KEYDOWN:
                 
+                # --- SISTEMA DE TELA CHEIA (F11) - SEM SCALED PARA EVITAR ERROS ---
+                if event.key == pg.K_F11:
+                    modo_tela_cheia = not modo_tela_cheia 
+                    if modo_tela_cheia:
+                        # Usa apenas FULLSCREEN, sem SCALED
+                        screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pg.FULLSCREEN)
+                    else:
+                        screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+                # ------------------------------------------------------------------
+
                 # --- CONTROLES DE DIÁLOGO ---
                 if npc_falando_agora:
                     # Tecla f: Fecha o diálogo (se já tiver terminado)
@@ -262,7 +272,6 @@ while running:
                                 npc_falando_agora.interagir() # Fecha diálogo para transição
                                 
                                 # Cria o time do Professor (6 Pokémons Fortes)
-                                # Usando pokemons disponíveis no seu pokedex.py
                                 time_professor = [
                                     criar_pokemon("Mewtwo", 1),       # Boss
                                     criar_pokemon("Zapdos", 1),
@@ -286,7 +295,6 @@ while running:
                                     inv_batalha, 
                                     tipo_batalha="TREINADOR"
                                 )
-                                # Música será tocada automaticamente pelo estado BATALHA
                                 # ----------------------------------------------
 
                             else: # Não
@@ -300,40 +308,10 @@ while running:
                     # Tecla E: Inventário
                     if event.key == pg.K_e:
                         menu_inv.alternar() 
-                    # --- SISTEMA DE SAVE (F5 / F9) ---
-                    """
-                    elif event.key == pg.K_F5:
-                        msg = salvar_jogo_sistema(protagonista, equipe_jogador, nome_jogador, primeiro_encontro,itens_coletados_ids)
-                        mensagem_tela = msg # Mostra na tela
-                        
-                    elif event.key == pg.K_F9:
-                        sucesso, texto_info = ler_info_save()
-                        if sucesso:
-                            mensagem_tela = texto_info + " - [SPACE] para Carregar"
-                            esperando_confirmacao_load = True
-                        else:
-                            esperando_confirmacao_load = False
-                            mensagem_tela = texto_info 
-                    """
+
                     # Tecla Space: Coletar itens próximos e interagir
                     if event.key == pg.K_SPACE:
-                        # 1. PRIORIDADE MÁXIMA: Se está esperando confirmação, carrega o jogo
-                        """
-                        if esperando_confirmacao_load:
-                            msg, p_encontro_salvo = carregar_jogo_sistema(
-                                protagonista, 
-                                equipe_jogador, 
-                                grupo_coletaveis,   
-                                itens_coletados_ids 
-                            )                            
-                            # Segurança: Só atualiza se o load não retornou None
-                            if p_encontro_salvo is not None:
-                                primeiro_encontro = p_encontro_salvo
-                            
-                            mensagem_tela = msg
-                            esperando_confirmacao_load = False 
-                        """
-                        # 2. Se não for load, mas tiver mensagem, limpa a mensagem
+                        # 2. Se tiver mensagem, limpa a mensagem
                         if mensagem_tela:
                             mensagem_tela = ""
                             
