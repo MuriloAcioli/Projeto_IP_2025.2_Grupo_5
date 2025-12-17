@@ -25,6 +25,7 @@ class PokeHealer(pg.sprite.Sprite):
             
         self.image = pg.transform.scale(self.image, (90, 90))
         self.rect = self.image.get_rect(topleft=(x, y))
+        self.hitbox = self.rect.copy()
         self.foi_curado = False # Flag para evitar cura repetida ao ficar parado
         
     def curar_equipe(self, equipe_jogador,volume_padrao):

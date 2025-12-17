@@ -20,7 +20,7 @@ class NPC(pg.sprite.Sprite):
             self.image.fill((0, 0, 255))
 
         self.rect = self.image.get_rect(topleft=(x, y))
-        
+        self.hitbox = self.rect.copy()
         # --- Lógica de Diálogo ---
         self.texto_original = texto_dialogo # Guarda a pergunta original
         self.texto_atual = texto_dialogo    # Texto que muda (pergunta ou resposta)

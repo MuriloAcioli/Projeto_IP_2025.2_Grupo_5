@@ -12,7 +12,7 @@ class Camera:
         self.camera_rect = pg.Rect(0, 0, width, height)
         
         # contreole da escala | 1.0 = Normal | 2.0 = Perto (2x maior) | 0.5 = Longe (Metade do tamanho)
-        self.zoom = 1.0 
+        self.zoom = 1
 
     def apply(self, entity_rect):
         #Transforma a posição do mundo para a posição na tela aplicando o Zoom.

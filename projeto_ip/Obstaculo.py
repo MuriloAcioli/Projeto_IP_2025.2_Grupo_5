@@ -41,3 +41,4 @@ class Obstaculo(pg.sprite.Sprite):
             pg.draw.rect(self.image, (0,0,0), (0,0,tamanho[0],tamanho[1]), 2)
 
         self.rect = self.image.get_rect(topleft=(x, y))
+        self.hitbox = self.rect.copy()
