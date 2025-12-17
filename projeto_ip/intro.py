@@ -34,15 +34,14 @@ def definir_piso(largura_mapa, altura_mapa, caminho_tileset):
     
     # Coordenadas (coluna, linha) na imagem do tileset
     TILE_PADRAO = (0, 0)
-    TILE_GRAMA_LISA = (0, 1)
-    TILE_GRAMA_DETALHE = (2, 1)
-    TILE_FLOR_AMARELA = (0, 4)
-    TILE_FLOR_ROSA = (1, 4)
-    
-    # Lista de probabilidade (Mais grama simples, poucas flores)
-    opcoes = [TILE_GRAMA_LISA] * 30 + [TILE_PADRAO] * 30 + \
-             [TILE_GRAMA_DETALHE] * 30 + [TILE_FLOR_AMARELA] * 5 + [TILE_FLOR_ROSA] * 5
+    TILE_GRAMA_LISA = (2, 1)
+    TILE_GRAMA_DETALHE = (3, 0)
+    TILE_DETALHEZINHO_GRAMA_SD = (0, 4)
+    TILE_DETALHEZINHO_GRAMA_BD = (1, 4)
+  
 
+    # Lista de probabilidade (Mais grama simples, poucas flores)
+    opcoes = [TILE_GRAMA_LISA] * 15 + [TILE_PADRAO] * 40 + [TILE_GRAMA_DETALHE] * 30 + [TILE_DETALHEZINHO_GRAMA_SD] * 5 + [TILE_DETALHEZINHO_GRAMA_BD] * 5 
     # Preenche a superfície do chão
     for y in range(0, altura_mapa, TILE_SIZE):
         for x in range(0, largura_mapa, TILE_SIZE):

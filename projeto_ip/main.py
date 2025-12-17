@@ -37,6 +37,7 @@ lista_pokemons_comuns = [nome for nome, dados in POKEDEX.items() if dados.get("r
 lista_pokemons_raros = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "raro"]
 lista_pokemons_super_raros = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "super_raro"]
 lista_pokemons_lendarios = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "lendario"]
+lista_pokemons_iniciais = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "inicial"]
 
 # =============================================================================
 # DADOS DO MAPA
@@ -47,6 +48,16 @@ MAPA_MATRIZ = [
     ['T', '.', 'P', '.', '.', '.', '.', '.', '.', 'B', '.', '.', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'M', 'M', 'M', 'T', 'U', '.', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', 'M', 'M', '.', '.', '.', '.', '.', 'M', 'M', 'T', '.', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', ',', 'T'],
+    ['T', '.', 'M', 'M', 'M', '.', '.', '.', '.', 'M', 'M', 'M', 'T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', 'M', 'M', '.', '.', '.', '.', 'M', 'M', 'M', 'T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'T', 'T', 'T', '.', '.', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', 'H', 'M', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', 'T'],
+    ['T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T', 'H', '.', 'M', 'M', 'M', 'M', 'M', 'M', 'M', '.', '.', 'T'],
+    ['T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T', 'G', '.', 'M', 'M', 'M', 'M', 'M', 'M', 'M', '.', '.', 'T'],
     ['T', '.', 'H', '.', '.', '.', '.', 'M', 'M', 'M', 'T', 'U', 'G', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', 'T', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', 'B', '.', '.', '.', '.', '.', 'T'],
@@ -54,11 +65,6 @@ MAPA_MATRIZ = [
     ['T', '.', '.', '.', 'B', '.', 'U', 'U', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', 'T'],
-    ['T', '.', '.', 'M', 'M', '.', '.', '.', '.', '.', 'M', 'M', 'T', '.', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', ',', 'T'],
-    ['T', '.', 'M', 'M', 'M', '.', '.', '.', '.', 'M', 'M', 'M', 'T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', 'M', 'M', '.', '.', '.', '.', 'M', 'M', 'M', 'T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'T', 'T', 'T', '.', '.', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'H', 'M', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', 'T'],
@@ -181,6 +187,8 @@ if jogo_ativo:
         
     print(f"Bem-vindo ao mangue, {nome_jogador}!")
     print(f"Seu inicial é: {inicial_escolhido}")
+    lista_iniciais_fora_escolha = lista_pokemons_iniciais
+    lista_iniciais_fora_escolha.remove(inicial_escolhido)
     
     if jogo_ativo:
         try: 
@@ -192,6 +200,7 @@ if jogo_ativo:
 # --- CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO ---
 equipe_jogador = []
 pokemon_inicial = criar_pokemon(inicial_escolhido, 5) # Cria Nível 5
+
 if pokemon_inicial:
     equipe_jogador.append(pokemon_inicial)
 else:
@@ -272,13 +281,17 @@ while running:
                                 npc_falando_agora.interagir() # Fecha diálogo para transição
                                 
                                 # Cria o time do Professor (6 Pokémons Fortes)
+                                
                                 time_professor = [
-                                    criar_pokemon("Mewtwo", 1),       # Boss
-                                    criar_pokemon("Zapdos", 1),
-                                    criar_pokemon("Moltres", 1),
-                                    criar_pokemon("Articuno", 1),
-                                    criar_pokemon("Porygon", 1),
-                                    criar_pokemon("Lapras", 1)
+
+                                    criar_pokemon(lista_iniciais_fora_escolha[0], random.randint(3,7)),       # Boss
+                                    criar_pokemon(lista_iniciais_fora_escolha[1], random.randint(3,7)),
+                                    criar_pokemon("Abra", random.randint(5,10)), 
+                                    criar_pokemon("Pikachu", random.randint(10,15)), # forte contra água
+                                    criar_pokemon("Lapras", random.randint(10,15)), # forte contra fogo
+                                    criar_pokemon(random.choice(lista_pokemons_lendarios), 10) 
+                                     
+
                                 ]
                                 # Filtra Nones caso erre o nome
                                 time_professor = [p for p in time_professor if p is not None]
