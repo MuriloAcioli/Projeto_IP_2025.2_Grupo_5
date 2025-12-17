@@ -26,6 +26,7 @@ class Coletavel(pg.sprite.Sprite):
             self.image.fill(cor_padrao)
             
         self.rect = self.image.get_rect(topleft=(x, y))
+        self.hitbox = self.rect.copy()
         self.nome_item = "item_desconhecido"
         self.quantidade = 1
 

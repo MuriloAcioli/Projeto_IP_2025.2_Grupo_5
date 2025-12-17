@@ -71,7 +71,11 @@ class Player(pg.sprite.Sprite):
         
         # O rect vai pegar o tamanho da imagem já aumentada automaticamente
         self.rect = self.image.get_rect(topleft=(x, y))
+        #self.rect.height = self.rect.height // 2
+        #self.rect.bottom = y + self.image.get_height()
+        self.hitbox = self.rect.inflate(0, -self.rect.height / 1.3)
         
+        self.hitbox.bottom = self.rect.bottom
         self.speed = 5
         self.direction = pg.math.Vector2(0, 0) 
         
@@ -127,3 +131,5 @@ class Player(pg.sprite.Sprite):
         
         self.rect.x += self.direction.x * self.speed
         self.rect.y += self.direction.y * self.speed
+
+        self.hitbox.midbottom = self.rect.midbottom
