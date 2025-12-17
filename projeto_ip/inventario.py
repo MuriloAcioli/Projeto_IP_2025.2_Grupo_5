@@ -1,8 +1,6 @@
 import pygame as pg
 
-# =============================================================================
-# CONSTANTES DE ESTADO
-# =============================================================================
+# Identificadores para cada tela/estado do menu
 ESTADO_MENU_PRINCIPAL = 0
 ESTADO_LISTA_ITENS = 1
 ESTADO_OPCOES_ITEM = 2
@@ -15,37 +13,41 @@ class MenuInventario:
         self.aberto = False 
         
         self.fonte_tamanho = 20
+        # fonte personalizada
         try:
             self.fonte = pg.font.Font("pokemon_font.ttf", self.fonte_tamanho)
         except FileNotFoundError:
             self.fonte = pg.font.SysFont('couriernew', 20, bold=True)
         
-        # Cores
+        # cores
         self.COR_BRANCO = (248, 248, 248) 
         self.COR_PRETO = (8, 8, 8)        
         self.COR_VERDE_HP = (80, 200, 120)
         self.COR_CINZA_BARRA = (200, 200, 200)
         self.COR_LARANJA_CLARO = (255,  219, 187)
 
-        # Variáveis de Controle
+        #controlam onde o cursor ta e qual tela exibir
         self.estado_atual = ESTADO_MENU_PRINCIPAL
         self.index_menu_principal = 0 
         self.index_lista_itens = 0
         self.index_opcoes = 0 
         self.index_pokemon = 0
-        self.poke_troca_origem = -1
+        self.poke_troca_origem = -1 # Guarda o índice do primeiro pokemon escolhido para troca
         self.item_focado = None 
         
+        # Variáveis para a caixa de diálogo
         self.texto_mensagem = ""
         self.estado_anterior_mensagem = ESTADO_MENU_PRINCIPAL 
 
     def alternar(self):
+        # Abre ou fecha o menu, resetando para a tela principal
         self.aberto = not self.aberto
         if self.aberto:
             self.estado_atual = ESTADO_MENU_PRINCIPAL
             self.index_menu_principal = 0
 
     def mostrar_mensagem(self, texto):
+        # Configura e exibe uma mensagem simples na parte inferior
         self.texto_mensagem = texto
         self.estado_anterior_mensagem = self.estado_atual 
         self.estado_atual = ESTADO_MENSAGEM
@@ -58,13 +60,13 @@ class MenuInventario:
         
         tecla = evento.key
 
-        # === MENSAGEM ===
+        # Se estiver exibindo uma mensagem qualquer tecla de confirmação fecha ela
         if self.estado_atual == ESTADO_MENSAGEM:
             if tecla == pg.K_SPACE or tecla == pg.K_RETURN or tecla == pg.K_ESCAPE or tecla == pg.K_z:
                 self.estado_atual = self.estado_anterior_mensagem
             return None
 
-        # === MENU PRINCIPAL ===
+        # Navegação no Menu Principal (Item, Pokemon, Sair)
         if self.estado_atual == ESTADO_MENU_PRINCIPAL:
             if tecla == pg.K_w or tecla == pg.K_UP:
                 self.index_menu_principal -= 1
@@ -83,11 +85,11 @@ class MenuInventario:
                     self.index_pokemon = 0
                     self.poke_troca_origem = -1
                 else: 
-                    self.alternar()
+                    self.alternar() # Opção Sair
             elif tecla == pg.K_ESCAPE:
                 self.alternar()
 
-        #troca de pokemons
+        # Lógica para trocar a ordem dos Pokémons na equipe
         elif self.estado_atual == ESTADO_TROCAR_POKEMON:
             if tecla == pg.K_ESCAPE:
                 self.estado_atual = ESTADO_MENU_PRINCIPAL 
@@ -99,22 +101,25 @@ class MenuInventario:
                     self.index_pokemon += 1
                     if self.index_pokemon >= len(equipe_jogador): self.index_pokemon = 0
                 elif tecla == pg.K_RETURN or tecla == pg.K_SPACE:
+                    # Se ainda não selecionou o primeiro, seleciona agora
                     if self.poke_troca_origem == -1:
                         self.poke_troca_origem = self.index_pokemon
                     else:
+                        # Se já tinha um selecionado e é diferente do atual, realiza a troca
                         if self.poke_troca_origem != self.index_pokemon:
                             equipe_jogador[self.poke_troca_origem], equipe_jogador[self.index_pokemon] = equipe_jogador[self.index_pokemon], equipe_jogador[self.poke_troca_origem]
                         self.poke_troca_origem = -1    
 
-
-
-        # === LISTA DE ITENS ===
+        # Navegação na Lista de Itens
         elif self.estado_atual == ESTADO_LISTA_ITENS:
             lista_nomes = list(inventario_do_player.keys())
+            # Garante que o índice não estoure se um item foi removido
             if self.index_lista_itens >= len(lista_nomes):
                 self.index_lista_itens = max(0, len(lista_nomes) - 1)
+            
             if tecla == pg.K_ESCAPE:
                 self.estado_atual = ESTADO_MENU_PRINCIPAL 
+            
             if len(lista_nomes) > 0:
                 if tecla == pg.K_w or tecla == pg.K_UP:
                     self.index_lista_itens -= 1
@@ -127,7 +132,7 @@ class MenuInventario:
                     self.estado_atual = ESTADO_OPCOES_ITEM
                     self.index_opcoes = 0
 
-        # === OPÇÕES (USAR / DESCARTAR) ===
+        # Menu de opções do item (Usar ou Descartar)
         elif self.estado_atual == ESTADO_OPCOES_ITEM:
             lower_item = self.item_focado.lower()
             eh_pocao = "Pocao" in lower_item or "poção" in lower_item
@@ -153,13 +158,13 @@ class MenuInventario:
                         if inventario_do_player[self.item_focado] <= 0:
                             del inventario_do_player[self.item_focado]
                             self.index_lista_itens -= 1
-                    self.estado_atual = ESTADO_LISTA_ITENS 
+                        self.estado_atual = ESTADO_LISTA_ITENS 
                 
                 elif acao_escolhida == "USAR":
                     self.estado_atual = ESTADO_ESCOLHER_POKEMON
                     self.index_pokemon = 0
 
-        # === ESCOLHER POKEMON ===
+        # Seleção de qual Pokemon recebe o item
         elif self.estado_atual == ESTADO_ESCOLHER_POKEMON:
             
             if tecla == pg.K_ESCAPE:
@@ -176,7 +181,7 @@ class MenuInventario:
                     self.index_pokemon += 1
                     if self.index_pokemon >= len(equipe_jogador): self.index_pokemon = 0
                 
-                # USAR A POÇÃO
+                # Tenta aplicar o item
                 elif tecla == pg.K_RETURN or tecla == pg.K_SPACE:
                     if self.item_focado not in inventario_do_player:
                         self.mostrar_mensagem("Item inexistente!")
@@ -184,7 +189,7 @@ class MenuInventario:
 
                     pokemon_alvo = equipe_jogador[self.index_pokemon]
                     
-                    # CORREÇÃO 2: Garantir que os atributos existem (Debug)
+                    # Checagem de segurança pra ver se o pokemon tem os atributos de vida
                     if not hasattr(pokemon_alvo, 'hp_atual'):
                         print("ERRO: Pokemon não tem atributo hp_atual")
                         return None
@@ -195,7 +200,7 @@ class MenuInventario:
                     if vida_atual >= vida_max:
                         self.mostrar_mensagem("Vida ja esta cheia!") 
                     else:
-                        # CORREÇÃO 3: Cura baseada no nome do item
+                        # Define quanto cura baseado no nome do item
                         cura = 20
                         if "Super" in self.item_focado: cura = 50
                         if "Hyper" in self.item_focado: cura = 200
@@ -204,29 +209,31 @@ class MenuInventario:
                         if pokemon_alvo.hp_atual > vida_max:
                             pokemon_alvo.hp_atual = vida_max
                         
-                        # Consome o item
+                        # Remove o item do inventário
                         inventario_do_player[self.item_focado] -= 1
                         if inventario_do_player[self.item_focado] <= 0:
                             del inventario_do_player[self.item_focado]
-                            # Se acabou o item, volta para a lista para evitar erro
+                            # Se acabou o item, volta para a lista para evitar crashar
                             self.estado_atual = ESTADO_LISTA_ITENS 
                             
                         self.mostrar_mensagem(f"{pokemon_alvo.nome}: Recuperou {cura} HP!")
 
         return None
 
-    # --- FUNÇÕES DE DESENHO ---
+    # Métodos de Desenho na tela
 
     def desenhar_caixa_gb(self, tela, rect):
-        """Desenha caixa branca com borda preta grossa"""
+        #caixa branca/laranja com borda preta
         pg.draw.rect(tela, self.COR_LARANJA_CLARO, rect)
         pg.draw.rect(tela, self.COR_PRETO, rect, width=4)
+        # Detalhes nos cantos
         pg.draw.line(tela, self.COR_PRETO, (rect.left+4, rect.top+4), (rect.right-4, rect.top+4), 1)
         pg.draw.line(tela, self.COR_PRETO, (rect.left+4, rect.bottom-4), (rect.right-4, rect.bottom-4), 1)
         pg.draw.line(tela, self.COR_PRETO, (rect.left+4, rect.top+4), (rect.left+4, rect.bottom-4), 1)
         pg.draw.line(tela, self.COR_PRETO, (rect.right-4, rect.top+4), (rect.right-4, rect.bottom-4), 1)
 
     def desenhar_cursor(self, tela, x, y):
+        # Triângulo preto simples indicando seleção
         pontos = [(x, y), (x, y + 10), (x + 8, y + 5)]
         pg.draw.polygon(tela, self.COR_PRETO, pontos)
 
@@ -234,16 +241,16 @@ class MenuInventario:
         largura_barra = 100
         altura_barra = 10
         
-        # Texto HP
+        # Desenha o HP
         surf_hp = self.fonte.render("HP:", True, self.COR_PRETO)
         tela.blit(surf_hp, (x - 35, y - 5))
         
-        # Fundo da barra
+        # Fundo cinza da barra
         rect_fundo = pg.Rect(x, y, largura_barra, altura_barra)
         pg.draw.rect(tela, self.COR_CINZA_BARRA, rect_fundo)
         pg.draw.rect(tela, self.COR_PRETO, rect_fundo, width=1)
         
-        # Parte Verde
+        # Preenchimento verde proporcional à vida
         if maximo > 0 and atual > 0:
             porcentagem = atual / maximo
             largura_verde = int(largura_barra * porcentagem)
@@ -258,7 +265,7 @@ class MenuInventario:
 
         screen_w, screen_h = tela.get_size()
         
-        # === MENU LATERAL ===
+        # Desenha o Menu Lateral Direito
         if self.estado_atual == ESTADO_MENU_PRINCIPAL:
             rect_menu = pg.Rect(screen_w - 220, 20, 200, 250)
             self.desenhar_caixa_gb(tela, rect_menu)
@@ -274,7 +281,7 @@ class MenuInventario:
                 tela.blit(surf, (x_texto, y_atual))
                 y_atual += 40
 
-        # === LISTA DE ITENS ===
+        # Desenha a Lista de Itens (se não estiver escolhendo pokemon)
         if self.estado_atual >= ESTADO_LISTA_ITENS and self.estado_atual != ESTADO_ESCOLHER_POKEMON:
             largura_lista = 400
             altura_lista = 400
@@ -291,6 +298,7 @@ class MenuInventario:
                 tela.blit(self.fonte.render("MOCHILA VAZIA", True, (100,100,100)), (x_texto, y_atual))
             else:
                 for i, (nome, qtd) in enumerate(inventario_do_player.items()):
+                    # Mostra o cursor se estiver navegando ou se selecionou este item
                     if self.estado_atual == ESTADO_LISTA_ITENS and i == self.index_lista_itens:
                         self.desenhar_cursor(tela, x_texto - 15, y_atual + 5)
                     elif self.estado_atual > ESTADO_LISTA_ITENS and nome == self.item_focado:
@@ -299,13 +307,12 @@ class MenuInventario:
                     texto = f"{nome.upper()}"
                     texto_qtd = f"x{qtd}"
                     
-
                     if qtd > 0:
                         tela.blit(self.fonte.render(texto, True, self.COR_PRETO), (x_texto, y_atual))
                         tela.blit(self.fonte.render(texto_qtd, True, self.COR_PRETO), (x_texto + 220, y_atual))
                         y_atual += 40
 
-        # === POP-UP DE AÇÕES ===
+        # Desenha o Pop-up de opções (Usar/Descartar)
         if self.estado_atual == ESTADO_OPCOES_ITEM:
             cx = (screen_w // 2) + 100
             cy = (screen_h // 2) + 50
@@ -324,7 +331,7 @@ class MenuInventario:
                 tela.blit(self.fonte.render(op, True, self.COR_PRETO), (px, py))
                 py += 35
 
-        # === ESCOLHER POKEMON ===
+        # Desenha a tela de escolha ou troca de Pokemon
         if self.estado_atual == ESTADO_ESCOLHER_POKEMON or (self.estado_atual == ESTADO_MENSAGEM and self.estado_anterior_mensagem == ESTADO_ESCOLHER_POKEMON) or self.estado_atual == ESTADO_TROCAR_POKEMON:
 
             titulo = "USAR EM QUEM?"
@@ -341,13 +348,10 @@ class MenuInventario:
                 x_base = rect_poke.x + 40
                 
                 cor_texto = self.COR_PRETO
+                # Se for a tela de troca, destaca em vermelho quem já foi selecionado
                 if self.estado_atual == ESTADO_TROCAR_POKEMON and self.poke_troca_origem == i:
-                    cor_texto = (200, 50, 50)  #vermelho para o pokemon selecionado para trok
+                    cor_texto = (200, 50, 50) 
 
-
-
-
-                
                 if self.index_pokemon == i:
                     self.desenhar_cursor(tela, x_base - 20, y_base + 10)
                 
@@ -364,7 +368,7 @@ class MenuInventario:
                 
                 y_base += 70
 
-        # === MENSAGEM INFERIOR ===
+        # Desenha a caixa de mensagem inferior
         if self.estado_atual == ESTADO_MENSAGEM:
             rect_msg = pg.Rect(0, screen_h - 120, screen_w, 120)
             pg.draw.rect(tela, self.COR_BRANCO, rect_msg)
@@ -372,5 +376,6 @@ class MenuInventario:
             
             tela.blit(self.fonte.render(self.texto_mensagem, True, self.COR_PRETO), (30, screen_h - 80))
             
+            # Pisca um indicador vermelho para mostrar que tem mais texto ou aguardando input
             if (pg.time.get_ticks() // 500) % 2 == 0:
                 pg.draw.polygon(tela, (200, 0, 0), [(screen_w-40, screen_h-30), (screen_w-20, screen_h-30), (screen_w-30, screen_h-20)])
