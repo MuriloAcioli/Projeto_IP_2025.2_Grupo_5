@@ -406,10 +406,10 @@ while running:
                             lvl_chao = 3; lvl_teto = 5
                         elif raridade < 93:
                             pokemon_random = random.choice(lista_pokemons_raros)
-                            lvl_chao = 5; lvl_teto = 10
+                            lvl_chao = 6; lvl_teto = 10
                         elif raridade < 98:
                             pokemon_random = random.choice(lista_pokemons_super_raros)
-                            lvl_chao = 5; lvl_teto = 10
+                            lvl_chao = 7; lvl_teto = 2
                         else:
                             lvl_chao = 50; lvl_teto = 50
                             pokemon_random = random.choice(lista_pokemons_lendarios)
