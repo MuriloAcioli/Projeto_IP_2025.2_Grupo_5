@@ -6,20 +6,16 @@ DIRETORIO_BASE = os.path.dirname(os.path.abspath(__file__))
 class PokeHealer(pg.sprite.Sprite):
     """Representa um Centro Pokémon (PokeHealer) no mapa."""
     
-    # Path para a imagem (você precisará de uma imagem, use um placeholder temporário se não tiver)
-    # Exemplo: um bloco vermelho ou algo que simbolize a cura. 
-    # Vou usar o Obstaculo como base visual por agora.
-    
     def __init__(self, x, y, tile_size=48):
         super().__init__()
         
-        # Tenta carregar uma imagem específica para o Healer
+        # Bloco padrão de carregamento de imagem -> Imagem original, com fallback sendo uma imagem genérica
         try:
             path_imagem = os.path.join(DIRETORIO_BASE, "assets/obstaculos/pokehealer.png")
             self.image = pg.image.load(path_imagem).convert_alpha()
-        except pg.error:
-            # Fallback (usar um quadrado simples ou a imagem do Obstaculo se já carregada)
-            print("AVISO: Imagem do PokeHealer não encontrada. Usando quadrado temporário.")
+        except Exception:
+            # Fallback (usar um quadrado simples)
+            print("AVISO: Imagem do PokeHealer não encontrada. Usando quadrado vermelho.")
             self.image = pg.Surface((tile_size, tile_size))
             self.image.fill((255, 0, 0)) # Um bloco vermelho para cura
             
@@ -37,8 +33,7 @@ class PokeHealer(pg.sprite.Sprite):
         for pokemon in equipe_jogador:
             # Restaura HP
             pokemon.hp_atual = pokemon.hp_max
-            # Você pode adicionar lógica para curar status aqui (ex: envenenamento)
-            # if pokemon.status != None: pokemon.status = None
+            # QUANDO FOR ADICIONAR STATUS, ADICIONA AQUI pokemon.status = None (Arthur aq)
             curados += 1
             
         if curados >= 0:

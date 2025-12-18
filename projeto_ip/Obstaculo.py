@@ -11,15 +11,12 @@ TILE_SIZE = 48
 class Obstaculo(pg.sprite.Sprite):
     def __init__(self, x, y, tamanho = (48,48)):
         super().__init__()
-        
-        #Caminho Relativo (apenas a pasta e nome)
-        caminho_relativo = "assets/obstaculos/arbusto.png" 
-        
-        #Caminho Absoluto (Cola o diretório do script + caminho relativo)
+
+        # Caminho Absoluto (Cola o diretório do script + caminho relativo)
         caminho_completo = os.path.join(DIRETORIO_BASE, "assets", "obstaculos", "arbusto.png")
 
         try:
-            #Carrega usando o CAMINHO COMPLETO calculado acima
+            #Carrega usando o CAMINHO DO ARQUIVO COMPLETO calculado acima
             imagem_carregada = pg.image.load(caminho_completo).convert_alpha()
             
             # Recorte (se necessário)

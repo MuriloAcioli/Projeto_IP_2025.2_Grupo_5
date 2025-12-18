@@ -184,7 +184,6 @@ class MenuInventario:
 
                     pokemon_alvo = equipe_jogador[self.index_pokemon]
                     
-                    # CORREÇÃO 2: Garantir que os atributos existem (Debug)
                     if not hasattr(pokemon_alvo, 'hp_atual'):
                         print("ERRO: Pokemon não tem atributo hp_atual")
                         return None
@@ -195,7 +194,6 @@ class MenuInventario:
                     if vida_atual >= vida_max:
                         self.mostrar_mensagem("Vida ja esta cheia!") 
                     else:
-                        # CORREÇÃO 3: Cura baseada no nome do item
                         cura = 20
                         if "Super" in self.item_focado: cura = 50
                         if "Hyper" in self.item_focado: cura = 200
@@ -215,8 +213,7 @@ class MenuInventario:
 
         return None
 
-    # --- FUNÇÕES DE DESENHO ---
-
+    # FUNÇÕES DE DESENHAR NA TELA
     def desenhar_caixa_gb(self, tela, rect):
         """Desenha caixa branca com borda preta grossa"""
         pg.draw.rect(tela, self.COR_LARANJA_CLARO, rect)

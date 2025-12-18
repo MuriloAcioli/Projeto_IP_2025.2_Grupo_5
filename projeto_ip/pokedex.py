@@ -1,7 +1,7 @@
 POKEDEX = {
     #INICIAIS E ROTA 1
     "Flamare": {
-        "id": 4,
+        "id": 20000,
         "tipo": "Fogo",
         "stats": (39, 52, 43, 65),
         "sprite": "assets/pokemons/flamare.png",
@@ -10,7 +10,7 @@ POKEDEX = {
         "raridade": "inicial"
     },
     "Soim": {
-        "id": 1,
+        "id": 10000,
         "tipo": "Grama",
         "stats": (45, 49, 49, 45),
         "sprite": "assets/pokemons/soim.png",
@@ -19,7 +19,7 @@ POKEDEX = {
         "raridade": "inicial"
     },
     "Caprio":{
-        "id": 3000,
+        "id": 30000,
         "tipo": "agua",
         "stats": (44, 48, 65, 43),
         "sprite": "assets/pokemons/caprio.png",
@@ -28,7 +28,7 @@ POKEDEX = {
         ,"raridade": "inicial"
     },
         "Byte": {
-        "id":   670730110, # Tabela ascii + 0
+        "id":   670730110, # Tabela ascii + 0 depois de cada número
         "tipo": "Aco",
         "stats": (106, 110, 90, 130),
         "sprite": "assets/pokemons/byte.png",
