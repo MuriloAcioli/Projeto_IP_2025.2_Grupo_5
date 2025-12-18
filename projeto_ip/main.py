@@ -13,11 +13,12 @@ from mato import Mato
 from pokemon import Pokemon, criar_pokemon 
 from batalha import BatalhaPokemon
 from npc import NPC
-from pokedex import POKEDEX
+from pokedex import POKEDEX,progresso_pokedex
 from pokehealer import PokeHealer
 # from save import salvar_jogo_sistema, carregar_jogo_sistema, ler_info_save
 from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
 from game_over import exibir_game_over
+
 # =============================================================================
 # CONFIGURAÇÕES GERAIS
 # =============================================================================
@@ -200,7 +201,7 @@ if jogo_ativo:
 #CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO
 equipe_jogador = []
 pokemon_inicial = criar_pokemon(inicial_escolhido, 5) # Cria Nível 5
-
+progresso_pokedex[inicial_escolhido] = "capturado"
 if pokemon_inicial:
     equipe_jogador.append(pokemon_inicial)
 else:
@@ -240,7 +241,7 @@ while running:
         for event in pg.event.get():
 
             if menu_inv.aberto:
-                menu_inv.processar_input(event, protagonista.inventario, equipe_jogador)
+                menu_inv.processar_input(event, protagonista.inventario, equipe_jogador,POKEDEX)
 
             if event.type == pg.QUIT: 
                 running = False
@@ -395,7 +396,7 @@ while running:
             #Lógica do Mato
             if protagonista.direction.magnitude() > 0:
                 if pg.sprite.spritecollide(protagonista, grupo_mato, False):
-                    if random.random() < 0.0115: # Chance de encontro
+                    if random.random() < 0.01: # Chance de encontro
                         animacao_transicao(screen)
                         estado_jogo = "BATALHA"
  
@@ -465,7 +466,7 @@ while running:
         for sprite in player_group: 
             screen.blit(sprite.image, camera.apply(sprite.rect))
 
-        menu_inv.desenhar(screen, protagonista.inventario, equipe_jogador)
+        menu_inv.desenhar(screen, protagonista.inventario, equipe_jogador,POKEDEX,progresso_pokedex)
 
         if menu_inv.aberto:
             pg.draw.rect(screen, (100,100,100), rect_botao_som, border_radius=5)

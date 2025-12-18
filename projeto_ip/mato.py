@@ -21,7 +21,6 @@ class Mato(pg.sprite.Sprite):
 
                 # 3. Agora sim, escalar esse pedaço cortado para o tamanho desejado
                 self.image = pg.transform.scale(imagem_cortada, tamanho)
-                
             except FileNotFoundError:
                 print(f"Erro: Imagem {imagem_path} não achada. Usando quadrado.")
                 self.image = pg.Surface(tamanho) # Usa o tamanho definido
@@ -31,3 +30,4 @@ class Mato(pg.sprite.Sprite):
             self.image.fill(cor_padrao)
             
         self.rect = self.image.get_rect(topleft=(x, y))
+        self.hitbox = self.rect.copy()

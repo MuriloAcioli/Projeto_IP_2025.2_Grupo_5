@@ -69,7 +69,7 @@ class Player(pg.sprite.Sprite):
         #O rect vai pegar o tamanho da imagem já aumentada automaticamente
         self.rect = self.image.get_rect(topleft=(x, y))
 
-        ALTURA_HITBOX_PLAYER = 1.3  # Quanto maior esse número maior vai ser a hitbox (apesar de ser uma divisão, ideal entre 1.3 e 2, eu (amcz) botei 1.3 pq tava achando mto grande msm, qualquer coisa só perguntar)
+        ALTURA_HITBOX_PLAYER = 1.8  # Quanto maior esse número maior vai ser a hitbox (apesar de ser uma divisão, ideal entre 1.3 e 2, eu (amcz) botei 1.3 pq tava achando mto grande msm, qualquer coisa só perguntar)
         self.hitbox = self.rect.inflate(0, -self.rect.height / ALTURA_HITBOX_PLAYER)
         
         self.hitbox.bottom = self.rect.bottom

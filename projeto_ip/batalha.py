@@ -2,7 +2,7 @@ import pygame as pg
 import random
 import os
 from pokemon import Golpe 
-from pokedex import POKEDEX
+from pokedex import POKEDEX, progresso_pokedex
 import math
 
 # Define o diretório base
@@ -35,6 +35,9 @@ class BatalhaPokemon:
         else:
             self.enemy_equipe = [enemy_data]
             self.enemy_pkmn = enemy_data
+            status_atual = progresso_pokedex.get(self.enemy_pkmn.nome, "desconhecido")
+            if status_atual != "capturado":
+                progresso_pokedex[self.enemy_pkmn.nome] = "visto"
 
         self.inventario = inventario
         
@@ -459,8 +462,13 @@ class BatalhaPokemon:
                 self.anim_x_enemy = 800 
                 
                 self.mensagem_sistema = f"Inimigo enviou {pkmn.nome}!"
+
+                if not progresso_pokedex[self.enemy_pkmn.nome]:
+                    progresso_pokedex[self.enemy_pkmn.nome] = "visto"
+
                 self.estado_atual = "TROCA_ANIMACAO_INIMIGO"
                 self.timer_espera = pg.time.get_ticks()
+
                 return True
         return False
 
@@ -958,6 +966,7 @@ class BatalhaPokemon:
                     if self.captura_sucesso:
                         self.bola_cor_filtro = (255, 255, 0) 
                         self.mensagem_sistema = "GOTCHA!"
+                        progresso_pokedex[self.enemy_pkmn.nome] = "capturado"
                     else:
                         self.bola_cor_filtro = (50, 50, 50) 
                         self.mensagem_sistema = "Ah não! Escapou!"

@@ -36,7 +36,7 @@ POKEDEX = {
         "stats": (106, 110, 90, 130),
         "sprite": "assets/pokemons/byte.png",
         "sprite_back": "assets/pokemons/byte_back.png",
-        "golpes": ["Choque do Trovão", "Investida", "Onda de Trovao", "Autodestruicão"],
+        "golpes": ["Choque do Trovão", "Investida", "Trovao", "Mordida"],
         "raridade": "comum"
     },
     "Byte*": {
@@ -45,7 +45,7 @@ POKEDEX = {
         "stats": (106, 110, 90, 130),
         "sprite": "assets/pokemons/byteS.png",
         "sprite_back": "assets/pokemons/byteS_back.png",
-        "golpes": ["Choque do Trovão", "Investida", "Onda de Trovao", "Autodestruicão"],
+        "golpes": ["Choque do Trovão", "Investida", "Trovao", "Mordida"],
         "raridade": "shiny"
     },
 
@@ -271,8 +271,8 @@ POKEDEX = {
         "id": 29,
         "tipo": "Veneno",
         "stats": (55, 47, 52, 41),
-        "sprite": "assets/pokemons/nidoran_fS.png",
-        "sprite_back": "assets/pokemons/nidoran_fS_back.png",
+        "sprite": "assets/pokemons/nidoran-fS.png",
+        "sprite_back": "assets/pokemons/nidoran-fS_back.png",
         "golpes": ["Rosnar", "Arranhao", "Mordida"],
         "raridade": "shiny"
     },
@@ -281,8 +281,8 @@ POKEDEX = {
         "id": 32,
         "tipo": "Veneno",
         "stats": (46, 57, 40, 50),
-        "sprite": "assets/pokemons/nidoran-m.png",
-        "sprite_back": "assets/pokemons/nidoran-m_back.png",
+        "sprite": "assets/pokemons/nidoran_m.png",
+        "sprite_back": "assets/pokemons/nidoran_m_back.png",
         "golpes": ["Encarar", "Investida", "Picada Venenosa", "Chifrada"],
         "raridade": "comum"
     },
@@ -618,4 +618,8 @@ POKEDEX = {
         "golpes": ["Psiquico", "Meteoro Veloz", "Barreira", "Recuperacao"],
         "raridade": "shiny"
     }
+}
+
+progresso_pokedex = {
+
 }
