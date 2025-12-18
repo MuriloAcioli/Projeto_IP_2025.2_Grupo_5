@@ -33,7 +33,7 @@ POKEDEX = {
     "Byte": {
         "id": 670730110,
         "tipo": "Aco",
-        "stats": (106, 110, 90, 130),
+        "stats": (10600, 11000, 90, 130),
         "sprite": "assets/pokemons/byte.png",
         "sprite_back": "assets/pokemons/byte_back.png",
         "golpes": ["Choque do Trovão", "Investida", "Onda de Trovao", "Autodestruicão"],

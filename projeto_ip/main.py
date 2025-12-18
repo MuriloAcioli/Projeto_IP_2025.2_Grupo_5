@@ -17,7 +17,7 @@ from pokedex import POKEDEX
 from pokehealer import PokeHealer
 # from save import salvar_jogo_sistema, carregar_jogo_sistema, ler_info_save
 from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
-
+from game_over import exibir_game_over
 # =============================================================================
 # CONFIGURAÇÕES GERAIS
 # =============================================================================
@@ -526,8 +526,11 @@ while running:
                     # Se batalha acabou, Espaço para sair
                     if event.key == pg.K_SPACE:
                         if sistema_batalha.vencedor == "INIMIGO":
+                            pg.mixer.music.set_volume(0.0)
                             print("GAME OVER")
+                            exibir_game_over(screen,clock)
                             running = False
+
                         else:
                             estado_jogo = "MUNDO"
                             try: 
