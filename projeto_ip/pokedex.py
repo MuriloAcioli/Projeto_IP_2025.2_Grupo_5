@@ -1,5 +1,5 @@
 POKEDEX = {
-    # --- INICIAIS E ROTA 1 (Dados fornecidos por você) ---
+    #INICIAIS E ROTA 1
     "Flamare": {
         "id": 4,
         "tipo": "Fogo",
