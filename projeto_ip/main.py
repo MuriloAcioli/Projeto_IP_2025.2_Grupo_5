@@ -415,9 +415,17 @@ while running:
                             pokemon_random = random.choice(lista_pokemons_lendarios)
                         
                         if primeiro_encontro:
-                            inimigo_pokemon = criar_pokemon("Byte", random.randint(lvl_chao, lvl_teto))
+                            shiny = random.randint(1,100) 
+                            if shiny == 100:
+                                nome_byte = "Byte*"
+                            else:
+                                nome_byte = "Byte"
+                            inimigo_pokemon = criar_pokemon(nome_byte, random.randint(3, 5))
                             primeiro_encontro = False
-                        else: 
+                        else:
+                            shiny = random.randint(1,100) 
+                            if shiny == 100:
+                                pokemon_random += "*"
                             inimigo_pokemon = criar_pokemon(pokemon_random, random.randint(lvl_chao, lvl_teto))
                         
                         inv_batalha = protagonista.inventario if protagonista.inventario else {'Poção': 1, 'Pokebola': 1}
