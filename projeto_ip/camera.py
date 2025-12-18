@@ -11,12 +11,12 @@ class Camera:
         
         self.camera_rect = pg.Rect(0, 0, width, height)
         
-        # contreole da escala | 1.0 = Normal | 2.0 = Perto (2x maior) | 0.5 = Longe (Metade do tamanho)
+        # ISSO NÃO FUNCIONA, POIS PRECISAMOS MUDAR O TAMANHO EM TODOS OS OBJETOS, COISA QUE A GENTE NÃO VAI FAZER PQ NÃO TEM NECESSIDADE kkk
+        # DEIXA 1 pelo amor de deus se não fica bizarro
         self.zoom = 1
 
     def apply(self, entity_rect):
-        #Transforma a posição do mundo para a posição na tela aplicando o Zoom.
-        
+        # Transforma a posição do mundo para a posição na tela aplicando o Zoom.
         # calculo da posição relativa da camera
         x_rel = entity_rect.x - self.camera_rect.x
         y_rel = entity_rect.y - self.camera_rect.y
@@ -39,8 +39,6 @@ class Camera:
         # calculo da nova posição da câmera 
         
         # ajuste no campo de visão 
-        # Se o zoom é 2.0 , a câmera só consegue ver METADE do mundo original.
-        # Por isso dividimos o tamanho da tela pelo zoom.
         self.camera_rect.width = int(self.display_width / self.zoom)
         self.camera_rect.height = int(self.display_height / self.zoom)
         
@@ -48,11 +46,12 @@ class Camera:
         x = target_rect.centerx - int(self.camera_rect.width / 2)
         y = target_rect.centery - int(self.camera_rect.height / 2)
 
-        # limitador do mapa
-        x = max(0, x) 
-        y = max(0, y) 
-        x = min(x, self.map_width - self.camera_rect.width) 
-        y = min(y, self.map_height - self.camera_rect.height)
+        # limitador do mapa 
+        x = max(0, x) # o menor x é 0
+        y = max(0, y) # o menor y é 0
+        x = min(x, self.map_width - self.camera_rect.width) # o maior x é a largura do mapa
+        y = min(y, self.map_height - self.camera_rect.height) # o maior y é a largura do mapa
 
+        # aqui aplica no objeto
         self.camera_rect.x = x
         self.camera_rect.y = y

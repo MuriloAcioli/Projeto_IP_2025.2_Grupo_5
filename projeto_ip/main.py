@@ -82,7 +82,7 @@ MAPA_MATRIZ = [
 itens_coletados_ids = []
 
 def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
-    """Lê a matriz do mapa e instancia os objetos nas posições corretas."""
+    #Lê a matriz do mapa e instancia os objetos nas posições corretas
     pos_player = (100, 100)
     path_professor = os.path.join(DIRETORIO_BASE, "assets/professor/professor_massa.png") 
     
@@ -139,16 +139,16 @@ imagem_icone = pg.image.load(path_icon)
 pg.display.set_icon(imagem_icone)
 clock = pg.time.Clock()
 
-# --- Grupos de Sprites ---
+#Grupos de Sprites
 grupo_obstaculos = pg.sprite.Group()
 grupo_coletaveis = pg.sprite.Group()
 grupo_mato = pg.sprite.Group()
 grupo_npcs = pg.sprite.Group()
 
-# --- Carregamento do Mundo ---
+#Carregamento do Mundo
 map_w, map_h, player_pos = carregar_mapa(MAPA_MATRIZ, grupo_obstaculos, grupo_coletaveis, grupo_mato, grupo_npcs)
 
-# --- Inicialização do Player ---
+#Inicialização do Player
 try:
     path_down = os.path.join(DIRETORIO_BASE, "assets/mc/mc_down.png")
     path_left = os.path.join(DIRETORIO_BASE, "assets/mc/mc_left.png")
@@ -161,7 +161,7 @@ except FileNotFoundError:
     print("ERRO CRÍTICO: Imagens do player não encontradas.")
     exit()
 
-# --- Inicialização de Sistemas ---
+#Inicialização de Sistemas
 menu_inv = MenuInventario()
 camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, map_w, map_h)
 
@@ -197,7 +197,7 @@ if jogo_ativo:
             pg.mixer.music.play(-1, fade_ms=2000)
         except: pass
 
-# --- CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO ---
+#CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO
 equipe_jogador = []
 pokemon_inicial = criar_pokemon(inicial_escolhido, 5) # Cria Nível 5
 
@@ -227,7 +227,7 @@ while running:
     # -------------------------------------------------------------------------
     if estado_jogo == "MUNDO":
         
-        # --- 1. LÓGICA DE UPDATE ---
+        #LÓGICA DE UPDATE 
         
         # Verifica se algum NPC está falando
         npc_falando_agora = None
@@ -247,17 +247,15 @@ while running:
             
             if event.type == pg.KEYDOWN:
                 
-                # --- SISTEMA DE TELA CHEIA (F11) - SEM SCALED PARA EVITAR ERROS ---
+                # SISTEMA DE TELA CHEIA (F11)
                 if event.key == pg.K_F11:
                     modo_tela_cheia = not modo_tela_cheia 
                     if modo_tela_cheia:
-                        # Usa apenas FULLSCREEN, sem SCALED
                         screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pg.FULLSCREEN)
                     else:
                         screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-                # ------------------------------------------------------------------
 
-                # --- CONTROLES DE DIÁLOGO ---
+                #CONTROLES DE DIÁLOGO
                 if npc_falando_agora:
                     # Tecla f: Fecha o diálogo (se já tiver terminado)
                     if event.key == pg.K_f:
@@ -308,7 +306,6 @@ while running:
                                     inv_batalha, 
                                     tipo_batalha="TREINADOR"
                                 )
-                                # ----------------------------------------------
 
                             else: # Não
                                 npc_falando_agora.texto_atual = "Volte quando estiver pronto."
@@ -316,7 +313,7 @@ while running:
                         else:
                             npc_falando_agora.interagir()
 
-                # --- CONTROLES DE MUNDO ---
+                #CONTROLES DE MUNDO
                 else:
                     # Tecla E: Inventário
                     if event.key == pg.K_e:
@@ -324,13 +321,13 @@ while running:
 
                     # Tecla Space: Coletar itens próximos e interagir
                     if event.key == pg.K_SPACE:
-                        # 2. Se tiver mensagem, limpa a mensagem
+                        #Se tiver mensagem, limpa a mensagem
                         if mensagem_tela:
                             mensagem_tela = ""
                             
-                        # 3. Se não for nada disso, é uma interação normal do jogo
+                        #Se não for nada disso, é uma interação normal do jogo
                         else:
-                            # 1. Tenta interagir com PokeHealer
+                            #Tenta interagir com PokeHealer
                             area_interacao = protagonista.rect.inflate(10, 10)
                             healer_interagido = False
                             
@@ -341,7 +338,7 @@ while running:
                                     healer_interagido = True
                                     break
 
-                            # 2. Se não foi PokeHealer, tenta pegar item
+                            #Se não foi PokeHealer, tenta pegar item
                             if not healer_interagido:
                                 item_pegado = False
                             
@@ -360,7 +357,7 @@ while running:
                                         except: pass
                                         break
                                 
-                                # 3. Se não foi item nem PokeHealer, tenta NPC
+                                # Se não foi item nem PokeHealer, tenta NPC
                                 if not item_pegado:
                                     hits_npc = pg.sprite.spritecollide(protagonista, grupo_npcs, False)
                                     if not hits_npc:
@@ -384,7 +381,7 @@ while running:
                             volume_padrao = 0
                             pg.mixer.music.set_volume(volume_padrao)
 
-        # Atualização do Mundo 
+        #Atualização do Mundo 
         if not npc_falando_agora and not menu_inv.aberto and not mensagem_tela:
             antigo_rect = protagonista.rect.copy()
             player_group.update()
@@ -395,14 +392,14 @@ while running:
                     if not area_proximidade.colliderect(protagonista.rect):
                         obs.resetar_cura()
             
-            # Lógica do Mato
+            #Lógica do Mato
             if protagonista.direction.magnitude() > 0:
                 if pg.sprite.spritecollide(protagonista, grupo_mato, False):
                     if random.random() < 0.0115: # Chance de encontro
                         animacao_transicao(screen)
                         estado_jogo = "BATALHA"
  
-                        # GERA O POKEMON NO MATO
+                        #GERA O POKEMON NO MATO
                         raridade = random.randint(0, 100)
                         if raridade < 75:
                             pokemon_random = random.choice(lista_pokemons_comuns)
@@ -443,7 +440,7 @@ while running:
             camera.update(protagonista.rect)
 
 
-        # --- 2. LÓGICA DE DESENHO ---
+        #lógica de desenho 
         screen.fill((0,0,0)) 
         screen.blit(fundo_grama, camera.apply_rect(fundo_grama.get_rect()))
 
@@ -506,9 +503,9 @@ while running:
                 screen.blit(sim_surf, (rect_interno.x + 50, rect_interno.y + 80))
                 screen.blit(nao_surf, (rect_interno.x + 200, rect_interno.y + 80))
 
-    # -------------------------------------------------------------------------
+    # =========================================================================
     # ESTADO: BATALHA
-    # -------------------------------------------------------------------------
+    # =========================================================================
     elif estado_jogo == "BATALHA":
         
         for event in pg.event.get():
@@ -537,7 +534,7 @@ while running:
         if sistema_batalha: 
             sistema_batalha.desenhar(screen)
 
-    # --- DESENHA A MENSAGEM (SE HOUVER UMA) ---
+    #desenha a mensagem
     if mensagem_tela:
         rect_fundo = pg.Rect(20, SCREEN_HEIGHT - 160, SCREEN_WIDTH - 40, 140)
         rect_interno = rect_fundo.inflate(-10, -10)

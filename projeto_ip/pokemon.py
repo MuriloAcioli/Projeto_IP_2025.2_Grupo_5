@@ -26,17 +26,17 @@ class Pokemon:
         # Stats Base
         self.base_hp, self.base_atk, self.base_def, self.base_spd = base_stats
         
-        # --- SISTEMA DE XP ---
+        # Sistema de XP
         self.xp_atual = 0
         self.xp_prox_nivel = self.nivel * 50
         
         self.golpes = golpes 
 
-        # --- TAMANHO DO SPRITE ---
+        # Tamanho base do SPRITE base
 
         self.TAMANHO_SPRITE = (280, 280) 
         
-        # --- CARREGAMENTO DE SPRITES ---
+        # Carregando os sprites
         
         # 1. Frente (Inimigo usa esse)
         full_path = os.path.join(BASE_DIR, sprite_path)
@@ -64,20 +64,20 @@ class Pokemon:
         self.hp_atual = self.hp_max
 
     def calcular_stats(self):
-        """Recalcula status baseado no nível"""
+        """Recalcula status baseado no nível""" # Ele vai recalcular sempre que upa de nível e/ou é criado basicamente
         self.hp_max = int(((self.base_hp + 50) * self.nivel) / 50) + 10
         self.atk = int((self.base_atk * self.nivel) / 50) + 5
         self.defense = int((self.base_def * self.nivel) / 50) + 5
         self.speed = int((self.base_spd * self.nivel) / 50) + 5
 
-    def receber_dano(self, dano):
+    def receber_dano(self, dano): 
         self.hp_atual -= dano
         if self.hp_atual < 0: self.hp_atual = 0
         
     def esta_vivo(self):
         return self.hp_atual > 0
 
-    # --- LÓGICA DE LEVEL UP ---
+    # Lógica para upar o nível
     def ganhar_xp(self, quantidade):
         self.xp_atual += quantidade
         subiu = False
@@ -97,7 +97,7 @@ class Pokemon:
         self.hp_atual += (self.hp_max - antigo_hp)
 
 # =============================================================================
-#  FÁBRICA
+#  Função de instanciação dos pokemons
 # =============================================================================
 
 def criar_pokemon(nome_especie, nivel):
@@ -112,8 +112,7 @@ def criar_pokemon(nome_especie, nivel):
             g = GOLPES_DB[nome_golpe]
             lista_golpes_objs.append(Golpe(nome_golpe, g["poder"], g["tipo"], g["precisao"]))
     
-    # Passando sprite_back_path para o construtor
-    novo_pkmn = Pokemon(
+    novo_pkmn = Pokemon( # Para entender melhor, leia o arquivo pokedex.py, basicamente, ele acessa os dados do pokemon, usando a chave nome_especie, e usa os dados base da espécie, que é tudo menos o nível, que é momentâneo.
         id_dex=data['id'],
         nome=nome_especie,
         nivel=nivel,

@@ -189,7 +189,6 @@ class MenuInventario:
 
                     pokemon_alvo = equipe_jogador[self.index_pokemon]
                     
-                    # Checagem de segurança pra ver se o pokemon tem os atributos de vida
                     if not hasattr(pokemon_alvo, 'hp_atual'):
                         print("ERRO: Pokemon não tem atributo hp_atual")
                         return None
@@ -200,7 +199,6 @@ class MenuInventario:
                     if vida_atual >= vida_max:
                         self.mostrar_mensagem("Vida ja esta cheia!") 
                     else:
-                        # Define quanto cura baseado no nome do item
                         cura = 20
                         if "Super" in self.item_focado: cura = 50
                         if "Hyper" in self.item_focado: cura = 200
@@ -220,8 +218,7 @@ class MenuInventario:
 
         return None
 
-    # Métodos de Desenho na tela
-
+    # FUNÇÕES DE DESENHAR NA TELA
     def desenhar_caixa_gb(self, tela, rect):
         #caixa branca/laranja com borda preta
         pg.draw.rect(tela, self.COR_LARANJA_CLARO, rect)
