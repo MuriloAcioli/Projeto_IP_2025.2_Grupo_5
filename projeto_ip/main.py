@@ -299,12 +299,12 @@ while running:
                                         
                                         # Cria time do Rival (igual ao professor por enquanto)
                                         time_rival = []
-                                        time_rival.append(criar_pokemon(lista_iniciais_fora_escolha[0], 8))
-                                        time_rival.append(criar_pokemon(lista_iniciais_fora_escolha[1], 8))
+
+                                        time_rival.append(criar_pokemon("Eevee*", 8))
+                                        time_rival.append(criar_pokemon("Bellsprout", 8))
                                         time_rival.append(criar_pokemon("Clefairy", 10))
                                         time_rival.append(criar_pokemon("Porygon*", 10))
                                         time_rival.append(criar_pokemon("Articuno*", 12))
-
                                         time_rival.append(criar_pokemon("Moltres", 15))
                                         
                                         # Filtra Nones caso erre o nome
@@ -336,13 +336,12 @@ while running:
                                     
                                     # Cria o time do Professor (6 Pokémons Fortes)
                                     time_professor = []
-                                    time_professor.append(criar_pokemon("Eevee*", 8))
-                                    time_professor.append(criar_pokemon("Bellsprout", 8))
-                                    time_professor.append(criar_pokemon("Abra", 8))
 
+                                    time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[0], 6))
+                                    time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[1], 6))
+                                    time_professor.append(criar_pokemon("Abra", 7))
                                     time_professor.append(criar_pokemon("Pikachu", 8))
                                     time_professor.append(criar_pokemon("Lapras", 8))
-                                    
                                     time_professor.append(criar_pokemon("Mewtwo", 9))
                                     
                                     # Filtra Nones caso erre o nome
@@ -479,7 +478,7 @@ while running:
                                 nome_byte = "Byte*"
                             else:
                                 nome_byte = "Byte"
-                            inimigo_pokemon = criar_pokemon(nome_byte, random.randint(3, 5))
+                            inimigo_pokemon = criar_pokemon(nome_byte, random.randint(3,5))
                             primeiro_encontro = False
                         else:
                             shiny = random.randint(1,100) 
