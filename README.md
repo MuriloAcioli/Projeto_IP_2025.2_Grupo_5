@@ -27,6 +27,10 @@ Jogo voltado ao mundo de pokemon com uma pitada de CIn, prove ao Professor Pytho
    ```py
    python main.py
    ```
+## SCREENSHOTS
+
+<img width="794" height="544" alt="Captura de tela 2025-12-18 123651" src="https://github.com/user-attachments/assets/99fac0d7-c0f3-4921-870b-1c113f6249a9" />
+
 
 ##  Equipe
 
