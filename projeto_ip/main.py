@@ -17,7 +17,7 @@ from pokedex import POKEDEX,progresso_pokedex
 from pokehealer import PokeHealer
 from vitoria import exibir_vitoria
 # from save import salvar_jogo_sistema, carregar_jogo_sistema, ler_info_save
-from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
+from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao, animacao_treinador
 from game_over import exibir_game_over
 
 # =============================================================================
@@ -210,7 +210,7 @@ if jogo_ativo:
 
 #CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO
 equipe_jogador = []
-pokemon_inicial = criar_pokemon(inicial_escolhido, 100000) # Cria Nível 5
+pokemon_inicial = criar_pokemon(inicial_escolhido, 1000) # Cria Nível 5
 progresso_pokedex[inicial_escolhido] = "capturado"
 if pokemon_inicial:
     equipe_jogador.append(pokemon_inicial)
@@ -312,7 +312,7 @@ while running:
                                         time_rival = [p for p in time_rival if p is not None] 
                                         
                                         inv_batalha = protagonista.inventario
-                                        animacao_transicao(screen)
+                                        animacao_treinador(screen)
                                         estado_jogo = "BATALHA"
                                         
                                         # Rival dá game over se perder
@@ -350,7 +350,7 @@ while running:
 
                                     inv_batalha = protagonista.inventario
                                     
-                                    animacao_transicao(screen)
+                                    animacao_treinador(screen)
                                     estado_jogo = "BATALHA"
                                     
                                     # Instancia com o modo TREINADOR ou TREINADOR_REVANCHE

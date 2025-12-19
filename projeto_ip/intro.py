@@ -338,6 +338,21 @@ def animacao_transicao(screen):
         pg.display.flip()
         pg.time.delay(160)
 
+def animacao_treinador(screen):
+    """Efeito visual de piscar a tela antes da batalha."""
+    try:
+        pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/trainer_theme.mp3"))
+        pg.mixer.music.play(-1)
+    except: pass
+    
+    for i in range(8): 
+        screen.fill((255, 255, 255))
+        pg.display.flip()
+        pg.time.delay(160)
+        screen.fill((10, 10, 10))
+        pg.display.flip()
+        pg.time.delay(160)
+
 # =============================================================================
 # NOVA FUNÇÃO: SELEÇÃO DE INICIAL
 # =============================================================================

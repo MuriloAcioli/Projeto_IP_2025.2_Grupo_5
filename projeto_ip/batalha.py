@@ -71,6 +71,12 @@ class BatalhaPokemon:
 
         self.cursor_pos = 0 
         self.max_opcoes = 3 
+        
+        # Variáveis de controle para troca obrigatória
+        self.troca_obrigatoria = False
+        self.confirmar_troca_inimigo = False
+        self.cursor_confirmacao = 0  # 0 = Sim, 1 = Não
+        self.troca_apos_derrota_inimigo = False  # Flag para controlar troca após derrotar inimigo
 
         try:
             path_balls = os.path.join(DIRETORIO_BASE, "assets/coletaveis/pokebolas.png")
@@ -139,6 +145,24 @@ class BatalhaPokemon:
         
         if self.estado_atual in bloqueados:
             return
+        
+        # Menu de confirmação de troca após derrotar inimigo
+        if self.estado_atual == "CONFIRMACAO_TROCA_INIMIGO":
+            if event.key in [pg.K_a, pg.K_LEFT, pg.K_d, pg.K_RIGHT]:
+                self.cursor_confirmacao = 1 - self.cursor_confirmacao  # Toggle entre 0 e 1
+            elif event.key in [pg.K_RETURN, pg.K_SPACE, pg.K_e]:
+                if self.cursor_confirmacao == 0:  # Sim
+                    self.confirmar_troca_inimigo = False
+                    self.troca_apos_derrota_inimigo = True  # Ativa flag
+                    self.estado_atual = "MENU_TROCA"
+                    self.troca_obrigatoria = True
+                    self.cursor_pos = 0
+                    self.max_opcoes = len(self.equipe)
+                    self.mensagem_sistema = "Escolha um Pokemon:"
+                else:  # Não
+                    self.confirmar_troca_inimigo = False
+                    self.trocar_inimigo_auto()
+            return
 
         if self.battle_over and self.animacao_concluida() and self.estado_atual != "LEVEL_UP":
             return
@@ -199,6 +223,10 @@ class BatalhaPokemon:
         
         # --- VOLTAR (ESC/BACKSPACE) ---
         elif event.key == pg.K_BACKSPACE or event.key == pg.K_ESCAPE:
+            # Bloqueia ESC se a troca for obrigatória
+            if self.troca_obrigatoria and self.estado_atual == "MENU_TROCA":
+                return
+            
             if self.estado_atual == "MENU_GOLPES":
                 self.estado_atual = "MENU_PRINCIPAL"
                 self.cursor_pos = 0
@@ -279,6 +307,8 @@ class BatalhaPokemon:
             elif not pkmn_escolhido.esta_vivo():
                 self.mensagem_sistema = "Ele esta desmaiado!"
             else:
+                # Desabilita flag de troca obrigatória após escolha
+                self.troca_obrigatoria = False
                 self.realizar_troca(pkmn_escolhido)
 
     def tentar_capturar(self, tipo_bola):
@@ -440,17 +470,17 @@ class BatalhaPokemon:
         self.timer_espera = pg.time.get_ticks()
 
     def trocar_pokemon_auto(self):
-        for pkmn in self.equipe:
-            if pkmn.esta_vivo():
-                self.player_pkmn = pkmn
-                self.visual_hp_player = float(self.player_pkmn.hp_atual)
-                self.mensagem_sistema = f"{pkmn.nome}, vai!"
-                
-                # Inicia animação de entrada (igual à troca manual)
-                self.anim_x_player = -300  # Começa fora da tela
-                self.estado_atual = "TROCA_ANIMACAO"
-                self.timer_espera = pg.time.get_ticks()
-                return True
+        # Verifica se tem pokémon vivo disponível
+        tem_pokemon_vivo = any(pkmn.esta_vivo() for pkmn in self.equipe)
+        
+        if tem_pokemon_vivo:
+            # Abre menu de troca obrigatório
+            self.troca_obrigatoria = True
+            self.estado_atual = "MENU_TROCA"
+            self.cursor_pos = 0
+            self.max_opcoes = len(self.equipe)
+            self.mensagem_sistema = "Escolha um Pokemon para trocar:"
+            return True
         return False
     
     def trocar_inimigo_auto(self):
@@ -621,7 +651,13 @@ class BatalhaPokemon:
             
             if self.anim_x_player == self.target_x_player:
                 if agora - self.timer_espera > 1000:
-                    self.contra_ataque_inimigo()
+                    # Se a troca foi em resposta à derrota do inimigo, trocar o inimigo
+                    if self.troca_apos_derrota_inimigo:
+                        self.troca_apos_derrota_inimigo = False  # Reseta flag
+                        self.trocar_inimigo_auto()
+                    else:
+                        # Troca normal durante o turno, inimigo contra-ataca
+                        self.contra_ataque_inimigo()
 
         # --- ESTADO DE ESPERA DA CAPTURA (SUSPENSE) ---
         elif self.estado_atual == "AGUARDANDO_CAPTURA":
@@ -691,8 +727,30 @@ class BatalhaPokemon:
                 self.timer_espera = agora
         
         elif self.estado_atual == "ESPERANDO_TROCA_INIMIGO":
-             if agora - self.timer_espera > 500:
-                 self.trocar_inimigo_auto()
+             if agora - self.timer_espera > 1000:
+                 # Verifica o próximo pokémon do inimigo
+                 proximo_inimigo = None
+                 for pkmn in self.enemy_equipe:
+                     if pkmn.esta_vivo():
+                         proximo_inimigo = pkmn
+                         break
+                 
+                 if proximo_inimigo:
+                     # Conta quantos pokémons vivos o jogador tem
+                     pokemons_vivos_jogador = sum(1 for pkmn in self.equipe if pkmn.esta_vivo())
+                     
+                     # Só pergunta se quer trocar se tiver mais de 1 pokémon vivo
+                     if pokemons_vivos_jogador > 1:
+                         self.mensagem_sistema = f"Próximo pokemon inimigo: {proximo_inimigo.nome}. Deseja trocar de pokemon?"
+                         self.confirmar_troca_inimigo = True
+                         self.cursor_confirmacao = 0
+                         self.estado_atual = "CONFIRMACAO_TROCA_INIMIGO"
+                     else:
+                         # Só tem 1 pokémon vivo, pula direto para trocar o inimigo
+                         self.trocar_inimigo_auto()
+                 else:
+                     # Não há próximo pokémon (não deveria acontecer, mas por segurança)
+                     self.trocar_inimigo_auto()
         
         elif self.estado_atual == "TROCA_ANIMACAO_INIMIGO":
             # Anima o inimigo entrando da direita
@@ -851,8 +909,22 @@ class BatalhaPokemon:
         
         screen.blit(self.font_msg.render(self.mensagem_sistema, True, (255, 255, 0)), (30, 450))
 
+        # Opções de confirmação de troca após derrotar inimigo
+        if self.estado_atual == "CONFIRMACAO_TROCA_INIMIGO":
+            cor_padrao = (200, 200, 200)
+            cor_select = (255, 255, 255)
+            y_base = 520
+            opcoes = ["SIM", "NAO"]
+            x_base = 200
+            spacing = 250
+            
+            for i, op in enumerate(opcoes):
+                cor = cor_select if i == self.cursor_confirmacao else cor_padrao
+                prefixo = "> " if i == self.cursor_confirmacao else "   "
+                screen.blit(self.font_big.render(prefixo + op, True, cor), (x_base + (i * spacing), y_base))
+        
         # Opções
-        if mostrar_hud and not self.battle_over:
+        elif mostrar_hud and not self.battle_over:
             cor_padrao = (200, 200, 200)
             cor_select = (255, 255, 255)
             y_base = 510 
