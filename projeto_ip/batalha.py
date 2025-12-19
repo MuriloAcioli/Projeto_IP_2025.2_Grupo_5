@@ -402,7 +402,7 @@ class BatalhaPokemon:
             self.mensagem_sistema = f"Sem {nome_item}!"
 
     def tentar_fugir(self):
-        # BLOQUEIO TREINADOR
+        # Bloqueio contra treinadores
         if self.tipo_batalha in ["TREINADOR", "TREINADOR_REVANCHE"]:
             self.mensagem_sistema = "Não pode fugir de uma batalha contra treinadores!"
             self.msg_extra = ""
@@ -462,6 +462,7 @@ class BatalhaPokemon:
         self.estado_atual = "ANIMANDO_INIMIGO"
         self.timer_espera = pg.time.get_ticks()
 
+    # Troca quando pokemon do player é derrotado            
     def trocar_pokemon_auto(self):
         # Verifica se tem pokémon vivo disponível
         tem_pokemon_vivo = any(pkmn.esta_vivo() for pkmn in self.equipe)
@@ -482,7 +483,6 @@ class BatalhaPokemon:
                 self.enemy_pkmn = pkmn
                 self.visual_hp_enemy = float(self.enemy_pkmn.hp_atual)
                 
-                # Reseta posição para animação de entrada do novo inimigo
                 self.anim_x_enemy = 800 
                 
                 self.mensagem_sistema = f"Inimigo enviou {pkmn.nome}!"
@@ -501,6 +501,8 @@ class BatalhaPokemon:
         if pct > 0.5: return (0, 200, 0)
         if pct > 0.2: return (255, 200, 0)
         return (200, 0, 0)
+    
+    # vantagens e desvantagens de tipos
 
     def get_type_modifier(self, ataque_tipo, defensor_tipo_str):
         tabela = {
@@ -537,7 +539,7 @@ class BatalhaPokemon:
     def calcular_dano(self, atq, defe, golpe):
         self.atacando = False
         chance = random.randint(1, 100)
-        # Se errou pela precisão do golpe
+
         if chance > golpe.precisao: 
             return 0, "Errou!"
         
@@ -570,7 +572,7 @@ class BatalhaPokemon:
         return (x, y)
     
     def desenhar(self, screen):
-        # --- DESENHO DO FUNDO ---
+        # desenho background
         if self.bg_batalha:
             screen.blit(self.bg_batalha, (0, 0))
         else:
@@ -593,7 +595,7 @@ class BatalhaPokemon:
 
         agora = pg.time.get_ticks()
         
-        # --- LÓGICA DO PULO ---
+        # Animação de pulo durante ataque
         self.offset_y_player = 0
         self.offset_y_enemy = 0
         
@@ -611,9 +613,9 @@ class BatalhaPokemon:
                 elif self.estado_atual == "ANIMANDO_INIMIGO":
                     self.offset_y_enemy = -altura_pulo * fator
 
-        # --- LÓGICA DE ESTADOS ---
+        # lógica de estados
         if self.estado_atual == "ENTRADA_ANIMACAO":
-            # Anima entrada
+            # anima pokemons entrando em cena
             if self.anim_x_player < self.target_x_player:
                 self.anim_x_player += 15
                 if self.anim_x_player > self.target_x_player: self.anim_x_player = self.target_x_player
@@ -635,7 +637,7 @@ class BatalhaPokemon:
                 self.estado_atual = "MENU_PRINCIPAL"
                 self.mensagem_sistema = "O que voce vai fazer?"
 
-        # --- ESTADO DE ANIMAÇÃO DE TROCA DO JOGADOR ---
+        # entra animação de troca
         elif self.estado_atual == "TROCA_ANIMACAO":
             if self.anim_x_player < self.target_x_player:
                 self.anim_x_player += 15
@@ -646,13 +648,12 @@ class BatalhaPokemon:
                 if agora - self.timer_espera > 1000:
                     # Se a troca foi em resposta à derrota do inimigo, trocar o inimigo
                     if self.troca_apos_derrota_inimigo:
-                        self.troca_apos_derrota_inimigo = False  # Reseta flag
+                        self.troca_apos_derrota_inimigo = False  
                         self.trocar_inimigo_auto()
                     else:
-                        # Troca normal durante o turno, inimigo contra-ataca
                         self.contra_ataque_inimigo()
 
-        # --- ESTADO DE ESPERA DA CAPTURA (SUSPENSE) ---
+        # capturando pokemon
         elif self.estado_atual == "AGUARDANDO_CAPTURA":
             if agora - self.timer_espera > 1500:
                 if self.captura_sucesso:
@@ -679,7 +680,7 @@ class BatalhaPokemon:
                         self.msg_extra = "" 
                         self.timer_espera = agora 
                 
-                elif agora - self.timer_espera > 1500: # Delay para ler mensagens
+                elif agora - self.timer_espera > 1500: 
                     if not self.enemy_pkmn.esta_vivo():
                         # Lógica de Vitória / XP / Próximo Pokemon
                         
@@ -698,44 +699,35 @@ class BatalhaPokemon:
                             self.vencedor = "PLAYER"
                             xp_ganho = self.enemy_pkmn.nivel * 15
 
-                            # 1. Salva o nível antes de ganhar XP
                             nivel_anterior = self.player_pkmn.nivel
 
-                            # 2. Aplica o XP (A classe Pokemon deve tratar o while loop interno)
                             self.player_pkmn.ganhar_xp(xp_ganho)
 
-                            # 3. Verifica o nível novo
                             nivel_novo = self.player_pkmn.nivel
 
                             self.mensagem_sistema = f"Inimigo derrotado! Ganhou {xp_ganho} XP."
 
-                            # 4. Cria uma lista (fila) de níveis para exibir
-                            # Ex: se estava no 5 e foi pro 7, a lista será [6, 7]
                             self.fila_leveis = list(range(nivel_anterior + 1, nivel_novo + 1))
 
                             if len(self.fila_leveis) > 0:
                                 self.estado_atual = "LEVEL_UP"
                             else:
-                                # Se não subiu de nível, só espera para sair
                                 pass 
 
                             self.timer_espera = agora
                     else:
-                        # Se ninguém morreu, turno do inimigo
                         self.contra_ataque_inimigo()
 
         elif self.estado_atual == "ANIMACAO_MORTE_INIMIGO":
-            # Anima o inimigo saindo para a direita (igual à animação de troca)
+            # Anima o inimigo saindo
             if self.anim_x_enemy < 800:
                 self.anim_x_enemy += 15
             else:
-                # Terminou a animação, agora espera para trocar
                 self.estado_atual = "ESPERANDO_TROCA_INIMIGO"
                 self.timer_espera = agora
         
         elif self.estado_atual == "ESPERANDO_TROCA_INIMIGO":
              if agora - self.timer_espera > 1000:
-                 # Verifica o próximo pokémon do inimigo
                  proximo_inimigo = None
                  for pkmn in self.enemy_equipe:
                      if pkmn.esta_vivo():
@@ -743,7 +735,6 @@ class BatalhaPokemon:
                          break
                  
                  if proximo_inimigo:
-                     # Conta quantos pokémons vivos o jogador tem
                      pokemons_vivos_jogador = sum(1 for pkmn in self.equipe if pkmn.esta_vivo())
                      
                      # Só pergunta se quer trocar se tiver mais de 1 pokémon vivo
@@ -753,14 +744,13 @@ class BatalhaPokemon:
                          self.cursor_confirmacao = 0
                          self.estado_atual = "CONFIRMACAO_TROCA_INIMIGO"
                      else:
-                         # Só tem 1 pokémon vivo, pula direto para trocar o inimigo
+                         # pula confirmação de troca automaticamente
                          self.trocar_inimigo_auto()
                  else:
-                     # Não há próximo pokémon (não deveria acontecer, mas por segurança)
                      self.trocar_inimigo_auto()
         
         elif self.estado_atual == "TROCA_ANIMACAO_INIMIGO":
-            # Anima o inimigo entrando da direita
+            # Anima o inimigo entrando
             if self.anim_x_enemy > self.target_x_enemy:
                 self.anim_x_enemy -= 15
                 if self.anim_x_enemy < self.target_x_enemy: 
@@ -773,10 +763,8 @@ class BatalhaPokemon:
                      self.cursor_pos = 0
 
         elif self.estado_atual == "LEVEL_UP":
-            # Tempo entre mensagens
             if agora - self.timer_espera > 2000:
                 
-                # Se ainda tem níveis na fila para mostrar
                 if len(self.fila_leveis) > 0:
                     lvl_mostrado = self.fila_leveis.pop(0) 
                     self.mensagem_sistema = f"{self.player_pkmn.nome} subiu para o Nvl {lvl_mostrado}!"
@@ -802,33 +790,30 @@ class BatalhaPokemon:
                             self.battle_over = True
                             self.vencedor = "INIMIGO"
                             self.mensagem_sistema = "Voce perdeu..."
-                        # Se trocou, o estado já foi mudado para TROCA_ANIMACAO pela função
                     else:
                         self.estado_atual = "MENU_PRINCIPAL"
                         self.cursor_pos = 0
                         self.max_opcoes = 3 
                         self.mensagem_sistema = "O que voce vai fazer?"
 
-        # --- DESENHO HUD ---
+        # mostra o hud
         mostrar_hud = self.estado_atual not in ["ENTRADA_ANIMACAO", "MENSAGEM_INICIAL"]
 
         if mostrar_hud:
             # HUD Inimigo
-            # Expande HUD se for batalha de treinador (para comportar as pokebolas)
             hud_height = 105 if self.tipo_batalha in ["TREINADOR", "TREINADOR_REVANCHE"] else 80
             pg.draw.rect(screen, (220, 220, 220), (50, 50, 300, hud_height), border_radius=8)
             
-            # Sprites de pokebola indicando quantos pokemons o inimigo tem (se for treinador)
-            # Posicionadas no topo do HUD
+            # Sprites de pokebola indicando quantos pokemons o inimigo tem
             offset_y = 0  # Offset para descer nome e HP quando há pokebolas
             if self.tipo_batalha in ["TREINADOR", "TREINADOR_REVANCHE"] and 'Pokebola' in self.sprites_balls:
                 ball_sprite = self.sprites_balls['Pokebola']
-                ball_size = 20  # Tamanho das pokebolas
+                ball_size = 20  
                 ball_sprite_small = pg.transform.scale(ball_sprite, (ball_size, ball_size))
                 
                 for i, p in enumerate(self.enemy_equipe):
                     bx = 60 + (i * 25)
-                    by = 58  # No topo do HUD, acima do nome
+                    by = 58  
                     
                     # Se morto, aplica filtro cinza
                     if not p.esta_vivo():
@@ -838,7 +823,7 @@ class BatalhaPokemon:
                     else:
                         screen.blit(ball_sprite_small, (bx, by))
                 
-                offset_y = 25  # Desloca nome e HP para baixo
+                offset_y = 25  
             
             nome_inimigo = f"{self.enemy_pkmn.nome} Lv.{self.enemy_pkmn.nivel}"
             screen.blit(self.font_big.render(nome_inimigo, True, (0,0,0)), (60, 55 + offset_y))
@@ -868,34 +853,33 @@ class BatalhaPokemon:
 
             pg.draw.rect(screen, (0, 150, 255), (600, 392, int(150 * pct_xp), 2))
 
-            # Sprites de pokebola indicando a equipe do jogador (dentro do HUD)
+            # Sprites de pokebola indicando a equipe do jogador
             if 'Pokebola' in self.sprites_balls:
                 ball_sprite = self.sprites_balls['Pokebola']
-                ball_size = 20  # Tamanho das pokebolas
+                ball_size = 20  
                 ball_sprite_small = pg.transform.scale(ball_sprite, (ball_size, ball_size))
                 
-                max_slots = 6  # Máximo de 6 pokémons
+                max_slots = 6  # Máximo de 6 pokémons podem ser capturados
                 for i in range(max_slots):
                     bx = 460 + (i * 25)
-                    by = 395  # Dentro do HUD do jogador, abaixo da barra de HP
+                    by = 395  
                     
                     if i < len(self.equipe):
-                        # Tem pokémon neste slot
                         p = self.equipe[i]
                         if not p.esta_vivo():
-                            # Pokémon morto - pokebola cinza
+                            # se o pokemon é derrotado, pokebola fica cinza
                             ball_gray = ball_sprite_small.copy()
                             ball_gray.fill((100, 100, 100), special_flags=pg.BLEND_MULT)
                             screen.blit(ball_gray, (bx, by))
                         else:
-                            # Pokémon vivo - pokebola normal
                             screen.blit(ball_sprite_small, (bx, by))
                     else:
-                        # Slot vazio - apenas contorno
+                        # se não há pokemon capturado no slot
                         pg.draw.circle(screen, (150, 150, 150), (bx + ball_size//2, by + ball_size//2), ball_size//2, 2)
 
-        # --- SPRITES ---
-        # Condição para esconder o inimigo durante a captura
+        # sprites
+
+        # Condição para esconder o inimigo durante certas animações
         estados_escondido = ["ANIMACAO_BOLA_CHECK", "ANIMACAO_BOLA_RESULTADO"]
         inimigo_visivel = True
         if self.estado_atual in estados_escondido:
@@ -904,16 +888,13 @@ class BatalhaPokemon:
         if self.estado_atual == "FIM_BATALHA" and self.vencedor == "CAPTURA":
             inimigo_visivel = False
             
-        # Também esconde inimigo enquanto espera o próximo aparecer
         if self.estado_atual == "ESPERANDO_TROCA_INIMIGO":
             inimigo_visivel = False
         
-        # Mostra inimigo durante animação de morte para ele sair da tela
         if self.estado_atual == "ANIMACAO_MORTE_INIMIGO":
             inimigo_visivel = True
 
         if inimigo_visivel:
-            # Inimigo
             rect_visivel_inimigo = self.enemy_pkmn.image.get_bounding_rect()
             pos_y_real_inimigo = 310 - rect_visivel_inimigo.bottom
             pos_inimigo = (self.anim_x_enemy - 10, pos_y_real_inimigo + self.offset_y_enemy) 
@@ -925,13 +906,13 @@ class BatalhaPokemon:
         pos_player = (self.anim_x_player, pos_y_real + self.offset_y_player ) 
         screen.blit(self.player_pkmn.back_image, pos_player)
 
-        # --- MENU INFERIOR ---
+        # menu de baixo
         pg.draw.rect(screen, (30, 30, 80), (0, 430, 800, 170))
         pg.draw.rect(screen, (255, 255, 255), (0, 430, 800, 170), 4)
         
         screen.blit(self.font_msg.render(self.mensagem_sistema, True, (255, 255, 0)), (30, 450))
 
-        # Opções de confirmação de troca após derrotar inimigo
+        # desenha confirmação de troca inimigo
         if self.estado_atual == "CONFIRMACAO_TROCA_INIMIGO":
             cor_padrao = (200, 200, 200)
             cor_select = (255, 255, 255)
@@ -945,7 +926,7 @@ class BatalhaPokemon:
                 prefixo = "> " if i == self.cursor_confirmacao else "   "
                 screen.blit(self.font_big.render(prefixo + op, True, cor), (x_base + (i * spacing), y_base))
         
-        # Opções
+        # opções
         elif mostrar_hud and not self.battle_over:
             cor_padrao = (200, 200, 200)
             cor_select = (255, 255, 255)
