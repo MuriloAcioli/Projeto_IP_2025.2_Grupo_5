@@ -68,3 +68,12 @@ class Pocao(Coletavel):
     def __init__(self, x, y):
         super().__init__(x, y, "assets/coletaveis/pokeloot_.png", cor_padrao=(0, 0, 200))
         self.nome_item = "Poção de Vida"
+
+class Insignia(Coletavel):
+    def __init__(self, x, y):
+        # Por enquanto usa um sprite temporário (cor dourada)
+        super().__init__(x, y, "assets/coletaveis/pokeloot_.png", cor_padrao=(255, 215, 0))
+        self.nome_item = "Insígnia do Professor"
+        
+    def coletar(self, player):
+        super().coletar(player)

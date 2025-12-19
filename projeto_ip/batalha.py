@@ -282,7 +282,7 @@ class BatalhaPokemon:
 
     def tentar_capturar(self, tipo_bola):
         # BLOQUEIO TREINADOR
-        if self.tipo_batalha == "TREINADOR":
+        if self.tipo_batalha in ["TREINADOR", "TREINADOR_REVANCHE"]:
             self.mensagem_sistema = "Não pode roubar de treinador!"
             return
 
@@ -310,7 +310,7 @@ class BatalhaPokemon:
         hp_atual = self.enemy_pkmn.hp_atual
         hp_max = self.enemy_pkmn.hp_max
 
-        if "Pokebola" in tipo_bola: ball_multiplier = 1.0
+        if "Pokebola" in tipo_bola: ball_multiplier = 11
         elif "Grande" in tipo_bola: ball_multiplier = 1.5
         elif "Ultra" in tipo_bola:  ball_multiplier = 2
         else: ball_multiplier = 1.4
@@ -379,7 +379,7 @@ class BatalhaPokemon:
 
     def tentar_fugir(self):
         # BLOQUEIO TREINADOR
-        if self.tipo_batalha == "TREINADOR":
+        if self.tipo_batalha in ["TREINADOR", "TREINADOR_REVANCHE"]:
             self.mensagem_sistema = "Não pode fugir de treinador!"
             self.msg_extra = ""
             return
@@ -463,7 +463,7 @@ class BatalhaPokemon:
                 
                 self.mensagem_sistema = f"Inimigo enviou {pkmn.nome}!"
 
-                if not progresso_pokedex[self.enemy_pkmn.nome]:
+                if self.enemy_pkmn.nome not in progresso_pokedex:
                     progresso_pokedex[self.enemy_pkmn.nome] = "visto"
 
                 self.estado_atual = "TROCA_ANIMACAO_INIMIGO"
@@ -654,7 +654,7 @@ class BatalhaPokemon:
                         # Lógica de Vitória / XP / Próximo Pokemon
                         
                         # Se for TREINADOR e tiver mais pokemons vivos na equipe inimiga
-                        if self.tipo_batalha == "TREINADOR" and any(p.esta_vivo() for p in self.enemy_equipe):
+                        if self.tipo_batalha in ["TREINADOR", "TREINADOR_REVANCHE"] and any(p.esta_vivo() for p in self.enemy_equipe):
                              xp_ganho = self.enemy_pkmn.nivel * 15
                              self.player_pkmn.ganhar_xp(xp_ganho)
                              self.mensagem_sistema = f"Inimigo derrotado! +{xp_ganho} XP."
@@ -742,13 +742,13 @@ class BatalhaPokemon:
         if mostrar_hud:
             # HUD Inimigo
             # Expande HUD se for batalha de treinador (para comportar as pokebolas)
-            hud_height = 105 if self.tipo_batalha == "TREINADOR" else 80
+            hud_height = 105 if self.tipo_batalha in ["TREINADOR", "TREINADOR_REVANCHE"] else 80
             pg.draw.rect(screen, (220, 220, 220), (50, 50, 300, hud_height), border_radius=8)
             
             # Sprites de pokebola indicando quantos pokemons o inimigo tem (se for treinador)
             # Posicionadas no topo do HUD
             offset_y = 0  # Offset para descer nome e HP quando há pokebolas
-            if self.tipo_batalha == "TREINADOR" and 'Pokebola' in self.sprites_balls:
+            if self.tipo_batalha in ["TREINADOR", "TREINADOR_REVANCHE"] and 'Pokebola' in self.sprites_balls:
                 ball_sprite = self.sprites_balls['Pokebola']
                 ball_size = 20  # Tamanho das pokebolas
                 ball_sprite_small = pg.transform.scale(ball_sprite, (ball_size, ball_size))

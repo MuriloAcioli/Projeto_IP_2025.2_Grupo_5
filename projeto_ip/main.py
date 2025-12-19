@@ -51,7 +51,7 @@ MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'M', 'M', 'M', 'T', 'G', 'H', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'U', 'G', 'M', 'M', '.', '.', 'M', 'M', 'M', 'M', 'M', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', ',', 'T'],
     ['T', '.', 'M', 'M', 'M', '.', '.', '.', 'M', 'M', 'M', 'M', 'T', 'M', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', 'M', 'M', 'M', 'M', '.', '.', '.', 'M', 'M', 'M', 'G', 'T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', 'M', 'M', 'M', 'M', '.', '.', '.', 'M', 'M', 'M', 'G', 'T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', 'R', 'T'],
     ['T', 'M', 'M', 'M', 'M', '.', '.', '.', '.', 'M', 'T', 'T', 'T', '.', '.', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -109,13 +109,22 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
             elif letra == 'P':
                 pos_player = (x, y)  
             elif letra == 'N':
-                # Cria NPC
+                # Cria NPC Professor
                 try:
-                    npc = NPC(x, y, path_professor, "Está pronto para derrotar o Mangue Vermelho?")
+                    npc = NPC(x, y, path_professor, "Está pronto para derrotar o Mangue Vermelho?", tipo_npc="professor")
                     grupo_npcs.add(npc)
                     grupo_obs.add(npc) # Player colide com NPC
                 except Exception as e:
                     print(f"Erro ao criar NPC: {e}")
+            elif letra == 'R':
+                # Cria NPC Rival/Campeão (só pode batalhar após obter insígnia)
+                try:
+                    path_rival = os.path.join(DIRETORIO_BASE, "assets/professor/proff_massa_2.png") 
+                    npc = NPC(x, y, path_rival, "Você tem o que é preciso para me desafiar?", tipo_npc="rival")
+                    grupo_npcs.add(npc)
+                    grupo_obs.add(npc) # Player colide com NPC
+                except Exception as e:
+                    print(f"Erro ao criar NPC Rival: {e}")
             elif letra == 'U':
                 grupo_col.add(Ultraball(x+15,y+15))
                 
@@ -188,7 +197,7 @@ if jogo_ativo:
         
     print(f"Bem-vindo ao mangue, {nome_jogador}!")
     print(f"Seu inicial é: {inicial_escolhido}")
-    lista_iniciais_fora_escolha = lista_pokemons_iniciais
+    lista_iniciais_fora_escolha = lista_pokemons_iniciais.copy()
     lista_iniciais_fora_escolha.remove(inicial_escolhido)
     
     if jogo_ativo:
@@ -275,41 +284,85 @@ while running:
                             npc_falando_agora.respondeu = True
                             if npc_falando_agora.indice_selecionado == 0: # Sim
                                 
-                                # --- INÍCIO DA BATALHA DE CHEFE (TREINADOR) ---
-                                npc_falando_agora.texto_atual = "Prepare-se! Não terei piedade."
-                                npc_falando_agora.interagir() # Fecha diálogo para transição
+                                # --- VERIFICA TIPO DE NPC ---
+                                if npc_falando_agora.tipo_npc == "rival":
+                                    # RIVAL: Só pode batalhar se tiver insígnia
+                                    tem_insignia = "Insígnia do Professor" in protagonista.inventario
+                                    
+                                    if not tem_insignia:
+                                        npc_falando_agora.texto_atual = "Você ainda não provou seu valor.\nDerrote o Professor primeiro!"
+                                        # Não fecha o diálogo, só muda o texto
+                                    else:
+                                        # Pode batalhar!
+                                        npc_falando_agora.texto_atual = "Então vamos ver sua força!"
+                                        npc_falando_agora.interagir() # Fecha diálogo
+                                        
+                                        # Cria time do Rival (igual ao professor por enquanto)
+                                        time_rival = []
+                                        time_rival.append(criar_pokemon(lista_iniciais_fora_escolha[0], random.randint(1,2)))
+                                        time_rival.append(criar_pokemon(lista_iniciais_fora_escolha[1], random.randint(1,2)))
+                                        time_rival.append(criar_pokemon("Abra", random.randint(1,2)))
+                                        time_rival.append(criar_pokemon("Pikachu", random.randint(1,2)))
+                                        time_rival.append(criar_pokemon("Lapras", random.randint(1,2)))
+                                        time_rival.append(criar_pokemon(random.choice(lista_pokemons_lendarios), 1))
+                                        
+                                        # Filtra Nones caso erre o nome
+                                        time_rival = [p for p in time_rival if p is not None]
+                                        
+                                        inv_batalha = protagonista.inventario
+                                        animacao_transicao(screen)
+                                        estado_jogo = "BATALHA"
+                                        
+                                        # Rival dá game over se perder
+                                        sistema_batalha = BatalhaPokemon(
+                                            equipe_jogador, 
+                                            time_rival, 
+                                            inv_batalha, 
+                                            tipo_batalha="TREINADOR"
+                                        )
                                 
-                                # Cria o time do Professor (6 Pokémons Fortes)
-                                
-                                time_professor = [
+                                elif npc_falando_agora.tipo_npc == "professor":
+                                    # PROFESSOR: Lógica original
+                                    tem_insignia = "Insígnia do Professor" in protagonista.inventario
+                                    
+                                    if tem_insignia:
+                                        npc_falando_agora.texto_atual = "Uma revanche? Vamos lá!"
+                                    else:
+                                        npc_falando_agora.texto_atual = "Prepare-se! Não terei piedade."
+                                    
+                                    npc_falando_agora.interagir() # Fecha diálogo para transição
+                                    
+                                    # Cria o time do Professor (6 Pokémons Fortes)
+                                    time_professor = []
+                                    time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[0], random.randint(1,2)))
+                                    time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[1], random.randint(1,2)))
+                                    time_professor.append(criar_pokemon("Abra", random.randint(1,2)))
+                                    time_professor.append(criar_pokemon("Pikachu", random.randint(1,2)))
+                                    time_professor.append(criar_pokemon("Lapras", random.randint(1,2)))
+                                    time_professor.append(criar_pokemon(random.choice(lista_pokemons_lendarios), 1))
+                                    
+                                    # Filtra Nones caso erre o nome
+                                    time_professor = [p for p in time_professor if p is not None]
 
-                                    criar_pokemon(lista_iniciais_fora_escolha[0], random.randint(3,7)),       # Boss
-                                    criar_pokemon(lista_iniciais_fora_escolha[1], random.randint(3,7)),
-                                    criar_pokemon("Abra", random.randint(5,10)), 
-                                    criar_pokemon("Pikachu", random.randint(10,15)), # forte contra água
-                                    criar_pokemon("Lapras", random.randint(10,15)), # forte contra fogo
-                                    criar_pokemon(random.choice(lista_pokemons_lendarios), 10) 
-                                     
-
-                                ]
-                                # Filtra Nones caso erre o nome
-                                time_professor = [p for p in time_professor if p is not None]
-
-                                inv_batalha = protagonista.inventario
-                                
-                                animacao_transicao(screen)
-                                estado_jogo = "BATALHA"
-                                
-                                # Instancia com o modo TREINADOR
-                                sistema_batalha = BatalhaPokemon(
-                                    equipe_jogador, 
-                                    time_professor, 
-                                    inv_batalha, 
-                                    tipo_batalha="TREINADOR"
-                                )
+                                    inv_batalha = protagonista.inventario
+                                    
+                                    animacao_transicao(screen)
+                                    estado_jogo = "BATALHA"
+                                    
+                                    # Instancia com o modo TREINADOR ou TREINADOR_REVANCHE
+                                    tipo_batalha = "TREINADOR_REVANCHE" if tem_insignia else "TREINADOR"
+                                    sistema_batalha = BatalhaPokemon(
+                                        equipe_jogador, 
+                                        time_professor, 
+                                        inv_batalha, 
+                                        tipo_batalha=tipo_batalha
+                                    )
 
                             else: # Não
-                                npc_falando_agora.texto_atual = "Volte quando estiver pronto."
+                                if npc_falando_agora.tipo_npc == "rival":
+                                    npc_falando_agora.texto_atual = "Treine mais e volte quando estiver pronto."
+                                else:
+                                    npc_falando_agora.texto_atual = "Volte quando estiver pronto."
                         # Se já respondeu, fecha
                         else:
                             npc_falando_agora.interagir()
@@ -526,14 +579,33 @@ while running:
                 if sistema_batalha and sistema_batalha.battle_over:
                     # Se batalha acabou, Espaço para sair
                     if event.key == pg.K_SPACE:
+                        # Game Over apenas se não for revanche
                         if sistema_batalha.vencedor == "INIMIGO":
-                            pg.mixer.music.set_volume(0.0)
-                            print("GAME OVER")
-                            exibir_game_over(screen,clock)
-                            running = False
-
+                            # Se for revanche, não dá game over
+                            if sistema_batalha.tipo_batalha == "TREINADOR_REVANCHE":
+                                mensagem_tela = "Você foi derrotado, mas pode tentar novamente!"
+                                estado_jogo = "MUNDO"
+                            else:
+                                # Batalha normal: game over
+                                pg.mixer.music.set_volume(0.0)
+                                print("GAME OVER")
+                                exibir_game_over(screen,clock)
+                                running = False
                         else:
+                            # Verifica se derrotou o professor e dá a insígnia
+                            if sistema_batalha.tipo_batalha == "TREINADOR" and sistema_batalha.vencedor == "PLAYER":
+                                if npc_falando_agora and npc_falando_agora.tipo_npc == "professor" and not npc_falando_agora.foi_derrotado:
+                                    npc_falando_agora.foi_derrotado = True
+                                    if "Insígnia do Professor" not in protagonista.inventario:
+                                        protagonista.inventario["Insígnia do Professor"] = 1
+                                        mensagem_tela = "Você recebeu a Insígnia do Professor!"
+                            elif sistema_batalha.tipo_batalha == "TREINADOR_REVANCHE" and sistema_batalha.vencedor == "PLAYER":
+                                mensagem_tela = "Vitória na revanche! Você está cada vez mais forte!"
+                            
                             estado_jogo = "MUNDO"
+                        
+                        # Volta a música do mundo
+                        if estado_jogo == "MUNDO":
                             try: 
                                 pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/world_theme.mp3"))
                                 pg.mixer.music.set_volume(volume_padrao)

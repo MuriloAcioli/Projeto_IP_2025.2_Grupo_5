@@ -46,6 +46,10 @@ class MenuInventario:
         self.texto_mensagem = ""
         self.estado_anterior_mensagem = ESTADO_MENU_PRINCIPAL 
         
+        # Sistema de visualização de insígnia
+        self.mostrar_insignia = False
+        self.timer_insignia = 0
+        
         # POKEDEX
         self.index_pokedex = 0
         self.cache_imagens = {} 
@@ -203,19 +207,32 @@ class MenuInventario:
         elif self.estado_atual == ESTADO_OPCOES_ITEM:
             lower_item = self.item_focado.lower()
             eh_pocao = "pocao" in lower_item or "poção" in lower_item or "potion" in lower_item
-            opcoes_disponiveis = ["USAR", "DESCARTAR"] if eh_pocao else ["DESCARTAR"]
+            eh_insignia = "insígnia" in lower_item or "insignia" in lower_item
+            # Insígnias não podem ser usadas nem descartadas
+            if eh_insignia:
+                opcoes_disponiveis = ["VISUALIZAR", "VOLTAR"]
+            else:
+                opcoes_disponiveis = ["USAR", "DESCARTAR"] if eh_pocao else ["DESCARTAR"]
             
             if tecla == pg.K_ESCAPE:
                 self.estado_atual = ESTADO_LISTA_ITENS 
             elif tecla in [pg.K_w, pg.K_UP]:
-                self.index_opcoes = 0
+                self.index_opcoes = (self.index_opcoes - 1) % len(opcoes_disponiveis)
             elif tecla in [pg.K_s, pg.K_DOWN]:
-                if len(opcoes_disponiveis) > 1: self.index_opcoes = 1
+                self.index_opcoes = (self.index_opcoes + 1) % len(opcoes_disponiveis)
             
             elif tecla in [pg.K_RETURN, pg.K_SPACE]:
                 acao = opcoes_disponiveis[self.index_opcoes]
                 
-                if acao == "DESCARTAR":
+                if acao == "VISUALIZAR":
+                    self.mostrar_insignia = True
+                    self.timer_insignia = pg.time.get_ticks()
+                    self.estado_atual = ESTADO_LISTA_ITENS
+                
+                elif acao == "VOLTAR":
+                    self.estado_atual = ESTADO_LISTA_ITENS
+                
+                elif acao == "DESCARTAR":
                     if self.item_focado in inventario_do_player:
                         inventario_do_player[self.item_focado] -= 1
                         if inventario_do_player[self.item_focado] <= 0:
@@ -280,6 +297,43 @@ class MenuInventario:
     # LÓGICA DE DESENHO
     # =========================================================================
     def desenhar(self, tela, inventario_do_player, equipe_jogador, db_pokemons, progresso_pokedex):
+        # Exibe pop-up da insígnia se ativado
+        if self.mostrar_insignia:
+            tempo_atual = pg.time.get_ticks()
+            if tempo_atual - self.timer_insignia < 3000:  # Mostra por 3 segundos
+                # Fundo escurecido
+                overlay = pg.Surface((800, 600))
+                overlay.set_alpha(200)
+                overlay.fill((0, 0, 0))
+                tela.blit(overlay, (0, 0))
+                
+                # Caixa da insígnia
+                rect_insignia = pg.Rect(200, 150, 400, 300)
+                self.desenhar_caixa_gb(tela, rect_insignia)
+                
+                # Título
+                fonte_titulo = pg.font.SysFont('couriernew', 28, bold=True)
+                titulo = fonte_titulo.render("INSÍGNIA DO PROFESSOR", True, (218, 165, 32))
+                tela.blit(titulo, (rect_insignia.centerx - titulo.get_width()//2, rect_insignia.y + 20))
+                
+                # Tenta carregar imagem da insígnia
+                try:
+                    img_insignia = pg.image.load(os.path.join(DIRETORIO_BASE, "assets/coletaveis/cracha_cin.png"))
+                    img_insignia = pg.transform.scale(img_insignia, (300, 300))
+                    tela.blit(img_insignia, (rect_insignia.centerx - 140, rect_insignia.centery - 175))
+                except:
+                    # Fallback: desenha uma estrela dourada
+                    pg.draw.circle(tela, (255, 215, 0), (rect_insignia.centerx, rect_insignia.centery), 60)
+                    pg.draw.circle(tela, (218, 165, 32), (rect_insignia.centerx, rect_insignia.centery), 60, 5)
+                
+                # Mensagem
+                msg = self.fonte.render("Vitória sobre o Professor!", True, self.COR_PRETO)
+                tela.blit(msg, (rect_insignia.centerx - msg.get_width()//2, rect_insignia.bottom - 60))
+                # Retorna aqui para não desenhar o inventário por cima
+                return
+            else:
+                self.mostrar_insignia = False
+        
         if not self.aberto: return
 
         screen_w, screen_h = tela.get_size()
@@ -430,19 +484,40 @@ class MenuInventario:
                         is_sel = (self.estado_atual == ESTADO_LISTA_ITENS and i == self.index_lista_itens)
                         is_foc = (self.estado_atual > ESTADO_LISTA_ITENS and nome == self.item_focado)
                         
+                        # Detecta se é uma insígnia para destacar
+                        eh_insignia = "insígnia" in nome.lower() or "insignia" in nome.lower()
+                        
+                        # Desenha um ícone especial para insígnias
+                        if eh_insignia:
+                            # Desenha uma estrela dourada ao lado do nome (mais à direita para não sobrepor cursor)
+                            pg.draw.circle(tela, (255, 215, 0), (x_texto + 5, y_atual + 10), 6)
+                            pg.draw.circle(tela, (218, 165, 32), (x_texto + 5, y_atual + 10), 6, 2)
+                            cor_texto = (218, 165, 32)  # Dourado para insígnias
+                        else:
+                            cor_texto = self.COR_PRETO
+                        
                         if is_sel or is_foc:
                             self.desenhar_cursor(tela, x_texto - 15, y_atual + 5)
                         
-                        tela.blit(self.fonte.render(nome.upper(), True, self.COR_PRETO), (x_texto, y_atual))
-                        tela.blit(self.fonte.render(f"x{qtd}", True, self.COR_PRETO), (x_texto + 220, y_atual))
+                        texto_nome = self.fonte.render(nome.upper(), True, cor_texto)
+                        tela.blit(texto_nome, (x_texto + 15, y_atual))
+                        
+                        # Só mostra quantidade se não for insígnia (sempre tem 1)
+                        if not eh_insignia:
+                            tela.blit(self.fonte.render(f"x{qtd}", True, cor_texto), (x_texto + 220, y_atual))
+                        
                         y_atual += 40
 
             # Pop-up Opções
             if self.estado_atual == ESTADO_OPCOES_ITEM:
-                rect_pop = pg.Rect((screen_w//2)+100, (screen_h//2)+50, 150, 120)
+                rect_pop = pg.Rect((screen_w//2)+100, (screen_h//2)+50, 200, 120)
                 self.desenhar_caixa_gb(tela, rect_pop)
                 eh_pocao = "pocao" in self.item_focado.lower() or "potion" in self.item_focado.lower()
-                ops = ["USAR", "DESCARTAR"] if eh_pocao else ["DESCARTAR"]
+                eh_insignia = "insígnia" in self.item_focado.lower() or "insignia" in self.item_focado.lower()
+                if eh_insignia:
+                    ops = ["VISUALIZAR", "VOLTAR"]
+                else:
+                    ops = ["USAR", "DESCARTAR"] if eh_pocao else ["DESCARTAR"]
                 for i, op in enumerate(ops):
                     px, py = rect_pop.x + 30, rect_pop.y + 30 + (i*35)
                     if i == self.index_opcoes: self.desenhar_cursor(tela, px - 15, py + 5)

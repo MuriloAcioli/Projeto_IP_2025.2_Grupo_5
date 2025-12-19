@@ -1,7 +1,7 @@
 import pygame as pg
 
 class NPC(pg.sprite.Sprite):
-    def __init__(self, x, y, image_path, texto_dialogo):
+    def __init__(self, x, y, image_path, texto_dialogo, tipo_npc="generico"):
         super().__init__()
         
         # Carregar imagem
@@ -30,6 +30,10 @@ class NPC(pg.sprite.Sprite):
         self.opcoes = ["Sim", "Não"]
         self.indice_selecionado = 0 # 0 = Sim, 1 = Não
         self.respondeu = False      # Trava para não selecionar depois de responder
+        
+        # Sistema de batalha
+        self.tipo_npc = tipo_npc    # "professor", "treinador", "generico"
+        self.foi_derrotado = False  # Marca se já foi derrotado em batalha
 
     def interagir(self):
         # Abre ou fecha o diálogo
