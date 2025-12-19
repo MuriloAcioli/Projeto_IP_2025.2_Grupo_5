@@ -303,9 +303,9 @@ class BatalhaPokemon:
             pkmn_escolhido = self.equipe[self.cursor_pos]
             
             if pkmn_escolhido == self.player_pkmn:
-                self.mensagem_sistema = "Ele ja esta em batalha!"
+                self.mensagem_sistema = "Ele já está em batalha!"
             elif not pkmn_escolhido.esta_vivo():
-                self.mensagem_sistema = "Ele esta desmaiado!"
+                self.mensagem_sistema = "Ele está desmaiado!"
             else:
                 # Desabilita flag de troca obrigatória após escolha
                 self.troca_obrigatoria = False
@@ -314,17 +314,17 @@ class BatalhaPokemon:
     def tentar_capturar(self, tipo_bola):
         # BLOQUEIO TREINADOR
         if self.tipo_batalha in ["TREINADOR", "TREINADOR_REVANCHE"]:
-            self.mensagem_sistema = "Não pode roubar de treinador!"
+            self.mensagem_sistema = "Não pode roubar o pokemon de um treinador!"
             return
 
         if len(self.equipe) >= 6:
-            self.mensagem_sistema = "Sua equipe esta cheia!"
+            self.mensagem_sistema = "Sua equipe está cheia!"
             return
 
         # Verifica quantidade
         qtd = self.inventario.get(tipo_bola, 0)
         if qtd <= 0:
-            self.mensagem_sistema = f"Voce não tem {tipo_bola}!"
+            self.mensagem_sistema = f"Você não tem {tipo_bola}!"
             return
 
         # Consome item
@@ -341,7 +341,7 @@ class BatalhaPokemon:
         hp_atual = self.enemy_pkmn.hp_atual
         hp_max = self.enemy_pkmn.hp_max
 
-        if "Pokebola" in tipo_bola: ball_multiplier = 11
+        if "Pokebola" in tipo_bola: ball_multiplier = 1
         elif "Grande" in tipo_bola: ball_multiplier = 1.5
         elif "Ultra" in tipo_bola:  ball_multiplier = 2
         else: ball_multiplier = 1.4
@@ -411,7 +411,7 @@ class BatalhaPokemon:
     def tentar_fugir(self):
         # BLOQUEIO TREINADOR
         if self.tipo_batalha in ["TREINADOR", "TREINADOR_REVANCHE"]:
-            self.mensagem_sistema = "Não pode fugir de treinador!"
+            self.mensagem_sistema = "Não pode fugir de uma batalha contra treinadores!"
             self.msg_extra = ""
             return
 
@@ -1039,7 +1039,7 @@ class BatalhaPokemon:
                     
                     if self.captura_sucesso:
                         self.bola_cor_filtro = (255, 255, 0) 
-                        self.mensagem_sistema = "GOTCHA!"
+                        self.mensagem_sistema = f"Gotcha! {self.enemy_pkmn.nome} foi capturado!"
                         progresso_pokedex[self.enemy_pkmn.nome] = "capturado"
                     else:
                         self.bola_cor_filtro = (50, 50, 50) 

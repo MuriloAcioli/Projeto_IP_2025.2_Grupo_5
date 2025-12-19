@@ -183,16 +183,16 @@ def cena_professor(screen, clock):
 
     # --- Roteiro ---
     falas_intro = [
-        "Olá! Bem-vindo ao fantástico mundo de Pokémon", 
-        "Esse mundo é habitado por diversas criaturas misteriosas", 
-        "Meu nome é Ricardo Massa", 
+        "Olá! Bem-vindo ao fantástico mundo de Pokémon.", 
+        "Esse mundo é habitado por diversas criaturas misteriosas.", 
+        "Meu nome é Ricardo Massa.", 
         "As pessoas me chamam de Professor Python.", 
         "Estamos precisando de ajuda aqui no CIn.", 
         "O Coletivo Mangue Vermelho quer usar seus Pokémons\npara destruir nossos computadores!", 
         "Precisamos de alguém para derrotá-los!", 
         "Será que você é o candidato ideal?", 
-        "Antes que eu forneça Pokémons Fortes para você usar contra eles", 
-        "Vamos fazer um teste para ver sua competência", 
+        #"Antes que eu forneça Pokémons Fortes para você usar contra eles", 
+        "Vamos fazer um teste para ver sua competência.", 
         "Mas primeiro, diga-me algo sobre você."
     ]
 
@@ -200,11 +200,12 @@ def cena_professor(screen, clock):
 
     falas_final = [
         "Ah, certo! Então seu nome é {NOME}?", 
-        "Forme uma equipe de até 6 pokémons e me desafie numa batalha", 
+        "Forme uma equipe de até 6 pokémons e me desafie numa batalha.", 
         "Se você me vencer, será destinado a enfrentar o Mangue Vermelho!!", 
         "Sua jornada começa agora!", 
-        "Escolha um dos 3 Pokémons na mesa", 
-        "Após isso, sinta-se à vontade para capturar mais alguns no mato", 
+        "Escolha um dos 3 Pokémons na mesa.", 
+        "Após isso, sinta-se à vontade para capturar mais alguns no mato.", 
+        "Te dei três Pokébolas e uma Poção de Vida para começar, boa sorte!", 
         "Estarei esperando por você!"
     ]
     
