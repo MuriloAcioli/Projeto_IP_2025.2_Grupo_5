@@ -48,6 +48,8 @@ Pré-requisitos: Python instalado.
 - **Artur Regis** - Desenvolveu a mecânica dos menus, lógica primitiva das classes pokemons e do menu de batalha.
 - **Rafaell Bezerra Saraiva** - Responsável pelas mecânicas de spawn e captura de pokemons, batalhas de chefe, polimento geral de gameplay e correção de bugs.
 
+## Arquitetura do Projeto
+
 ```
 PROJETO_IP_2025.2_GRUPO_5/
 │
