@@ -209,7 +209,7 @@ if jogo_ativo:
 
 #CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO
 equipe_jogador = []
-pokemon_inicial = criar_pokemon(inicial_escolhido, 100000) # Cria Nível 5
+pokemon_inicial = criar_pokemon(inicial_escolhido, 1000) # Cria Nível 5
 progresso_pokedex[inicial_escolhido] = "capturado"
 if pokemon_inicial:
     equipe_jogador.append(pokemon_inicial)
