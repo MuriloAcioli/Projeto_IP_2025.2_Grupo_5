@@ -30,12 +30,12 @@ Jogo voltado ao mundo de pokemon com uma pitada de CIn, prove ao Professor Pytho
 
 ##  Equipe
 
-- **Arthur Maciel Costa Zanardi**
-- **Felipe de Brito Komata**
-- **Murilo Andrade Acioli**
-- **Pedro Wellington Ferreira Felizola Lucena**
-- **Artur Regis**
-- **Rafaell Bezerra Saraiva**
+- **Arthur Maciel Costa Zanardi** - Responsável pela movimentação do player, geração de mundo, colisões, e estrutura geral do código, implementações de sprites.
+- **Felipe de Brito Komata** - Responsável pelo Visual do jogo, Criações de sprites autorais, polimento do código.
+- **Murilo Andrade Acioli** - Principal idealista do jogo, implementou lógica de pokemons, e da lógica base de batalhas.
+- **Pedro Wellington Ferreira Felizola Lucena** - Level designer, responsável pela lógica dos coletaveis e organização da party de pokemons.
+- **Artur Regis** - Desenvolveu a mecânica dos menus, lógica primitiva das classes pokemons e do menu de batalha.
+- **Rafaell Bezerra Saraiva** - Responsável pelas mecânicas de spawn e captura de pokemons, batalhas de chefe, polimento geral de gameplay e correção de bugs.
 
 ```
 PROJETO_IP_2025.2_GRUPO_5/
@@ -71,3 +71,40 @@ PROJETO_IP_2025.2_GRUPO_5/
 ├── pokedex.py      # Dados/Visualização dos Pokémons conhecidos
 └── pokemon.py      # Classe base do Pokémon (status, vida, tipo)
 ```
+
+Bibliotecas:
+
+Pygame - Biblioteca base para criação de jogos em Python.
+Os - Foi usado para acessar os diretorios de forma padrão através do World_path.
+Random - gerar de maneira simples aleatoriedade.
+Math - Usado para simplificar cálculos mais complexos.
+
+Conceitos aprendidos em aulas e usados no código:
+
+Condicionais - usado durante todo o código para a parte de desenvolvimento lógico do jogo.
+Loops - usados nas batalhas, intro, menus e toda mecânica que há repetição.
+Listas - usado no inventário, na party de pokemon do player e de inimigos.
+Funções - usados em forma de métodos em classes e para carregar e desenhar cenas em geral.
+Tuplas - Usados principalmente por conta da sintaxe do pygame para passar valores de escala e posição.
+Dicíonarios - Usados na categorização de pokemon, inventário, lista de ataques e pokedex.
+
+Desafios e erros:
+
+Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
+
+O maior erro foi desenvolver muitos mecânicas simultaneamente e deixar o polimento para o final, sobrecarregando os membros do grupo desnecessariamente. Lidamos pela força do braço, trabalhando até tarde e escolhendo mecânicas menos importantes para ficarem menos polidas.
+
+
+Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?
+
+Demora da maior parte do grupo a aprender a mexer com git e github. Inicialmente desenvolvemos tudo separadamente e tivemos que juntar todas as partes do código e lidar com conflitos manualmente. Próximo do final, o grupo já estava familiarizado com as ferramentas, e pode codar muito mais eficientemente, usando branches e merge.
+
+Quais as lições aprendidas durante o projeto?
+
+Organização e destribuição de tarefas é essencial - é necessário organização extrema quando desenvolvendos softwares complexos, minimizando a ociosidade dos membros, até porque muitas mecânicas dependem de outras para serem desenvolvidas.
+
+Comunicação constante e relatórios de desenvolvimentos são necessários - aconteceu de mais de um membro estar desenvolvendo a mesma feature, o que diminuiu nossa produtividade e gerou frustração no grupo. Após isso percebemos que é muito importante que todos estejam alinhados e saibam o que os outros estão fazendo e quando estão fazendo.
+
+É preciso propósito em conjunto - acima de tudo, ter pessoas alinhadas e comprometidas a um objetivo em comum foi essencial, madrugamos inúmeras noites em equipe sem reclamar e o que era para ser obrigação, virou hobby, esse foi o fator principal para o sucesso do nosso trabalho.
+
+
