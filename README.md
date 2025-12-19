@@ -36,10 +36,14 @@ O jogo adapta o universo Pokémon para a realidade e cultura do CIn. Sua missão
 1. **Baixe o arquivo:**
 
 vá em Code e aperte "download zip"
+
 <img width="418" height="358" alt="Captura de tela 2025-12-19 135524" src="https://github.com/user-attachments/assets/e7f34e2f-45a2-410b-8772-23fdff660244" />
 
-2. Execute o jogo
+2. **Execute o jogo:**
 
+Dentro da pasta que foi baixada, procure o executável "pokecin"
+Localização: Projeto_IP_2025.2_Grupo_5-main.zip\Projeto_IP_2025.2_Grupo_5-main\projeto_ip\dist\jogo
+execute e boa sorte!
 
 ##  Equipe
 
