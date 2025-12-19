@@ -340,7 +340,7 @@ class BatalhaPokemon:
         else: ball_multiplier = 1.4
 
         fator_vida = 1.0 - (hp_atual / hp_max)
-        chance_base = 50 + (fator_vida * 40)
+        chance_base = 100 + (fator_vida * 40) ###### ALTERAR DEIPOIS
         dificuldade_raridade = raridade * 5 
         chance_final = (chance_base * ball_multiplier) - dificuldade_raridade            
         chance_final = max(1, min(100, int(chance_final)))
