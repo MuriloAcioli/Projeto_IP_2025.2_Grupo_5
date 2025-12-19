@@ -188,7 +188,7 @@ def cena_professor(screen, clock):
         "Meu nome é Ricardo Massa.", 
         "As pessoas me chamam de Professor Python.", 
         "Estamos precisando de ajuda aqui no CIn.", 
-        "O Coletivo Mangue Vermelho quer usar seus Pokémons\npara destruir nossos computadores!", 
+        "A Equipe Manga Rosa quer usar seus pokémons\npara destruir nossos computadores!", 
         "Precisamos de alguém para derrotá-los!", 
         "Será que você é o candidato ideal?", 
         #"Antes que eu forneça Pokémons Fortes para você usar contra eles", 
@@ -201,7 +201,7 @@ def cena_professor(screen, clock):
     falas_final = [
         "Ah, certo! Então seu nome é {NOME}?", 
         "Forme uma equipe de até 6 pokémons e me desafie numa batalha.", 
-        "Se você me vencer, será destinado a enfrentar o Mangue Vermelho!!", 
+        "Se você me vencer, será destinado a enfrentar a Equipe Manga Rosa!!", 
         "Sua jornada começa agora!", 
         "Escolha um dos 3 Pokémons na mesa.", 
         "Após isso, sinta-se à vontade para capturar mais alguns no mato.", 

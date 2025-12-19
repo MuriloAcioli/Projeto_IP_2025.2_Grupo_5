@@ -31,7 +31,7 @@ class Pokemon:
         self.xp_prox_nivel = self.nivel * 10
         
         self.golpes = golpes 
-
+        self.capturado_com = "Pokebola"
         # Tamanho base do SPRITE base
 
         self.TAMANHO_SPRITE = (280, 280) 

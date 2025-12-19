@@ -112,7 +112,7 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
             elif letra == 'N':
                 # Cria NPC Professor
                 try:
-                    npc = NPC(x, y, path_professor, "Está pronto para derrotar o Mangue Vermelho?", tipo_npc="professor")
+                    npc = NPC(x, y, path_professor, "Está pronto para derrotar a Equipe Manga Rosa?", tipo_npc="professor")
                     grupo_npcs.add(npc)
                     grupo_obs.add(npc) # Player colide com NPC
                 except Exception as e:
@@ -142,7 +142,7 @@ pg.init()
 pg.mixer.init()
 
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pg.display.set_caption("PokeCIn - Fim do Mangue Vermelho")
+pg.display.set_caption("PokéCIn: A Ameaça do Mangue")
 
 path_icon = os.path.join(DIRETORIO_BASE, "assets/icon/icon.png") 
 imagem_icone = pg.image.load(path_icon) 
@@ -321,7 +321,7 @@ while running:
                                             time_rival, 
                                             inv_batalha, 
                                             tipo_batalha="TREINADOR",
-                                            inimigo_nome="Chefe do Mangue Vermelho",
+                                            inimigo_nome="Líder da Equipe Mangue Rosa",
                                         )
                                 
                                 elif npc_falando_agora.tipo_npc == "professor":

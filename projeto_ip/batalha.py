@@ -8,6 +8,7 @@ import math
 # Define o diretório base
 DIRETORIO_BASE = os.path.dirname(os.path.abspath(__file__))
 
+{}
 class BatalhaPokemon:
     def __init__(self, player_data, enemy_data, inventario, tipo_batalha="SELVAGEM",inimigo_nome=None):
         # Tipo de batalha: "SELVAGEM" ou "TREINADOR"
@@ -341,13 +342,13 @@ class BatalhaPokemon:
         hp_atual = self.enemy_pkmn.hp_atual
         hp_max = self.enemy_pkmn.hp_max
 
-        if "Pokebola" in tipo_bola: ball_multiplier = 1.5
-        elif "Grande" in tipo_bola: ball_multiplier = 2
-        elif "Ultra" in tipo_bola:  ball_multiplier = 2.8
+        if "Pokebola" in tipo_bola: ball_multiplier = 1
+        elif "Grande" in tipo_bola: ball_multiplier = 1.5
+        elif "Ultra" in tipo_bola:  ball_multiplier = 2
         else: ball_multiplier = 1.4
 
         fator_vida = 1.0 - (hp_atual / hp_max)
-        chance_base = 30 + (fator_vida * 40)
+        chance_base = 50 + (fator_vida * 40)
         dificuldade_raridade = raridade * 5 
         chance_final = (chance_base * ball_multiplier) - dificuldade_raridade            
         chance_final = max(1, min(100, int(chance_final)))
@@ -577,7 +578,7 @@ class BatalhaPokemon:
         return (x, y)
     
     def desenhar(self, screen):
-        # --- DESENHO DO FUNDO ---
+        # Desenho da batalha
         if self.bg_batalha:
             screen.blit(self.bg_batalha, (0, 0))
         else:
@@ -600,7 +601,7 @@ class BatalhaPokemon:
 
         agora = pg.time.get_ticks()
         
-        # --- LÓGICA DO PULO ---
+        # Lógica
         self.offset_y_player = 0
         self.offset_y_enemy = 0
         
@@ -642,7 +643,7 @@ class BatalhaPokemon:
                 self.estado_atual = "MENU_PRINCIPAL"
                 self.mensagem_sistema = "O que voce vai fazer?"
 
-        # --- ESTADO DE ANIMAÇÃO DE TROCA DO JOGADOR ---
+        # Troca de jogador
         elif self.estado_atual == "TROCA_ANIMACAO":
             if self.anim_x_player < self.target_x_player:
                 self.anim_x_player += 15
@@ -877,10 +878,17 @@ class BatalhaPokemon:
 
             # Sprites de pokebola indicando a equipe do jogador (dentro do HUD)
             if 'Pokebola' in self.sprites_balls:
-                ball_sprite = self.sprites_balls['Pokebola']
-                ball_size = 20  # Tamanho das pokebolas
-                ball_sprite_small = pg.transform.scale(ball_sprite, (ball_size, ball_size))
-                
+                p_ball_sprite = self.sprites_balls['Pokebola']
+                g_ball_sprite = self.sprites_balls['Grande Bola'] 
+                u_ball_sprite = self.sprites_balls['Ultra Ball']
+
+                tamanho_bola = 20  # Tamanho das pokebolas
+                p_ball_sprite_pequeno = pg.transform.scale(p_ball_sprite, (tamanho_bola, tamanho_bola))
+                g_ball_sprite_pequeno = pg.transform.scale(g_ball_sprite, (tamanho_bola, tamanho_bola))
+                u_ball_sprite_pequeno = pg.transform.scale(u_ball_sprite, (tamanho_bola, tamanho_bola))
+
+                imagem_utilizada = p_ball_sprite_pequeno
+
                 max_slots = 6  # Máximo de 6 pokémons
                 for i in range(max_slots):
                     bx = 460 + (i * 25)
@@ -889,17 +897,25 @@ class BatalhaPokemon:
                     if i < len(self.equipe):
                         # Tem pokémon neste slot
                         p = self.equipe[i]
+                        poke_usada = p.capturado_com    
+                        if poke_usada == 'Ultra Bola':
+                            imagem_utilizada = u_ball_sprite_pequeno
+                        elif poke_usada == 'Grande Bola':
+                            imagem_utilizada = g_ball_sprite_pequeno
+                        else:
+                            imagem_utilizada = p_ball_sprite_pequeno
+
                         if not p.esta_vivo():
                             # Pokémon morto - pokebola cinza
-                            ball_gray = ball_sprite_small.copy()
+                            ball_gray = imagem_utilizada.copy()
                             ball_gray.fill((100, 100, 100), special_flags=pg.BLEND_MULT)
                             screen.blit(ball_gray, (bx, by))
                         else:
                             # Pokémon vivo - pokebola normal
-                            screen.blit(ball_sprite_small, (bx, by))
+                            screen.blit(imagem_utilizada, (bx, by))
                     else:
                         # Slot vazio - apenas contorno
-                        pg.draw.circle(screen, (150, 150, 150), (bx + ball_size//2, by + ball_size//2), ball_size//2, 2)
+                        pg.draw.circle(screen, (150, 150, 150), (bx + tamanho_bola//2, by + tamanho_bola//2), tamanho_bola//2, 2)
 
         # --- SPRITES ---
         # Condição para esconder o inimigo durante a captura
@@ -932,7 +948,7 @@ class BatalhaPokemon:
         pos_player = (self.anim_x_player, pos_y_real + self.offset_y_player ) 
         screen.blit(self.player_pkmn.back_image, pos_player)
 
-        # --- MENU INFERIOR ---
+        # Menu inferior
         pg.draw.rect(screen, (30, 30, 80), (0, 430, 800, 170))
         pg.draw.rect(screen, (255, 255, 255), (0, 430, 800, 170), 4)
         
@@ -1069,6 +1085,7 @@ class BatalhaPokemon:
                     if self.captura_sucesso:
                         self.bola_cor_filtro = (255, 255, 0) 
                         self.mensagem_sistema = f"Gotcha! {self.enemy_pkmn.nome} foi capturado!"
+                        self.enemy_pkmn.capturado_com = self.bola_tipo_atual
                         progresso_pokedex[self.enemy_pkmn.nome] = "capturado"
                     else:
                         self.bola_cor_filtro = (50, 50, 50) 
