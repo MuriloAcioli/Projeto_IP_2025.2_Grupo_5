@@ -63,7 +63,6 @@ def definir_piso(largura_mapa, altura_mapa, caminho_tileset):
 # FUNÇÕES DE CENA (HISTÓRIA E UI)
 
 def exibir_intro(screen, clock):
-    """Exibe a tela de título inicial."""
     intro = True
     
     # Fontes
@@ -125,7 +124,6 @@ def exibir_intro(screen, clock):
 
 
 def cena_professor(screen, clock):
-    """Gerencia a cena do Professor Python e a entrada do nome do jogador."""
     
     # Cores e Fontes
     COR_CAIXA = (255, 255, 255)
@@ -317,7 +315,6 @@ def cena_professor(screen, clock):
 
 
 def animacao_transicao(screen):
-    """Efeito visual de piscar a tela antes da batalha."""
     try:
         pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/battle_theme.mp3"))
         pg.mixer.music.play(-1)
@@ -332,7 +329,6 @@ def animacao_transicao(screen):
         pg.time.delay(160)
 
 def animacao_treinador(screen):
-    """Efeito visual de piscar a tela antes da batalha."""
     try:
         pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/trainer_theme.mp3"))
         pg.mixer.music.play(-1)
@@ -349,7 +345,6 @@ def animacao_treinador(screen):
 # NOVA FUNÇÃO: SELEÇÃO DE INICIAL
 
 def escolher_pokemon(screen, clock):
-    """Tela de seleção do Pokémon inicial com sprites e pokébolas."""
     
     # Configuração de Fontes e Cores
     font_titulo = pg.font.SysFont("Arial", 40, bold=True)
