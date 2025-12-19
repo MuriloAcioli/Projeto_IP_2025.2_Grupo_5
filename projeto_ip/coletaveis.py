@@ -19,10 +19,10 @@ class Coletavel(pg.sprite.Sprite):
                 
             except FileNotFoundError:
                 print(f"Erro: Imagem {imagem_path} não achada. Usando quadrado.")
-                self.image = pg.Surface(tamanho) # Usa o tamanho definido
+                self.image = pg.Surface(tamanho) 
                 self.image.fill(cor_padrao)
         else:
-            self.image = pg.Surface(tamanho) # Usa o tamanho definido
+            self.image = pg.Surface(tamanho) 
             self.image.fill(cor_padrao)
             
         self.rect = self.image.get_rect(topleft=(x, y))
@@ -71,8 +71,7 @@ class Pocao(Coletavel):
 
 class Insignia(Coletavel):
     def __init__(self, x, y):
-        # Por enquanto usa um sprite temporário (cor dourada)
-        super().__init__(x, y, "assets/coletaveis/pokeloot_.png", cor_padrao=(255, 215, 0))
+        super().__init__(x, y, "assets/coletaveis/cracha_cin.png", cor_padrao=(255, 215, 0))
         self.nome_item = "Insígnia do Professor"
         
     def coletar(self, player):

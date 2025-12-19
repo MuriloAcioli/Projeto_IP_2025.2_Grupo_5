@@ -108,20 +108,18 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
             elif letra == 'P':
                 pos_player = (x, y)  
             elif letra == 'N':
-                #cria NPC Professor
                 try:
                     npc = NPC(x, y, path_professor, "Está pronto para derrotar a Equipe Manga Rosa?", tipo_npc="professor")
                     grupo_npcs.add(npc)
-                    grupo_obs.add(npc) #player colide com NPC
+                    grupo_obs.add(npc) 
                 except Exception as e:
                     print(f"Erro ao criar NPC: {e}")
             elif letra == 'R':
-                #cria NPC Rival/Campeão (só pode batalhar após obter insígnia)
                 try:
                     path_rival = os.path.join(DIRETORIO_BASE, "assets/professor/rival.png") 
                     npc = NPC(x, y, path_rival, "Você tem o que é preciso para me desafiar?", tipo_npc="rival")
                     grupo_npcs.add(npc)
-                    grupo_obs.add(npc) #player colide com NPC
+                    grupo_obs.add(npc) 
                 except Exception as e:
                     print(f"Erro ao criar NPC Rival: {e}")
             elif letra == 'U':
@@ -332,7 +330,7 @@ while running:
                                     
                                     npc_falando_agora.interagir() #fecha diálogo para transição
                                     
-                                    #cria o time do Professor (6 Pokémons Fortes)
+                                    #cria o time do Professor
                                     time_professor = []
 
                                     time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[0], 6))
