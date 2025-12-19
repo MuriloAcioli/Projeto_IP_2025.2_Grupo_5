@@ -15,8 +15,9 @@ from batalha import BatalhaPokemon
 from npc import NPC
 from pokedex import POKEDEX,progresso_pokedex
 from pokehealer import PokeHealer
+from vitoria import exibir_vitoria
 # from save import salvar_jogo_sistema, carregar_jogo_sistema, ler_info_save
-from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
+from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao, animacao_treinador
 from game_over import exibir_game_over
 
 # =============================================================================
@@ -63,8 +64,8 @@ MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', 'R', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', 'R', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', 'B', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -209,7 +210,7 @@ if jogo_ativo:
 
 #CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO
 equipe_jogador = []
-pokemon_inicial = criar_pokemon(inicial_escolhido, 1000) # Cria Nível 5
+pokemon_inicial = criar_pokemon(inicial_escolhido, 5) # Cria Nível 5
 progresso_pokedex[inicial_escolhido] = "capturado"
 if pokemon_inicial:
     equipe_jogador.append(pokemon_inicial)
@@ -311,7 +312,7 @@ while running:
                                         time_rival = [p for p in time_rival if p is not None] 
                                         
                                         inv_batalha = protagonista.inventario
-                                        animacao_transicao(screen)
+                                        animacao_treinador(screen)
                                         estado_jogo = "BATALHA"
                                         
                                         # Rival dá game over se perder
@@ -349,7 +350,7 @@ while running:
 
                                     inv_batalha = protagonista.inventario
                                     
-                                    animacao_transicao(screen)
+                                    animacao_treinador(screen)
                                     estado_jogo = "BATALHA"
                                     
                                     # Instancia com o modo TREINADOR ou TREINADOR_REVANCHE
@@ -459,17 +460,17 @@ while running:
  
                         #GERA O POKEMON NO MATO
                         raridade = random.randint(0, 100)
-                        if raridade < 75:
+                        if raridade < 55:
                             pokemon_random = random.choice(lista_pokemons_comuns)
                             lvl_chao = 3; lvl_teto = 5
-                        elif raridade < 93:
+                        elif raridade < 85:
                             pokemon_random = random.choice(lista_pokemons_raros)
-                            lvl_chao = 4; lvl_teto = 7
+                            lvl_chao = 5; lvl_teto = 8
                         elif raridade < 98:
                             pokemon_random = random.choice(lista_pokemons_super_raros)
                             lvl_chao = 6; lvl_teto = 10
                         else:
-                            lvl_chao = 50; lvl_teto = 50
+                            lvl_chao = 25; lvl_teto = 25
                             pokemon_random = random.choice(lista_pokemons_lendarios)
                         
                         if primeiro_encontro:
@@ -603,6 +604,15 @@ while running:
                                     if "Insígnia do Professor" not in protagonista.inventario:
                                         protagonista.inventario["Insígnia do Professor"] = 1
                                         mensagem_tela = "Você recebeu a Insígnia do Professor!"
+
+                                if npc_falando_agora.tipo_npc == "rival":
+                                    mensagem_tela = f"DROGA! Seu {inicial_escolhido} quebrou o meu dedo! Agora vou ter que deixar o CIn em paz..."
+                                    pg.mixer.music.set_volume(0.0)
+                                    exibir_vitoria(screen,clock)
+                                    running = False
+
+
+
                             elif sistema_batalha.tipo_batalha == "TREINADOR_REVANCHE" and sistema_batalha.vencedor == "PLAYER":
                                 mensagem_tela = "Vitória na revanche! Você está cada vez mais forte!"
                             
