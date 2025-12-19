@@ -206,7 +206,7 @@ class MenuInventario:
         # 6. OPÇÕES DO ITEM
         elif self.estado_atual == ESTADO_OPCOES_ITEM:
             lower_item = self.item_focado.lower()
-            eh_pocao = "pocao" in lower_item or "poção" in lower_item or "potion" in lower_item
+            eh_pocao = "poção" in lower_item
             eh_insignia = "insígnia" in lower_item or "insignia" in lower_item
             # Insígnias não podem ser usadas nem descartadas
             if eh_insignia:
@@ -512,7 +512,7 @@ class MenuInventario:
             if self.estado_atual == ESTADO_OPCOES_ITEM:
                 rect_pop = pg.Rect((screen_w//2)+100, (screen_h//2)+50, 200, 120)
                 self.desenhar_caixa_gb(tela, rect_pop)
-                eh_pocao = "pocao" in self.item_focado.lower() or "potion" in self.item_focado.lower()
+                eh_pocao = "poção" in self.item_focado.lower() or "potion" in self.item_focado.lower()
                 eh_insignia = "insígnia" in self.item_focado.lower() or "insignia" in self.item_focado.lower()
                 if eh_insignia:
                     ops = ["VISUALIZAR", "VOLTAR"]
