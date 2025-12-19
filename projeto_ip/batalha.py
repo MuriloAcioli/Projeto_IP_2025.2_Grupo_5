@@ -9,9 +9,10 @@ import math
 DIRETORIO_BASE = os.path.dirname(os.path.abspath(__file__))
 
 class BatalhaPokemon:
-    def __init__(self, player_data, enemy_data, inventario, tipo_batalha="SELVAGEM"):
+    def __init__(self, player_data, enemy_data, inventario, tipo_batalha="SELVAGEM",inimigo_nome=None):
         # Tipo de batalha: "SELVAGEM" ou "TREINADOR"
         self.tipo_batalha = tipo_batalha
+        self.nome_inimigo = inimigo_nome
         
         # --- Configuração da Equipe do Jogador ---
         if isinstance(player_data, list):
@@ -601,7 +602,7 @@ class BatalhaPokemon:
                 self.estado_atual = "MENSAGEM_INICIAL"
                 
                 if self.tipo_batalha == "TREINADOR":
-                    self.mensagem_sistema = f"Treinador desafiou você!"
+                    self.mensagem_sistema = f"{self.nome_inimigo} desafiou você!"
                 else:
                     self.mensagem_sistema = f"Um {self.enemy_pkmn.nome} selvagem apareceu!"
                 self.timer_espera = agora

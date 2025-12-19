@@ -51,7 +51,7 @@ MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'M', 'M', 'M', 'T', 'G', 'H', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'U', 'G', 'M', 'M', '.', '.', 'M', 'M', 'M', 'M', 'M', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', ',', 'T'],
     ['T', '.', 'M', 'M', 'M', '.', '.', '.', 'M', 'M', 'M', 'M', 'T', 'M', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', 'M', 'M', 'M', 'M', '.', '.', '.', 'M', 'M', 'M', 'G', 'T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', 'R', 'T'],
+    ['T', 'M', 'M', 'M', 'M', '.', '.', '.', 'M', 'M', 'M', 'G', 'T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'M', 'M', 'M', 'M', '.', '.', '.', '.', 'M', 'T', 'T', 'T', '.', '.', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -63,7 +63,7 @@ MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', '.', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', 'R', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', 'B', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -119,7 +119,7 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
             elif letra == 'R':
                 # Cria NPC Rival/Campeão (só pode batalhar após obter insígnia)
                 try:
-                    path_rival = os.path.join(DIRETORIO_BASE, "assets/professor/proff_massa_2.png") 
+                    path_rival = os.path.join(DIRETORIO_BASE, "assets/professor/rival.png") 
                     npc = NPC(x, y, path_rival, "Você tem o que é preciso para me desafiar?", tipo_npc="rival")
                     grupo_npcs.add(npc)
                     grupo_obs.add(npc) # Player colide com NPC
@@ -209,7 +209,7 @@ if jogo_ativo:
 
 #CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO
 equipe_jogador = []
-pokemon_inicial = criar_pokemon(inicial_escolhido, 5) # Cria Nível 5
+pokemon_inicial = criar_pokemon(inicial_escolhido, 100000) # Cria Nível 5
 progresso_pokedex[inicial_escolhido] = "capturado"
 if pokemon_inicial:
     equipe_jogador.append(pokemon_inicial)
@@ -299,15 +299,16 @@ while running:
                                         
                                         # Cria time do Rival (igual ao professor por enquanto)
                                         time_rival = []
-                                        time_rival.append(criar_pokemon(lista_iniciais_fora_escolha[0], random.randint(1,2)))
-                                        time_rival.append(criar_pokemon(lista_iniciais_fora_escolha[1], random.randint(1,2)))
-                                        time_rival.append(criar_pokemon("Abra", random.randint(1,2)))
-                                        time_rival.append(criar_pokemon("Pikachu", random.randint(1,2)))
-                                        time_rival.append(criar_pokemon("Lapras", random.randint(1,2)))
-                                        time_rival.append(criar_pokemon(random.choice(lista_pokemons_lendarios), 1))
+                                        time_rival.append(criar_pokemon(lista_iniciais_fora_escolha[0], 8))
+                                        time_rival.append(criar_pokemon(lista_iniciais_fora_escolha[1], 8))
+                                        time_rival.append(criar_pokemon("Clefairy", 10))
+                                        time_rival.append(criar_pokemon("Porygon*", 10))
+                                        time_rival.append(criar_pokemon("Articuno*", 12))
+
+                                        time_rival.append(criar_pokemon("Moltres", 15))
                                         
                                         # Filtra Nones caso erre o nome
-                                        time_rival = [p for p in time_rival if p is not None]
+                                        time_rival = [p for p in time_rival if p is not None] 
                                         
                                         inv_batalha = protagonista.inventario
                                         animacao_transicao(screen)
@@ -318,7 +319,8 @@ while running:
                                             equipe_jogador, 
                                             time_rival, 
                                             inv_batalha, 
-                                            tipo_batalha="TREINADOR"
+                                            tipo_batalha="TREINADOR",
+                                            inimigo_nome="Chefe do Mangue Vermelho",
                                         )
                                 
                                 elif npc_falando_agora.tipo_npc == "professor":
@@ -334,12 +336,14 @@ while running:
                                     
                                     # Cria o time do Professor (6 Pokémons Fortes)
                                     time_professor = []
-                                    time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[0], random.randint(1,2)))
-                                    time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[1], random.randint(1,2)))
-                                    time_professor.append(criar_pokemon("Abra", random.randint(1,2)))
-                                    time_professor.append(criar_pokemon("Pikachu", random.randint(1,2)))
-                                    time_professor.append(criar_pokemon("Lapras", random.randint(1,2)))
-                                    time_professor.append(criar_pokemon(random.choice(lista_pokemons_lendarios), 1))
+                                    time_professor.append(criar_pokemon("Eevee*", 8))
+                                    time_professor.append(criar_pokemon("Bellsprout", 8))
+                                    time_professor.append(criar_pokemon("Abra", 8))
+
+                                    time_professor.append(criar_pokemon("Pikachu", 8))
+                                    time_professor.append(criar_pokemon("Lapras", 8))
+                                    
+                                    time_professor.append(criar_pokemon("Mewtwo", 9))
                                     
                                     # Filtra Nones caso erre o nome
                                     time_professor = [p for p in time_professor if p is not None]
@@ -355,7 +359,8 @@ while running:
                                         equipe_jogador, 
                                         time_professor, 
                                         inv_batalha, 
-                                        tipo_batalha=tipo_batalha
+                                        tipo_batalha=tipo_batalha,
+                                        inimigo_nome="Professor Python"
                                     )
 
                             else: # Não
@@ -486,7 +491,7 @@ while running:
 
                         try:
                             # Batalha Selvagem Padrão
-                            sistema_batalha = BatalhaPokemon(equipe_jogador, inimigo_pokemon, inv_batalha, tipo_batalha="SELVAGEM")
+                            sistema_batalha = BatalhaPokemon(equipe_jogador, inimigo_pokemon, inv_batalha, tipo_batalha="SELVAGEM", inimigo_nome=None)
                         except Exception as e:
                             print(f"ERRO AO INICIAR BATALHA: {e}")
                             estado_jogo = "MUNDO"

@@ -530,7 +530,7 @@ POKEDEX = {
         "stats": (65, 60, 70, 40),
         "sprite": "assets/pokemons/porygon.png",
         "sprite_back": "assets/pokemons/porygon_back.png",
-        "golpes": ["Investida", "Conversao", "Psirraio", "Tri-Ataque"],
+        "golpes": ["Investida", "Autodestruicao", "Psirraio", "Tri-Ataque"],
         "raridade": "super_raro"
     },
     "Porygon*": {
@@ -617,6 +617,16 @@ POKEDEX = {
         "sprite_back": "assets/pokemons/mewtwoS_back.png",
         "golpes": ["Psiquico", "Meteoro Veloz", "Barreira", "Recuperacao"],
         "raridade": "shiny"
+    },
+    
+    "Rayquaza": {
+        "id": 384,
+        "tipo": "Dragão/Voador",
+        "stats": (105, 150, 90, 95),
+        "sprite": "assets/pokemons/rayquaza.png",
+        "sprite_back": "assets/pokemons/rayquaza_back.png",
+        "golpes": ["Garra de Dragão", "Velocidade Extrema", "Ultraje", "Hiper Raio"],
+        "raridade": "lendario"
     }
 }
 

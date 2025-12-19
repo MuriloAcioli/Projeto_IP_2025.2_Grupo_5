@@ -89,6 +89,8 @@ GOLPES_DB = {
     "Lama": {"poder": 65, "tipo": "Veneno", "precisao": 100},
     "Acido": {"poder": 40, "tipo": "Veneno", "precisao": 100},
     
-    # Golpes de Status (Dano 0, focados em buff/debuff)
-
+    "Garra de Dragão": {"poder": 80, "tipo": "Dragão", "precisao": 100},
+    "Velocidade Extrema": {"poder": 80, "tipo": "Normal", "precisao": 100},
+    "Ultraje": {"poder": 120, "tipo": "Dragão", "precisao": 100},
+    "Hiper Raio": {"poder": 150, "tipo": "Normal", "precisao": 90},
 }
