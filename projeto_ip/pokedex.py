@@ -6,7 +6,7 @@ POKEDEX = {
         "stats": (39, 52, 43, 65),
         "sprite": "assets/pokemons/flamare.png",
         "sprite_back": "assets/pokemons/flamare_back.png",
-        "golpes": ["Arranhao", "Brasas", "Investida"],
+        "golpes": ["Arranhao", "Brasas", "Investida","Lanca-Chamas"],
         "raridade": "inicial"
     },
     "Soim": {
@@ -473,7 +473,7 @@ POKEDEX = {
         "stats": (40, 65, 95, 35),
         "sprite": "assets/pokemons/koffing.png",
         "sprite_back": "assets/pokemons/koffing_back.png",
-        "golpes": ["Poluicao", "Lama", "Investida", "Autodestruicao"],
+        "golpes": ["Poluicao", "Lama", "Investida"],
         "raridade": "raro"
     },
     "Koffing*": {
@@ -482,7 +482,7 @@ POKEDEX = {
         "stats": (40, 65, 95, 35),
         "sprite": "assets/pokemons/koffingS.png",
         "sprite_back": "assets/pokemons/koffingS_back.png",
-        "golpes": ["Poluicao", "Lama", "Investida", "Autodestruicao"],
+        "golpes": ["Poluicao", "Lama", "Investida"],
         "raridade": "shiny"
     },
 
@@ -530,7 +530,7 @@ POKEDEX = {
         "stats": (65, 60, 70, 40),
         "sprite": "assets/pokemons/porygon.png",
         "sprite_back": "assets/pokemons/porygon_back.png",
-        "golpes": ["Investida", "Autodestruicao", "Psirraio", "Tri-Ataque"],
+        "golpes": ["Investida", "Psirraio", "Tri-Ataque"],
         "raridade": "super_raro"
     },
     "Porygon*": {

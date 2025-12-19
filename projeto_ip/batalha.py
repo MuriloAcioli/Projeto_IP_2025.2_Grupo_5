@@ -341,9 +341,9 @@ class BatalhaPokemon:
         hp_atual = self.enemy_pkmn.hp_atual
         hp_max = self.enemy_pkmn.hp_max
 
-        if "Pokebola" in tipo_bola: ball_multiplier = 1
-        elif "Grande" in tipo_bola: ball_multiplier = 1.5
-        elif "Ultra" in tipo_bola:  ball_multiplier = 2
+        if "Pokebola" in tipo_bola: ball_multiplier = 1.5
+        elif "Grande" in tipo_bola: ball_multiplier = 2
+        elif "Ultra" in tipo_bola:  ball_multiplier = 2.8
         else: ball_multiplier = 1.4
 
         fator_vida = 1.0 - (hp_atual / hp_max)
@@ -700,18 +700,32 @@ class BatalhaPokemon:
                              self.estado_atual = "ANIMACAO_MORTE_INIMIGO"
                              self.timer_espera = agora
                         else:
-                            # Vitória Definitiva
+                            
                             self.battle_over = True
                             self.vencedor = "PLAYER"
                             xp_ganho = self.enemy_pkmn.nivel * 15
-                            subiu = self.player_pkmn.ganhar_xp(xp_ganho)
-                            
+
+                            # 1. Salva o nível antes de ganhar XP
+                            nivel_anterior = self.player_pkmn.nivel
+
+                            # 2. Aplica o XP (A classe Pokemon deve tratar o while loop interno)
+                            self.player_pkmn.ganhar_xp(xp_ganho)
+
+                            # 3. Verifica o nível novo
+                            nivel_novo = self.player_pkmn.nivel
+
                             self.mensagem_sistema = f"Inimigo derrotado! Ganhou {xp_ganho} XP."
-                            
-                            if subiu:
-                                self.subiu_de_nivel = True
-                            
-                            self.estado_atual = "LEVEL_UP"
+
+                            # 4. Cria uma lista (fila) de níveis para exibir
+                            # Ex: se estava no 5 e foi pro 7, a lista será [6, 7]
+                            self.fila_leveis = list(range(nivel_anterior + 1, nivel_novo + 1))
+
+                            if len(self.fila_leveis) > 0:
+                                self.estado_atual = "LEVEL_UP"
+                            else:
+                                # Se não subiu de nível, só espera para sair
+                                pass 
+
                             self.timer_espera = agora
                     else:
                         # Se ninguém morreu, turno do inimigo
@@ -766,14 +780,20 @@ class BatalhaPokemon:
                      self.cursor_pos = 0
 
         elif self.estado_atual == "LEVEL_UP":
+            # Tempo entre mensagens
             if agora - self.timer_espera > 2000:
-                if self.subiu_de_nivel:
-                    self.mensagem_sistema = f"{self.player_pkmn.nome} subiu para o Nvl {self.player_pkmn.nivel}!"
-                    self.subiu_de_nivel = False
-                    self.timer_espera = agora
+                
+                # Se ainda tem níveis na fila para mostrar
+                if len(self.fila_leveis) > 0:
+                    lvl_mostrado = self.fila_leveis.pop(0) 
+                    self.mensagem_sistema = f"{self.player_pkmn.nome} subiu para o Nvl {lvl_mostrado}!"
+                    
+                    self.timer_espera = agora 
+                    
                 else:
                     self.battle_over = True
                     self.vencedor = "PLAYER"
+                    self.mensagem_sistema = "Pressione ESPACO para sair"
 
         elif self.estado_atual == "ANIMANDO_INIMIGO":
             if self.animacao_concluida():
@@ -846,6 +866,15 @@ class BatalhaPokemon:
             cor_player = self.get_cor_hp(self.visual_hp_player, self.player_pkmn.hp_max)
             pg.draw.rect(screen, cor_player, (600, 375, int(150 * pct_player), 15))
             
+            pg.draw.rect(screen, (50, 50, 80), (600, 392, 150, 2))
+
+            if self.player_pkmn.xp_prox_nivel > 0:
+                pct_xp = self.player_pkmn.xp_atual / self.player_pkmn.xp_prox_nivel
+            else:
+                pct_xp = 0
+
+            pg.draw.rect(screen, (0, 150, 255), (600, 392, int(150 * pct_xp), 2))
+
             # Sprites de pokebola indicando a equipe do jogador (dentro do HUD)
             if 'Pokebola' in self.sprites_balls:
                 ball_sprite = self.sprites_balls['Pokebola']

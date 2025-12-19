@@ -301,11 +301,11 @@ while running:
                                         # Cria time do Rival (igual ao professor por enquanto)
                                         time_rival = []
 
-                                        #time_rival.append(criar_pokemon("Eevee*", 8))
-                                        #time_rival.append(criar_pokemon("Bellsprout", 8))
-                                        #time_rival.append(criar_pokemon("Clefairy", 10))
-                                        #time_rival.append(criar_pokemon("Porygon*", 10))
-                                        #time_rival.append(criar_pokemon("Articuno*", 12))
+                                        time_rival.append(criar_pokemon("Eevee*", 8))
+                                        time_rival.append(criar_pokemon("Bellsprout", 8))
+                                        time_rival.append(criar_pokemon("Clefairy", 10))
+                                        time_rival.append(criar_pokemon("Porygon*", 10))
+                                        time_rival.append(criar_pokemon("Articuno*", 12))
                                         time_rival.append(criar_pokemon("Moltres", 15))
                                         
                                         # Filtra Nones caso erre o nome
@@ -460,17 +460,17 @@ while running:
  
                         #GERA O POKEMON NO MATO
                         raridade = random.randint(0, 100)
-                        if raridade < 75:
+                        if raridade < 55:
                             pokemon_random = random.choice(lista_pokemons_comuns)
                             lvl_chao = 3; lvl_teto = 5
-                        elif raridade < 93:
+                        elif raridade < 85:
                             pokemon_random = random.choice(lista_pokemons_raros)
-                            lvl_chao = 4; lvl_teto = 7
+                            lvl_chao = 5; lvl_teto = 8
                         elif raridade < 98:
                             pokemon_random = random.choice(lista_pokemons_super_raros)
                             lvl_chao = 6; lvl_teto = 10
                         else:
-                            lvl_chao = 50; lvl_teto = 50
+                            lvl_chao = 25; lvl_teto = 25
                             pokemon_random = random.choice(lista_pokemons_lendarios)
                         
                         if primeiro_encontro:

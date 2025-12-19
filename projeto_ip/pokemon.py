@@ -28,7 +28,7 @@ class Pokemon:
         
         # Sistema de XP
         self.xp_atual = 0
-        self.xp_prox_nivel = self.nivel * 25
+        self.xp_prox_nivel = self.nivel * 10
         
         self.golpes = golpes 
 
@@ -64,7 +64,7 @@ class Pokemon:
         self.hp_atual = self.hp_max
 
     def calcular_stats(self):
-        """Recalcula status baseado no nível""" # Ele vai recalcular sempre que upa de nível e/ou é criado basicamente
+         # Ele vai recalcular sempre que upa de nível e/ou é criado basicamente
         self.hp_max = int(((self.base_hp + 50) * self.nivel) / 50) + 10
         self.atk = int((self.base_atk * self.nivel) / 50) + 5
         self.defense = int((self.base_def * self.nivel) / 50) + 5
@@ -77,13 +77,13 @@ class Pokemon:
     def esta_vivo(self):
         return self.hp_atual > 0
 
-    # Lógica para upar o nível
     def ganhar_xp(self, quantidade):
         self.xp_atual += quantidade
         subiu = False
         while self.xp_atual >= self.xp_prox_nivel:
             self.xp_atual -= self.xp_prox_nivel
-            self.subir_nivel()
+            self.nivel += 1
+            self.xp_prox_nivel = self.nivel * 10
             subiu = True
         return subiu
 

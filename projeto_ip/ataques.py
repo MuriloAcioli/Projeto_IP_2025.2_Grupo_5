@@ -35,7 +35,7 @@ GOLPES_DB = {
     "Po do Sono": {"poder": 0, "tipo": "Grama", "precisao": 75},
     "Conversao": {"poder": 0, "tipo": "Normal", "precisao": 100},
     # Golpes de Água/Gelo
-    "Jato D'Agua": {"poder": 40, "tipo": "Agua", "precisao": 100},
+    "Jato D'Agua": {"poder": 75, "tipo": "Agua", "precisao": 100},
     "Raio de Gelo": {"poder": 90, "tipo": "Gelo", "precisao": 100},
     "Nevasca": {"poder": 110, "tipo": "Gelo", "precisao": 70},
     
@@ -72,7 +72,7 @@ GOLPES_DB = {
     # Golpes de Fogo
     "Brasas": {"poder": 40, "tipo": "Fogo", "precisao": 100},
     "Giro de Fogo": {"poder": 35, "tipo": "Fogo", "precisao": 85},
-    "Lanca-Chamas": {"poder": 90, "tipo": "Fogo", "precisao": 100},
+    "Lanca-Chamas": {"poder": 90, "tipo": "Fogo", "precisao": 90},
     
     # Golpes Elétricos
     "Choque do Trovao": {"poder": 40, "tipo": "Eletrico", "precisao": 100},
@@ -88,6 +88,7 @@ GOLPES_DB = {
     "Poluicao": {"poder": 30, "tipo": "Veneno", "precisao": 70},
     "Lama": {"poder": 65, "tipo": "Veneno", "precisao": 100},
     "Acido": {"poder": 40, "tipo": "Veneno", "precisao": 100},
+    "Folha Navalha": {"poder": 80, "tipo": "Grama", "precisao": 100},
     
     "Garra de Dragão": {"poder": 80, "tipo": "Dragão", "precisao": 100},
     "Velocidade Extrema": {"poder": 80, "tipo": "Normal", "precisao": 100},
