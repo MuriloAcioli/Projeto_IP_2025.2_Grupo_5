@@ -9,12 +9,12 @@ O jogo adapta o universo Pokémon para a realidade e cultura do CIn. Sua missão
 ## Screenshots
 
 <div align="center">
-  <img width="400" alt="Gameplay 1" src="https://github.com/user-attachments/assets/614dc889-3c52-42b8-9861-57bb04aef7ad" />
+  <img width="795" height="594" alt="Captura de tela 2025-12-19 133032" src="https://github.com/user-attachments/assets/5797ce8e-5955-4d29-925c-fe7990262bc4" />
   <img width="400" alt="Gameplay 2" src="https://github.com/user-attachments/assets/90f85c18-f7e1-4b9c-9bdb-4ac4d8a063c9" />
   <img width="400" alt="Gameplay 3" src="https://github.com/user-attachments/assets/99fac0d7-c0f3-4921-870b-1c113f6249a9" />
   <img width="400" alt="Gameplay 4" src="https://github.com/user-attachments/assets/7b770ae6-5efb-4211-8422-2f4897b06e3e" />
   <img width="400" alt="Gameplay 5" src="https://github.com/user-attachments/assets/0b13d0a2-05ac-4348-afd7-e88dc91c7ccb" />
-  <img width="400" alt="Gameplay 6" src="https://github.com/user-attachments/assets/c75dc133-efa1-453d-9361-9d267dc9c1ee" />
+  <img width="799" height="591" alt="Captura de tela 2025-12-19 133100" src="https://github.com/user-attachments/assets/41238d4a-7010-49f0-9fcb-62f419c3300b" />
 </div>
 
 ---
