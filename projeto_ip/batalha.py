@@ -10,7 +10,7 @@ DIRETORIO_BASE = os.path.dirname(os.path.abspath(__file__))
 
 class BatalhaPokemon:
     def __init__(self, player_data, enemy_data, inventario, tipo_batalha="SELVAGEM",inimigo_nome=None):
-        # Tipo de batalha: "SELVAGEM" ou "TREINADOR"
+        # Tipos de batalha
         self.tipo_batalha = tipo_batalha
         self.nome_inimigo = inimigo_nome
         
@@ -29,10 +29,10 @@ class BatalhaPokemon:
             self.equipe = [player_data]
             self.player_pkmn = player_data
 
-        # --- Configuração do Inimigo (Suporte a Time) ---
+        # Configuração do Inimigo
         if isinstance(enemy_data, list):
             self.enemy_equipe = enemy_data
-            self.enemy_pkmn = self.enemy_equipe[0] # Começa com o primeiro
+            self.enemy_pkmn = self.enemy_equipe[0] 
         else:
             self.enemy_equipe = [enemy_data]
             self.enemy_pkmn = enemy_data
@@ -49,19 +49,17 @@ class BatalhaPokemon:
         self.battle_over = False
         self.vencedor = None
         
-        # Estados
         self.estado_atual = "ENTRADA_ANIMACAO"
         self.mensagem_sistema = "" 
         self.msg_extra = "" 
         
-        # Variáveis de Controle de Captura
         self.captura_sucesso = False
         self.msg_falha_captura = ""
 
-        # Posições para animação
-        self.anim_x_player = -300 # Começa fora da tela (esquerda)
+        # Posições animaçao
+        self.anim_x_player = -300 
         self.target_x_player = 80 
-        self.anim_x_enemy = 800   # Começa fora da tela (direita)
+        self.anim_x_enemy = 800   
         self.target_x_enemy = 400
         
         self.offset_y_player = 0
@@ -72,35 +70,34 @@ class BatalhaPokemon:
         self.cursor_pos = 0 
         self.max_opcoes = 3 
         
-        # Variáveis de controle para troca obrigatória
+        # Variáveis troca obrigatória
         self.troca_obrigatoria = False
         self.confirmar_troca_inimigo = False
-        self.cursor_confirmacao = 0  # 0 = Sim, 1 = Não
-        self.troca_apos_derrota_inimigo = False  # Flag para controlar troca após derrotar inimigo
+        self.cursor_confirmacao = 0  
+        self.troca_apos_derrota_inimigo = False  
 
         try:
             path_balls = os.path.join(DIRETORIO_BASE, "assets/coletaveis/pokebolas.png")
             sheet_balls = pg.image.load(path_balls).convert_alpha()
             scale_size = (48, 48)
+
+            # spritesheet pokebolas
             
             self.sprites_balls = {}
-            # Pokebola (0,0)
+
             img = sheet_balls.subsurface((0, 0, 12, 12))
             self.sprites_balls['Pokebola'] = pg.transform.scale(img, scale_size)
             
-            # Grande Bola (11,0)
             img = sheet_balls.subsurface((12, 0, 12, 12))
             self.sprites_balls['Grande Bola'] = pg.transform.scale(img, scale_size)
             
-            # Ultra Ball (23,0)
             img = sheet_balls.subsurface((24, 0, 12, 12)) 
             self.sprites_balls['Ultra Ball'] = pg.transform.scale(img, scale_size)
             
         except Exception as e:
-            # print(f"Erro ao carregar bolas: {e}")
             self.sprites_balls = {}
 
-        # --- VARIÁVEIS DA ANIMAÇÃO DA BOLA ---
+        # animação pokebolas
         self.anim_bola_ativa = False
         self.bola_img_atual = None
         self.bola_pos = (0, 0)
@@ -109,9 +106,8 @@ class BatalhaPokemon:
         self.bola_tipo_atual = ""
         self.bola_cor_filtro = None 
         self.bola_pos_alvo = (0, 0)
-        # -------------------------------------
 
-        # --- CARREGAMENTO DO BACKGROUND ---
+        # background batalhas
         caminho_bg = os.path.join(DIRETORIO_BASE, "assets", "backgrounds", "battle_bg.jpg")
         
         if os.path.exists(caminho_bg):
@@ -122,7 +118,6 @@ class BatalhaPokemon:
                 print(f"ERRO CRÍTICO ao ler a imagem: {e}")
                 self.bg_batalha = None
         else:
-            # print("ERRO: O arquivo NÃO existe neste caminho.")
             self.bg_batalha = None 
 
         pg.font.init()
@@ -132,13 +127,12 @@ class BatalhaPokemon:
         
         self.timer_espera = 0
         
-        # Variáveis auxiliares de XP
         self.subiu_de_nivel = False
         self.xp_ganho = 0
 
 
     def processar_input(self, event):
-        # Bloqueia input durante animações e espera
+        # bloqueia inputs durante animações
         bloqueados = ["ENTRADA_ANIMACAO", "TROCA_ANIMACAO", "AGUARDANDO_CAPTURA", 
                       "MENSAGEM_INICIAL", "ANIMANDO_PLAYER", "ANIMANDO_INIMIGO", 
                       "LEVEL_UP", "FIM_BATALHA", "TROCA_ANIMACAO_INIMIGO", "ESPERANDO_TROCA_INIMIGO", "ANIMACAO_MORTE_INIMIGO"]
@@ -149,11 +143,11 @@ class BatalhaPokemon:
         # Menu de confirmação de troca após derrotar inimigo
         if self.estado_atual == "CONFIRMACAO_TROCA_INIMIGO":
             if event.key in [pg.K_a, pg.K_LEFT, pg.K_d, pg.K_RIGHT]:
-                self.cursor_confirmacao = 1 - self.cursor_confirmacao  # Toggle entre 0 e 1
+                self.cursor_confirmacao = 1 - self.cursor_confirmacao  
             elif event.key in [pg.K_RETURN, pg.K_SPACE, pg.K_e]:
-                if self.cursor_confirmacao == 0:  # Sim
+                if self.cursor_confirmacao == 0:  
                     self.confirmar_troca_inimigo = False
-                    self.troca_apos_derrota_inimigo = True  # Ativa flag
+                    self.troca_apos_derrota_inimigo = True  
                     self.estado_atual = "MENU_TROCA"
                     self.troca_obrigatoria = True
                     self.cursor_pos = 0
@@ -167,7 +161,7 @@ class BatalhaPokemon:
         if self.battle_over and self.animacao_concluida() and self.estado_atual != "LEVEL_UP":
             return
 
-        # --- DEFINIÇÃO DINÂMICA DE COLUNAS ---
+        # Colunas de seleção no menu
         n_colunas = 1  
         
         if self.estado_atual == "MENU_GOLPES":
@@ -181,7 +175,7 @@ class BatalhaPokemon:
 
         total = self.max_opcoes
 
-        # --- NAVEGAÇÃO DE CURSOR (GRID) ---
+        # Navegação de cursor infinita
         
         # DIREITA
         if event.key == pg.K_d or event.key == pg.K_RIGHT:
@@ -217,13 +211,11 @@ class BatalhaPokemon:
                     novo_index -= n_colunas
                 self.cursor_pos = novo_index
         
-        # --- CONFIRMAÇÃO (ENTER) ---
         elif event.key == pg.K_RETURN or event.key == pg.K_SPACE or event.key == pg.K_e:
             self.confirmar_selecao()
         
-        # --- VOLTAR (ESC/BACKSPACE) ---
         elif event.key == pg.K_BACKSPACE or event.key == pg.K_ESCAPE:
-            # Bloqueia ESC se a troca for obrigatória
+            # Bloqueia saida se troca obrigatória
             if self.troca_obrigatoria and self.estado_atual == "MENU_TROCA":
                 return
             
@@ -252,7 +244,7 @@ class BatalhaPokemon:
         return enemy_ok and player_ok
 
     def confirmar_selecao(self):
-        # --- MENU PRINCIPAL ---
+        # menu principal
         if self.estado_atual == "MENU_PRINCIPAL":
             if self.cursor_pos == 0: # LUTAR
                 self.estado_atual = "MENU_GOLPES"
@@ -274,11 +266,11 @@ class BatalhaPokemon:
             elif self.cursor_pos == 2: # FUGIR
                     self.tentar_fugir()
 
-        # --- MENU GOLPES ---
+        # Menu golpes
         elif self.estado_atual == "MENU_GOLPES":
             self.turno_lutar(self.cursor_pos)
 
-        # --- MENU MOCHILA ---
+        # Menu mochila
         elif self.estado_atual == "MENU_MOCHILA":
             item_escolhido = self.itens_mochila[self.cursor_pos]
 
@@ -298,7 +290,7 @@ class BatalhaPokemon:
                 else:
                     self.mensagem_sistema = "Não pode usar isso agora!"
 
-        # --- MENU TROCA ---
+        # Menu troca
         elif self.estado_atual == "MENU_TROCA":
             pkmn_escolhido = self.equipe[self.cursor_pos]
             
@@ -307,12 +299,11 @@ class BatalhaPokemon:
             elif not pkmn_escolhido.esta_vivo():
                 self.mensagem_sistema = "Ele esta desmaiado!"
             else:
-                # Desabilita flag de troca obrigatória após escolha
                 self.troca_obrigatoria = False
                 self.realizar_troca(pkmn_escolhido)
 
     def tentar_capturar(self, tipo_bola):
-        # BLOQUEIO TREINADOR
+        # Bloqueio contra treinadores
         if self.tipo_batalha in ["TREINADOR", "TREINADOR_REVANCHE"]:
             self.mensagem_sistema = "Não pode roubar de treinador!"
             return
@@ -321,13 +312,13 @@ class BatalhaPokemon:
             self.mensagem_sistema = "Sua equipe esta cheia!"
             return
 
-        # Verifica quantidade
+        # Verifica se tem a pokebola
         qtd = self.inventario.get(tipo_bola, 0)
         if qtd <= 0:
             self.mensagem_sistema = f"Voce não tem {tipo_bola}!"
             return
 
-        # Consome item
+        # Consome a pokebola
         self.inventario[tipo_bola] -= 1
 
         lvl_raridade = {
@@ -341,9 +332,10 @@ class BatalhaPokemon:
         hp_atual = self.enemy_pkmn.hp_atual
         hp_max = self.enemy_pkmn.hp_max
 
-        if "Pokebola" in tipo_bola: ball_multiplier = 11
+        # Calcula chance de captura
+        if "Pokebola" in tipo_bola: ball_multiplier = 1.0
         elif "Grande" in tipo_bola: ball_multiplier = 1.5
-        elif "Ultra" in tipo_bola:  ball_multiplier = 2
+        elif "Ultra" in tipo_bola:  ball_multiplier = 2.0
         else: ball_multiplier = 1.4
 
         fator_vida = 1.0 - (hp_atual / hp_max)
@@ -376,6 +368,7 @@ class BatalhaPokemon:
         self.bola_start_time = pg.time.get_ticks()
         self.bola_cor_filtro = None 
 
+    # Troca de pokémon
     def realizar_troca(self, novo_pkmn):
         self.player_pkmn = novo_pkmn
         self.visual_hp_player = float(self.player_pkmn.hp_atual)
