@@ -32,8 +32,8 @@ FPS = 60
 primeiro_encontro = True
 
 som_ativo = True
-volume_padrao = 0.5 
-VOLUME_PADRAO = 0.5 
+volume_padrao = 0.3 
+VOLUME_PADRAO = 0.3
 
 lista_pokemons_disponiveis = list(POKEDEX.keys())
 lista_pokemons_comuns = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "comum"]
@@ -138,7 +138,7 @@ pg.init()
 pg.mixer.init()
 
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pg.display.set_caption("PokéCIn: A Ameaça do Mangue")
+pg.display.set_caption("PokéCIn: A Ameaça da Equipe Manga Rosa")
 
 path_icon = os.path.join(DIRETORIO_BASE, "assets/icon/icon.png") 
 imagem_icone = pg.image.load(path_icon) 
@@ -317,7 +317,7 @@ while running:
                                             time_rival, 
                                             inv_batalha, 
                                             tipo_batalha="TREINADOR",
-                                            inimigo_nome="Líder da Equipe Mangue Rosa",
+                                            inimigo_nome="Líder da Equipe Manga Rosa",
                                         )
                                 
                                 elif npc_falando_agora.tipo_npc == "professor":
