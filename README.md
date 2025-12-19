@@ -29,8 +29,21 @@ Jogo voltado ao mundo de pokemon com uma pitada de CIn, prove ao Professor Pytho
    ```
 ## SCREENSHOTS
 
+<img width="795" height="592" alt="Captura de tela 2025-12-19 022719" src="https://github.com/user-attachments/assets/614dc889-3c52-42b8-9861-57bb04aef7ad" />
+
+<img width="798" height="593" alt="Captura de tela 2025-12-19 022728" src="https://github.com/user-attachments/assets/90f85c18-f7e1-4b9c-9bdb-4ac4d8a063c9" />
+
 <img width="794" height="544" alt="Captura de tela 2025-12-18 123651" src="https://github.com/user-attachments/assets/99fac0d7-c0f3-4921-870b-1c113f6249a9" />
 
+<img width="796" height="527" alt="Captura de tela 2025-12-18 123828" src="https://github.com/user-attachments/assets/7b770ae6-5efb-4211-8422-2f4897b06e3e" />
+
+<img width="797" height="531" alt="Captura de tela 2025-12-18 123928" src="https://github.com/user-attachments/assets/0b13d0a2-05ac-4348-afd7-e88dc91c7ccb" />
+
+<img width="781" height="594" alt="Captura de tela 2025-12-19 002156" src="https://github.com/user-attachments/assets/c75dc133-efa1-453d-9361-9d267dc9c1ee" />
+
+<img width="796" height="548" alt="Captura de tela 2025-12-19 002021" src="https://github.com/user-attachments/assets/77766ccf-cff9-44b0-a9c6-c04ad4683a59" />
+
+<img width="792" height="596" alt="Captura de tela 2025-12-19 022708" src="https://github.com/user-attachments/assets/9ab99a04-db90-47e2-b987-18611df88048" />
 
 ##  Equipe
 
