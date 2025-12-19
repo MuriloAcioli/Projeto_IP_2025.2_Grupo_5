@@ -15,6 +15,7 @@ from batalha import BatalhaPokemon
 from npc import NPC
 from pokedex import POKEDEX,progresso_pokedex
 from pokehealer import PokeHealer
+from vitoria import exibir_vitoria
 # from save import salvar_jogo_sistema, carregar_jogo_sistema, ler_info_save
 from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
 from game_over import exibir_game_over
@@ -46,9 +47,9 @@ lista_pokemons_iniciais = [nome for nome, dados in POKEDEX.items() if dados.get(
 MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', 'T', 'G', 'M', 'M', '.', '.', '.', 'N', '.', '.', 'S', '.', 'T'],
-    ['T', '.', 'P', '.', '.', '.', '.', '.', '.', 'B', '.', '.', 'T', '.', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', 'P', 'R', '.', '.', '.', '.', '.', 'B', '.', '.', 'T', '.', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'M', 'M', 'M', 'T', 'G', 'H', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', 'T', 'T', 'T', 'T', '.', '.', 'M', 'M', 'M', 'T', 'G', 'H', 'M', 'M', 'M', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'U', 'G', 'M', 'M', '.', '.', 'M', 'M', 'M', 'M', 'M', 'T', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', ',', 'T'],
     ['T', '.', 'M', 'M', 'M', '.', '.', '.', 'M', 'M', 'M', 'M', 'T', 'M', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', 'M', 'M', 'M', 'M', '.', '.', '.', 'M', 'M', 'M', 'G', 'T', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -63,7 +64,7 @@ MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
-    ['T', 'R', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
+    ['T', '.', '.', '.', 'H', '.', '.', '.', '.', '.', '.', '.', '.', 'M', 'M', 'M', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T', 'T', 'T', 'T', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', 'B', '.', '.', '.', 'T', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', '.', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'T'],
@@ -300,11 +301,11 @@ while running:
                                         # Cria time do Rival (igual ao professor por enquanto)
                                         time_rival = []
 
-                                        time_rival.append(criar_pokemon("Eevee*", 8))
-                                        time_rival.append(criar_pokemon("Bellsprout", 8))
-                                        time_rival.append(criar_pokemon("Clefairy", 10))
-                                        time_rival.append(criar_pokemon("Porygon*", 10))
-                                        time_rival.append(criar_pokemon("Articuno*", 12))
+                                        #time_rival.append(criar_pokemon("Eevee*", 8))
+                                        #time_rival.append(criar_pokemon("Bellsprout", 8))
+                                        #time_rival.append(criar_pokemon("Clefairy", 10))
+                                        #time_rival.append(criar_pokemon("Porygon*", 10))
+                                        #time_rival.append(criar_pokemon("Articuno*", 12))
                                         time_rival.append(criar_pokemon("Moltres", 15))
                                         
                                         # Filtra Nones caso erre o nome
@@ -603,6 +604,15 @@ while running:
                                     if "Insígnia do Professor" not in protagonista.inventario:
                                         protagonista.inventario["Insígnia do Professor"] = 1
                                         mensagem_tela = "Você recebeu a Insígnia do Professor!"
+
+                                if npc_falando_agora.tipo_npc == "rival":
+                                    mensagem_tela = f"DROGA! Seu {inicial_escolhido} quebrou o meu dedo! Agora vou ter que deixar o CIn em paz..."
+                                    pg.mixer.music.set_volume(0.0)
+                                    exibir_vitoria(screen,clock)
+                                    running = False
+
+
+
                             elif sistema_batalha.tipo_batalha == "TREINADOR_REVANCHE" and sistema_batalha.vencedor == "PLAYER":
                                 mensagem_tela = "Vitória na revanche! Você está cada vez mais forte!"
                             

@@ -15,7 +15,7 @@ class Player(pg.sprite.Sprite):
             'right': []
         }
 
-        self.inventario = {"Poção vida": 5, "Pokebola":5}
+        self.inventario = {"Poção vida": 5, "Pokebola":5, "Insígnia do Professor":1}
 
         # Carrega as SpriteSHets originais originais
         img_down = pg.image.load(sprite_sheet_path_down).convert()

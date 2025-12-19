@@ -671,6 +671,7 @@ class BatalhaPokemon:
                             subiu = self.player_pkmn.ganhar_xp(xp_ganho)
                             
                             self.mensagem_sistema = f"Inimigo derrotado! Ganhou {xp_ganho} XP."
+                            
                             if subiu:
                                 self.subiu_de_nivel = True
                             
