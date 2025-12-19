@@ -28,7 +28,7 @@ class Pokemon:
         
         # Sistema de XP
         self.xp_atual = 0
-        self.xp_prox_nivel = self.nivel * 50
+        self.xp_prox_nivel = self.nivel * 25
         
         self.golpes = golpes 
 
