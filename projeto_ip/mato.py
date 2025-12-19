@@ -13,13 +13,13 @@ class Mato(pg.sprite.Sprite):
                 imagem_path = os.path.join(DIRETORIO_BASE, imagem_path)
                 imagem_bruta = pg.image.load(imagem_path).convert_alpha()
                 
-                # 1. Definir qual pedaço do tileset queremos pegar
+                # Definir qual pedaço do tileset queremos pegar
                 rect_certo = pg.Rect(64*1, 64*2, 64, 64)
 
-                # 2. Criar uma sub-imagem (cortar apenas o quadrado do tileset)
+                # Criar uma sub-imagem (cortar apenas o quadrado do tileset)
                 imagem_cortada = imagem_bruta.subsurface(rect_certo)
 
-                # 3. Agora sim, escalar esse pedaço cortado para o tamanho desejado
+                # Agora sim, escalar esse pedaço cortado para o tamanho desejado
                 self.image = pg.transform.scale(imagem_cortada, tamanho)
             except FileNotFoundError:
                 print(f"Erro: Imagem {imagem_path} não achada. Usando quadrado.")

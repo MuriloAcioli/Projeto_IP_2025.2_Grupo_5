@@ -43,7 +43,7 @@ def exibir_vitoria(screen, clock):
     except Exception as e:
         print(f"Erro na música: {e}")
 
-    # --- Loop Principal ---
+    # Loop Principal 
     while vitoria:
         clock.tick(15)
         

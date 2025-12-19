@@ -38,7 +38,7 @@ class Pokemon:
         
         # Carregando os sprites
         
-        # 1. Frente (Inimigo usa esse)
+        # Frente (Inimigo usa esse)
         full_path = os.path.join(BASE_DIR, sprite_path)
         try:
             self.image = pg.image.load(full_path).convert_alpha()
@@ -49,7 +49,7 @@ class Pokemon:
             self.image = pg.Surface((200, 200))
             self.image.fill((100, 100, 100))
 
-        # 2. Costas (Jogador usa esse)
+        # Costas (Jogador usa esse)
         full_back_path = os.path.join(BASE_DIR, sprite_back_path)
         try:
             self.back_image = pg.image.load(full_back_path).convert_alpha()
@@ -96,9 +96,9 @@ class Pokemon:
         self.calcular_stats()
         self.hp_atual += (self.hp_max - antigo_hp)
 
-# =============================================================================
+
 #  Função de instanciação dos pokemons
-# =============================================================================
+
 
 def criar_pokemon(nome_especie, nivel):
     if nome_especie not in POKEDEX:

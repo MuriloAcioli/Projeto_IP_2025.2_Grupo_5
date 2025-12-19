@@ -28,7 +28,7 @@ POKEDEX = {
         "raridade": "inicial"
     },
 
-    # --- Comuns, Raros, Super Raros e Lendários ---
+    # Raridades dos pokemons
     
     "Byte": {
         "id": 670730110,
