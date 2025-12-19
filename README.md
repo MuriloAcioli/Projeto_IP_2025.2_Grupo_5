@@ -33,11 +33,13 @@ O jogo adapta o universo Pokémon para a realidade e cultura do CIn. Sua missão
 
 ## Instalação e Execução
 
-Pré-requisitos: Python instalado.
+1. **Baixe o arquivo:**
 
-1. **Clone o repositório:**
-   ```bash
-   git clone [https://github.com/MuriloAcioli/Projeto_IP_2025.2_Grupo_5.git](https://github.com/MuriloAcioli/Projeto_IP_2025.2_Grupo_5.git)
+vá em Code e aperte "download zip"
+<img width="418" height="358" alt="Captura de tela 2025-12-19 135524" src="https://github.com/user-attachments/assets/e7f34e2f-45a2-410b-8772-23fdff660244" />
+
+2. Execute o jogo
+
 
 ##  Equipe
 
