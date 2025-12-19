@@ -1,9 +1,9 @@
-# --- Bibliotecas do projeto ---
+#bibliotecas do projeto
 import pygame as pg
 import random
 import os
 
-# --- Módulos do Jogo ---
+#modulos do jogo
 from player import Player
 from camera import Camera
 from coletaveis import Pokebola, GreatBall, Pocao, Ultraball
@@ -20,9 +20,9 @@ from vitoria import exibir_vitoria
 from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao, animacao_treinador
 from game_over import exibir_game_over
 
-# =============================================================================
-# CONFIGURAÇÕES GERAIS
-# =============================================================================
+
+#CONFIGURAÇÕES GERAIS
+
 DIRETORIO_BASE = os.path.dirname(os.path.abspath(__file__))
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
@@ -41,9 +41,8 @@ lista_pokemons_super_raros = [nome for nome, dados in POKEDEX.items() if dados.g
 lista_pokemons_lendarios = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "lendario"]
 lista_pokemons_iniciais = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "inicial"]
 
-# =============================================================================
-# DADOS DO MAPA
-# =============================================================================
+
+#DADOS DO MAPA
 MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T'],
     ['T', '.', '.', '.', '.', '.', '.', '.', '.', '.', '.', 'B', 'T', 'G', 'M', 'M', '.', '.', '.', 'N', '.', '.', 'S', '.', 'T'],
@@ -77,14 +76,13 @@ MAPA_MATRIZ = [
     ['T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T', 'T'],
 ]
 
-# =============================================================================
-# FUNÇÕES AUXILIARES
-# =============================================================================
-# Lista para guardar posições [x, y] dos itens que já foram pegos
+
+#FUNÇÕES AUXILIARES
+#lista para guardar posições [x, y] dos itens que já foram pegos
 itens_coletados_ids = []
 
 def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
-    #Lê a matriz do mapa e instancia os objetos nas posições corretas
+    #le a matriz do mapa e instancia os objetos nas posições corretas
     pos_player = (100, 100)
     path_professor = os.path.join(DIRETORIO_BASE, "assets/professor/professor_massa.png") 
     
@@ -110,20 +108,20 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
             elif letra == 'P':
                 pos_player = (x, y)  
             elif letra == 'N':
-                # Cria NPC Professor
+                #cria NPC Professor
                 try:
                     npc = NPC(x, y, path_professor, "Está pronto para derrotar o Mangue Vermelho?", tipo_npc="professor")
                     grupo_npcs.add(npc)
-                    grupo_obs.add(npc) # Player colide com NPC
+                    grupo_obs.add(npc) #player colide com NPC
                 except Exception as e:
                     print(f"Erro ao criar NPC: {e}")
             elif letra == 'R':
-                # Cria NPC Rival/Campeão (só pode batalhar após obter insígnia)
+                #cria NPC Rival/Campeão (só pode batalhar após obter insígnia)
                 try:
                     path_rival = os.path.join(DIRETORIO_BASE, "assets/professor/rival.png") 
                     npc = NPC(x, y, path_rival, "Você tem o que é preciso para me desafiar?", tipo_npc="rival")
                     grupo_npcs.add(npc)
-                    grupo_obs.add(npc) # Player colide com NPC
+                    grupo_obs.add(npc) #player colide com NPC
                 except Exception as e:
                     print(f"Erro ao criar NPC Rival: {e}")
             elif letra == 'U':
@@ -135,9 +133,8 @@ def carregar_mapa(mapa, grupo_obs, grupo_col, grupo_mato, grupo_npcs):
     return largura_total, altura_total, pos_player
 
 
-# =============================================================================
-# SETUP INICIAL DO JOGO
-# =============================================================================
+#SETUP INICIAL DO JOGO
+
 pg.init()
 pg.mixer.init()
 
@@ -150,16 +147,16 @@ imagem_icone = pg.image.load(path_icon)
 pg.display.set_icon(imagem_icone)
 clock = pg.time.Clock()
 
-#Grupos de Sprites
+#grupos de Sprites
 grupo_obstaculos = pg.sprite.Group()
 grupo_coletaveis = pg.sprite.Group()
 grupo_mato = pg.sprite.Group()
 grupo_npcs = pg.sprite.Group()
 
-#Carregamento do Mundo
+#carregamento do Mundo
 map_w, map_h, player_pos = carregar_mapa(MAPA_MATRIZ, grupo_obstaculos, grupo_coletaveis, grupo_mato, grupo_npcs)
 
-#Inicialização do Player
+#inicialização do Player
 try:
     path_down = os.path.join(DIRETORIO_BASE, "assets/mc/mc_down.png")
     path_left = os.path.join(DIRETORIO_BASE, "assets/mc/mc_left.png")
@@ -172,18 +169,18 @@ except FileNotFoundError:
     print("ERRO CRÍTICO: Imagens do player não encontradas.")
     exit()
 
-#Inicialização de Sistemas
+#inicialização de Sistemas
 menu_inv = MenuInventario()
 camera = Camera(SCREEN_WIDTH, SCREEN_HEIGHT, map_w, map_h)
 
-# Gera o visual do chão
+#gera o visual do chão
 caminho_tileset = os.path.join(DIRETORIO_BASE, "assets/backgrounds/tileset.png")
 fundo_grama = definir_piso(map_w, map_h, caminho_tileset)
 esperando_confirmacao_load = False
 
-# =============================================================================
-# FLUXO DE INTRODUÇÃO
-# =============================================================================
+
+#FLUXO DE INTRODUÇÃO
+
 jogo_ativo = exibir_intro(screen, clock) 
 nome_jogador = "Player"
 inicial_escolhido = "Charmander" 
@@ -210,21 +207,21 @@ if jogo_ativo:
 
 #CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO
 equipe_jogador = []
-pokemon_inicial = criar_pokemon(inicial_escolhido, 5) # Cria Nível 5
+pokemon_inicial = criar_pokemon(inicial_escolhido, 5) #cria Nível 5
 progresso_pokedex[inicial_escolhido] = "capturado"
 if pokemon_inicial:
     equipe_jogador.append(pokemon_inicial)
 else:
-    # Fallback de segurança
+    #fallback de segurança
     equipe_jogador.append(criar_pokemon("Charmander", 5))
 
-# =============================================================================
-# LOOP PRINCIPAL (GAME LOOP)
-# =============================================================================
+
+#LOOP PRINCIPAL (GAME LOOP)
+
 
 estado_jogo = "MUNDO"
 sistema_batalha = None
-modo_tela_cheia = False # Controle da tela cheia
+modo_tela_cheia = False #controle da tela cheia
 running = jogo_ativo 
 path_sound = os.path.join(DIRETORIO_BASE, "assets/sfx/itemfound.wav")
 rect_botao_som = pg.Rect(10,10,40,40)
@@ -233,21 +230,21 @@ mensagem_tela = None
 
 while running:
     
-    # -------------------------------------------------------------------------
-    # ESTADO: MUNDO (Exploração)
-    # -------------------------------------------------------------------------
+
+    #ESTADO: MUNDO (Exploração)
+
     if estado_jogo == "MUNDO":
         
-        #LÓGICA DE UPDATE 
+        #LOGICA DE UPDATE 
         
-        # Verifica se algum NPC está falando
+        #verifica se algum NPC está falando
         npc_falando_agora = None
         for npc in grupo_npcs:
             if npc.falando:
                 npc_falando_agora = npc
                 break
         
-        # Eventos
+        #eventos
         for event in pg.event.get():
 
             if menu_inv.aberto:
@@ -258,7 +255,7 @@ while running:
             
             if event.type == pg.KEYDOWN:
                 
-                # SISTEMA DE TELA CHEIA (F11)
+                #SISTEMA DE TELA CHEIA (F11)
                 if event.key == pg.K_F11:
                     modo_tela_cheia = not modo_tela_cheia 
                     if modo_tela_cheia:
@@ -268,37 +265,37 @@ while running:
 
                 #CONTROLES DE DIÁLOGO
                 if npc_falando_agora:
-                    # Tecla f: Fecha o diálogo (se já tiver terminado)
+                    #tecla f: Fecha o diálogo (se já tiver terminado)
                     if event.key == pg.K_f:
                         npc_falando_agora.interagir()
                     
-                    # Setas/A/D: Mudam a opção (Sim/Não)
+                    #setas/A/D: Mudam a opção (Sim/Não)
                     elif event.key == pg.K_LEFT or event.key == pg.K_a:
                         npc_falando_agora.mudar_selecao(-1)
                     elif event.key == pg.K_RIGHT or event.key == pg.K_d:
                         npc_falando_agora.mudar_selecao(1)
                     
-                    # Space: Confirma a escolha ou avança texto
+                    #space: Confirma a escolha ou avança texto
                     elif event.key == pg.K_SPACE:
-                        # Se ainda não respondeu, processa a resposta
+                        #se ainda não respondeu, processa a resposta
                         if not npc_falando_agora.respondeu:
                             npc_falando_agora.respondeu = True
                             if npc_falando_agora.indice_selecionado == 0: # Sim
                                 
-                                # --- VERIFICA TIPO DE NPC ---
+                                #VERIFICA TIPO DE NPC
                                 if npc_falando_agora.tipo_npc == "rival":
-                                    # RIVAL: Só pode batalhar se tiver insígnia
+                                    #RIVAL: Só pode batalhar se tiver insígnia
                                     tem_insignia = "Insígnia do Professor" in protagonista.inventario
                                     
                                     if not tem_insignia:
                                         npc_falando_agora.texto_atual = "Você ainda não provou seu valor.\nDerrote o Professor primeiro!"
-                                        # Não fecha o diálogo, só muda o texto
+                                        #nao fecha o diálogo, só muda o texto
                                     else:
-                                        # Pode batalhar!
+                                        #pode batalhar
                                         npc_falando_agora.texto_atual = "Então vamos ver sua força!"
                                         npc_falando_agora.interagir() # Fecha diálogo
                                         
-                                        # Cria time do Rival (igual ao professor por enquanto)
+                                        #cria time do Rival (igual ao professor por enquanto)
                                         time_rival = []
 
                                         time_rival.append(criar_pokemon("Eevee*", 8))
@@ -308,14 +305,14 @@ while running:
                                         time_rival.append(criar_pokemon("Articuno*", 12))
                                         time_rival.append(criar_pokemon("Moltres", 15))
                                         
-                                        # Filtra Nones caso erre o nome
+                                        #filtra Nones caso erre o nome
                                         time_rival = [p for p in time_rival if p is not None] 
                                         
                                         inv_batalha = protagonista.inventario
                                         animacao_treinador(screen)
                                         estado_jogo = "BATALHA"
                                         
-                                        # Rival dá game over se perder
+                                        #rival dá game over se perder
                                         sistema_batalha = BatalhaPokemon(
                                             equipe_jogador, 
                                             time_rival, 
@@ -325,7 +322,7 @@ while running:
                                         )
                                 
                                 elif npc_falando_agora.tipo_npc == "professor":
-                                    # PROFESSOR: Lógica original
+                                    #PROFESSOR: Lógica original
                                     tem_insignia = "Insígnia do Professor" in protagonista.inventario
                                     
                                     if tem_insignia:
@@ -333,9 +330,9 @@ while running:
                                     else:
                                         npc_falando_agora.texto_atual = "Prepare-se! Não terei piedade."
                                     
-                                    npc_falando_agora.interagir() # Fecha diálogo para transição
+                                    npc_falando_agora.interagir() #fecha diálogo para transição
                                     
-                                    # Cria o time do Professor (6 Pokémons Fortes)
+                                    #cria o time do Professor (6 Pokémons Fortes)
                                     time_professor = []
 
                                     time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[0], 6))
@@ -345,7 +342,7 @@ while running:
                                     time_professor.append(criar_pokemon("Lapras", 8))
                                     time_professor.append(criar_pokemon("Mewtwo", 9))
                                     
-                                    # Filtra Nones caso erre o nome
+                                    #filtra Nones caso erre o nome
                                     time_professor = [p for p in time_professor if p is not None]
 
                                     inv_batalha = protagonista.inventario
@@ -353,7 +350,7 @@ while running:
                                     animacao_treinador(screen)
                                     estado_jogo = "BATALHA"
                                     
-                                    # Instancia com o modo TREINADOR ou TREINADOR_REVANCHE
+                                    #instancia com o modo TREINADOR ou TREINADOR_REVANCHE
                                     tipo_batalha = "TREINADOR_REVANCHE" if tem_insignia else "TREINADOR"
                                     sistema_batalha = BatalhaPokemon(
                                         equipe_jogador, 
@@ -363,30 +360,30 @@ while running:
                                         inimigo_nome="Professor Python"
                                     )
 
-                            else: # Não
+                            else: #nao
                                 if npc_falando_agora.tipo_npc == "rival":
                                     npc_falando_agora.texto_atual = "Treine mais e volte quando estiver pronto."
                                 else:
                                     npc_falando_agora.texto_atual = "Volte quando estiver pronto."
-                        # Se já respondeu, fecha
+                        #se já respondeu, fecha
                         else:
                             npc_falando_agora.interagir()
 
                 #CONTROLES DE MUNDO
                 else:
-                    # Tecla E: Inventário
+                    #tecla E: Inventário
                     if event.key == pg.K_e:
                         menu_inv.alternar() 
 
-                    # Tecla Space: Coletar itens próximos e interagir
+                    #tecla Space: Coletar itens próximos e interagir
                     if event.key == pg.K_SPACE:
                         #Se tiver mensagem, limpa a mensagem
                         if mensagem_tela:
                             mensagem_tela = ""
                             
-                        #Se não for nada disso, é uma interação normal do jogo
+                        #se não for nada disso, é uma interação normal do jogo
                         else:
-                            #Tenta interagir com PokeHealer
+                            #tenta interagir com PokeHealer
                             area_interacao = protagonista.rect.inflate(10, 10)
                             healer_interagido = False
                             
@@ -397,7 +394,7 @@ while running:
                                     healer_interagido = True
                                     break
 
-                            #Se não foi PokeHealer, tenta pegar item
+                            #se não foi PokeHealer, tenta pegar item
                             if not healer_interagido:
                                 item_pegado = False
                             
@@ -416,7 +413,7 @@ while running:
                                         except: pass
                                         break
                                 
-                                # Se não foi item nem PokeHealer, tenta NPC
+                                #se não foi item nem PokeHealer, tenta NPC
                                 if not item_pegado:
                                     hits_npc = pg.sprite.spritecollide(protagonista, grupo_npcs, False)
                                     if not hits_npc:
@@ -429,7 +426,7 @@ while running:
                                         hits_npc[0].interagir()
 
             if event.type == pg.MOUSEBUTTONDOWN:
-                if event.button == 1:  # Clique esquerdo
+                if event.button == 1:  #clique esquerdo
                     if rect_botao_som.collidepoint(event.pos):
                         som_ativo = not som_ativo  
                         
@@ -440,7 +437,7 @@ while running:
                             volume_padrao = 0
                             pg.mixer.music.set_volume(volume_padrao)
 
-        #Atualização do Mundo 
+        #atualização do Mundo 
         if not npc_falando_agora and not menu_inv.aberto and not mensagem_tela:
             antigo_rect = protagonista.rect.copy()
             player_group.update()
@@ -451,10 +448,10 @@ while running:
                     if not area_proximidade.colliderect(protagonista.rect):
                         obs.resetar_cura()
             
-            #Lógica do Mato
+            #logica do Mato
             if protagonista.direction.magnitude() > 0:
                 if pg.sprite.spritecollide(protagonista, grupo_mato, False):
-                    if random.random() < 0.01: # Chance de encontro
+                    if random.random() < 0.01: #chance de encontro
                         animacao_transicao(screen)
                         estado_jogo = "BATALHA"
  
@@ -490,24 +487,24 @@ while running:
                         inv_batalha = protagonista.inventario if protagonista.inventario else {'Poção': 1, 'Pokebola': 1}
 
                         try:
-                            # Batalha Selvagem Padrão
+                            #batalha selvagem padrão
                             sistema_batalha = BatalhaPokemon(equipe_jogador, inimigo_pokemon, inv_batalha, tipo_batalha="SELVAGEM", inimigo_nome=None)
                         except Exception as e:
                             print(f"ERRO AO INICIAR BATALHA: {e}")
                             estado_jogo = "MUNDO"
 
-            # Colisões
+            #colisoes
             colisao_obs = pg.sprite.spritecollide(protagonista,grupo_obstaculos,False,collided=lambda spr1, spr2: spr1.hitbox.colliderect(spr2.hitbox)) 
             
             colisao_item = pg.sprite.spritecollide(protagonista, grupo_coletaveis, False, collided=lambda spr1, spr2: spr1.hitbox.colliderect(spr2.hitbox))
             if colisao_obs or colisao_item:
                 protagonista.rect = antigo_rect
 
-            # Câmera
+            #camera
             camera.update(protagonista.rect)
 
 
-        #lógica de desenho 
+        #logica de desenho 
         screen.fill((0,0,0)) 
         screen.blit(fundo_grama, camera.apply_rect(fundo_grama.get_rect()))
 
@@ -570,34 +567,34 @@ while running:
                 screen.blit(sim_surf, (rect_interno.x + 50, rect_interno.y + 80))
                 screen.blit(nao_surf, (rect_interno.x + 200, rect_interno.y + 80))
 
-    # =========================================================================
-    # ESTADO: BATALHA
-    # =========================================================================
+
+    #ESTADO: BATALHA
+
     elif estado_jogo == "BATALHA":
         
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 running = False
             
-            # Input da Batalha
+            #input da Batalha
             if event.type == pg.KEYDOWN:
                 if sistema_batalha and sistema_batalha.battle_over:
-                    # Se batalha acabou, Espaço para sair
+                    #se batalha acabou, Espaço para sair
                     if event.key == pg.K_SPACE:
-                        # Game Over apenas se não for revanche
+                        #game over apenas se não for revanche
                         if sistema_batalha.vencedor == "INIMIGO":
-                            # Se for revanche, não dá game over
+                            #se for revanche, não dá game over
                             if sistema_batalha.tipo_batalha == "TREINADOR_REVANCHE":
                                 mensagem_tela = "Você foi derrotado, mas pode tentar novamente!"
                                 estado_jogo = "MUNDO"
                             else:
-                                # Batalha normal: game over
+                                #batalha normal: game over
                                 pg.mixer.music.set_volume(0.0)
                                 print("GAME OVER")
                                 exibir_game_over(screen,clock)
                                 running = False
                         else:
-                            # Verifica se derrotou o professor e dá a insígnia
+                            #verifica se derrotou o professor e dá a insígnia
                             if sistema_batalha.tipo_batalha == "TREINADOR" and sistema_batalha.vencedor == "PLAYER":
                                 if npc_falando_agora and npc_falando_agora.tipo_npc == "professor" and not npc_falando_agora.foi_derrotado:
                                     npc_falando_agora.foi_derrotado = True
@@ -618,7 +615,7 @@ while running:
                             
                             estado_jogo = "MUNDO"
                         
-                        # Volta a música do mundo
+                        #volta a música do mundo
                         if estado_jogo == "MUNDO":
                             try: 
                                 pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/world_theme.mp3"))

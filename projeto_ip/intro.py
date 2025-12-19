@@ -2,26 +2,21 @@ import pygame as pg
 import os
 import random
 import math
-# =============================================================================
-# CONFIGURAÇÕES LOCAIS
-# =============================================================================
+#CONFIGURAÇÕES LOCAIS
+
 DIRETORIO_BASE = os.path.dirname(os.path.abspath(__file__))
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 TILE_SIZE = 48
 
-# =============================================================================
-# FUNÇÕES DE AMBIENTE (GRÁFICOS)
-# =============================================================================
+
+#FUNÇOES AMBIENTE (GRAFICOS)
+
 
 def definir_piso(largura_mapa, altura_mapa, caminho_tileset):
-    """
-    Gera uma superfície estática com tiles de grama aleatórios.
-    Isso otimiza o jogo, pois não precisamos redesenhar cada tile por frame.
-    """
     superficie_chao = pg.Surface((largura_mapa, altura_mapa))
     
-    # Tenta carregar o tileset
+    #tenta carregar o tileset
     try:
         img_tileset = pg.image.load(caminho_tileset).convert_alpha()
     except FileNotFoundError:
@@ -29,10 +24,10 @@ def definir_piso(largura_mapa, altura_mapa, caminho_tileset):
         superficie_chao.fill((34, 139, 34))
         return superficie_chao
 
-    # Configurações de recorte do Tileset (64x64 original)
+    #configurações recorte do Tileset (64x64 original)
     TAMANHO_ORIGINAL = 64
     
-    # Coordenadas (coluna, linha) na imagem do tileset
+    #coordenadas (coluna, linha) na imagem do tileset
     TILE_PADRAO = (0, 0)
     TILE_GRAMA_LISA = (2, 1)
     TILE_GRAMA_DETALHE = (3, 0)
@@ -40,39 +35,39 @@ def definir_piso(largura_mapa, altura_mapa, caminho_tileset):
     TILE_DETALHEZINHO_GRAMA_BD = (1, 4)
   
 
-    # Lista de probabilidade (Mais grama simples, poucas flores)
+    #lista de probabilidade (mais grama simples, poucas flores)
     opcoes = [TILE_GRAMA_LISA] * 15 + [TILE_PADRAO] * 40 + [TILE_GRAMA_DETALHE] * 30 + [TILE_DETALHEZINHO_GRAMA_SD] * 5 + [TILE_DETALHEZINHO_GRAMA_BD] * 5 
-    # Preenche a superfície do chão
+    #preenche superfície chão
     for y in range(0, altura_mapa, TILE_SIZE):
         for x in range(0, largura_mapa, TILE_SIZE):
             escolha = random.choice(opcoes)
             coluna_img, linha_img = escolha
             
-            # Recorta o tile da imagem original
+            #recorta o tile da imagem original
             rect_recorte = pg.Rect(coluna_img * TAMANHO_ORIGINAL, 
                                    linha_img * TAMANHO_ORIGINAL, 
                                    TAMANHO_ORIGINAL, TAMANHO_ORIGINAL)
             
             tile_imagem = img_tileset.subsurface(rect_recorte)
             
-            # Escala para o tamanho do jogo (48x48)
+            #escala tamanho do jogo (48x48)
             tile_escalado = pg.transform.scale(tile_imagem, (TILE_SIZE, TILE_SIZE))
             
-            # Desenha na superfície final
+            #desenha na superfície final
             superficie_chao.blit(tile_escalado, (x, y))
 
     return superficie_chao
 
 
-# =============================================================================
-# FUNÇÕES DE CENA (HISTÓRIA E UI)
-# =============================================================================
+#FUNÇOES DE CENA (HISTORIA E UI)
+
 
 def exibir_intro(screen, clock):
-    """Exibe a tela de título inicial."""
+    #exibe a tela de título inicial
+
     intro = True
     
-    # Fontes
+    #fontes
     font_titulo = pg.font.SysFont("Arial", 50, bold=True)
     font_start = pg.font.SysFont("Arial", 30, bold=True)
 
@@ -95,7 +90,7 @@ def exibir_intro(screen, clock):
     rect_titulo = texto_titulo.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT/3))
     rect_start = texto_start.get_rect(center=(SCREEN_WIDTH/2, SCREEN_HEIGHT/2+50))
     
-    # Assets da Intro
+    #assets da Intro
     try: 
         bg_intro = pg.transform.scale(pg.image.load(os.path.join(DIRETORIO_BASE, "assets/backgrounds/intro_bg.jpg")).convert(), (SCREEN_WIDTH, SCREEN_HEIGHT))
     except: 
@@ -107,7 +102,7 @@ def exibir_intro(screen, clock):
         pg.mixer.music.play(-1, start=1.0)
     except: pass
     
-    # Loop da Intro
+    #loop da Intro
     while intro:
         clock.tick(15)
         for event in pg.event.get():
@@ -129,18 +124,18 @@ def exibir_intro(screen, clock):
         
     return True
 
-
+#gerencia a cena do professor python e a entrada do nome do jogador
 def cena_professor(screen, clock):
-    """Gerencia a cena do Professor Python e a entrada do nome do jogador."""
     
-    # Cores e Fontes
+    
+    #cores e Fontes
     COR_CAIXA = (255, 255, 255)
     COR_BORDA = (40, 40, 160)
     COR_TEXTO = (0, 0, 0)
     font_texto = pg.font.SysFont("Arial", 22)
     font_nome = pg.font.SysFont("Arial", 30, bold=True)
     
-    # --- Carregamento de Assets ---
+    #carregamento assets
     sfx_blip = None
     try: 
         sfx_blip = pg.mixer.Sound(os.path.join(DIRETORIO_BASE, "assets/sfx/sfx_blip.wav"))
@@ -159,7 +154,7 @@ def cena_professor(screen, clock):
         bg_imagem = pg.Surface((SCREEN_WIDTH, SCREEN_HEIGHT)); bg_imagem.fill((200, 200, 250))
         
     try: 
-        # Imagem padrão (Professor 1)
+        #imagem padrao (professor 1)
         img_professor1 = pg.transform.scale(pg.image.load(os.path.join(DIRETORIO_BASE, "assets/professor/proff_massa_1.png")).convert_alpha(), (400, 400)) 
     except: 
         print("Erro ao carregar proff_massa_1.png")
@@ -181,7 +176,7 @@ def cena_professor(screen, clock):
         img_professor2 = img_professor1
 
 
-    # --- Roteiro ---
+    #roteiro
     falas_intro = [
         "Olá! Bem-vindo ao fantástico mundo de Pokémon.", 
         "Esse mundo é habitado por diversas criaturas misteriosas.", 
@@ -191,7 +186,7 @@ def cena_professor(screen, clock):
         "O Coletivo Mangue Vermelho quer usar seus Pokémons\npara destruir nossos computadores!", 
         "Precisamos de alguém para derrotá-los!", 
         "Será que você é o candidato ideal?", 
-        #"Antes que eu forneça Pokémons Fortes para você usar contra eles", 
+        #"Antes que eu forneça Pokémons Fortes para você usar contra eles" 
         "Vamos fazer um teste para ver sua competência.", 
         "Mas primeiro, diga-me algo sobre você."
     ]
@@ -209,7 +204,7 @@ def cena_professor(screen, clock):
         "Estarei esperando por você!"
     ]
     
-    # Estado da Cena
+    #estado da Cena
     indice = 0
     estado = "INTRO"
     nome_digitado = ""
@@ -222,10 +217,10 @@ def cena_professor(screen, clock):
         clock.tick(30)
         
         for event in pg.event.get():
-            if event.type == pg.QUIT: return False, None, None # Retorna 3 valores agora
+            if event.type == pg.QUIT: return False, None, None #retorna 3 valores agora
             
             if event.type == pg.KEYDOWN:
-                # Navegação nos diálogos
+                #navegação nos diálogos
                 if estado == "INTRO" or estado == "FINAL":
                     if event.key == pg.K_RETURN or event.key == pg.K_SPACE:
                         if sfx_blip: sfx_blip.play()
@@ -234,13 +229,13 @@ def cena_professor(screen, clock):
                             estado = "INPUT"
                             indice = 0
                         elif estado == "FINAL" and indice >= len(falas_final): 
-                            # ACABOU O DIÁLOGO, VAI PARA A SELEÇÃO
+                            #ACABOU O DIÁLOGO, VAI PARA A SELEÇÃO
                             pokemon_escolhido = escolher_pokemon(screen, clock)
                             pg.mixer.music.fadeout(1000)
-                            # Retorna: Sucesso, Nome, Pokemon
+                            #Retorna: Sucesso, Nome, Pokemon
                             return True, nome_final, pokemon_escolhido
                 
-                # Input de texto (Nome)
+                #input texto (Nome)
                 elif estado == "INPUT":
                     if event.key == pg.K_RETURN:
                         if len(nome_digitado) > 0: 
@@ -254,10 +249,10 @@ def cena_professor(screen, clock):
                         if len(nome_digitado) < 10 and event.unicode.isprintable(): 
                             nome_digitado += event.unicode
                         
-        # --- Desenho ---
+        #desenho
         screen.blit(bg_imagem, (0, 0))
         
-        # Professor + Sombra
+        #professor + sombra
         prof_x = SCREEN_WIDTH // 2 - img_professor1.get_width() // 2
         
         prof_y = 40 
@@ -269,10 +264,10 @@ def cena_professor(screen, clock):
         pg.draw.ellipse(sombra_surf, (0, 0, 0, 80), (0,0, largura_sombra, altura_sombra))
         screen.blit(sombra_surf, (sombra_x, sombra_y))
 
-        # ### ALTERADO: Lógica para escolher qual imagem desenhar ###
-        img_atual = img_professor1 # Começa com a imagem padrão
+        
+        img_atual = img_professor1 #começa com a imagem padrão
 
-        # Se estamos na fase de INTRO E o índice atual é o da fala específica:
+        #se estamos na fase de INTRO E o índice atual é o da fala específica:
         if estado == "INTRO" and (indice == indice_troca_imagem or indice == indice_troca_imagem - 1):
              img_atual = img_professor2
              prof_x = SCREEN_WIDTH // 2 - img_professor2.get_width() // 2
@@ -284,12 +279,12 @@ def cena_professor(screen, clock):
         
         screen.blit(img_atual, (prof_x, prof_y))
         
-        # Caixa de Texto
+        #caixa de texto
         pg.draw.rect(screen, COR_BORDA, rect_caixa, border_radius=10)
         rect_interno = rect_caixa.inflate(-10, -10)
         pg.draw.rect(screen, COR_CAIXA, rect_interno, border_radius=10)
         
-        # Conteúdo do Texto
+        #conteudo texto
         texto_para_exibir = ""
         if estado == "INTRO":
             if indice < len(falas_intro): texto_para_exibir = falas_intro[indice]
@@ -303,7 +298,7 @@ def cena_professor(screen, clock):
             dica = font_texto.render("(ENTER para confirmar)", True, (150, 150, 150))
             screen.blit(dica, (rect_interno.x + 20, rect_interno.y + 100))
             
-        # Renderiza texto com quebra de linha
+        #renderiza texto com quebra de linha
         if texto_para_exibir != "":
             linhas = texto_para_exibir.split('\n')
             y_atual = rect_interno.y + 20
@@ -312,7 +307,7 @@ def cena_professor(screen, clock):
                 screen.blit(surf_linha, (rect_interno.x + 20, y_atual))
                 y_atual += 30 
             
-            # Animação da setinha
+            #animação setinha
             if pg.time.get_ticks() % 1000 < 500: 
                 pg.draw.polygon(screen, (200, 0, 0), [
                     (rect_interno.right - 30, rect_interno.bottom - 20), 
@@ -324,8 +319,8 @@ def cena_professor(screen, clock):
     return False, None, None
 
 
+#efeito visual de piscar a tela antes da batalha
 def animacao_transicao(screen):
-    """Efeito visual de piscar a tela antes da batalha."""
     try:
         pg.mixer.music.load(os.path.join(DIRETORIO_BASE, "assets/músicas/battle_theme.mp3"))
         pg.mixer.music.play(-1)
@@ -354,18 +349,21 @@ def animacao_treinador(screen):
         pg.display.flip()
         pg.time.delay(160)
 
-# =============================================================================
-# NOVA FUNÇÃO: SELEÇÃO DE INICIAL
-# =============================================================================
+
+#NOVA FUNÇÃO: SELEÇÃO DE INICIAL
+
+
+
+#tela de seleção do Pokémon inicial com sprites e pokébola
 def escolher_pokemon(screen, clock):
-    """Tela de seleção do Pokémon inicial com sprites e pokébolas."""
     
-    # Configuração de Fontes e Cores
+    
+    #configuração de Fontes e Cores
     font_titulo = pg.font.SysFont("Arial", 40, bold=True)
     font_nome = pg.font.SysFont("Arial", 30, bold=True)
     
-    # --- Carregar Assets ---
-    # Fundo (Lab)
+    #carregar assets
+    #fundo (Lab)
     try:
         bg = pg.image.load(os.path.join(DIRETORIO_BASE, "assets/backgrounds/lab.jpg")).convert()
         bg = pg.transform.scale(bg, (SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -373,12 +371,12 @@ def escolher_pokemon(screen, clock):
         bg = pg.Surface((SCREEN_WIDTH, SCREEN_HEIGHT))
         bg.fill((200, 200, 200))
         
-    # Imagem da Pokébola
+    #imagem pokébola
 
     path_balls = os.path.join(DIRETORIO_BASE, "assets/coletaveis/pokebolas.png")
     sheet_balls = pg.image.load(path_balls).convert_alpha()
-            # Recorta as bolas ( x=0, x=11, x=23 | w=12, h=12)
-            # Escalamos para 32x32 para ficar visível na tela
+            #recorta as bolas ( x=0, x=11, x=23 | w=12, h=12)
+            #escalamos para 32x32 para ficar visível na tela
     scale_size = (48, 48)
             
 
@@ -388,27 +386,27 @@ def escolher_pokemon(screen, clock):
  
  
 
-    # Dados dos Iniciais
+    #dados dos Iniciais
     iniciais = [
         {"nome": "Soim", "arquivo": "assets/pokemons/soim.png", "cor": (0, 180, 0)},
         {"nome": "Flamare", "arquivo": "assets/pokemons/flamare.png", "cor": (255, 100, 0)},
         {"nome": "Caprio", "arquivo": "assets/pokemons/caprio.png", "cor": (50, 100, 255)}
     ]
     
-    # Carregar Sprites dos Pokémons
+    #carregar sprites Pokémons
     for p in iniciais:
         try:
             img = pg.image.load(os.path.join(DIRETORIO_BASE, p["arquivo"])).convert_alpha()
-            # Aumenta um pouco o sprite para a seleção
+            #aumenta um pouco o sprite para a seleção
             p["sprite"] = pg.transform.scale(img, (160, 160))
         except:
             p["sprite"] = pg.Surface((160, 160))
             p["sprite"].fill(p["cor"])
 
-    selecionado = 1 # Começa no meio (Charmander)
+    selecionado = 1 #começa no meio (Charmander)
     running = True
     
-    # Posições
+    #posições
     espacamento = 200
     centro_x = SCREEN_WIDTH // 2
     y_bolas = 400
@@ -416,13 +414,13 @@ def escolher_pokemon(screen, clock):
     while running:
         clock.tick(30)
         
-        # --- Eventos ---
+        #eventos
         for event in pg.event.get():
             if event.type == pg.QUIT:
-                return None # Sai do jogo
+                return None #sai do jogo
             
             if event.type == pg.KEYDOWN:
-                # Mover seleção
+                #mover seleção
                 if event.key == pg.K_LEFT or event.key == pg.K_a:
                     selecionado = (selecionado - 1) % 3
                 elif event.key == pg.K_RIGHT or event.key == pg.K_d:
@@ -432,52 +430,52 @@ def escolher_pokemon(screen, clock):
                 if event.key == pg.K_RETURN or event.key == pg.K_SPACE:
                     return iniciais[selecionado]["nome"]
 
-        # --- Desenho ---
+        #desenho
         screen.blit(bg, (0, 0))
         
-        # Título
+        #titulo
         titulo_surf = font_titulo.render("Escolha seu Parceiro!", True, (0, 0, 0))
-        # Sombra do título
+        #sombra do titulo
         titulo_sombra = font_titulo.render("Escolha seu Parceiro!", True, (200, 200, 200))
         
         rect_titulo = titulo_surf.get_rect(center=(centro_x, 100))
         screen.blit(titulo_sombra, (rect_titulo.x + 2, rect_titulo.y + 2))
         screen.blit(titulo_surf, rect_titulo)
         
-        # Desenha as 3 Pokébolas e o Pokémon selecionado
+        #desenha as 3 Pokébolas e o Pokémon selecionado
         for i in range(3):
-            # Calcula X: Esquerda, Centro, Direita
+            #calcula X: Esquerda, Centro, Direita
             pos_x = centro_x + (i - 1) * espacamento
             
-            # Desenha Pokébola
+            #desenha Pokébola
             rect_bola = pokebola_img.get_rect(center=(pos_x, y_bolas))
             screen.blit(pokebola_img, rect_bola)
             
-            # Se for o selecionado, mostra o Pokémon em cima
+            #se for o selecionado, mostra o Pokémon em cima
             if i == selecionado:
                 p = iniciais[i]
                 
-                # Sprite pulando levemente (Animação simples)
+                #sprite pulando levemente (Animação simples)
                 tempo = pg.time.get_ticks()
-                #    tempo * velocidade ) * amplitude                                        
+                #tempo * velocidade ) * amplitude                                        
                 flutuacao = math.sin(tempo * 0.003) * 10
                 offset_y = -130 + flutuacao
-                # Vamos simplificar: fixo em cima
+                #vamos simplificar: fixo em cima
                 
                 rect_sprite = p["sprite"].get_rect(center=(pos_x, y_bolas + offset_y))
                 screen.blit(p["sprite"], rect_sprite)
                 
-                # Nome do Pokémon
+                #nome do Pokémon
                 nome_surf = font_nome.render(p["nome"], True, p["cor"])
                 rect_nome = nome_surf.get_rect(center=(pos_x, y_bolas + 60))
                 
-                # Fundo do nome para leitura
+                #fundo do nome para leitura
                 bg_nome = rect_nome.inflate(20, 10)
                 pg.draw.rect(screen, (255, 255, 255), bg_nome, border_radius=5)
                 pg.draw.rect(screen, (0, 0, 0), bg_nome, 2, border_radius=5)
                 screen.blit(nome_surf, rect_nome)
                 
-                # Seta indicadora na Pokébola
+                #seta indicadora na Pokébola
                 pg.draw.polygon(screen, (255, 255, 0), [
                     (rect_bola.centerx - 10, rect_bola.top - 20),
                     (rect_bola.centerx + 10, rect_bola.top - 20),
@@ -486,4 +484,4 @@ def escolher_pokemon(screen, clock):
 
         pg.display.flip()
     
-    return "Charmander" # Default
+    return "Charmander" #default

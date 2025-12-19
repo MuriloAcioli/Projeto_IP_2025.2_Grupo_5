@@ -1,6 +1,6 @@
 
 GOLPES_DB = {
-    # Golpes de Dano Básico - DANO PADRAO, falta ajustar a precisão!!
+    #golpes dano basico
     "Investida":        {"poder": 40, "tipo": "Normal",   "precisao": 100},
     "Brasas":           {"poder": 40, "tipo": "Fogo",     "precisao": 100},
     "Chicote":          {"poder": 45, "tipo": "Grama",    "precisao": 100},
@@ -14,12 +14,12 @@ GOLPES_DB = {
     "Envolver":         {"poder": 15, "tipo": "Normal",   "precisao": 90},
     "Tapa":             {"poder": 40, "tipo": "Normal",   "precisao": 100},
 
-    # Golpes de Status - AJUSTAR O EFEITO!!
-    "Tiro de Teia":     {"poder": 1,  "tipo": "Inseto",   "precisao": 95},  # Reduz velocidade
-    "Rosnado":          {"poder": 1,  "tipo": "Normal",   "precisao": 100}, # Reduz ataque
-    "Ataque de Areia":  {"poder": 1,  "tipo": "Terrestre","precisao": 100}, # Reduz precisão
-    "Encarar":          {"poder": 1,  "tipo": "Normal",   "precisao": 100}, # Reduz defesa
-    "Abanar o Rabo":    {"poder": 1,  "tipo": "Normal",   "precisao": 100}, # Reduz defesa
+    #golpes status
+    "Tiro de Teia":     {"poder": 1,  "tipo": "Inseto",   "precisao": 95},  #reduz velocidade
+    "Rosnado":          {"poder": 1,  "tipo": "Normal",   "precisao": 100}, #reduz ataque
+    "Ataque de Areia":  {"poder": 1,  "tipo": "Terrestre","precisao": 100}, #reduz precisão
+    "Encarar":          {"poder": 1,  "tipo": "Normal",   "precisao": 100}, #reduz defesa
+    "Abanar o Rabo":    {"poder": 1,  "tipo": "Normal",   "precisao": 100}, #reduz defesa
     "Canto": {"poder": 0, "tipo": "Normal", "precisao": 55},
     "Teletransporte": {"poder": 0, "tipo": "Psiquico", "precisao": 100},
     "Flash": {"poder": 0, "tipo": "Normal", "precisao": 100},
@@ -34,56 +34,57 @@ GOLPES_DB = {
     "Rosnar": {"poder": 0, "tipo": "Normal", "precisao": 100},
     "Po do Sono": {"poder": 0, "tipo": "Grama", "precisao": 75},
     "Conversao": {"poder": 0, "tipo": "Normal", "precisao": 100},
-    # Golpes de Água/Gelo
+
+    #golpes agua/gelo
     "Jato D'Agua": {"poder": 75, "tipo": "Agua", "precisao": 100},
     "Raio de Gelo": {"poder": 90, "tipo": "Gelo", "precisao": 100},
     "Nevasca": {"poder": 110, "tipo": "Gelo", "precisao": 70},
     
-    # Golpes Físicos/Normal
+    #golpes fisicos/normal
     "Pancada Corporal": {"poder": 85, "tipo": "Normal", "precisao": 100},
     "Investida": {"poder": 40, "tipo": "Normal", "precisao": 100},
     "Ataque Rapido": {"poder": 40, "tipo": "Normal", "precisao": 100},
     "Cabecada": {"poder": 70, "tipo": "Normal", "precisao": 100},
     "Pisar": {"poder": 65, "tipo": "Normal", "precisao": 100},
-    "Estrondo Sonico": {"poder": 20, "tipo": "Normal", "precisao": 90}, # Dano fixo no original, aqui ajustado
+    "Estrondo Sonico": {"poder": 20, "tipo": "Normal", "precisao": 90},
     "Tri-Ataque": {"poder": 80, "tipo": "Normal", "precisao": 100},
-    "Meteoro Veloz": {"poder": 60, "tipo": "Normal", "precisao": 100}, # Nunca erra
+    "Meteoro Veloz": {"poder": 60, "tipo": "Normal", "precisao": 100}, #nunca erra
     "Mordida": {"poder": 60, "tipo": "Normal", "precisao": 100},
     "Enrolar": {"poder": 15, "tipo": "Normal", "precisao": 90},
-    "Autodestruicao": {"poder": 200, "tipo": "Normal", "precisao": 100}, # Alto risco
+    "Autodestruicao": {"poder": 200, "tipo": "Normal", "precisao": 100}, #alto risco
 
     
-    # Golpes Psíquicos
+    #golpes psiquicos
     "Psiquico": {"poder": 90, "tipo": "Psiquico", "precisao": 100},
     "Confusao": {"poder": 50, "tipo": "Psiquico", "precisao": 100},
     "Psirraio": {"poder": 65, "tipo": "Psiquico", "precisao": 100},
     
-    # Golpes de Lutador
+    #golpes lutador
     "Golpe de Karate": {"poder": 50, "tipo": "Lutador", "precisao": 100},
-    "Chute Baixo": {"poder": 50, "tipo": "Lutador", "precisao": 100}, # Dano por peso no original
-    "Eremesso Sismico": {"poder": 40, "tipo": "Lutador", "precisao": 100}, # Dano fixo
+    "Chute Baixo": {"poder": 50, "tipo": "Lutador", "precisao": 100}, #dano por peso no original
+    "Eremesso Sismico": {"poder": 40, "tipo": "Lutador", "precisao": 100}, #dano fixo
     
-    # Golpes de Pedra/Terra
+    #golpes pedra/terra
     "Arremesso de Rocha": {"poder": 50, "tipo": "Pedra", "precisao": 90},
-    "Magnitude": {"poder": 70, "tipo": "Terra", "precisao": 100}, # Variavel no original
+    "Magnitude": {"poder": 70, "tipo": "Terra", "precisao": 100}, #variavel original
     "Osso Clube": {"poder": 65, "tipo": "Terra", "precisao": 85},
-    "Bonemerangue": {"poder": 50, "tipo": "Terra", "precisao": 90}, # Bate 2x no original
+    "Bonemerangue": {"poder": 50, "tipo": "Terra", "precisao": 90}, #bate 2x original
     
-    # Golpes de Fogo
+    #golpes fogo
     "Brasas": {"poder": 40, "tipo": "Fogo", "precisao": 100},
     "Giro de Fogo": {"poder": 35, "tipo": "Fogo", "precisao": 85},
     "Lanca-Chamas": {"poder": 90, "tipo": "Fogo", "precisao": 90},
     
-    # Golpes Elétricos
+    #golpes eletricos
     "Choque do Trovao": {"poder": 40, "tipo": "Eletrico", "precisao": 100},
     "Trovao": {"poder": 110, "tipo": "Eletrico", "precisao": 70},
     
-    # Golpes Voadores
+    #golpes voadores
     "Bicar": {"poder": 35, "tipo": "Voador", "precisao": 100},
     "Bico Broca": {"poder": 80, "tipo": "Voador", "precisao": 100},
     "Ataque do Ceu": {"poder": 140, "tipo": "Voador", "precisao": 90},
     
-    # Golpes de Planta/Veneno
+    #golpes planta/veneno
     "Chicote de Vinha": {"poder": 45, "tipo": "Grama", "precisao": 100},
     "Poluicao": {"poder": 30, "tipo": "Veneno", "precisao": 70},
     "Lama": {"poder": 65, "tipo": "Veneno", "precisao": 100},
