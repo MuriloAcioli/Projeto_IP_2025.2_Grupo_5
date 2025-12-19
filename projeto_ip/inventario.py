@@ -512,7 +512,7 @@ class MenuInventario:
             if self.estado_atual == ESTADO_OPCOES_ITEM:
                 rect_pop = pg.Rect((screen_w//2)+100, (screen_h//2)+50, 200, 120)
                 self.desenhar_caixa_gb(tela, rect_pop)
-                eh_pocao = "poção" in self.item_focado.lower() or "potion" in self.item_focado.lower()
+                eh_pocao = "poção" in self.item_focado.lower() 
                 eh_insignia = "insígnia" in self.item_focado.lower() or "insignia" in self.item_focado.lower()
                 if eh_insignia:
                     ops = ["VISUALIZAR", "VOLTAR"]
@@ -520,7 +520,7 @@ class MenuInventario:
                     ops = ["USAR", "DESCARTAR"] if eh_pocao else ["DESCARTAR"]
                 for i, op in enumerate(ops):
                     px, py = rect_pop.x + 30, rect_pop.y + 30 + (i*35)
-                    if i == self.index_opcoes: self.desenhar_cursor(tela, px - 15, py + 5)
+                    if i == self.index_opcoes: self.desenhar_cursor(tela, px - 15, py + 5) # px,py = posiçãox e posiçãoy
                     tela.blit(self.fonte.render(op, True, self.COR_PRETO), (px, py))
 
             # Equipe
