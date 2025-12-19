@@ -115,6 +115,10 @@ Gestão de Versão: A maior dificuldade inicial foi a adaptação ao Git e GitHu
 
 Organização e destribuição de tarefas é essencial - é necessário organização extrema quando desenvolvendos softwares complexos, minimizando a ociosidade dos membros, até porque muitas mecânicas dependem de outras para serem desenvolvidas.
 
+Comunicação constante e relatórios de desenvolvimentos são necessários - aconteceu de mais de um membro estar desenvolvendo a mesma feature, o que diminuiu nossa produtividade e gerou frustração no grupo. Após isso percebemos que é muito importante que todos estejam alinhados e saibam o que os outros estão fazendo e quando estão fazendo.
+
+É preciso propósito em conjunto - acima de tudo, ter pessoas alinhadas e comprometidas a um objetivo em comum foi essencial, madrugamos inúmeras noites em equipe sem reclamar e o que era para ser obrigação, virou hobby, esse foi o fator principal para o sucesso do nosso trabalho.
+
 
 
 
