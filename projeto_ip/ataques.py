@@ -9,7 +9,7 @@ GOLPES_DB = {
     "Picada Venenosa":  {"poder": 15, "tipo": "Venenoso", "precisao": 100},
     "Ventania":         {"poder": 40, "tipo": "Voador",   "precisao": 100},
     "Ataque Rápido":    {"poder": 40, "tipo": "Normal",   "precisao": 100},
-    "Choque do Trovão": {"poder": 40, "tipo": "Elétrico", "precisao": 100},
+    "Choque do Trovão": {"poder": 40, "tipo": "Eletrico", "precisao": 100},
     "Bicada":           {"poder": 35, "tipo": "Voador",   "precisao": 100},
     "Envolver":         {"poder": 15, "tipo": "Normal",   "precisao": 90},
     "Tapa":             {"poder": 40, "tipo": "Normal",   "precisao": 100},
