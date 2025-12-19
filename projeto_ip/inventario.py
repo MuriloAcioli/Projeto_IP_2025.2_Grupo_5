@@ -1,7 +1,7 @@
 import pygame as pg
 import os
 
-# --- ESTADOS DO MENU ---
+#ESTADOS DO MENU
 ESTADO_MENU_PRINCIPAL = 0
 ESTADO_LISTA_ITENS = 1
 ESTADO_OPCOES_ITEM = 2
@@ -17,45 +17,46 @@ class MenuInventario:
     def __init__(self):
         self.aberto = False 
         
-        # --- Configuração de Fontes ---
+        #configuração de fontes
         self.fonte_tamanho = 20
         try:
-            # Tenta carregar fonte personalizada, senão usa padrão
-            # Ajuste o caminho conforme sua pasta de assets
+            #tenta carregar fonte personalizada, senão usa padrão
+            #ajuste o caminho conforme sua pasta de assets
             self.fonte = pg.font.Font("assets/fonts/pokemon_font.ttf", self.fonte_tamanho)
         except FileNotFoundError:
             self.fonte = pg.font.SysFont('couriernew', 20, bold=True)
         
-        # --- Cores ---
+        #cores
         self.COR_BRANCO = (248, 248, 248) 
         self.COR_PRETO = (8, 8, 8)        
         self.COR_VERDE_HP = (80, 200, 120)
         self.COR_CINZA_BARRA = (200, 200, 200)
         self.COR_SALMAO = (200,  100, 100)
 
-        # --- Navegação ---
+        #navegação
         self.estado_atual = ESTADO_MENU_PRINCIPAL
         self.index_menu_principal = 0 
         self.index_lista_itens = 0
         self.index_opcoes = 0 
         self.index_pokemon = 0
         
-        # Variáveis auxiliares
+        #variáveis auxiliares
         self.poke_troca_origem = -1 
         self.item_focado = None 
         self.texto_mensagem = ""
         self.estado_anterior_mensagem = ESTADO_MENU_PRINCIPAL 
         
-        # Sistema de visualização de insígnia
+        #sistema de visualização de insígnia
         self.mostrar_insignia = False
         self.timer_insignia = 0
         
-        # POKEDEX
+        #POKEDEX
         self.index_pokedex = 0
         self.cache_imagens = {} 
 
+
+#abre/fecha o menu
     def alternar(self):
-        """Abre/fecha o menu"""
         self.aberto = not self.aberto
         if self.aberto:
             self.estado_atual = ESTADO_MENU_PRINCIPAL
@@ -66,13 +67,13 @@ class MenuInventario:
         self.estado_anterior_mensagem = self.estado_atual 
         self.estado_atual = ESTADO_MENSAGEM
 
-    # --- HELPERS ---
+    #HELPERS
     def criar_silhueta(self, surface):
         if surface is None: return None
         mask = pg.mask.from_surface(surface)
         return mask.to_surface(setcolor=(0, 0, 0, 255), unsetcolor=(0, 0, 0, 0))
 
-    def get_imagem_cache(self, caminho): # essa dica foi muito boa
+    def get_imagem_cache(self, caminho):
         if caminho not in self.cache_imagens:
             try:
                 if os.path.exists(caminho):
@@ -88,7 +89,7 @@ class MenuInventario:
     def desenhar_caixa_gb(self, tela, rect):
         pg.draw.rect(tela, self.COR_SALMAO, rect)
         pg.draw.rect(tela, self.COR_PRETO, rect, width=4)
-        # Detalhes nos cantos 
+        #detalhes nos cantos 
         pg.draw.line(tela, self.COR_PRETO, (rect.left+4, rect.top+4), (rect.right-4, rect.top+4), 1)
         pg.draw.line(tela, self.COR_PRETO, (rect.left+4, rect.bottom-4), (rect.right-4, rect.bottom-4), 1)
         pg.draw.line(tela, self.COR_PRETO, (rect.left+4, rect.top+4), (rect.left+4, rect.bottom-4), 1)
@@ -117,22 +118,22 @@ class MenuInventario:
             pg.draw.rect(tela, self.COR_VERDE_HP, rect_verde)
 
 
-    # =========================================================================
-    # LÓGICA DE INPUT
-    # =========================================================================
+
+    #LOGICA DE INPUT
+
     def processar_input(self, evento, inventario_do_player, equipe_jogador, db_pokemons):
         if not self.aberto: return None
         if evento.type != pg.KEYDOWN: return None
         
         tecla = evento.key
 
-        # 1. MENSAGEM
+        #1. MENSAGEM
         if self.estado_atual == ESTADO_MENSAGEM:
             if tecla in [pg.K_SPACE, pg.K_RETURN, pg.K_ESCAPE, pg.K_z]:
                 self.estado_atual = self.estado_anterior_mensagem
             return None
 
-        # 2. MENU PRINCIPAL
+        #2. MENU PRINCIPAL
         if self.estado_atual == ESTADO_MENU_PRINCIPAL:
             if tecla in [pg.K_w, pg.K_UP]:
                 self.index_menu_principal -= 1
@@ -142,22 +143,22 @@ class MenuInventario:
                 if self.index_menu_principal > 3: self.index_menu_principal = 0
             
             elif tecla in [pg.K_RETURN, pg.K_SPACE]:
-                if self.index_menu_principal == 0:   # Item
+                if self.index_menu_principal == 0:   #Item
                     self.estado_atual = ESTADO_LISTA_ITENS
                     self.index_lista_itens = 0
-                elif self.index_menu_principal == 1: # Pokemons
+                elif self.index_menu_principal == 1: #Pokemons
                     self.estado_atual = ESTADO_TROCAR_POKEMON
                     self.index_pokemon = 0
                     self.poke_troca_origem = -1
-                elif self.index_menu_principal == 2: # Pokedex
+                elif self.index_menu_principal == 2: #Pokedex
                     self.estado_atual = ESTADO_POKEDEX_LISTA
                     self.index_pokedex = 0
-                else: # Sair
+                else: #Sair
                     self.alternar()
             elif tecla == pg.K_ESCAPE:
                 self.alternar()
 
-        # 3. POKÉDEX: LISTA
+        #3. POKÉDEX: LISTA
         elif self.estado_atual == ESTADO_POKEDEX_LISTA:
             lista_chaves = sorted(
                                 [k for k in db_pokemons.keys() if not k.endswith('*')], 
@@ -177,12 +178,12 @@ class MenuInventario:
                 elif tecla in [pg.K_RETURN, pg.K_SPACE]:
                     self.estado_atual = ESTADO_POKEDEX_DETALHES
 
-        # 4. POKÉDEX: DETALHES
+        #4. POKÉDEX: DETALHES
         elif self.estado_atual == ESTADO_POKEDEX_DETALHES:
             if tecla in [pg.K_ESCAPE, pg.K_RETURN, pg.K_SPACE, pg.K_BACKSPACE]:
                 self.estado_atual = ESTADO_POKEDEX_LISTA
 
-        # 5. LISTA DE ITENS
+        #5. LISTA DE ITENS
         elif self.estado_atual == ESTADO_LISTA_ITENS:
             lista_nomes = list(inventario_do_player.keys())
             if self.index_lista_itens >= len(lista_nomes): 
@@ -203,12 +204,12 @@ class MenuInventario:
                     self.estado_atual = ESTADO_OPCOES_ITEM
                     self.index_opcoes = 0
 
-        # 6. OPÇÕES DO ITEM
+        #6. OPÇÕES DO ITEM
         elif self.estado_atual == ESTADO_OPCOES_ITEM:
             lower_item = self.item_focado.lower()
             eh_pocao = "poção" in lower_item
             eh_insignia = "insígnia" in lower_item or "insignia" in lower_item
-            # Insígnias não podem ser usadas nem descartadas
+            #insígnias não podem ser usadas nem descartadas
             if eh_insignia:
                 opcoes_disponiveis = ["VISUALIZAR", "VOLTAR"]
             else:
@@ -244,7 +245,7 @@ class MenuInventario:
                     self.estado_atual = ESTADO_ESCOLHER_POKEMON
                     self.index_pokemon = 0
 
-        # 7. ESCOLHER POKEMON (Para usar item)
+        #7. ESCOLHER POKEMON (Para usar item)
         elif self.estado_atual == ESTADO_ESCOLHER_POKEMON:
             if tecla == pg.K_ESCAPE:
                 self.estado_atual = ESTADO_OPCOES_ITEM if self.item_focado in inventario_do_player else ESTADO_LISTA_ITENS
@@ -272,7 +273,7 @@ class MenuInventario:
                             self.estado_atual = ESTADO_LISTA_ITENS 
                         self.mostrar_mensagem(f"{pokemon_alvo.nome}: Recuperou {cura} HP!")
 
-        # 8. TROCAR ORDEM
+        #8. TROCAR ORDEM
         elif self.estado_atual == ESTADO_TROCAR_POKEMON:
             if tecla == pg.K_ESCAPE:
                 self.estado_atual = ESTADO_MENU_PRINCIPAL 
@@ -293,43 +294,42 @@ class MenuInventario:
         return None
 
 
-    # =========================================================================
-    # LÓGICA DE DESENHO
-    # =========================================================================
+
+    #LÓGICA DE DESENHO
     def desenhar(self, tela, inventario_do_player, equipe_jogador, db_pokemons, progresso_pokedex):
-        # Exibe pop-up da insígnia se ativado
+        #exibe pop-up da insígnia se ativado
         if self.mostrar_insignia:
             tempo_atual = pg.time.get_ticks()
-            if tempo_atual - self.timer_insignia < 3000:  # Mostra por 3 segundos
-                # Fundo escurecido
+            if tempo_atual - self.timer_insignia < 3000:  #mostra por 3 segundos
+                #fundo escurecido
                 overlay = pg.Surface((800, 600))
                 overlay.set_alpha(200)
                 overlay.fill((0, 0, 0))
                 tela.blit(overlay, (0, 0))
                 
-                # Caixa da insígnia
+                #caixa da insígnia
                 rect_insignia = pg.Rect(200, 150, 400, 300)
                 self.desenhar_caixa_gb(tela, rect_insignia)
                 
-                # Título
+                #titulo
                 fonte_titulo = pg.font.SysFont('couriernew', 28, bold=True)
                 titulo = fonte_titulo.render("INSÍGNIA DO PROFESSOR", True, (218, 165, 32))
                 tela.blit(titulo, (rect_insignia.centerx - titulo.get_width()//2, rect_insignia.y + 20))
                 
-                # Tenta carregar imagem da insígnia
+                #tenta carregar imagem da insígnia
                 try:
                     img_insignia = pg.image.load(os.path.join(DIRETORIO_BASE, "assets/coletaveis/cracha_cin.png"))
                     img_insignia = pg.transform.scale(img_insignia, (300, 300))
                     tela.blit(img_insignia, (rect_insignia.centerx - 140, rect_insignia.centery - 175))
                 except:
-                    # Fallback: desenha uma estrela dourada
+                    #fallback: desenha uma estrela dourada
                     pg.draw.circle(tela, (255, 215, 0), (rect_insignia.centerx, rect_insignia.centery), 60)
                     pg.draw.circle(tela, (218, 165, 32), (rect_insignia.centerx, rect_insignia.centery), 60, 5)
                 
-                # Mensagem
+                #mensagem
                 msg = self.fonte.render("Vitória sobre o Professor!", True, self.COR_PRETO)
                 tela.blit(msg, (rect_insignia.centerx - msg.get_width()//2, rect_insignia.bottom - 60))
-                # Retorna aqui para não desenhar o inventário por cima
+                #retorna aqui para não desenhar o inventário por cima
                 return
             else:
                 self.mostrar_insignia = False
@@ -338,7 +338,7 @@ class MenuInventario:
 
         screen_w, screen_h = tela.get_size()
         
-        # --- MENU LATERAL ---
+        #MENU LATERAL
         if self.estado_atual == ESTADO_MENU_PRINCIPAL:
             rect_menu = pg.Rect(screen_w - 220, 20, 200, 250)
             self.desenhar_caixa_gb(tela, rect_menu)
@@ -353,7 +353,7 @@ class MenuInventario:
                 
                 tela.blit(self.fonte.render(opcao, True, self.COR_PRETO), (x_texto, y_texto))
 
-        # --- POKÉDEX: LISTA ---
+        #POKÉDEX: LISTA
         elif self.estado_atual == ESTADO_POKEDEX_LISTA:
             largura, altura = 500, 450
             pos_x, pos_y = (screen_w - largura) // 2, (screen_h - altura) // 2
@@ -366,7 +366,7 @@ class MenuInventario:
                             )
 
             
-            # Scrolling simples
+            #scrolling simples
             inicio = max(0, self.index_pokedex - 4)
             fim = min(len(lista_chaves), inicio + 9)
             
@@ -393,24 +393,24 @@ class MenuInventario:
                 tela.blit(self.fonte.render(texto_linha, True, self.COR_PRETO), (pos_x + 45, y_atual))
                 y_atual += 40
 
-        # POKÉDEX: DETALHES
+        #POKÉDEX: DETALHES
         elif self.estado_atual == ESTADO_POKEDEX_DETALHES:
-            lista_chaves = sorted( # a função lambda nos permite colocar filtros em funções mais complexas!! (e a list comprehencion cria uma lista filtrada basicamente)
-                                [k for k in db_pokemons.keys() if not k.endswith('*')], # básicamente tá falando. [adicione o pokemon na lista caso não seja shine], organize ela lista pelos id de modo crescente
+            lista_chaves = sorted( #a função lambda nos permite colocar filtros em funções mais complexas!! (e a list comprehencion cria uma lista filtrada basicamente)
+                                [k for k in db_pokemons.keys() if not k.endswith('*')], #basicamente tá falando. [adicione o pokemon na lista caso não seja shine], organize ela lista pelos id de modo crescente
                                 key=lambda k: db_pokemons[k]['id']
                             )
 
             nome_chave = lista_chaves[self.index_pokedex]
             dados = db_pokemons[nome_chave]
             
-            # Pega o status
+            #pega o status
             status = progresso_pokedex.get(nome_chave, "desconhecido")
             
             largura, altura = 600, 500
-            px, py = (screen_w - largura) // 2, (screen_h - altura) // 2 # aqui é onde as informações dos pokemons vão ficar
+            px, py = (screen_w - largura) // 2, (screen_h - altura) // 2 #aqui é onde as informações dos pokemons vão ficar
             self.desenhar_caixa_gb(tela, pg.Rect(px, py, largura, altura))
             
-            # 1. IMAGEM
+            #1. IMAGEM
             caminho_img = dados.get('sprite', '')
             caminho_img = os.path.join(DIRETORIO_BASE, caminho_img) 
 
@@ -420,16 +420,16 @@ class MenuInventario:
             if img_surface:
                 img_grande = pg.transform.scale(img_surface, (200, 200))
                 if status == "desconhecido": 
-                    # Se desconhecido, pinta de preto
+                    #se desconhecido, pinta de preto
                     silhueta = self.criar_silhueta(img_grande)
                     tela.blit(silhueta, (cx_img, cy_img))
                 else: 
-                    # Se visto ou capturado, mostra colorido
+                    #se visto ou capturado, mostra colorido
                     tela.blit(img_grande, (cx_img, cy_img))
             else:
                 pg.draw.rect(tela, (0,0,0), (cx_img, cy_img, 200, 200))
 
-            # 2. INFO BÁSICA
+            #2. INFO BÁSICA
             x_info, y_info = px + 260, py + 50
             tela.blit(self.fonte.render(f"No.{dados['id']:03d}", True, self.COR_PRETO), (x_info, y_info))
             
@@ -438,10 +438,10 @@ class MenuInventario:
                 tela.blit(self.fonte.render("Status: Desconhecido", True, self.COR_PRETO), (x_info, y_info + 80))
             else:
                 tela.blit(self.fonte.render(f"Nome: {nome_chave}", True, self.COR_PRETO), (x_info, y_info + 40))
-                # .capitalize() deixa bonito: "visto" -> "Visto"
+                #.capitalize() pra deixa bonito: "visto" -> "Visto"
                 tela.blit(self.fonte.render(f"Status: {status.capitalize()}", True, self.COR_PRETO), (x_info, y_info + 80))
             
-            # 3. STATS DETALHADOS (SÓ SE CAPTURADO)
+            #3. STATS DETALHADOS (SÓ SE CAPTURADO)
             y_stats = py + 260
             pg.draw.line(tela, self.COR_PRETO, (px+40, y_stats-10), (px+largura-40, y_stats-10), 2)
             
@@ -465,9 +465,9 @@ class MenuInventario:
                 tela.blit(self.fonte.render("Dados indisponiveis.", True, self.COR_PRETO), (px+40, y_stats))
                 tela.blit(self.fonte.render("Capture para ver mais.", True, self.COR_PRETO), (px+40, y_stats + 35))
 
-        # --- OUTRAS TELAS ---
+        #OUTRAS TELAS
         elif self.estado_atual in [ESTADO_LISTA_ITENS, ESTADO_OPCOES_ITEM, ESTADO_ESCOLHER_POKEMON, ESTADO_TROCAR_POKEMON]:
-            # Lista Itens / Opções
+            #lista Itens / Opções
             if self.estado_atual == ESTADO_LISTA_ITENS or self.estado_atual == ESTADO_OPCOES_ITEM:
                 largura, altura = 400, 400
                 px, py = (screen_w - largura) // 2, (screen_h - altura) // 2
@@ -484,15 +484,15 @@ class MenuInventario:
                         is_sel = (self.estado_atual == ESTADO_LISTA_ITENS and i == self.index_lista_itens)
                         is_foc = (self.estado_atual > ESTADO_LISTA_ITENS and nome == self.item_focado)
                         
-                        # Detecta se é uma insígnia para destacar
+                        #detecta se é uma insígnia para destacar
                         eh_insignia = "insígnia" in nome.lower() or "insignia" in nome.lower()
                         
-                        # Desenha um ícone especial para insígnias
+                        #desenha um ícone especial para insígnias
                         if eh_insignia:
-                            # Desenha uma estrela dourada ao lado do nome (mais à direita para não sobrepor cursor)
+                            #desenha uma estrela dourada ao lado do nome (mais à direita para não sobrepor cursor)
                             pg.draw.circle(tela, (255, 215, 0), (x_texto + 5, y_atual + 10), 6)
                             pg.draw.circle(tela, (218, 165, 32), (x_texto + 5, y_atual + 10), 6, 2)
-                            cor_texto = (218, 165, 32)  # Dourado para insígnias
+                            cor_texto = (218, 165, 32)  #dourado para insígnias
                         else:
                             cor_texto = self.COR_PRETO
                         
@@ -502,13 +502,13 @@ class MenuInventario:
                         texto_nome = self.fonte.render(nome.upper(), True, cor_texto)
                         tela.blit(texto_nome, (x_texto + 15, y_atual))
                         
-                        # Só mostra quantidade se não for insígnia (sempre tem 1)
+                        #so mostra quantidade se não for insígnia (sempre tem 1)
                         if not eh_insignia:
                             tela.blit(self.fonte.render(f"x{qtd}", True, cor_texto), (x_texto + 220, y_atual))
                         
                         y_atual += 40
 
-            # Pop-up Opções
+            #pop-up Opções
             if self.estado_atual == ESTADO_OPCOES_ITEM:
                 rect_pop = pg.Rect((screen_w//2)+100, (screen_h//2)+50, 200, 120)
                 self.desenhar_caixa_gb(tela, rect_pop)
@@ -523,7 +523,7 @@ class MenuInventario:
                     if i == self.index_opcoes: self.desenhar_cursor(tela, px - 15, py + 5) # px,py = posiçãox e posiçãoy
                     tela.blit(self.fonte.render(op, True, self.COR_PRETO), (px, py))
 
-            # Equipe
+            #equipe
             if self.estado_atual in [ESTADO_ESCOLHER_POKEMON, ESTADO_TROCAR_POKEMON]:
                 titulo = "TROCAR QUEM?" if self.estado_atual == ESTADO_TROCAR_POKEMON else "USAR EM QUEM?"
                 rect_poke = pg.Rect(20, 20, screen_w - 40, screen_h - 160)
@@ -546,7 +546,7 @@ class MenuInventario:
                     tela.blit(self.fonte.render(txt_hp, True, self.COR_PRETO), (x_base + 260, y_base + 25))
                     y_base += 70
 
-        # --- MENSAGENS ---
+        #MENSAGENS
         if self.estado_atual == ESTADO_MENSAGEM:
             rect_msg = pg.Rect(0, screen_h - 120, screen_w, 120)
             pg.draw.rect(tela, self.COR_BRANCO, rect_msg)
