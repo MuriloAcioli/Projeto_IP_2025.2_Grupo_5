@@ -42,7 +42,9 @@ vá em Code e aperte "download zip"
 2. **Execute o jogo:**
 
 Dentro da pasta que foi baixada, procure o executável "pokecin"
+
 Localização: Projeto_IP_2025.2_Grupo_5-main.zip\Projeto_IP_2025.2_Grupo_5-main\projeto_ip\dist\jogo
+
 execute e boa sorte!
 
 ##  Equipe
