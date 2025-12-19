@@ -16,7 +16,7 @@ from npc import NPC
 from pokedex import POKEDEX,progresso_pokedex
 from pokehealer import PokeHealer
 # from save import salvar_jogo_sistema, carregar_jogo_sistema, ler_info_save
-from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao
+from intro import definir_piso, exibir_intro, cena_professor, animacao_transicao, animacao_treinador
 from game_over import exibir_game_over
 
 # =============================================================================
@@ -311,7 +311,7 @@ while running:
                                         time_rival = [p for p in time_rival if p is not None] 
                                         
                                         inv_batalha = protagonista.inventario
-                                        animacao_transicao(screen)
+                                        animacao_treinador(screen)
                                         estado_jogo = "BATALHA"
                                         
                                         # Rival dá game over se perder
@@ -349,7 +349,7 @@ while running:
 
                                     inv_batalha = protagonista.inventario
                                     
-                                    animacao_transicao(screen)
+                                    animacao_treinador(screen)
                                     estado_jogo = "BATALHA"
                                     
                                     # Instancia com o modo TREINADOR ou TREINADOR_REVANCHE
