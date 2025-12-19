@@ -1,6 +1,7 @@
 #bibliotecas do projeto
 import pygame as pg
 import random
+import sys
 import os
 
 #modulos do jogo

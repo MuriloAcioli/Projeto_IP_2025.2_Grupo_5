@@ -1,0 +1,4136 @@
+(['D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\main.py'],
+ ['D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip'],
+ [],
+ [('C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\__pyinstaller',
+   0),
+  ('C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pyinstaller_hooks_contrib\\stdhooks',
+   -1000),
+  ('C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_pyinstaller_hooks_contrib',
+   -1000)],
+ {},
+ [],
+ [],
+ False,
+ {},
+ 0,
+ [],
+ [('assets\\backgrounds\\battle_bg.jpg',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\battle_bg.jpg',
+   'DATA'),
+  ('assets\\backgrounds\\game_over_bg.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\game_over_bg.png',
+   'DATA'),
+  ('assets\\backgrounds\\game_over_esc.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\game_over_esc.png',
+   'DATA'),
+  ('assets\\backgrounds\\intro_bg.jpg',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\intro_bg.jpg',
+   'DATA'),
+  ('assets\\backgrounds\\lab.jpg',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\lab.jpg',
+   'DATA'),
+  ('assets\\backgrounds\\tileset.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\tileset.png',
+   'DATA'),
+  ('assets\\backgrounds\\vitoria.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\vitoria.png',
+   'DATA'),
+  ('assets\\coletaveis\\cracha_cin.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\cracha_cin.png',
+   'DATA'),
+  ('assets\\coletaveis\\cracha_quebrado.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\cracha_quebrado.png',
+   'DATA'),
+  ('assets\\coletaveis\\greatball.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\greatball.png',
+   'DATA'),
+  ('assets\\coletaveis\\master_ball.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\master_ball.png',
+   'DATA'),
+  ('assets\\coletaveis\\pocao.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pocao.png',
+   'DATA'),
+  ('assets\\coletaveis\\poke_balls.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\poke_balls.png',
+   'DATA'),
+  ('assets\\coletaveis\\pokebola2.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pokebola2.png',
+   'DATA'),
+  ('assets\\coletaveis\\pokebolas.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pokebolas.png',
+   'DATA'),
+  ('assets\\coletaveis\\pokeloot_.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pokeloot_.png',
+   'DATA'),
+  ('assets\\icon\\cin.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\icon\\cin.png',
+   'DATA'),
+  ('assets\\icon\\icon.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\icon\\icon.png',
+   'DATA'),
+  ('assets\\intro_font\\PokeCin.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\intro_font\\PokeCin.png',
+   'DATA'),
+  ('assets\\intro_font\\PressEnter.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\intro_font\\PressEnter.png',
+   'DATA'),
+  ('assets\\mc\\mc_down.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_down.png',
+   'DATA'),
+  ('assets\\mc\\mc_left.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_left.png',
+   'DATA'),
+  ('assets\\mc\\mc_right.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_right.png',
+   'DATA'),
+  ('assets\\mc\\mc_up.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_up.png',
+   'DATA'),
+  ('assets\\músicas\\battle_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\battle_theme.mp3',
+   'DATA'),
+  ('assets\\músicas\\game_over.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\game_over.mp3',
+   'DATA'),
+  ('assets\\músicas\\intro.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\intro.mp3',
+   'DATA'),
+  ('assets\\músicas\\professor_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\professor_theme.mp3',
+   'DATA'),
+  ('assets\\músicas\\trainer_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\trainer_theme.mp3',
+   'DATA'),
+  ('assets\\músicas\\vitoria.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\vitoria.mp3',
+   'DATA'),
+  ('assets\\músicas\\world_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\world_theme.mp3',
+   'DATA'),
+  ('assets\\obstaculos\\arbusto.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\obstaculos\\arbusto.png',
+   'DATA'),
+  ('assets\\obstaculos\\pokehealer.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\obstaculos\\pokehealer.png',
+   'DATA'),
+  ('assets\\pokemons\\abra.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abra.png',
+   'DATA'),
+  ('assets\\pokemons\\abraS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abraS.png',
+   'DATA'),
+  ('assets\\pokemons\\abraS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abraS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\abra_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abra_back.png',
+   'DATA'),
+  ('assets\\pokemons\\articuno.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articuno.png',
+   'DATA'),
+  ('assets\\pokemons\\articunoS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articunoS.png',
+   'DATA'),
+  ('assets\\pokemons\\articunoS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articunoS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\articuno_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articuno_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsprout.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsprout.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsproutS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsproutS.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsproutS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsproutS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsprout_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsprout_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaur.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaur.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaurS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaurS.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaurS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaurS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaur_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaur_back.png',
+   'DATA'),
+  ('assets\\pokemons\\byte.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byte.png',
+   'DATA'),
+  ('assets\\pokemons\\byteS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byteS.png',
+   'DATA'),
+  ('assets\\pokemons\\byteS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byteS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\byte_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byte_back.png',
+   'DATA'),
+  ('assets\\pokemons\\caprio.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caprio.png',
+   'DATA'),
+  ('assets\\pokemons\\caprio_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caprio_back.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpie.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpie.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpieS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpieS.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpieS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpieS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpie_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpie_back.png',
+   'DATA'),
+  ('assets\\pokemons\\charmander.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmander.png',
+   'DATA'),
+  ('assets\\pokemons\\charmanderS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmanderS.png',
+   'DATA'),
+  ('assets\\pokemons\\charmanderS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmanderS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\charmander_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmander_back.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairy.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairy.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairyS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairyS.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairyS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairyS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairy_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairy_back.png',
+   'DATA'),
+  ('assets\\pokemons\\cubone.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cubone.png',
+   'DATA'),
+  ('assets\\pokemons\\cuboneS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cuboneS.png',
+   'DATA'),
+  ('assets\\pokemons\\cuboneS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cuboneS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\cubone_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cubone_back.png',
+   'DATA'),
+  ('assets\\pokemons\\eevee.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eevee.png',
+   'DATA'),
+  ('assets\\pokemons\\eeveeS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eeveeS.png',
+   'DATA'),
+  ('assets\\pokemons\\eeveeS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eeveeS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\eevee_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eevee_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ekans.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekans.png',
+   'DATA'),
+  ('assets\\pokemons\\ekansS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekansS.png',
+   'DATA'),
+  ('assets\\pokemons\\ekansS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekansS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ekans_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekans_back.png',
+   'DATA'),
+  ('assets\\pokemons\\flamare.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\flamare.png',
+   'DATA'),
+  ('assets\\pokemons\\flamare_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\flamare_back.png',
+   'DATA'),
+  ('assets\\pokemons\\geodude.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodude.png',
+   'DATA'),
+  ('assets\\pokemons\\geodudeS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodudeS.png',
+   'DATA'),
+  ('assets\\pokemons\\geodudeS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodudeS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\geodude_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodude_back.png',
+   'DATA'),
+  ('assets\\pokemons\\koffing.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffing.png',
+   'DATA'),
+  ('assets\\pokemons\\koffingS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffingS.png',
+   'DATA'),
+  ('assets\\pokemons\\koffingS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffingS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\koffing_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffing_back.png',
+   'DATA'),
+  ('assets\\pokemons\\lapras.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\lapras.png',
+   'DATA'),
+  ('assets\\pokemons\\laprasS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\laprasS.png',
+   'DATA'),
+  ('assets\\pokemons\\laprasS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\laprasS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\lapras_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\lapras_back.png',
+   'DATA'),
+  ('assets\\pokemons\\machop.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machop.png',
+   'DATA'),
+  ('assets\\pokemons\\machopS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machopS.png',
+   'DATA'),
+  ('assets\\pokemons\\machopS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machopS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\machop_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machop_back.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemite.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemite.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemiteS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemiteS.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemiteS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemiteS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemite_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemite_back.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwo.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwo.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwoS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwoS.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwoS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwoS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwo_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwo_back.png',
+   'DATA'),
+  ('assets\\pokemons\\moltres.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltres.png',
+   'DATA'),
+  ('assets\\pokemons\\moltresS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltresS.png',
+   'DATA'),
+  ('assets\\pokemons\\moltresS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltresS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\moltres_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltres_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-fS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-fS.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-fS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-fS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-mS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-mS.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-mS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-mS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_f.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_f.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_f_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_f_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_m.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_m.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_m_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_m_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgey.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgey.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgeyS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgeyS.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgeyS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgeyS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgey_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgey_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachu.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachu.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachuS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachuS.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachuS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachuS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachu_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachu_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ponyta.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponyta.png',
+   'DATA'),
+  ('assets\\pokemons\\ponytaS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponytaS.png',
+   'DATA'),
+  ('assets\\pokemons\\ponytaS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponytaS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ponyta_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponyta_back.png',
+   'DATA'),
+  ('assets\\pokemons\\porygon.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygon.png',
+   'DATA'),
+  ('assets\\pokemons\\porygonS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygonS.png',
+   'DATA'),
+  ('assets\\pokemons\\porygonS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygonS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\porygon_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygon_back.png',
+   'DATA'),
+  ('assets\\pokemons\\rattata.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattata.png',
+   'DATA'),
+  ('assets\\pokemons\\rattataS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattataS.png',
+   'DATA'),
+  ('assets\\pokemons\\rattataS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattataS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\rattata_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattata_back.png',
+   'DATA'),
+  ('assets\\pokemons\\rayquaza.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rayquaza.png',
+   'DATA'),
+  ('assets\\pokemons\\rayquaza_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rayquaza_back.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrew.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrew.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrewS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrewS.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrewS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrewS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrew_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrew_back.png',
+   'DATA'),
+  ('assets\\pokemons\\soim.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\soim.png',
+   'DATA'),
+  ('assets\\pokemons\\soim_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\soim_back.png',
+   'DATA'),
+  ('assets\\pokemons\\spearow.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearow.png',
+   'DATA'),
+  ('assets\\pokemons\\spearowS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearowS.png',
+   'DATA'),
+  ('assets\\pokemons\\spearowS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearowS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\spearow_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearow_back.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtle.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtle.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtleS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtleS.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtleS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtleS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtle_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtle_back.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpix.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpix.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpixS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpixS.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpixS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpixS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpix_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpix_back.png',
+   'DATA'),
+  ('assets\\pokemons\\weedle.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedle.png',
+   'DATA'),
+  ('assets\\pokemons\\weedleS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedleS.png',
+   'DATA'),
+  ('assets\\pokemons\\weedleS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedleS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\weedle_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedle_back.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdos.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdos.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdosS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdosS.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdosS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdosS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdos_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdos_back.png',
+   'DATA'),
+  ('assets\\professor\\professor_massa.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\professor_massa.png',
+   'DATA'),
+  ('assets\\professor\\proff_massa_1.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\proff_massa_1.png',
+   'DATA'),
+  ('assets\\professor\\proff_massa_2.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\proff_massa_2.png',
+   'DATA'),
+  ('assets\\professor\\rival.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\rival.png',
+   'DATA'),
+  ('assets\\sfx\\itemfound.wav',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\sfx\\itemfound.wav',
+   'DATA'),
+  ('assets\\sfx\\sfx_blip.wav',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\sfx\\sfx_blip.wav',
+   'DATA'),
+  ('assets\\sfx\\sfx_heal.wav',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\sfx\\sfx_heal.wav',
+   'DATA')],
+ '3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit '
+ '(AMD64)]',
+ [('pyi_rth_inspect',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgres',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'PYSOURCE'),
+  ('pyi_rth_setuptools',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_setuptools.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgutil',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'PYSOURCE'),
+  ('main',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\main.py',
+   'PYSOURCE')],
+ [('pkgutil',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\pkgutil.py',
+   'PYMODULE'),
+  ('zipimport',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\zipimport.py',
+   'PYMODULE'),
+  ('importlib.readers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\readers.py',
+   'PYMODULE'),
+  ('importlib.resources.readers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\readers.py',
+   'PYMODULE'),
+  ('importlib.resources._itertools',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_itertools.py',
+   'PYMODULE'),
+  ('importlib.resources.abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\abc.py',
+   'PYMODULE'),
+  ('typing',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\typing.py',
+   'PYMODULE'),
+  ('contextlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\contextlib.py',
+   'PYMODULE'),
+  ('importlib.resources',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\__init__.py',
+   'PYMODULE'),
+  ('importlib.resources._legacy',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_legacy.py',
+   'PYMODULE'),
+  ('importlib.resources._common',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_common.py',
+   'PYMODULE'),
+  ('importlib.resources._adapters',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\resources\\_adapters.py',
+   'PYMODULE'),
+  ('tempfile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\tempfile.py',
+   'PYMODULE'),
+  ('shutil',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\shutil.py',
+   'PYMODULE'),
+  ('tarfile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\tarfile.py',
+   'PYMODULE'),
+  ('argparse',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\argparse.py',
+   'PYMODULE'),
+  ('textwrap',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\textwrap.py',
+   'PYMODULE'),
+  ('gettext',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\gettext.py',
+   'PYMODULE'),
+  ('gzip',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\gzip.py',
+   'PYMODULE'),
+  ('_compression',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\_compression.py',
+   'PYMODULE'),
+  ('copy',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\copy.py',
+   'PYMODULE'),
+  ('struct',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\struct.py',
+   'PYMODULE'),
+  ('lzma',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\lzma.py',
+   'PYMODULE'),
+  ('bz2',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\bz2.py',
+   'PYMODULE'),
+  ('fnmatch',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\fnmatch.py',
+   'PYMODULE'),
+  ('zipfile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\zipfile\\__init__.py',
+   'PYMODULE'),
+  ('zipfile._path',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\zipfile\\_path\\__init__.py',
+   'PYMODULE'),
+  ('zipfile._path.glob',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\zipfile\\_path\\glob.py',
+   'PYMODULE'),
+  ('py_compile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\py_compile.py',
+   'PYMODULE'),
+  ('importlib._bootstrap_external',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\_bootstrap_external.py',
+   'PYMODULE'),
+  ('importlib.metadata',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\__init__.py',
+   'PYMODULE'),
+  ('importlib.abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\abc.py',
+   'PYMODULE'),
+  ('importlib._abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\_abc.py',
+   'PYMODULE'),
+  ('importlib._bootstrap',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\_bootstrap.py',
+   'PYMODULE'),
+  ('importlib.metadata._itertools',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_itertools.py',
+   'PYMODULE'),
+  ('importlib.metadata._functools',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_functools.py',
+   'PYMODULE'),
+  ('importlib.metadata._collections',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_collections.py',
+   'PYMODULE'),
+  ('importlib.metadata._meta',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_meta.py',
+   'PYMODULE'),
+  ('importlib.metadata._adapters',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_adapters.py',
+   'PYMODULE'),
+  ('importlib.metadata._text',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\metadata\\_text.py',
+   'PYMODULE'),
+  ('email.message',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\message.py',
+   'PYMODULE'),
+  ('email.policy',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\policy.py',
+   'PYMODULE'),
+  ('email.contentmanager',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\contentmanager.py',
+   'PYMODULE'),
+  ('email.quoprimime',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\quoprimime.py',
+   'PYMODULE'),
+  ('string',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\string.py',
+   'PYMODULE'),
+  ('email.headerregistry',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\headerregistry.py',
+   'PYMODULE'),
+  ('email._header_value_parser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\_header_value_parser.py',
+   'PYMODULE'),
+  ('urllib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\__init__.py',
+   'PYMODULE'),
+  ('email.iterators',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\iterators.py',
+   'PYMODULE'),
+  ('email.generator',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\generator.py',
+   'PYMODULE'),
+  ('email._encoded_words',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\_encoded_words.py',
+   'PYMODULE'),
+  ('base64',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\base64.py',
+   'PYMODULE'),
+  ('getopt',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\getopt.py',
+   'PYMODULE'),
+  ('email.charset',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\charset.py',
+   'PYMODULE'),
+  ('email.encoders',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\encoders.py',
+   'PYMODULE'),
+  ('email.base64mime',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\base64mime.py',
+   'PYMODULE'),
+  ('email._policybase',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\_policybase.py',
+   'PYMODULE'),
+  ('email.header',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\header.py',
+   'PYMODULE'),
+  ('email.errors',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\errors.py',
+   'PYMODULE'),
+  ('email.utils',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\utils.py',
+   'PYMODULE'),
+  ('email._parseaddr',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\_parseaddr.py',
+   'PYMODULE'),
+  ('calendar',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\calendar.py',
+   'PYMODULE'),
+  ('urllib.parse',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\parse.py',
+   'PYMODULE'),
+  ('ipaddress',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\ipaddress.py',
+   'PYMODULE'),
+  ('datetime',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\datetime.py',
+   'PYMODULE'),
+  ('_pydatetime',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\_pydatetime.py',
+   'PYMODULE'),
+  ('_strptime',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\_strptime.py',
+   'PYMODULE'),
+  ('socket',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\socket.py',
+   'PYMODULE'),
+  ('selectors',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\selectors.py',
+   'PYMODULE'),
+  ('quopri',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\quopri.py',
+   'PYMODULE'),
+  ('email',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\__init__.py',
+   'PYMODULE'),
+  ('email.parser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\parser.py',
+   'PYMODULE'),
+  ('email.feedparser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\email\\feedparser.py',
+   'PYMODULE'),
+  ('csv',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\csv.py',
+   'PYMODULE'),
+  ('tokenize',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\tokenize.py',
+   'PYMODULE'),
+  ('token',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\token.py',
+   'PYMODULE'),
+  ('threading',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\threading.py',
+   'PYMODULE'),
+  ('_threading_local',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\_threading_local.py',
+   'PYMODULE'),
+  ('pathlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\pathlib.py',
+   'PYMODULE'),
+  ('inspect',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\inspect.py',
+   'PYMODULE'),
+  ('dis',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\dis.py',
+   'PYMODULE'),
+  ('opcode',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\opcode.py',
+   'PYMODULE'),
+  ('ast',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\ast.py',
+   'PYMODULE'),
+  ('importlib.machinery',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\machinery.py',
+   'PYMODULE'),
+  ('importlib.util',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\util.py',
+   'PYMODULE'),
+  ('importlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\importlib\\__init__.py',
+   'PYMODULE'),
+  ('subprocess',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\subprocess.py',
+   'PYMODULE'),
+  ('signal',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\signal.py',
+   'PYMODULE'),
+  ('multiprocessing.spawn',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\spawn.py',
+   'PYMODULE'),
+  ('multiprocessing.resource_tracker',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\resource_tracker.py',
+   'PYMODULE'),
+  ('multiprocessing.util',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\util.py',
+   'PYMODULE'),
+  ('multiprocessing.forkserver',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\forkserver.py',
+   'PYMODULE'),
+  ('multiprocessing.connection',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\connection.py',
+   'PYMODULE'),
+  ('multiprocessing.resource_sharer',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\resource_sharer.py',
+   'PYMODULE'),
+  ('xmlrpc.client',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\xmlrpc\\client.py',
+   'PYMODULE'),
+  ('xmlrpc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\xmlrpc\\__init__.py',
+   'PYMODULE'),
+  ('xml.parsers.expat',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\xml\\parsers\\expat.py',
+   'PYMODULE'),
+  ('xml.parsers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\xml\\parsers\\__init__.py',
+   'PYMODULE'),
+  ('xml',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\xml\\__init__.py',
+   'PYMODULE'),
+  ('xml.sax.expatreader',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\expatreader.py',
+   'PYMODULE'),
+  ('xml.sax.saxutils',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\saxutils.py',
+   'PYMODULE'),
+  ('urllib.request',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\request.py',
+   'PYMODULE'),
+  ('getpass',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\getpass.py',
+   'PYMODULE'),
+  ('nturl2path',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\nturl2path.py',
+   'PYMODULE'),
+  ('ftplib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\ftplib.py',
+   'PYMODULE'),
+  ('netrc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\netrc.py',
+   'PYMODULE'),
+  ('mimetypes',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\mimetypes.py',
+   'PYMODULE'),
+  ('http.cookiejar',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\http\\cookiejar.py',
+   'PYMODULE'),
+  ('http',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\http\\__init__.py',
+   'PYMODULE'),
+  ('ssl',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\ssl.py',
+   'PYMODULE'),
+  ('urllib.response',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\response.py',
+   'PYMODULE'),
+  ('urllib.error',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\urllib\\error.py',
+   'PYMODULE'),
+  ('hashlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\hashlib.py',
+   'PYMODULE'),
+  ('bisect',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\bisect.py',
+   'PYMODULE'),
+  ('xml.sax',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\__init__.py',
+   'PYMODULE'),
+  ('xml.sax.handler',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\handler.py',
+   'PYMODULE'),
+  ('xml.sax._exceptions',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\_exceptions.py',
+   'PYMODULE'),
+  ('xml.sax.xmlreader',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\xml\\sax\\xmlreader.py',
+   'PYMODULE'),
+  ('http.client',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\http\\client.py',
+   'PYMODULE'),
+  ('decimal',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\decimal.py',
+   'PYMODULE'),
+  ('_pydecimal',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\_pydecimal.py',
+   'PYMODULE'),
+  ('contextvars',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\contextvars.py',
+   'PYMODULE'),
+  ('numbers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\numbers.py',
+   'PYMODULE'),
+  ('hmac',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\hmac.py',
+   'PYMODULE'),
+  ('logging',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\logging\\__init__.py',
+   'PYMODULE'),
+  ('pickle',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\pickle.py',
+   'PYMODULE'),
+  ('pprint',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\pprint.py',
+   'PYMODULE'),
+  ('dataclasses',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\dataclasses.py',
+   'PYMODULE'),
+  ('_compat_pickle',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\_compat_pickle.py',
+   'PYMODULE'),
+  ('multiprocessing.context',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\context.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_spawn_win32',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\popen_spawn_win32.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_forkserver',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\popen_forkserver.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_spawn_posix',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\popen_spawn_posix.py',
+   'PYMODULE'),
+  ('multiprocessing.popen_fork',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\popen_fork.py',
+   'PYMODULE'),
+  ('multiprocessing.sharedctypes',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\sharedctypes.py',
+   'PYMODULE'),
+  ('multiprocessing.heap',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\heap.py',
+   'PYMODULE'),
+  ('ctypes',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\ctypes\\__init__.py',
+   'PYMODULE'),
+  ('ctypes._endian',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\ctypes\\_endian.py',
+   'PYMODULE'),
+  ('multiprocessing.pool',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\pool.py',
+   'PYMODULE'),
+  ('multiprocessing.dummy',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\dummy\\__init__.py',
+   'PYMODULE'),
+  ('multiprocessing.dummy.connection',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\dummy\\connection.py',
+   'PYMODULE'),
+  ('queue',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\queue.py',
+   'PYMODULE'),
+  ('multiprocessing.queues',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\queues.py',
+   'PYMODULE'),
+  ('multiprocessing.synchronize',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\synchronize.py',
+   'PYMODULE'),
+  ('multiprocessing.managers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\managers.py',
+   'PYMODULE'),
+  ('multiprocessing.shared_memory',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\shared_memory.py',
+   'PYMODULE'),
+  ('secrets',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\secrets.py',
+   'PYMODULE'),
+  ('multiprocessing.reduction',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\reduction.py',
+   'PYMODULE'),
+  ('multiprocessing.process',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\process.py',
+   'PYMODULE'),
+  ('runpy',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\runpy.py',
+   'PYMODULE'),
+  ('multiprocessing',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\multiprocessing\\__init__.py',
+   'PYMODULE'),
+  ('_distutils_hack',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_distutils_hack\\__init__.py',
+   'PYMODULE'),
+  ('setuptools',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.msvc',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\msvc.py',
+   'PYMODULE'),
+  ('setuptools._vendor.typing_extensions',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\typing_extensions.py',
+   'PYMODULE'),
+  ('setuptools._vendor', '-', 'PYMODULE'),
+  ('setuptools._distutils.errors',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\errors.py',
+   'PYMODULE'),
+  ('setuptools._distutils.sysconfig',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\sysconfig.py',
+   'PYMODULE'),
+  ('setuptools._distutils.text_file',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\text_file.py',
+   'PYMODULE'),
+  ('setuptools._distutils.util',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.spawn',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\spawn.py',
+   'PYMODULE'),
+  ('setuptools._distutils.debug',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\debug.py',
+   'PYMODULE'),
+  ('setuptools._distutils._modified',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\_modified.py',
+   'PYMODULE'),
+  ('setuptools._distutils._log',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\_log.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compat.py39',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\compat\\py39.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compat',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\compat\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._distutils.ccompiler',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\ccompiler.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers.C.base',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\compilers\\C\\base.py',
+   'PYMODULE'),
+  ('setuptools._distutils.fancy_getopt',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\fancy_getopt.py',
+   'PYMODULE'),
+  ('setuptools._distutils.file_util',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\file_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.dir_util',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\dir_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers.C', '-', 'PYMODULE'),
+  ('setuptools._distutils.compilers.C.msvc',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\compilers\\C\\msvc.py',
+   'PYMODULE'),
+  ('unittest.mock',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\mock.py',
+   'PYMODULE'),
+  ('unittest',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\__init__.py',
+   'PYMODULE'),
+  ('unittest.async_case',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\async_case.py',
+   'PYMODULE'),
+  ('unittest.signals',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\signals.py',
+   'PYMODULE'),
+  ('unittest.main',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\main.py',
+   'PYMODULE'),
+  ('unittest.runner',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\runner.py',
+   'PYMODULE'),
+  ('unittest.loader',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\loader.py',
+   'PYMODULE'),
+  ('unittest.suite',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\suite.py',
+   'PYMODULE'),
+  ('unittest.case',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\case.py',
+   'PYMODULE'),
+  ('unittest._log',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\_log.py',
+   'PYMODULE'),
+  ('difflib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\difflib.py',
+   'PYMODULE'),
+  ('unittest.result',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\result.py',
+   'PYMODULE'),
+  ('unittest.util',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\unittest\\util.py',
+   'PYMODULE'),
+  ('asyncio',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\__init__.py',
+   'PYMODULE'),
+  ('asyncio.unix_events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\unix_events.py',
+   'PYMODULE'),
+  ('asyncio.log',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\log.py',
+   'PYMODULE'),
+  ('asyncio.windows_events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\windows_events.py',
+   'PYMODULE'),
+  ('asyncio.windows_utils',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\windows_utils.py',
+   'PYMODULE'),
+  ('asyncio.selector_events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\selector_events.py',
+   'PYMODULE'),
+  ('asyncio.proactor_events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\proactor_events.py',
+   'PYMODULE'),
+  ('asyncio.base_subprocess',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\base_subprocess.py',
+   'PYMODULE'),
+  ('asyncio.threads',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\threads.py',
+   'PYMODULE'),
+  ('asyncio.taskgroups',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\taskgroups.py',
+   'PYMODULE'),
+  ('asyncio.subprocess',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\subprocess.py',
+   'PYMODULE'),
+  ('asyncio.streams',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\streams.py',
+   'PYMODULE'),
+  ('asyncio.queues',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\queues.py',
+   'PYMODULE'),
+  ('asyncio.runners',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\runners.py',
+   'PYMODULE'),
+  ('asyncio.base_events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\base_events.py',
+   'PYMODULE'),
+  ('concurrent.futures',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\concurrent\\futures\\__init__.py',
+   'PYMODULE'),
+  ('concurrent.futures.thread',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\concurrent\\futures\\thread.py',
+   'PYMODULE'),
+  ('concurrent.futures.process',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\concurrent\\futures\\process.py',
+   'PYMODULE'),
+  ('concurrent.futures._base',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\concurrent\\futures\\_base.py',
+   'PYMODULE'),
+  ('concurrent',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\concurrent\\__init__.py',
+   'PYMODULE'),
+  ('asyncio.trsock',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\trsock.py',
+   'PYMODULE'),
+  ('asyncio.staggered',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\staggered.py',
+   'PYMODULE'),
+  ('asyncio.timeouts',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\timeouts.py',
+   'PYMODULE'),
+  ('asyncio.tasks',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\tasks.py',
+   'PYMODULE'),
+  ('asyncio.base_tasks',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\base_tasks.py',
+   'PYMODULE'),
+  ('asyncio.locks',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\locks.py',
+   'PYMODULE'),
+  ('asyncio.mixins',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\mixins.py',
+   'PYMODULE'),
+  ('asyncio.sslproto',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\sslproto.py',
+   'PYMODULE'),
+  ('asyncio.transports',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\transports.py',
+   'PYMODULE'),
+  ('asyncio.protocols',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\protocols.py',
+   'PYMODULE'),
+  ('asyncio.futures',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\futures.py',
+   'PYMODULE'),
+  ('asyncio.base_futures',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\base_futures.py',
+   'PYMODULE'),
+  ('asyncio.exceptions',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\exceptions.py',
+   'PYMODULE'),
+  ('asyncio.events',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\events.py',
+   'PYMODULE'),
+  ('asyncio.format_helpers',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\format_helpers.py',
+   'PYMODULE'),
+  ('asyncio.coroutines',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\coroutines.py',
+   'PYMODULE'),
+  ('asyncio.constants',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\asyncio\\constants.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers', '-', 'PYMODULE'),
+  ('setuptools._distutils.compat.numpy',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\compat\\numpy.py',
+   'PYMODULE'),
+  ('setuptools._vendor.jaraco.functools',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\jaraco\\functools\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.jaraco', '-', 'PYMODULE'),
+  ('sysconfig',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\sysconfig.py',
+   'PYMODULE'),
+  ('_aix_support',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\_aix_support.py',
+   'PYMODULE'),
+  ('setuptools._distutils',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._distutils.version',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\version.py',
+   'PYMODULE'),
+  ('setuptools._distutils.archive_util',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\archive_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.compilers.C.errors',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\compilers\\C\\errors.py',
+   'PYMODULE'),
+  ('setuptools._vendor.more_itertools',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\more_itertools\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.more_itertools.recipes',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\more_itertools\\recipes.py',
+   'PYMODULE'),
+  ('setuptools._vendor.more_itertools.more',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\more_itertools\\more.py',
+   'PYMODULE'),
+  ('platform',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\platform.py',
+   'PYMODULE'),
+  ('json',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\json\\__init__.py',
+   'PYMODULE'),
+  ('json.encoder',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\json\\encoder.py',
+   'PYMODULE'),
+  ('json.decoder',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\json\\decoder.py',
+   'PYMODULE'),
+  ('json.scanner',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\json\\scanner.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.build_ext',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\command\\build_ext.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\command\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._distutils._msvccompiler',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\_msvccompiler.py',
+   'PYMODULE'),
+  ('setuptools._distutils.extension',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\extension.py',
+   'PYMODULE'),
+  ('site',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\site.py',
+   'PYMODULE'),
+  ('rlcompleter',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\rlcompleter.py',
+   'PYMODULE'),
+  ('_sitebuiltins',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\_sitebuiltins.py',
+   'PYMODULE'),
+  ('pydoc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\pydoc.py',
+   'PYMODULE'),
+  ('webbrowser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\webbrowser.py',
+   'PYMODULE'),
+  ('shlex',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\shlex.py',
+   'PYMODULE'),
+  ('http.server',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\http\\server.py',
+   'PYMODULE'),
+  ('socketserver',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\socketserver.py',
+   'PYMODULE'),
+  ('html',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\html\\__init__.py',
+   'PYMODULE'),
+  ('html.entities',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\html\\entities.py',
+   'PYMODULE'),
+  ('pydoc_data.topics',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\pydoc_data\\topics.py',
+   'PYMODULE'),
+  ('pydoc_data',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\pydoc_data\\__init__.py',
+   'PYMODULE'),
+  ('tty',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\tty.py',
+   'PYMODULE'),
+  ('setuptools._distutils.core',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\core.py',
+   'PYMODULE'),
+  ('setuptools._distutils.dist',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\dist.py',
+   'PYMODULE'),
+  ('setuptools._distutils.versionpredicate',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\versionpredicate.py',
+   'PYMODULE'),
+  ('configparser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\configparser.py',
+   'PYMODULE'),
+  ('packaging.utils',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\utils.py',
+   'PYMODULE'),
+  ('packaging',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('packaging._musllinux',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('packaging._elffile',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\_elffile.py',
+   'PYMODULE'),
+  ('packaging._manylinux',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('packaging.version',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\version.py',
+   'PYMODULE'),
+  ('packaging._structures',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('packaging.tags',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\tags.py',
+   'PYMODULE'),
+  ('setuptools._distutils.cmd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\cmd.py',
+   'PYMODULE'),
+  ('setuptools.warnings',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\warnings.py',
+   'PYMODULE'),
+  ('setuptools.version',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\version.py',
+   'PYMODULE'),
+  ('setuptools._importlib',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_importlib.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._adapters',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_adapters.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._text',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_text.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._itertools',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_itertools.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._functools',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_functools.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._compat',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_compat.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._collections',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_collections.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata.compat.py311',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata\\compat\\py311.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata.compat.py39',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata\\compat\\py39.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata.compat',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata\\compat\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.importlib_metadata._meta',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata\\_meta.py',
+   'PYMODULE'),
+  ('setuptools._vendor.zipp',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\zipp\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.zipp.glob',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\zipp\\glob.py',
+   'PYMODULE'),
+  ('setuptools._vendor.zipp.compat.py310',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\zipp\\compat\\py310.py',
+   'PYMODULE'),
+  ('setuptools._vendor.zipp.compat',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\zipp\\compat\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.extension',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\extension.py',
+   'PYMODULE'),
+  ('setuptools._path',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_path.py',
+   'PYMODULE'),
+  ('setuptools.dist',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\dist.py',
+   'PYMODULE'),
+  ('setuptools.command.bdist_wheel',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\command\\bdist_wheel.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.macosx_libfile',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\macosx_libfile.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.command.egg_info',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\command\\egg_info.py',
+   'PYMODULE'),
+  ('setuptools._distutils.filelist',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\filelist.py',
+   'PYMODULE'),
+  ('setuptools.command._requirestxt',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\command\\_requirestxt.py',
+   'PYMODULE'),
+  ('setuptools._vendor.jaraco.text',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\jaraco\\text\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.jaraco.context',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\jaraco\\context.py',
+   'PYMODULE'),
+  ('setuptools._vendor.backports.tarfile',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.backports.tarfile.compat.py38',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\compat\\py38.py',
+   'PYMODULE'),
+  ('setuptools._vendor.backports.tarfile.compat',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\backports\\tarfile\\compat\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.backports',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\backports\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.glob',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\glob.py',
+   'PYMODULE'),
+  ('setuptools.command.setopt',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\command\\setopt.py',
+   'PYMODULE'),
+  ('setuptools.command.sdist',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\command\\sdist.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.sdist',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\command\\sdist.py',
+   'PYMODULE'),
+  ('setuptools.command.build',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\command\\build.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.build',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\command\\build.py',
+   'PYMODULE'),
+  ('setuptools.command.bdist_egg',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\command\\bdist_egg.py',
+   'PYMODULE'),
+  ('setuptools.unicode_utils',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\unicode_utils.py',
+   'PYMODULE'),
+  ('setuptools.compat.py39',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\compat\\py39.py',
+   'PYMODULE'),
+  ('setuptools.compat',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\compat\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.compat.py311',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\compat\\py311.py',
+   'PYMODULE'),
+  ('packaging.requirements',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('packaging._tokenizer',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\_tokenizer.py',
+   'PYMODULE'),
+  ('packaging._parser',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\_parser.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.wheelfile',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\wheelfile.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.util',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\util.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.cli',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\cli\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.cli.tags',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\cli\\tags.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.cli.convert',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\cli\\convert.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.tags',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\tags.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._musllinux',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._elffile',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_elffile.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._manylinux',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.metadata',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\metadata.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.requirements',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.utils',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\utils.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.version',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\version.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._structures',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.specifiers',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging.markers',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\markers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._tokenizer',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_tokenizer.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.vendored.packaging._parser',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\vendored\\packaging\\_parser.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.cli.pack',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\cli\\pack.py',
+   'PYMODULE'),
+  ('setuptools._vendor.wheel.cli.unpack',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\wheel\\cli\\unpack.py',
+   'PYMODULE'),
+  ('setuptools.installer',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\installer.py',
+   'PYMODULE'),
+  ('setuptools.wheel',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\wheel.py',
+   'PYMODULE'),
+  ('setuptools._discovery',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_discovery.py',
+   'PYMODULE'),
+  ('setuptools.archive_util',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\archive_util.py',
+   'PYMODULE'),
+  ('setuptools._distutils.log',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\log.py',
+   'PYMODULE'),
+  ('setuptools.errors',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\errors.py',
+   'PYMODULE'),
+  ('setuptools.config.setupcfg',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\config\\setupcfg.py',
+   'PYMODULE'),
+  ('setuptools.config.expand',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\config\\expand.py',
+   'PYMODULE'),
+  ('setuptools.config.pyprojecttoml',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\config\\pyprojecttoml.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\config\\_validate_pyproject\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.fastjsonschema_validations',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\config\\_validate_pyproject\\fastjsonschema_validations.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.fastjsonschema_exceptions',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\config\\_validate_pyproject\\fastjsonschema_exceptions.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.extra_validations',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\config\\_validate_pyproject\\extra_validations.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.error_reporting',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\config\\_validate_pyproject\\error_reporting.py',
+   'PYMODULE'),
+  ('setuptools.config._validate_pyproject.formats',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\config\\_validate_pyproject\\formats.py',
+   'PYMODULE'),
+  ('packaging.licenses',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\licenses\\__init__.py',
+   'PYMODULE'),
+  ('packaging.licenses._spdx',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\licenses\\_spdx.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.requirements',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\requirements.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.utils',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\utils.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.version',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\version.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._structures',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\_structures.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.tags',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\tags.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._musllinux',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\_musllinux.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._elffile',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\_elffile.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._manylinux',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\_manylinux.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.specifiers',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging.markers',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\markers.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._tokenizer',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\_tokenizer.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging._parser',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\_parser.py',
+   'PYMODULE'),
+  ('setuptools._vendor.packaging',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\packaging\\__init__.py',
+   'PYMODULE'),
+  ('setuptools.compat.py310',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\compat\\py310.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\tomli\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli._parser',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\tomli\\_parser.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli._types',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\tomli\\_types.py',
+   'PYMODULE'),
+  ('setuptools._vendor.tomli._re',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\tomli\\_re.py',
+   'PYMODULE'),
+  ('tomllib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\tomllib\\__init__.py',
+   'PYMODULE'),
+  ('tomllib._parser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\tomllib\\_parser.py',
+   'PYMODULE'),
+  ('tomllib._types',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\tomllib\\_types.py',
+   'PYMODULE'),
+  ('tomllib._re',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\tomllib\\_re.py',
+   'PYMODULE'),
+  ('setuptools.config._apply_pyprojecttoml',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\config\\_apply_pyprojecttoml.py',
+   'PYMODULE'),
+  ('setuptools.config',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\config\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._static',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_static.py',
+   'PYMODULE'),
+  ('packaging.specifiers',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\specifiers.py',
+   'PYMODULE'),
+  ('packaging.markers',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\markers.py',
+   'PYMODULE'),
+  ('glob',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\glob.py',
+   'PYMODULE'),
+  ('setuptools._shutil',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_shutil.py',
+   'PYMODULE'),
+  ('setuptools.windows_support',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\windows_support.py',
+   'PYMODULE'),
+  ('ctypes.wintypes',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\ctypes\\wintypes.py',
+   'PYMODULE'),
+  ('setuptools.command',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\command\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._distutils.command.bdist',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_distutils\\command\\bdist.py',
+   'PYMODULE'),
+  ('setuptools._entry_points',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_entry_points.py',
+   'PYMODULE'),
+  ('setuptools._itertools',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_itertools.py',
+   'PYMODULE'),
+  ('setuptools.discovery',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\discovery.py',
+   'PYMODULE'),
+  ('setuptools.depends',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\depends.py',
+   'PYMODULE'),
+  ('setuptools._imp',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_imp.py',
+   'PYMODULE'),
+  ('setuptools.logging',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\logging.py',
+   'PYMODULE'),
+  ('setuptools.monkey',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\monkey.py',
+   'PYMODULE'),
+  ('setuptools._core_metadata',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_core_metadata.py',
+   'PYMODULE'),
+  ('setuptools._reqs',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_reqs.py',
+   'PYMODULE'),
+  ('setuptools._normalization',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_normalization.py',
+   'PYMODULE'),
+  ('_distutils_hack.override',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\_distutils_hack\\override.py',
+   'PYMODULE'),
+  ('__future__',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\__future__.py',
+   'PYMODULE'),
+  ('pkg_resources',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pkg_resources\\__init__.py',
+   'PYMODULE'),
+  ('packaging.metadata',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\packaging\\metadata.py',
+   'PYMODULE'),
+  ('setuptools._vendor.platformdirs',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\platformdirs\\__init__.py',
+   'PYMODULE'),
+  ('setuptools._vendor.platformdirs.android',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\platformdirs\\android.py',
+   'PYMODULE'),
+  ('setuptools._vendor.platformdirs.unix',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\platformdirs\\unix.py',
+   'PYMODULE'),
+  ('setuptools._vendor.platformdirs.macos',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\platformdirs\\macos.py',
+   'PYMODULE'),
+  ('setuptools._vendor.platformdirs.windows',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\platformdirs\\windows.py',
+   'PYMODULE'),
+  ('setuptools._vendor.platformdirs.version',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\platformdirs\\version.py',
+   'PYMODULE'),
+  ('setuptools._vendor.platformdirs.api',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\platformdirs\\api.py',
+   'PYMODULE'),
+  ('plistlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\plistlib.py',
+   'PYMODULE'),
+  ('tracemalloc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\tracemalloc.py',
+   'PYMODULE'),
+  ('stringprep',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\stringprep.py',
+   'PYMODULE'),
+  ('_py_abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\_py_abc.py',
+   'PYMODULE'),
+  ('game_over',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\game_over.py',
+   'PYMODULE'),
+  ('intro',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\intro.py',
+   'PYMODULE'),
+  ('vitoria',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\vitoria.py',
+   'PYMODULE'),
+  ('pokehealer',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\pokehealer.py',
+   'PYMODULE'),
+  ('pokedex',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\pokedex.py',
+   'PYMODULE'),
+  ('npc',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\npc.py',
+   'PYMODULE'),
+  ('batalha',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\batalha.py',
+   'PYMODULE'),
+  ('pokemon',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\pokemon.py',
+   'PYMODULE'),
+  ('ataques',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\ataques.py',
+   'PYMODULE'),
+  ('mato',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\mato.py',
+   'PYMODULE'),
+  ('obstaculo',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\obstaculo.py',
+   'PYMODULE'),
+  ('inventario',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\inventario.py',
+   'PYMODULE'),
+  ('coletaveis',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\coletaveis.py',
+   'PYMODULE'),
+  ('camera',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\camera.py',
+   'PYMODULE'),
+  ('player',
+   'D:\\codes python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\player.py',
+   'PYMODULE'),
+  ('random',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\random.py',
+   'PYMODULE'),
+  ('statistics',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\statistics.py',
+   'PYMODULE'),
+  ('fractions',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\fractions.py',
+   'PYMODULE'),
+  ('pygame',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\__init__.py',
+   'PYMODULE'),
+  ('pygame.colordict',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\colordict.py',
+   'PYMODULE'),
+  ('pygame.macosx',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\macosx.py',
+   'PYMODULE'),
+  ('pygame.pkgdata',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\pkgdata.py',
+   'PYMODULE'),
+  ('pygame.fastevent',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\fastevent.py',
+   'PYMODULE'),
+  ('pygame.sndarray',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\sndarray.py',
+   'PYMODULE'),
+  ('pygame.surfarray',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\surfarray.py',
+   'PYMODULE'),
+  ('pygame.sysfont',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\sysfont.py',
+   'PYMODULE'),
+  ('pygame.ftfont',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\ftfont.py',
+   'PYMODULE'),
+  ('pygame.threads',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\threads\\__init__.py',
+   'PYMODULE'),
+  ('pygame.sprite',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\sprite.py',
+   'PYMODULE'),
+  ('pygame.cursors',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\cursors.py',
+   'PYMODULE'),
+  ('pygame.version',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\version.py',
+   'PYMODULE')],
+ [('python312.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\python312.dll',
+   'BINARY'),
+  ('libjpeg-9.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libjpeg-9.dll',
+   'BINARY'),
+  ('portmidi.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\portmidi.dll',
+   'BINARY'),
+  ('libopusfile-0.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libopusfile-0.dll',
+   'BINARY'),
+  ('SDL2_image.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_image.dll',
+   'BINARY'),
+  ('libwebp-7.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libwebp-7.dll',
+   'BINARY'),
+  ('libogg-0.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libogg-0.dll',
+   'BINARY'),
+  ('SDL2_ttf.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_ttf.dll',
+   'BINARY'),
+  ('zlib1.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\zlib1.dll',
+   'BINARY'),
+  ('libmodplug-1.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libmodplug-1.dll',
+   'BINARY'),
+  ('SDL2.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2.dll',
+   'BINARY'),
+  ('SDL2_mixer.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_mixer.dll',
+   'BINARY'),
+  ('libtiff-5.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libtiff-5.dll',
+   'BINARY'),
+  ('libpng16-16.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libpng16-16.dll',
+   'BINARY'),
+  ('libopus-0.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libopus-0.dll',
+   'BINARY'),
+  ('freetype.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\freetype.dll',
+   'BINARY'),
+  ('_lzma.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_lzma.pyd',
+   'EXTENSION'),
+  ('_bz2.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_bz2.pyd',
+   'EXTENSION'),
+  ('unicodedata.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\unicodedata.pyd',
+   'EXTENSION'),
+  ('select.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\select.pyd',
+   'EXTENSION'),
+  ('_socket.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_socket.pyd',
+   'EXTENSION'),
+  ('_multiprocessing.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('pyexpat.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\pyexpat.pyd',
+   'EXTENSION'),
+  ('_ssl.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_ssl.pyd',
+   'EXTENSION'),
+  ('_hashlib.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_hashlib.pyd',
+   'EXTENSION'),
+  ('_decimal.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_decimal.pyd',
+   'EXTENSION'),
+  ('_ctypes.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_ctypes.pyd',
+   'EXTENSION'),
+  ('_queue.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_queue.pyd',
+   'EXTENSION'),
+  ('_overlapped.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_overlapped.pyd',
+   'EXTENSION'),
+  ('_asyncio.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_asyncio.pyd',
+   'EXTENSION'),
+  ('_wmi.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_wmi.pyd',
+   'EXTENSION'),
+  ('pygame\\imageext.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\imageext.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\scrap.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\scrap.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mixer.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\mixer.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mixer_music.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\mixer_music.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\font.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\font.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\_freetype.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\_freetype.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\transform.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\transform.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\time.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\time.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\pixelarray.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\pixelarray.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mask.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\mask.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\surface.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\surface.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\pixelcopy.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\pixelcopy.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mouse.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\mouse.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\key.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\key.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\joystick.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\joystick.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\image.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\image.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\event.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\event.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\draw.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\draw.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\display.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\display.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\math.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\math.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\bufferproxy.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\bufferproxy.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\color.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\color.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\surflock.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\surflock.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\rwobject.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\rwobject.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\rect.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\rect.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\constants.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\constants.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\base.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\base.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('VCRUNTIME140.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('pygame\\libopus-0.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libopus-0.dll',
+   'BINARY'),
+  ('pygame\\libogg-0.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libogg-0.dll',
+   'BINARY'),
+  ('pygame\\SDL2.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2.dll',
+   'BINARY'),
+  ('pygame\\libjpeg-9.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libjpeg-9.dll',
+   'BINARY'),
+  ('pygame\\zlib1.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\zlib1.dll',
+   'BINARY'),
+  ('libssl-3.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\libssl-3.dll',
+   'BINARY'),
+  ('libcrypto-3.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\libcrypto-3.dll',
+   'BINARY'),
+  ('libffi-8.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\libffi-8.dll',
+   'BINARY'),
+  ('VCRUNTIME140_1.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\VCRUNTIME140_1.dll',
+   'BINARY'),
+  ('pygame\\SDL2_image.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_image.dll',
+   'BINARY'),
+  ('pygame\\libpng16-16.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libpng16-16.dll',
+   'BINARY'),
+  ('pygame\\SDL2_mixer.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_mixer.dll',
+   'BINARY'),
+  ('pygame\\SDL2_ttf.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_ttf.dll',
+   'BINARY'),
+  ('pygame\\freetype.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\freetype.dll',
+   'BINARY')],
+ [],
+ [],
+ [('assets\\backgrounds\\battle_bg.jpg',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\battle_bg.jpg',
+   'DATA'),
+  ('assets\\backgrounds\\game_over_bg.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\game_over_bg.png',
+   'DATA'),
+  ('assets\\backgrounds\\game_over_esc.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\game_over_esc.png',
+   'DATA'),
+  ('assets\\backgrounds\\intro_bg.jpg',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\intro_bg.jpg',
+   'DATA'),
+  ('assets\\backgrounds\\lab.jpg',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\lab.jpg',
+   'DATA'),
+  ('assets\\backgrounds\\tileset.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\tileset.png',
+   'DATA'),
+  ('assets\\backgrounds\\vitoria.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\vitoria.png',
+   'DATA'),
+  ('assets\\coletaveis\\cracha_cin.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\cracha_cin.png',
+   'DATA'),
+  ('assets\\coletaveis\\cracha_quebrado.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\cracha_quebrado.png',
+   'DATA'),
+  ('assets\\coletaveis\\greatball.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\greatball.png',
+   'DATA'),
+  ('assets\\coletaveis\\master_ball.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\master_ball.png',
+   'DATA'),
+  ('assets\\coletaveis\\pocao.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pocao.png',
+   'DATA'),
+  ('assets\\coletaveis\\poke_balls.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\poke_balls.png',
+   'DATA'),
+  ('assets\\coletaveis\\pokebola2.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pokebola2.png',
+   'DATA'),
+  ('assets\\coletaveis\\pokebolas.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pokebolas.png',
+   'DATA'),
+  ('assets\\coletaveis\\pokeloot_.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pokeloot_.png',
+   'DATA'),
+  ('assets\\icon\\cin.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\icon\\cin.png',
+   'DATA'),
+  ('assets\\icon\\icon.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\icon\\icon.png',
+   'DATA'),
+  ('assets\\intro_font\\PokeCin.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\intro_font\\PokeCin.png',
+   'DATA'),
+  ('assets\\intro_font\\PressEnter.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\intro_font\\PressEnter.png',
+   'DATA'),
+  ('assets\\mc\\mc_down.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_down.png',
+   'DATA'),
+  ('assets\\mc\\mc_left.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_left.png',
+   'DATA'),
+  ('assets\\mc\\mc_right.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_right.png',
+   'DATA'),
+  ('assets\\mc\\mc_up.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_up.png',
+   'DATA'),
+  ('assets\\músicas\\battle_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\battle_theme.mp3',
+   'DATA'),
+  ('assets\\músicas\\game_over.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\game_over.mp3',
+   'DATA'),
+  ('assets\\músicas\\intro.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\intro.mp3',
+   'DATA'),
+  ('assets\\músicas\\professor_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\professor_theme.mp3',
+   'DATA'),
+  ('assets\\músicas\\trainer_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\trainer_theme.mp3',
+   'DATA'),
+  ('assets\\músicas\\vitoria.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\vitoria.mp3',
+   'DATA'),
+  ('assets\\músicas\\world_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\world_theme.mp3',
+   'DATA'),
+  ('assets\\obstaculos\\arbusto.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\obstaculos\\arbusto.png',
+   'DATA'),
+  ('assets\\obstaculos\\pokehealer.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\obstaculos\\pokehealer.png',
+   'DATA'),
+  ('assets\\pokemons\\abra.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abra.png',
+   'DATA'),
+  ('assets\\pokemons\\abraS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abraS.png',
+   'DATA'),
+  ('assets\\pokemons\\abraS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abraS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\abra_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abra_back.png',
+   'DATA'),
+  ('assets\\pokemons\\articuno.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articuno.png',
+   'DATA'),
+  ('assets\\pokemons\\articunoS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articunoS.png',
+   'DATA'),
+  ('assets\\pokemons\\articunoS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articunoS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\articuno_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articuno_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsprout.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsprout.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsproutS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsproutS.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsproutS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsproutS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsprout_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsprout_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaur.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaur.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaurS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaurS.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaurS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaurS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaur_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaur_back.png',
+   'DATA'),
+  ('assets\\pokemons\\byte.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byte.png',
+   'DATA'),
+  ('assets\\pokemons\\byteS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byteS.png',
+   'DATA'),
+  ('assets\\pokemons\\byteS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byteS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\byte_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byte_back.png',
+   'DATA'),
+  ('assets\\pokemons\\caprio.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caprio.png',
+   'DATA'),
+  ('assets\\pokemons\\caprio_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caprio_back.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpie.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpie.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpieS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpieS.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpieS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpieS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpie_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpie_back.png',
+   'DATA'),
+  ('assets\\pokemons\\charmander.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmander.png',
+   'DATA'),
+  ('assets\\pokemons\\charmanderS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmanderS.png',
+   'DATA'),
+  ('assets\\pokemons\\charmanderS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmanderS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\charmander_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmander_back.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairy.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairy.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairyS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairyS.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairyS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairyS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairy_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairy_back.png',
+   'DATA'),
+  ('assets\\pokemons\\cubone.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cubone.png',
+   'DATA'),
+  ('assets\\pokemons\\cuboneS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cuboneS.png',
+   'DATA'),
+  ('assets\\pokemons\\cuboneS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cuboneS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\cubone_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cubone_back.png',
+   'DATA'),
+  ('assets\\pokemons\\eevee.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eevee.png',
+   'DATA'),
+  ('assets\\pokemons\\eeveeS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eeveeS.png',
+   'DATA'),
+  ('assets\\pokemons\\eeveeS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eeveeS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\eevee_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eevee_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ekans.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekans.png',
+   'DATA'),
+  ('assets\\pokemons\\ekansS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekansS.png',
+   'DATA'),
+  ('assets\\pokemons\\ekansS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekansS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ekans_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekans_back.png',
+   'DATA'),
+  ('assets\\pokemons\\flamare.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\flamare.png',
+   'DATA'),
+  ('assets\\pokemons\\flamare_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\flamare_back.png',
+   'DATA'),
+  ('assets\\pokemons\\geodude.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodude.png',
+   'DATA'),
+  ('assets\\pokemons\\geodudeS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodudeS.png',
+   'DATA'),
+  ('assets\\pokemons\\geodudeS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodudeS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\geodude_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodude_back.png',
+   'DATA'),
+  ('assets\\pokemons\\koffing.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffing.png',
+   'DATA'),
+  ('assets\\pokemons\\koffingS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffingS.png',
+   'DATA'),
+  ('assets\\pokemons\\koffingS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffingS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\koffing_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffing_back.png',
+   'DATA'),
+  ('assets\\pokemons\\lapras.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\lapras.png',
+   'DATA'),
+  ('assets\\pokemons\\laprasS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\laprasS.png',
+   'DATA'),
+  ('assets\\pokemons\\laprasS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\laprasS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\lapras_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\lapras_back.png',
+   'DATA'),
+  ('assets\\pokemons\\machop.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machop.png',
+   'DATA'),
+  ('assets\\pokemons\\machopS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machopS.png',
+   'DATA'),
+  ('assets\\pokemons\\machopS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machopS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\machop_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machop_back.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemite.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemite.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemiteS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemiteS.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemiteS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemiteS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemite_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemite_back.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwo.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwo.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwoS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwoS.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwoS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwoS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwo_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwo_back.png',
+   'DATA'),
+  ('assets\\pokemons\\moltres.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltres.png',
+   'DATA'),
+  ('assets\\pokemons\\moltresS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltresS.png',
+   'DATA'),
+  ('assets\\pokemons\\moltresS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltresS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\moltres_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltres_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-fS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-fS.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-fS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-fS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-mS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-mS.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-mS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-mS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_f.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_f.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_f_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_f_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_m.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_m.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_m_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_m_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgey.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgey.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgeyS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgeyS.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgeyS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgeyS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgey_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgey_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachu.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachu.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachuS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachuS.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachuS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachuS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachu_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachu_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ponyta.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponyta.png',
+   'DATA'),
+  ('assets\\pokemons\\ponytaS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponytaS.png',
+   'DATA'),
+  ('assets\\pokemons\\ponytaS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponytaS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ponyta_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponyta_back.png',
+   'DATA'),
+  ('assets\\pokemons\\porygon.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygon.png',
+   'DATA'),
+  ('assets\\pokemons\\porygonS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygonS.png',
+   'DATA'),
+  ('assets\\pokemons\\porygonS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygonS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\porygon_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygon_back.png',
+   'DATA'),
+  ('assets\\pokemons\\rattata.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattata.png',
+   'DATA'),
+  ('assets\\pokemons\\rattataS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattataS.png',
+   'DATA'),
+  ('assets\\pokemons\\rattataS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattataS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\rattata_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattata_back.png',
+   'DATA'),
+  ('assets\\pokemons\\rayquaza.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rayquaza.png',
+   'DATA'),
+  ('assets\\pokemons\\rayquaza_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rayquaza_back.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrew.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrew.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrewS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrewS.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrewS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrewS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrew_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrew_back.png',
+   'DATA'),
+  ('assets\\pokemons\\soim.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\soim.png',
+   'DATA'),
+  ('assets\\pokemons\\soim_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\soim_back.png',
+   'DATA'),
+  ('assets\\pokemons\\spearow.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearow.png',
+   'DATA'),
+  ('assets\\pokemons\\spearowS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearowS.png',
+   'DATA'),
+  ('assets\\pokemons\\spearowS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearowS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\spearow_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearow_back.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtle.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtle.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtleS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtleS.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtleS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtleS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtle_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtle_back.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpix.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpix.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpixS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpixS.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpixS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpixS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpix_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpix_back.png',
+   'DATA'),
+  ('assets\\pokemons\\weedle.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedle.png',
+   'DATA'),
+  ('assets\\pokemons\\weedleS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedleS.png',
+   'DATA'),
+  ('assets\\pokemons\\weedleS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedleS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\weedle_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedle_back.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdos.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdos.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdosS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdosS.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdosS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdosS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdos_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdos_back.png',
+   'DATA'),
+  ('assets\\professor\\professor_massa.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\professor_massa.png',
+   'DATA'),
+  ('assets\\professor\\proff_massa_1.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\proff_massa_1.png',
+   'DATA'),
+  ('assets\\professor\\proff_massa_2.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\proff_massa_2.png',
+   'DATA'),
+  ('assets\\professor\\rival.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\rival.png',
+   'DATA'),
+  ('assets\\sfx\\itemfound.wav',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\sfx\\itemfound.wav',
+   'DATA'),
+  ('assets\\sfx\\sfx_blip.wav',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\sfx\\sfx_blip.wav',
+   'DATA'),
+  ('assets\\sfx\\sfx_heal.wav',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\sfx\\sfx_heal.wav',
+   'DATA'),
+  ('pygame\\pygame_icon.bmp',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\pygame_icon.bmp',
+   'DATA'),
+  ('pygame\\freesansbold.ttf',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\freesansbold.ttf',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\top_level.txt',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\top_level.txt',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\RECORD',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\RECORD',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\REQUESTED',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\REQUESTED',
+   'DATA'),
+  ('setuptools\\_vendor\\jaraco\\text\\Lorem ipsum.txt',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\jaraco\\text\\Lorem '
+   'ipsum.txt',
+   'DATA'),
+  ('base_library.zip',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\build\\main\\base_library.zip',
+   'DATA')],
+ [('sre_compile',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\sre_compile.py',
+   'PYMODULE'),
+  ('warnings',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\warnings.py',
+   'PYMODULE'),
+  ('codecs',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\codecs.py',
+   'PYMODULE'),
+  ('keyword',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\keyword.py',
+   'PYMODULE'),
+  ('reprlib',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\reprlib.py',
+   'PYMODULE'),
+  ('genericpath',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\genericpath.py',
+   'PYMODULE'),
+  ('functools',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\functools.py',
+   'PYMODULE'),
+  ('heapq',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\heapq.py',
+   'PYMODULE'),
+  ('operator',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\operator.py',
+   'PYMODULE'),
+  ('collections.abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\collections\\abc.py',
+   'PYMODULE'),
+  ('collections',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\collections\\__init__.py',
+   'PYMODULE'),
+  ('posixpath',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\posixpath.py',
+   'PYMODULE'),
+  ('re._parser',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\re\\_parser.py',
+   'PYMODULE'),
+  ('re._constants',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\re\\_constants.py',
+   'PYMODULE'),
+  ('re._compiler',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\re\\_compiler.py',
+   'PYMODULE'),
+  ('re._casefix',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\re\\_casefix.py',
+   'PYMODULE'),
+  ('re',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\re\\__init__.py',
+   'PYMODULE'),
+  ('encodings.zlib_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\zlib_codec.py',
+   'PYMODULE'),
+  ('encodings.uu_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\uu_codec.py',
+   'PYMODULE'),
+  ('encodings.utf_8_sig',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_8_sig.py',
+   'PYMODULE'),
+  ('encodings.utf_8',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_8.py',
+   'PYMODULE'),
+  ('encodings.utf_7',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_7.py',
+   'PYMODULE'),
+  ('encodings.utf_32_le',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_32_le.py',
+   'PYMODULE'),
+  ('encodings.utf_32_be',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_32_be.py',
+   'PYMODULE'),
+  ('encodings.utf_32',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_32.py',
+   'PYMODULE'),
+  ('encodings.utf_16_le',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_16_le.py',
+   'PYMODULE'),
+  ('encodings.utf_16_be',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_16_be.py',
+   'PYMODULE'),
+  ('encodings.utf_16',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\utf_16.py',
+   'PYMODULE'),
+  ('encodings.unicode_escape',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\unicode_escape.py',
+   'PYMODULE'),
+  ('encodings.undefined',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\undefined.py',
+   'PYMODULE'),
+  ('encodings.tis_620',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\tis_620.py',
+   'PYMODULE'),
+  ('encodings.shift_jisx0213',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\shift_jisx0213.py',
+   'PYMODULE'),
+  ('encodings.shift_jis_2004',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\shift_jis_2004.py',
+   'PYMODULE'),
+  ('encodings.shift_jis',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\shift_jis.py',
+   'PYMODULE'),
+  ('encodings.rot_13',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\rot_13.py',
+   'PYMODULE'),
+  ('encodings.raw_unicode_escape',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\raw_unicode_escape.py',
+   'PYMODULE'),
+  ('encodings.quopri_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\quopri_codec.py',
+   'PYMODULE'),
+  ('encodings.punycode',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\punycode.py',
+   'PYMODULE'),
+  ('encodings.ptcp154',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\ptcp154.py',
+   'PYMODULE'),
+  ('encodings.palmos',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\palmos.py',
+   'PYMODULE'),
+  ('encodings.oem',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\oem.py',
+   'PYMODULE'),
+  ('encodings.mbcs',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mbcs.py',
+   'PYMODULE'),
+  ('encodings.mac_turkish',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_turkish.py',
+   'PYMODULE'),
+  ('encodings.mac_romanian',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_romanian.py',
+   'PYMODULE'),
+  ('encodings.mac_roman',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_roman.py',
+   'PYMODULE'),
+  ('encodings.mac_latin2',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_latin2.py',
+   'PYMODULE'),
+  ('encodings.mac_iceland',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_iceland.py',
+   'PYMODULE'),
+  ('encodings.mac_greek',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_greek.py',
+   'PYMODULE'),
+  ('encodings.mac_farsi',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_farsi.py',
+   'PYMODULE'),
+  ('encodings.mac_cyrillic',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_cyrillic.py',
+   'PYMODULE'),
+  ('encodings.mac_croatian',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_croatian.py',
+   'PYMODULE'),
+  ('encodings.mac_arabic',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\mac_arabic.py',
+   'PYMODULE'),
+  ('encodings.latin_1',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\latin_1.py',
+   'PYMODULE'),
+  ('encodings.kz1048',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\kz1048.py',
+   'PYMODULE'),
+  ('encodings.koi8_u',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\koi8_u.py',
+   'PYMODULE'),
+  ('encodings.koi8_t',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\koi8_t.py',
+   'PYMODULE'),
+  ('encodings.koi8_r',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\koi8_r.py',
+   'PYMODULE'),
+  ('encodings.johab',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\johab.py',
+   'PYMODULE'),
+  ('encodings.iso8859_9',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_9.py',
+   'PYMODULE'),
+  ('encodings.iso8859_8',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_8.py',
+   'PYMODULE'),
+  ('encodings.iso8859_7',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_7.py',
+   'PYMODULE'),
+  ('encodings.iso8859_6',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_6.py',
+   'PYMODULE'),
+  ('encodings.iso8859_5',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_5.py',
+   'PYMODULE'),
+  ('encodings.iso8859_4',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_4.py',
+   'PYMODULE'),
+  ('encodings.iso8859_3',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_3.py',
+   'PYMODULE'),
+  ('encodings.iso8859_2',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_2.py',
+   'PYMODULE'),
+  ('encodings.iso8859_16',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_16.py',
+   'PYMODULE'),
+  ('encodings.iso8859_15',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_15.py',
+   'PYMODULE'),
+  ('encodings.iso8859_14',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_14.py',
+   'PYMODULE'),
+  ('encodings.iso8859_13',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_13.py',
+   'PYMODULE'),
+  ('encodings.iso8859_11',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_11.py',
+   'PYMODULE'),
+  ('encodings.iso8859_10',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_10.py',
+   'PYMODULE'),
+  ('encodings.iso8859_1',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso8859_1.py',
+   'PYMODULE'),
+  ('encodings.iso2022_kr',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_kr.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_ext',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp_ext.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_3',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp_3.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_2004',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp_2004.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_2',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp_2.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp_1',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp_1.py',
+   'PYMODULE'),
+  ('encodings.iso2022_jp',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\iso2022_jp.py',
+   'PYMODULE'),
+  ('encodings.idna',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\idna.py',
+   'PYMODULE'),
+  ('encodings.hz',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\hz.py',
+   'PYMODULE'),
+  ('encodings.hp_roman8',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\hp_roman8.py',
+   'PYMODULE'),
+  ('encodings.hex_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\hex_codec.py',
+   'PYMODULE'),
+  ('encodings.gbk',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\gbk.py',
+   'PYMODULE'),
+  ('encodings.gb2312',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\gb2312.py',
+   'PYMODULE'),
+  ('encodings.gb18030',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\gb18030.py',
+   'PYMODULE'),
+  ('encodings.euc_kr',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\euc_kr.py',
+   'PYMODULE'),
+  ('encodings.euc_jp',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\euc_jp.py',
+   'PYMODULE'),
+  ('encodings.euc_jisx0213',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\euc_jisx0213.py',
+   'PYMODULE'),
+  ('encodings.euc_jis_2004',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\euc_jis_2004.py',
+   'PYMODULE'),
+  ('encodings.cp950',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp950.py',
+   'PYMODULE'),
+  ('encodings.cp949',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp949.py',
+   'PYMODULE'),
+  ('encodings.cp932',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp932.py',
+   'PYMODULE'),
+  ('encodings.cp875',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp875.py',
+   'PYMODULE'),
+  ('encodings.cp874',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp874.py',
+   'PYMODULE'),
+  ('encodings.cp869',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp869.py',
+   'PYMODULE'),
+  ('encodings.cp866',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp866.py',
+   'PYMODULE'),
+  ('encodings.cp865',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp865.py',
+   'PYMODULE'),
+  ('encodings.cp864',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp864.py',
+   'PYMODULE'),
+  ('encodings.cp863',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp863.py',
+   'PYMODULE'),
+  ('encodings.cp862',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp862.py',
+   'PYMODULE'),
+  ('encodings.cp861',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp861.py',
+   'PYMODULE'),
+  ('encodings.cp860',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp860.py',
+   'PYMODULE'),
+  ('encodings.cp858',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp858.py',
+   'PYMODULE'),
+  ('encodings.cp857',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp857.py',
+   'PYMODULE'),
+  ('encodings.cp856',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp856.py',
+   'PYMODULE'),
+  ('encodings.cp855',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp855.py',
+   'PYMODULE'),
+  ('encodings.cp852',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp852.py',
+   'PYMODULE'),
+  ('encodings.cp850',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp850.py',
+   'PYMODULE'),
+  ('encodings.cp775',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp775.py',
+   'PYMODULE'),
+  ('encodings.cp737',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp737.py',
+   'PYMODULE'),
+  ('encodings.cp720',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp720.py',
+   'PYMODULE'),
+  ('encodings.cp500',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp500.py',
+   'PYMODULE'),
+  ('encodings.cp437',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp437.py',
+   'PYMODULE'),
+  ('encodings.cp424',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp424.py',
+   'PYMODULE'),
+  ('encodings.cp273',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp273.py',
+   'PYMODULE'),
+  ('encodings.cp1258',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1258.py',
+   'PYMODULE'),
+  ('encodings.cp1257',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1257.py',
+   'PYMODULE'),
+  ('encodings.cp1256',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1256.py',
+   'PYMODULE'),
+  ('encodings.cp1255',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1255.py',
+   'PYMODULE'),
+  ('encodings.cp1254',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1254.py',
+   'PYMODULE'),
+  ('encodings.cp1253',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1253.py',
+   'PYMODULE'),
+  ('encodings.cp1252',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1252.py',
+   'PYMODULE'),
+  ('encodings.cp1251',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1251.py',
+   'PYMODULE'),
+  ('encodings.cp1250',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1250.py',
+   'PYMODULE'),
+  ('encodings.cp1140',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1140.py',
+   'PYMODULE'),
+  ('encodings.cp1125',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1125.py',
+   'PYMODULE'),
+  ('encodings.cp1026',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1026.py',
+   'PYMODULE'),
+  ('encodings.cp1006',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp1006.py',
+   'PYMODULE'),
+  ('encodings.cp037',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\cp037.py',
+   'PYMODULE'),
+  ('encodings.charmap',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\charmap.py',
+   'PYMODULE'),
+  ('encodings.bz2_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\bz2_codec.py',
+   'PYMODULE'),
+  ('encodings.big5hkscs',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\big5hkscs.py',
+   'PYMODULE'),
+  ('encodings.big5',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\big5.py',
+   'PYMODULE'),
+  ('encodings.base64_codec',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\base64_codec.py',
+   'PYMODULE'),
+  ('encodings.ascii',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\ascii.py',
+   'PYMODULE'),
+  ('encodings.aliases',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\aliases.py',
+   'PYMODULE'),
+  ('encodings',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\encodings\\__init__.py',
+   'PYMODULE'),
+  ('stat',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\stat.py',
+   'PYMODULE'),
+  ('copyreg',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\copyreg.py',
+   'PYMODULE'),
+  ('ntpath',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\ntpath.py',
+   'PYMODULE'),
+  ('traceback',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\traceback.py',
+   'PYMODULE'),
+  ('sre_parse',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\sre_parse.py',
+   'PYMODULE'),
+  ('abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\abc.py',
+   'PYMODULE'),
+  ('io',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\io.py',
+   'PYMODULE'),
+  ('weakref',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\weakref.py',
+   'PYMODULE'),
+  ('linecache',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\linecache.py',
+   'PYMODULE'),
+  ('_weakrefset',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\_weakrefset.py',
+   'PYMODULE'),
+  ('types',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\types.py',
+   'PYMODULE'),
+  ('sre_constants',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\sre_constants.py',
+   'PYMODULE'),
+  ('_collections_abc',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\_collections_abc.py',
+   'PYMODULE'),
+  ('locale',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\locale.py',
+   'PYMODULE'),
+  ('enum',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\enum.py',
+   'PYMODULE'),
+  ('os',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\Lib\\os.py',
+   'PYMODULE')])

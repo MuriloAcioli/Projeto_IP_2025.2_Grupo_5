@@ -1,0 +1,1029 @@
+([('main.exe',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\build\\main\\main.exe',
+   'EXECUTABLE'),
+  ('python312.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\python312.dll',
+   'BINARY'),
+  ('libjpeg-9.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libjpeg-9.dll',
+   'BINARY'),
+  ('portmidi.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\portmidi.dll',
+   'BINARY'),
+  ('libopusfile-0.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libopusfile-0.dll',
+   'BINARY'),
+  ('SDL2_image.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_image.dll',
+   'BINARY'),
+  ('libwebp-7.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libwebp-7.dll',
+   'BINARY'),
+  ('libogg-0.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libogg-0.dll',
+   'BINARY'),
+  ('SDL2_ttf.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_ttf.dll',
+   'BINARY'),
+  ('zlib1.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\zlib1.dll',
+   'BINARY'),
+  ('libmodplug-1.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libmodplug-1.dll',
+   'BINARY'),
+  ('SDL2.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2.dll',
+   'BINARY'),
+  ('SDL2_mixer.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_mixer.dll',
+   'BINARY'),
+  ('libtiff-5.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libtiff-5.dll',
+   'BINARY'),
+  ('libpng16-16.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libpng16-16.dll',
+   'BINARY'),
+  ('libopus-0.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libopus-0.dll',
+   'BINARY'),
+  ('freetype.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\freetype.dll',
+   'BINARY'),
+  ('_lzma.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_lzma.pyd',
+   'EXTENSION'),
+  ('_bz2.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_bz2.pyd',
+   'EXTENSION'),
+  ('unicodedata.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\unicodedata.pyd',
+   'EXTENSION'),
+  ('select.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\select.pyd',
+   'EXTENSION'),
+  ('_socket.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_socket.pyd',
+   'EXTENSION'),
+  ('_multiprocessing.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('pyexpat.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\pyexpat.pyd',
+   'EXTENSION'),
+  ('_ssl.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_ssl.pyd',
+   'EXTENSION'),
+  ('_hashlib.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_hashlib.pyd',
+   'EXTENSION'),
+  ('_decimal.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_decimal.pyd',
+   'EXTENSION'),
+  ('_ctypes.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_ctypes.pyd',
+   'EXTENSION'),
+  ('_queue.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_queue.pyd',
+   'EXTENSION'),
+  ('_overlapped.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_overlapped.pyd',
+   'EXTENSION'),
+  ('_asyncio.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_asyncio.pyd',
+   'EXTENSION'),
+  ('_wmi.pyd',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\_wmi.pyd',
+   'EXTENSION'),
+  ('pygame\\imageext.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\imageext.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\scrap.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\scrap.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mixer.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\mixer.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mixer_music.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\mixer_music.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\font.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\font.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\_freetype.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\_freetype.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\transform.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\transform.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\time.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\time.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\pixelarray.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\pixelarray.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mask.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\mask.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\surface.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\surface.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\pixelcopy.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\pixelcopy.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\mouse.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\mouse.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\key.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\key.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\joystick.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\joystick.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\image.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\image.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\event.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\event.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\draw.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\draw.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\display.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\display.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\math.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\math.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\bufferproxy.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\bufferproxy.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\color.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\color.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\surflock.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\surflock.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\rwobject.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\rwobject.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\rect.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\rect.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\constants.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\constants.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('pygame\\base.cp312-win_amd64.pyd',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\base.cp312-win_amd64.pyd',
+   'EXTENSION'),
+  ('VCRUNTIME140.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('pygame\\libopus-0.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libopus-0.dll',
+   'BINARY'),
+  ('pygame\\libogg-0.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libogg-0.dll',
+   'BINARY'),
+  ('pygame\\SDL2.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2.dll',
+   'BINARY'),
+  ('pygame\\libjpeg-9.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libjpeg-9.dll',
+   'BINARY'),
+  ('pygame\\zlib1.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\zlib1.dll',
+   'BINARY'),
+  ('libssl-3.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\libssl-3.dll',
+   'BINARY'),
+  ('libcrypto-3.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\libcrypto-3.dll',
+   'BINARY'),
+  ('libffi-8.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\DLLs\\libffi-8.dll',
+   'BINARY'),
+  ('VCRUNTIME140_1.dll',
+   'C:\\Program '
+   'Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\\VCRUNTIME140_1.dll',
+   'BINARY'),
+  ('pygame\\SDL2_image.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_image.dll',
+   'BINARY'),
+  ('pygame\\libpng16-16.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\libpng16-16.dll',
+   'BINARY'),
+  ('pygame\\SDL2_mixer.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_mixer.dll',
+   'BINARY'),
+  ('pygame\\SDL2_ttf.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\SDL2_ttf.dll',
+   'BINARY'),
+  ('pygame\\freetype.dll',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\freetype.dll',
+   'BINARY'),
+  ('assets\\backgrounds\\battle_bg.jpg',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\battle_bg.jpg',
+   'DATA'),
+  ('assets\\backgrounds\\game_over_bg.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\game_over_bg.png',
+   'DATA'),
+  ('assets\\backgrounds\\game_over_esc.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\game_over_esc.png',
+   'DATA'),
+  ('assets\\backgrounds\\intro_bg.jpg',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\intro_bg.jpg',
+   'DATA'),
+  ('assets\\backgrounds\\lab.jpg',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\lab.jpg',
+   'DATA'),
+  ('assets\\backgrounds\\tileset.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\tileset.png',
+   'DATA'),
+  ('assets\\backgrounds\\vitoria.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\backgrounds\\vitoria.png',
+   'DATA'),
+  ('assets\\coletaveis\\cracha_cin.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\cracha_cin.png',
+   'DATA'),
+  ('assets\\coletaveis\\cracha_quebrado.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\cracha_quebrado.png',
+   'DATA'),
+  ('assets\\coletaveis\\greatball.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\greatball.png',
+   'DATA'),
+  ('assets\\coletaveis\\master_ball.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\master_ball.png',
+   'DATA'),
+  ('assets\\coletaveis\\pocao.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pocao.png',
+   'DATA'),
+  ('assets\\coletaveis\\poke_balls.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\poke_balls.png',
+   'DATA'),
+  ('assets\\coletaveis\\pokebola2.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pokebola2.png',
+   'DATA'),
+  ('assets\\coletaveis\\pokebolas.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pokebolas.png',
+   'DATA'),
+  ('assets\\coletaveis\\pokeloot_.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\coletaveis\\pokeloot_.png',
+   'DATA'),
+  ('assets\\icon\\cin.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\icon\\cin.png',
+   'DATA'),
+  ('assets\\icon\\icon.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\icon\\icon.png',
+   'DATA'),
+  ('assets\\intro_font\\PokeCin.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\intro_font\\PokeCin.png',
+   'DATA'),
+  ('assets\\intro_font\\PressEnter.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\intro_font\\PressEnter.png',
+   'DATA'),
+  ('assets\\mc\\mc_down.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_down.png',
+   'DATA'),
+  ('assets\\mc\\mc_left.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_left.png',
+   'DATA'),
+  ('assets\\mc\\mc_right.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_right.png',
+   'DATA'),
+  ('assets\\mc\\mc_up.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\mc\\mc_up.png',
+   'DATA'),
+  ('assets\\músicas\\battle_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\battle_theme.mp3',
+   'DATA'),
+  ('assets\\músicas\\game_over.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\game_over.mp3',
+   'DATA'),
+  ('assets\\músicas\\intro.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\intro.mp3',
+   'DATA'),
+  ('assets\\músicas\\professor_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\professor_theme.mp3',
+   'DATA'),
+  ('assets\\músicas\\trainer_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\trainer_theme.mp3',
+   'DATA'),
+  ('assets\\músicas\\vitoria.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\vitoria.mp3',
+   'DATA'),
+  ('assets\\músicas\\world_theme.mp3',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\músicas\\world_theme.mp3',
+   'DATA'),
+  ('assets\\obstaculos\\arbusto.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\obstaculos\\arbusto.png',
+   'DATA'),
+  ('assets\\obstaculos\\pokehealer.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\obstaculos\\pokehealer.png',
+   'DATA'),
+  ('assets\\pokemons\\abra.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abra.png',
+   'DATA'),
+  ('assets\\pokemons\\abraS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abraS.png',
+   'DATA'),
+  ('assets\\pokemons\\abraS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abraS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\abra_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\abra_back.png',
+   'DATA'),
+  ('assets\\pokemons\\articuno.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articuno.png',
+   'DATA'),
+  ('assets\\pokemons\\articunoS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articunoS.png',
+   'DATA'),
+  ('assets\\pokemons\\articunoS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articunoS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\articuno_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\articuno_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsprout.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsprout.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsproutS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsproutS.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsproutS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsproutS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bellsprout_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bellsprout_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaur.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaur.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaurS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaurS.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaurS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaurS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\bulbasaur_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\bulbasaur_back.png',
+   'DATA'),
+  ('assets\\pokemons\\byte.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byte.png',
+   'DATA'),
+  ('assets\\pokemons\\byteS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byteS.png',
+   'DATA'),
+  ('assets\\pokemons\\byteS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byteS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\byte_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\byte_back.png',
+   'DATA'),
+  ('assets\\pokemons\\caprio.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caprio.png',
+   'DATA'),
+  ('assets\\pokemons\\caprio_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caprio_back.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpie.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpie.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpieS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpieS.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpieS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpieS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\caterpie_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\caterpie_back.png',
+   'DATA'),
+  ('assets\\pokemons\\charmander.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmander.png',
+   'DATA'),
+  ('assets\\pokemons\\charmanderS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmanderS.png',
+   'DATA'),
+  ('assets\\pokemons\\charmanderS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmanderS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\charmander_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\charmander_back.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairy.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairy.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairyS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairyS.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairyS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairyS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\clefairy_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\clefairy_back.png',
+   'DATA'),
+  ('assets\\pokemons\\cubone.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cubone.png',
+   'DATA'),
+  ('assets\\pokemons\\cuboneS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cuboneS.png',
+   'DATA'),
+  ('assets\\pokemons\\cuboneS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cuboneS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\cubone_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\cubone_back.png',
+   'DATA'),
+  ('assets\\pokemons\\eevee.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eevee.png',
+   'DATA'),
+  ('assets\\pokemons\\eeveeS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eeveeS.png',
+   'DATA'),
+  ('assets\\pokemons\\eeveeS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eeveeS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\eevee_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\eevee_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ekans.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekans.png',
+   'DATA'),
+  ('assets\\pokemons\\ekansS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekansS.png',
+   'DATA'),
+  ('assets\\pokemons\\ekansS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekansS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ekans_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ekans_back.png',
+   'DATA'),
+  ('assets\\pokemons\\flamare.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\flamare.png',
+   'DATA'),
+  ('assets\\pokemons\\flamare_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\flamare_back.png',
+   'DATA'),
+  ('assets\\pokemons\\geodude.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodude.png',
+   'DATA'),
+  ('assets\\pokemons\\geodudeS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodudeS.png',
+   'DATA'),
+  ('assets\\pokemons\\geodudeS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodudeS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\geodude_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\geodude_back.png',
+   'DATA'),
+  ('assets\\pokemons\\koffing.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffing.png',
+   'DATA'),
+  ('assets\\pokemons\\koffingS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffingS.png',
+   'DATA'),
+  ('assets\\pokemons\\koffingS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffingS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\koffing_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\koffing_back.png',
+   'DATA'),
+  ('assets\\pokemons\\lapras.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\lapras.png',
+   'DATA'),
+  ('assets\\pokemons\\laprasS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\laprasS.png',
+   'DATA'),
+  ('assets\\pokemons\\laprasS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\laprasS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\lapras_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\lapras_back.png',
+   'DATA'),
+  ('assets\\pokemons\\machop.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machop.png',
+   'DATA'),
+  ('assets\\pokemons\\machopS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machopS.png',
+   'DATA'),
+  ('assets\\pokemons\\machopS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machopS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\machop_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\machop_back.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemite.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemite.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemiteS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemiteS.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemiteS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemiteS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\magnemite_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\magnemite_back.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwo.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwo.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwoS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwoS.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwoS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwoS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\mewtwo_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\mewtwo_back.png',
+   'DATA'),
+  ('assets\\pokemons\\moltres.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltres.png',
+   'DATA'),
+  ('assets\\pokemons\\moltresS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltresS.png',
+   'DATA'),
+  ('assets\\pokemons\\moltresS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltresS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\moltres_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\moltres_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-fS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-fS.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-fS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-fS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-mS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-mS.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran-mS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran-mS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_f.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_f.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_f_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_f_back.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_m.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_m.png',
+   'DATA'),
+  ('assets\\pokemons\\nidoran_m_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\nidoran_m_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgey.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgey.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgeyS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgeyS.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgeyS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgeyS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pidgey_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pidgey_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachu.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachu.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachuS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachuS.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachuS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachuS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\pikachu_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\pikachu_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ponyta.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponyta.png',
+   'DATA'),
+  ('assets\\pokemons\\ponytaS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponytaS.png',
+   'DATA'),
+  ('assets\\pokemons\\ponytaS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponytaS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\ponyta_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\ponyta_back.png',
+   'DATA'),
+  ('assets\\pokemons\\porygon.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygon.png',
+   'DATA'),
+  ('assets\\pokemons\\porygonS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygonS.png',
+   'DATA'),
+  ('assets\\pokemons\\porygonS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygonS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\porygon_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\porygon_back.png',
+   'DATA'),
+  ('assets\\pokemons\\rattata.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattata.png',
+   'DATA'),
+  ('assets\\pokemons\\rattataS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattataS.png',
+   'DATA'),
+  ('assets\\pokemons\\rattataS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattataS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\rattata_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rattata_back.png',
+   'DATA'),
+  ('assets\\pokemons\\rayquaza.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rayquaza.png',
+   'DATA'),
+  ('assets\\pokemons\\rayquaza_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\rayquaza_back.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrew.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrew.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrewS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrewS.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrewS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrewS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\sandshrew_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\sandshrew_back.png',
+   'DATA'),
+  ('assets\\pokemons\\soim.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\soim.png',
+   'DATA'),
+  ('assets\\pokemons\\soim_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\soim_back.png',
+   'DATA'),
+  ('assets\\pokemons\\spearow.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearow.png',
+   'DATA'),
+  ('assets\\pokemons\\spearowS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearowS.png',
+   'DATA'),
+  ('assets\\pokemons\\spearowS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearowS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\spearow_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\spearow_back.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtle.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtle.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtleS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtleS.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtleS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtleS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\squirtle_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\squirtle_back.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpix.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpix.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpixS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpixS.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpixS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpixS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\vulpix_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\vulpix_back.png',
+   'DATA'),
+  ('assets\\pokemons\\weedle.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedle.png',
+   'DATA'),
+  ('assets\\pokemons\\weedleS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedleS.png',
+   'DATA'),
+  ('assets\\pokemons\\weedleS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedleS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\weedle_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\weedle_back.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdos.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdos.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdosS.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdosS.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdosS_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdosS_back.png',
+   'DATA'),
+  ('assets\\pokemons\\zapdos_back.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\pokemons\\zapdos_back.png',
+   'DATA'),
+  ('assets\\professor\\professor_massa.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\professor_massa.png',
+   'DATA'),
+  ('assets\\professor\\proff_massa_1.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\proff_massa_1.png',
+   'DATA'),
+  ('assets\\professor\\proff_massa_2.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\proff_massa_2.png',
+   'DATA'),
+  ('assets\\professor\\rival.png',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\professor\\rival.png',
+   'DATA'),
+  ('assets\\sfx\\itemfound.wav',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\sfx\\itemfound.wav',
+   'DATA'),
+  ('assets\\sfx\\sfx_blip.wav',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\sfx\\sfx_blip.wav',
+   'DATA'),
+  ('assets\\sfx\\sfx_heal.wav',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\assets\\sfx\\sfx_heal.wav',
+   'DATA'),
+  ('pygame\\pygame_icon.bmp',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\pygame_icon.bmp',
+   'DATA'),
+  ('pygame\\freesansbold.ttf',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\pygame\\freesansbold.ttf',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\WHEEL',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\LICENSE',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\top_level.txt',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\top_level.txt',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\RECORD',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\RECORD',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\INSTALLER',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\METADATA',
+   'DATA'),
+  ('setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\REQUESTED',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\importlib_metadata-8.0.0.dist-info\\REQUESTED',
+   'DATA'),
+  ('setuptools\\_vendor\\jaraco\\text\\Lorem ipsum.txt',
+   'C:\\Users\\Burilo '
+   'Acioli\\AppData\\Local\\Packages\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\LocalCache\\local-packages\\Python312\\site-packages\\setuptools\\_vendor\\jaraco\\text\\Lorem '
+   'ipsum.txt',
+   'DATA'),
+  ('base_library.zip',
+   'D:\\codes '
+   'python\\Projeto_IP_2025.2_Grupo_5\\projeto_ip\\build\\main\\base_library.zip',
+   'DATA')],)
