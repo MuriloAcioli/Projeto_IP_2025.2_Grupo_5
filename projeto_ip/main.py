@@ -205,7 +205,7 @@ if jogo_ativo:
 
 #CRIAÇÃO DA EQUIPE COM O INICIAL ESCOLHIDO
 equipe_jogador = []
-pokemon_inicial = criar_pokemon(inicial_escolhido, 5) #cria Nível 5
+pokemon_inicial = criar_pokemon(inicial_escolhido, 15) #cria Nível 5
 progresso_pokedex[inicial_escolhido] = "capturado"
 if pokemon_inicial:
     equipe_jogador.append(pokemon_inicial)
@@ -213,6 +213,8 @@ else:
     #fallback de segurança
     equipe_jogador.append(criar_pokemon("Charmander", 5))
 
+equipe_jogador.append(criar_pokemon("Byte*",15))
+equipe_jogador.append(criar_pokemon("Lapras",15))
 
 #LOOP PRINCIPAL (GAME LOOP)
 
