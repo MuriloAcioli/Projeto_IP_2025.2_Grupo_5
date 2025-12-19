@@ -1,49 +1,43 @@
-# PokéCIn: A ameaça do Mangue!
+# PokéCIn: A Ameaça da Equipe Manga
 
-Jogo voltado ao mundo de pokemon com uma pitada de CIn, prove ao Professor Python, Ricardo Massa, que você é capaz de acabar. Jogo feito em python.
+> **Status do Projeto:** Concluído (2025.2)
 
+O projeto **“PokéCIn: A Ameaça da Equipe Manga”** é um jogo 2D desenvolvido em **Python**, utilizando a biblioteca **PyGame**, para a disciplina de Introdução à Programação do curso de Ciência da Computação do Centro de Informática da UFPE (CIn-UFPE).
 
-## Controles Básicos do Jogo
-- **WASD:** Movimentação do personagem.
-- **Tecla E:** Abrir/fechar/inventário.
-- **Shift:** Para correr
-- **Esc:** Para voltar
-- **Espaço:** Para selecionar/interagir
+O jogo adapta o universo Pokémon para a realidade e cultura do CIn. Sua missão é provar ao **Professor Ricardo Massa** que você é capaz de impedir a **Equipe Manga Rosa** (baseada na Equipe Rocket), que ameaça destruir os computadores do centro após rumores maliciosos.
 
-##  Instalação
-1. Clone o repositório:
+## Screenshots
 
+<div align="center">
+  <img width="400" alt="Gameplay 1" src="https://github.com/user-attachments/assets/614dc889-3c52-42b8-9861-57bb04aef7ad" />
+  <img width="400" alt="Gameplay 2" src="https://github.com/user-attachments/assets/90f85c18-f7e1-4b9c-9bdb-4ac4d8a063c9" />
+  <img width="400" alt="Gameplay 3" src="https://github.com/user-attachments/assets/99fac0d7-c0f3-4921-870b-1c113f6249a9" />
+  <img width="400" alt="Gameplay 4" src="https://github.com/user-attachments/assets/7b770ae6-5efb-4211-8422-2f4897b06e3e" />
+  <img width="400" alt="Gameplay 5" src="https://github.com/user-attachments/assets/0b13d0a2-05ac-4348-afd7-e88dc91c7ccb" />
+  <img width="400" alt="Gameplay 6" src="https://github.com/user-attachments/assets/c75dc133-efa1-453d-9361-9d267dc9c1ee" />
+</div>
+
+---
+
+## Controles
+
+| Tecla | Ação |
+| :---: | :--- |
+| **W, A, S, D** | Movimentação do personagem |
+| **Shift** | Correr |
+| **E** | Abrir/Fechar Inventário |
+| **Espaço** | Selecionar / Interagir |
+| **Esc** | Voltar / Menu de Pausa |
+
+---
+
+## Instalação e Execução
+
+Pré-requisitos: Python instalado.
+
+1. **Clone o repositório:**
    ```bash
-   git clone https://github.com/MuriloAcioli/Projeto_IP_2025.2_Grupo_5.git
-   ```
-
-2. Instale as dependências:
-
-   ```py
-   pip install -r requirements.txt
-   ```
-3. Execute o jogo:
-
-   ```py
-   python main.py
-   ```
-## SCREENSHOTS
-
-<img width="795" height="592" alt="Captura de tela 2025-12-19 022719" src="https://github.com/user-attachments/assets/614dc889-3c52-42b8-9861-57bb04aef7ad" />
-
-<img width="798" height="593" alt="Captura de tela 2025-12-19 022728" src="https://github.com/user-attachments/assets/90f85c18-f7e1-4b9c-9bdb-4ac4d8a063c9" />
-
-<img width="794" height="544" alt="Captura de tela 2025-12-18 123651" src="https://github.com/user-attachments/assets/99fac0d7-c0f3-4921-870b-1c113f6249a9" />
-
-<img width="796" height="527" alt="Captura de tela 2025-12-18 123828" src="https://github.com/user-attachments/assets/7b770ae6-5efb-4211-8422-2f4897b06e3e" />
-
-<img width="797" height="531" alt="Captura de tela 2025-12-18 123928" src="https://github.com/user-attachments/assets/0b13d0a2-05ac-4348-afd7-e88dc91c7ccb" />
-
-<img width="781" height="594" alt="Captura de tela 2025-12-19 002156" src="https://github.com/user-attachments/assets/c75dc133-efa1-453d-9361-9d267dc9c1ee" />
-
-<img width="796" height="548" alt="Captura de tela 2025-12-19 002021" src="https://github.com/user-attachments/assets/77766ccf-cff9-44b0-a9c6-c04ad4683a59" />
-
-<img width="792" height="596" alt="Captura de tela 2025-12-19 022708" src="https://github.com/user-attachments/assets/9ab99a04-db90-47e2-b987-18611df88048" />
+   git clone [https://github.com/MuriloAcioli/Projeto_IP_2025.2_Grupo_5.git](https://github.com/MuriloAcioli/Projeto_IP_2025.2_Grupo_5.git)
 
 ##  Equipe
 
@@ -53,6 +47,8 @@ Jogo voltado ao mundo de pokemon com uma pitada de CIn, prove ao Professor Pytho
 - **Pedro Wellington Ferreira Felizola Lucena** - Level designer, responsável pela lógica dos coletaveis e organização da party de pokemons.
 - **Artur Regis** - Desenvolveu a mecânica dos menus, lógica primitiva das classes pokemons e do menu de batalha.
 - **Rafaell Bezerra Saraiva** - Responsável pelas mecânicas de spawn e captura de pokemons, batalhas de chefe, polimento geral de gameplay e correção de bugs.
+
+## Arquitetura do Projeto
 
 ```
 PROJETO_IP_2025.2_GRUPO_5/
@@ -89,39 +85,42 @@ PROJETO_IP_2025.2_GRUPO_5/
 └── pokemon.py      # Classe base do Pokémon (status, vida, tipo)
 ```
 
-Bibliotecas:
+## Bibliotecas:
 
-Pygame - Biblioteca base para criação de jogos em Python.
-Os - Foi usado para acessar os diretorios de forma padrão através do World_path.
-Random - gerar de maneira simples aleatoriedade.
-Math - Usado para simplificar cálculos mais complexos.
+Pygame - Biblioteca base para criação de jogos em Python.<br>
+Os - Foi usado para acessar os diretorios de forma padrão através do World_path.<br>
+Random - gerar de maneira simples aleatoriedade.<br>
+Math - Usado para simplificar cálculos mais complexos.<br>
 
-Conceitos aprendidos em aulas e usados no código:
+## Conceitos aprendidos em aulas e usados no código:
 
-Condicionais - usado durante todo o código para a parte de desenvolvimento lógico do jogo.
-Loops - usados nas batalhas, intro, menus e toda mecânica que há repetição.
-Listas - usado no inventário, na party de pokemon do player e de inimigos.
-Funções - usados em forma de métodos em classes e para carregar e desenhar cenas em geral.
-Tuplas - Usados principalmente por conta da sintaxe do pygame para passar valores de escala e posição.
-Dicíonarios - Usados na categorização de pokemon, inventário, lista de ataques e pokedex.
+Condicionais - usado durante todo o código para a parte de desenvolvimento lógico do jogo.<br>
+Loops - usados nas batalhas, intro, menus e toda mecânica que há repetição.<br>
+Listas - usado no inventário, na party de pokemon do player e de inimigos.<br>
+Funções - usados em forma de métodos em classes e para carregar e desenhar cenas em geral.<br>
+Tuplas - Usados principalmente por conta da sintaxe do pygame para passar valores de escala e posição.<br>
+Dicíonarios - Usados na categorização de pokemon, inventário, lista de ataques e pokedex.<br>
 
-Desafios e erros:
+## Desafios e erros:
 
-Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
+## Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
 
-O maior erro foi desenvolver muitos mecânicas simultaneamente e deixar o polimento para o final, sobrecarregando os membros do grupo desnecessariamente. Lidamos pela força do braço, trabalhando até tarde e escolhendo mecânicas menos importantes para ficarem menos polidas.
+Desenvolver muitas mecânicas simultaneamente sobrecarregou a equipe. A solução foi priorizar funcionalidades essenciais em detrimento do polimento de recursos secundários.
 
+## Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?
 
-Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?
+Gestão de Versão: A maior dificuldade inicial foi a adaptação ao Git e GitHub. O desenvolvimento começou fragmentado, exigindo a união manual de códigos e resolução complexa de conflitos. Com o tempo, a equipe adotou branches e merges, aumentando a eficiência.
 
-Demora da maior parte do grupo a aprender a mexer com git e github. Inicialmente desenvolvemos tudo separadamente e tivemos que juntar todas as partes do código e lidar com conflitos manualmente. Próximo do final, o grupo já estava familiarizado com as ferramentas, e pode codar muito mais eficientemente, usando branches e merge.
-
-Quais as lições aprendidas durante o projeto?
+## Quais as lições aprendidas durante o projeto?
 
 Organização e destribuição de tarefas é essencial - é necessário organização extrema quando desenvolvendos softwares complexos, minimizando a ociosidade dos membros, até porque muitas mecânicas dependem de outras para serem desenvolvidas.
 
 Comunicação constante e relatórios de desenvolvimentos são necessários - aconteceu de mais de um membro estar desenvolvendo a mesma feature, o que diminuiu nossa produtividade e gerou frustração no grupo. Após isso percebemos que é muito importante que todos estejam alinhados e saibam o que os outros estão fazendo e quando estão fazendo.
 
 É preciso propósito em conjunto - acima de tudo, ter pessoas alinhadas e comprometidas a um objetivo em comum foi essencial, madrugamos inúmeras noites em equipe sem reclamar e o que era para ser obrigação, virou hobby, esse foi o fator principal para o sucesso do nosso trabalho.
+
+
+
+
 
 
