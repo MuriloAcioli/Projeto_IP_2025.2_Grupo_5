@@ -37,7 +37,7 @@ Pré-requisitos: Python instalado.
 
 1. **Clone o repositório:**
    ```bash
-   git clone [https://github.com/MuriloAcioli/Projeto_IP_2025.2_Grupo_5.git](https://github.com/MuriloAcioli/Projeto_IP_2025.2_Grupo_5.git)
+   git clone https://github.com/MuriloAcioli/Projeto_IP_2025.2_Grupo_5.git
 
 ##  Equipe
 
