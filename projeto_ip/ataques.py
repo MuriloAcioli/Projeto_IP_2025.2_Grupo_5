@@ -4,6 +4,7 @@ GOLPES_DB = {
     "Investida":        {"poder": 40, "tipo": "Normal",   "precisao": 100},
     "Arranhao":         {"poder": 40, "tipo": "Normal",   "precisao": 100},
     "Ataque Rápido":    {"poder": 40, "tipo": "Normal",   "precisao": 100},
+
     "Envolver":         {"poder": 15, "tipo": "Normal",   "precisao": 90},
     "Tapa":             {"poder": 40, "tipo": "Normal",   "precisao": 100},
     "Rosnado":          {"poder": 1,  "tipo": "Normal",   "precisao": 100},
@@ -44,11 +45,10 @@ GOLPES_DB = {
     "Folha Navalha":    {"poder": 80, "tipo": "Grama",    "precisao": 100},
 
     # Golpes de Tipo Elétrico
-    "Choque do Trovão": {"poder": 40, "tipo": "Elétrico", "precisao": 100},
     "Onda de Trovao":   {"poder": 0,  "tipo": "Eletrico", "precisao": 90},
     "Choque do Trovao": {"poder": 40, "tipo": "Eletrico", "precisao": 100},
     "Trovao":           {"poder": 110, "tipo": "Eletrico", "precisao": 70},
-
+    "Choque do Trovão": {"poder": 40, "tipo": "Eletrico", "precisao": 100},
     # Golpes de Tipo Gelo
     "Raio de Gelo":     {"poder": 90, "tipo": "Gelo",     "precisao": 100},
     "Nevasca":          {"poder": 110, "tipo": "Gelo",    "precisao": 70},

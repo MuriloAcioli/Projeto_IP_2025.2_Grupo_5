@@ -333,8 +333,8 @@ while running:
                                     #cria o time do Professor
                                     time_professor = []
 
-                                    time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[0], 6))
-                                    time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[1], 6))
+                                    time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[0], 8))
+                                    time_professor.append(criar_pokemon(lista_iniciais_fora_escolha[1], 8))
                                     time_professor.append(criar_pokemon("Abra", 7))
                                     time_professor.append(criar_pokemon("Pikachu", 8))
                                     time_professor.append(criar_pokemon("Lapras", 8))
@@ -465,7 +465,7 @@ while running:
                             pokemon_random = random.choice(lista_pokemons_super_raros)
                             lvl_chao = 6; lvl_teto = 10
                         else:
-                            lvl_chao = 25; lvl_teto = 25
+                            lvl_chao = 50; lvl_teto = 50
                             pokemon_random = random.choice(lista_pokemons_lendarios)
                         
                         if primeiro_encontro:

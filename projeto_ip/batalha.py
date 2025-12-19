@@ -415,7 +415,12 @@ class BatalhaPokemon:
             self.vencedor = "FUGA"
             self.mensagem_sistema = "Fugiu com sucesso!"
         else:
-            if random.random() < 0.5:
+            lista_pokemons_lendarios = [nome for nome, dados in POKEDEX.items() if dados.get("raridade") == "lendario"]
+            if self.enemy_pkmn.nome in lista_pokemons_lendarios:
+                self.battle_over = True
+                self.vencedor = "FUGA"
+                self.mensagem_sistema = "Fugiu por pouco!"
+            elif random.random() < 0.5:
                 self.battle_over = True
                 self.vencedor = "FUGA"
                 self.mensagem_sistema = "Fugiu por pouco!"

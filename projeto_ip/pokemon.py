@@ -28,7 +28,7 @@ class Pokemon:
         
         # Sistema de XP
         self.xp_atual = 0
-        self.xp_prox_nivel = self.nivel * 10
+        self.xp_prox_nivel = self.nivel * 20
         
         self.golpes = golpes 
         self.capturado_com = "Pokebola"
@@ -83,13 +83,13 @@ class Pokemon:
         while self.xp_atual >= self.xp_prox_nivel:
             self.xp_atual -= self.xp_prox_nivel
             self.nivel += 1
-            self.xp_prox_nivel = self.nivel * 10
+            self.xp_prox_nivel = self.nivel * 20
             subiu = True
         return subiu
 
     def subir_nivel(self):
         self.nivel += 1
-        self.xp_prox_nivel = self.nivel * 50
+        self.xp_prox_nivel = self.nivel * 20
         
         # Recalcula e cura o aumento de HP
         antigo_hp = self.hp_max

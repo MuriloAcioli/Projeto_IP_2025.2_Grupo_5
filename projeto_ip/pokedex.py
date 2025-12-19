@@ -298,7 +298,7 @@ POKEDEX = {
 
     "Clefairy": {
         "id": 35,
-        "tipo": "Fada",
+        "tipo": "Normal",
         "stats": (70, 45, 48, 35),
         "sprite": "assets/pokemons/clefairy.png",
         "sprite_back": "assets/pokemons/clefairy_back.png",
@@ -307,7 +307,7 @@ POKEDEX = {
     },
     "Clefairy*": {
         "id": 35,
-        "tipo": "Fada",
+        "tipo": "Normal",
         "stats": (70, 45, 48, 35),
         "sprite": "assets/pokemons/clefairyS.png",
         "sprite_back": "assets/pokemons/clefairyS_back.png",
